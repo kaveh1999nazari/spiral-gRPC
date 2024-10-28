@@ -4,8 +4,7 @@ rpc:
 grpc:
     listen: 'tcp://127.0.0.1:9001'
     proto:
-        - first.proto
-        - second.proto
+        - "proto/user.proto"
 server:
     command: 'php app.php'
     relay: pipes
