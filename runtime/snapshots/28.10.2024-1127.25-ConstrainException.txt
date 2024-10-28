@@ -1,0 +1,93 @@
+[Cycle\Database\Exception\StatementException\ConstrainException]
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '09387578069' for key 'users.unique_mobile_index' in vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:74
+
+ 1. Cycle\Database\Driver\MySQL\MySQLDriver->mapException() at vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:74
+ 2. Cycle\Database\Driver\MySQL\MySQLDriver->mapException() at vendor/cycle/database/src/Driver/Driver.php:461
+ 3. Cycle\Database\Driver\Driver->statement() at vendor/cycle/database/src/Driver/Driver.php:227
+ 4. Cycle\Database\Driver\Driver->execute() at vendor/cycle/database/src/Query/InsertQuery.php:124
+ 5. Cycle\Database\Query\InsertQuery->run() at vendor/cycle/orm/src/Command/Database/Insert.php:131
+ 6. Cycle\ORM\Command\Database\Insert->execute() at vendor/cycle/orm/src/Transaction/Runner.php:61
+ 7. Cycle\ORM\Transaction\Runner->run() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:150
+ 8. Cycle\ORM\Transaction\UnitOfWork->runCommand() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:327
+ 9. Cycle\ORM\Transaction\UnitOfWork->resolveSelfWithEmbedded() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:374
+10. Cycle\ORM\Transaction\UnitOfWork->resolveRelations() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:219
+11. Cycle\ORM\Transaction\UnitOfWork->walkPool() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:96
+12. Cycle\ORM\Transaction\UnitOfWork->run() at vendor/cycle/orm/src/EntityManager.php:47
+13. Cycle\ORM\EntityManager->run() at app/src/Repository/UserRepository.php:22
+14. App\Repository\UserRepository->create() at app/src/Endpoint/RPC/UserService.php:22
+15. App\Endpoint\RPC\UserService->Register() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
+16. Spiral\RoadRunner\GRPC\Invoker->invoke() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/InvokerCore.php:36
+17. Spiral\RoadRunnerBridge\GRPC\Interceptor\InvokerCore->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:117
+18. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
+19. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35
+20. Spiral\Core\InterceptableCore->callAction() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:40
+21. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->Spiral\RoadRunnerBridge\GRPC\Interceptor\{closure}()
+22. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+23. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+24. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+25. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+26. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+27. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+28. Spiral\Core\Container->runScope() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:38
+29. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->invoke() at vendor/spiral/roadrunner-grpc/src/ServiceWrapper.php:74
+30. Spiral\RoadRunner\GRPC\ServiceWrapper->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:146
+31. Spiral\RoadRunner\GRPC\Server->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:77
+32. Spiral\RoadRunner\GRPC\Server->tick() at vendor/spiral/roadrunner-grpc/src/Server.php:118
+33. Spiral\RoadRunner\GRPC\Server->serve() at vendor/spiral/roadrunner-bridge/src/GRPC/Dispatcher.php:43
+34. Spiral\RoadRunnerBridge\GRPC\Dispatcher->serve() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:316
+35. Spiral\Boot\AbstractKernel::Spiral\Boot\{closure}()
+36. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+37. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+38. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+39. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+40. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+41. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+42. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:312
+43. Spiral\Boot\AbstractKernel->serve() at app.php:31
+
+[PDOException]
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '09387578069' for key 'users.unique_mobile_index' in vendor/cycle/database/src/Driver/Driver.php:457
+
+ 1. PDOStatement->execute() at vendor/cycle/database/src/Driver/Driver.php:457
+ 2. Cycle\Database\Driver\Driver->statement() at vendor/cycle/database/src/Driver/Driver.php:227
+ 3. Cycle\Database\Driver\Driver->execute() at vendor/cycle/database/src/Query/InsertQuery.php:124
+ 4. Cycle\Database\Query\InsertQuery->run() at vendor/cycle/orm/src/Command/Database/Insert.php:131
+ 5. Cycle\ORM\Command\Database\Insert->execute() at vendor/cycle/orm/src/Transaction/Runner.php:61
+ 6. Cycle\ORM\Transaction\Runner->run() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:150
+ 7. Cycle\ORM\Transaction\UnitOfWork->runCommand() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:327
+ 8. Cycle\ORM\Transaction\UnitOfWork->resolveSelfWithEmbedded() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:374
+ 9. Cycle\ORM\Transaction\UnitOfWork->resolveRelations() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:219
+10. Cycle\ORM\Transaction\UnitOfWork->walkPool() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:96
+11. Cycle\ORM\Transaction\UnitOfWork->run() at vendor/cycle/orm/src/EntityManager.php:47
+12. Cycle\ORM\EntityManager->run() at app/src/Repository/UserRepository.php:22
+13. App\Repository\UserRepository->create() at app/src/Endpoint/RPC/UserService.php:22
+14. App\Endpoint\RPC\UserService->Register() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
+15. Spiral\RoadRunner\GRPC\Invoker->invoke() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/InvokerCore.php:36
+16. Spiral\RoadRunnerBridge\GRPC\Interceptor\InvokerCore->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:117
+17. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
+18. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35
+19. Spiral\Core\InterceptableCore->callAction() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:40
+20. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->Spiral\RoadRunnerBridge\GRPC\Interceptor\{closure}()
+21. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+22. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+23. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+24. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+25. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+26. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+27. Spiral\Core\Container->runScope() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:38
+28. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->invoke() at vendor/spiral/roadrunner-grpc/src/ServiceWrapper.php:74
+29. Spiral\RoadRunner\GRPC\ServiceWrapper->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:146
+30. Spiral\RoadRunner\GRPC\Server->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:77
+31. Spiral\RoadRunner\GRPC\Server->tick() at vendor/spiral/roadrunner-grpc/src/Server.php:118
+32. Spiral\RoadRunner\GRPC\Server->serve() at vendor/spiral/roadrunner-bridge/src/GRPC/Dispatcher.php:43
+33. Spiral\RoadRunnerBridge\GRPC\Dispatcher->serve() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:316
+34. Spiral\Boot\AbstractKernel::Spiral\Boot\{closure}()
+35. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+36. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+37. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+38. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+39. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+40. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+41. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:312
+42. Spiral\Boot\AbstractKernel->serve() at app.php:31
+
