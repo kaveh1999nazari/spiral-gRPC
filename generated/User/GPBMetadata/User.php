@@ -16,7 +16,7 @@ class User
         }
         $pool->internalAddGeneratedFile(
             '
-Ì
+Ê
 
 user.protoUSER"/
 RegisterReq
@@ -24,10 +24,9 @@ user.protoUSER"/
 password (	"
 RegisterRes
 
-id (2>
-UserGrpc2
-
-createUser.USER.RegisterReq.USER.RegisterResB$Ê	GRPC\\UserâGRPC\\User\\GPBMetadatabproto3'
+id (2<
+UserGrpc0
+Register.USER.RegisterReq.USER.RegisterResB$Ê	GRPC\\UserâGRPC\\User\\GPBMetadatabproto3'
         , true);
 
         static::$is_initialized = true;

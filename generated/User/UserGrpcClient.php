@@ -14,9 +14,9 @@ class UserGrpcClient implements UserGrpcInterface
     ) {
     }
 
-    public function createUser(ContextInterface $ctx, RegisterReq $in): RegisterRes
+    public function Register(ContextInterface $ctx, RegisterReq $in): RegisterRes
     {
-        [$response, $status] = $this->core->callAction(UserGrpcInterface::class, '/'.self::NAME.'/createUser', [
+        [$response, $status] = $this->core->callAction(UserGrpcInterface::class, '/'.self::NAME.'/Register', [
             'in' => $in,
             'ctx' => $ctx,
             'responseClass' => \GRPC\User\RegisterRes::class,
