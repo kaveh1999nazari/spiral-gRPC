@@ -1,7 +1,7 @@
-[Error]
-Call to a member function getAttributes() on null in app/src/Endpoint/Interceptor/ValidatorInterceptor.php:16
+[Spiral\RoadRunner\GRPC\Exception\GRPCException]
+{"password":"Text length must be exactly equal to 5."} in app/src/Endpoint/Interceptor/ValidatorInterceptor.php:37
 
- 1. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:16
+ 1. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:37
  2. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
  3. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
  4. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35

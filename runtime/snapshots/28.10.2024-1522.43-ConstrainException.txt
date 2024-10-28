@@ -1,5 +1,5 @@
 [Cycle\Database\Exception\StatementException\ConstrainException]
-SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '093875718061401021011100' for key 'users.unique_mobile_index' in vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:74
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '09126880345' for key 'users.unique_mobile_index' in vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:74
 
  1. Cycle\Database\Driver\MySQL\MySQLDriver->mapException() at vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:74
  2. Cycle\Database\Driver\MySQL\MySQLDriver->mapException() at vendor/cycle/database/src/Driver/Driver.php:461
@@ -14,11 +14,11 @@ SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '093875718
 11. Cycle\ORM\Transaction\UnitOfWork->walkPool() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:96
 12. Cycle\ORM\Transaction\UnitOfWork->run() at vendor/cycle/orm/src/EntityManager.php:47
 13. Cycle\ORM\EntityManager->run() at app/src/Repository/UserRepository.php:22
-14. App\Repository\UserRepository->create() at app/src/Endpoint/RPC/UserService.php:22
+14. App\Repository\UserRepository->create() at app/src/Endpoint/RPC/UserService.php:25
 15. App\Endpoint\RPC\UserService->Register() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
 16. Spiral\RoadRunner\GRPC\Invoker->invoke() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/InvokerCore.php:36
 17. Spiral\RoadRunnerBridge\GRPC\Interceptor\InvokerCore->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:117
-18. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:18
+18. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:44
 19. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
 20. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
 21. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35
@@ -48,7 +48,7 @@ SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '093875718
 45. Spiral\Boot\AbstractKernel->serve() at app.php:31
 
 [PDOException]
-SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '093875718061401021011100' for key 'users.unique_mobile_index' in vendor/cycle/database/src/Driver/Driver.php:457
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '09126880345' for key 'users.unique_mobile_index' in vendor/cycle/database/src/Driver/Driver.php:457
 
  1. PDOStatement->execute() at vendor/cycle/database/src/Driver/Driver.php:457
  2. Cycle\Database\Driver\Driver->statement() at vendor/cycle/database/src/Driver/Driver.php:227
@@ -62,11 +62,11 @@ SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '093875718
 10. Cycle\ORM\Transaction\UnitOfWork->walkPool() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:96
 11. Cycle\ORM\Transaction\UnitOfWork->run() at vendor/cycle/orm/src/EntityManager.php:47
 12. Cycle\ORM\EntityManager->run() at app/src/Repository/UserRepository.php:22
-13. App\Repository\UserRepository->create() at app/src/Endpoint/RPC/UserService.php:22
+13. App\Repository\UserRepository->create() at app/src/Endpoint/RPC/UserService.php:25
 14. App\Endpoint\RPC\UserService->Register() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
 15. Spiral\RoadRunner\GRPC\Invoker->invoke() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/InvokerCore.php:36
 16. Spiral\RoadRunnerBridge\GRPC\Interceptor\InvokerCore->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:117
-17. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:18
+17. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:44
 18. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
 19. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
 20. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35
