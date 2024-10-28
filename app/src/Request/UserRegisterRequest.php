@@ -13,7 +13,7 @@ class UserRegisterRequest implements BaseRequest
             ],
             'password' => [
                 'required',
-                ['string::length', 5]
+                ['string::length', 8]
             ]
         ];
     }
