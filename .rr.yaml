@@ -3,6 +3,9 @@ rpc:
     listen: 'tcp://127.0.0.1:6001'
 grpc:
     listen: 'tcp://127.0.0.1:9001'
+    pool:
+      debug: true
+      num_workers: 3
     proto:
         - proto/user.proto
 server:
