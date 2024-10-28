@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package USER;
+
+option php_namespace = "GRPC\\User";
+option php_metadata_namespace = "GRPC\\User\\GPBMetadata";
+
+
+service UserGrpc {
+    rpc createUser (RegisterReq) returns (RegisterRes);
+}
+
+message RegisterReq {
+    string mobile = 1;
+    string password = 2;
+}
+
+message RegisterRes {
+    int32 id = 1;
+}
