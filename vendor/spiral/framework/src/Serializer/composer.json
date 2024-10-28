@@ -1,0 +1,47 @@
+{
+    "name": "spiral/serializer",
+    "type": "library",
+    "description": "Common Serializer Interfaces",
+    "license": "MIT",
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/spiral"
+        }
+    ],
+    "homepage": "https://spiral.dev",
+    "support": {
+        "issues": "https://github.com/spiral/framework/issues",
+        "source": "https://github.com/spiral/serializer"
+    },
+    "require": {
+        "php": ">=8.1",
+        "spiral/core": "^3.14.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spiral\\Serializer\\": "src"
+        }
+    },
+    "require-dev": {
+        "spiral/boot": "^3.14.6",
+        "google/protobuf": "^3.25",
+        "phpunit/phpunit": "^10.1",
+        "vimeo/psalm": "^5.9"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spiral\\Tests\\Serializer\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.15.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

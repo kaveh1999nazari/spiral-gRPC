@@ -1,0 +1,35 @@
+{
+    "name": "cycle/schema-migrations-generator",
+    "type": "library",
+    "license": "MIT",
+    "description": "Cycle ORM Migration generation",
+    "require": {
+        "php": ">=8.1",
+        "cycle/database": "^2.4.1",
+        "cycle/schema-builder": "^2.0",
+        "cycle/migrations": "^4.2"
+    },
+    "require-dev": {
+        "cycle/orm": "^2.0",
+        "phpunit/phpunit": "^9.5",
+        "cycle/annotated": "^3.0",
+        "spiral/debug": "^3.0",
+        "spiral/framework": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cycle\\Schema\\Generator\\Migrations\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cycle\\Schema\\Generator\\Migrations\\Tests\\": "tests/Migrations/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": false
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

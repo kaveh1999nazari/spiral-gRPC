@@ -1,0 +1,77 @@
+{
+    "name": "spiral/attributes",
+    "type": "library",
+    "description": "PHP attributes reader",
+    "keywords": ["attributes", "annotations", "metadata"],
+    "license": "MIT",
+    "homepage": "https://spiral.dev",
+    "support": {
+        "issues": "https://github.com/spiral/attributes/issues",
+        "source": "https://github.com/spiral/attributes",
+        "docs": "https://spiral.dev/docs",
+        "forum": "https://forum.spiral.dev",
+        "chat": "https://discord.gg/V6EK4he"
+    },
+    "authors": [
+        {
+            "name": "Anton Titov (wolfy-j)",
+            "email": "wolfy-j@spiralscout.com"
+        },
+        {
+            "name": "Pavel Butchnev (butschster)",
+            "email": "pavel.buchnev@spiralscout.com"
+        },
+        {
+            "name": "Aleksei Gagarin (roxblnfk)",
+            "email": "alexey.gagarin@spiralscout.com"
+        },
+        {
+            "name": "Maksim Smakouz (msmakouz)",
+            "email": "maksim.smakouz@spiralscout.com"
+        },
+        {
+            "name": "Kirill Nesmeyanov (SerafimArts)",
+            "email": "kirill.nesmeyanov@spiralscout.com"
+        }
+    ],
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/spiral"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "psr/cache": "1 - 3",
+        "psr/simple-cache": "1 - 3"
+    },
+    "require-dev": {
+        "doctrine/annotations": "^1.14 || ^2.0",
+        "jetbrains/phpstorm-attributes": "^1.0",
+        "phpunit/phpunit": "^9.5.20",
+        "vimeo/psalm": "^5.17"
+    },
+    "autoload": {
+        "files": [
+            "src/polyfill.php"
+        ],
+        "psr-4": {
+            "Spiral\\Attributes\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spiral\\Tests\\Attributes\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyze": [
+            "psalm --no-cache"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

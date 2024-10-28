@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<psalm
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    errorLevel="2"
+    resolveFromConfigFile="true"
+    findUnusedBaselineEntry="false"
+    findUnusedCode="false"
+>
+    <projectFiles>
+        <directory name="src"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+    <issueHandlers>
+        <DeprecatedClass errorLevel="suppress"/>
+        <DeprecatedInterface errorLevel="suppress"/>
+        <DeprecatedMethod errorLevel="suppress"/>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <directory name="src/Console/Command"/>
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+        <UndefinedAttributeClass>
+            <errorLevel type="suppress">
+                <referencedClass name="JetBrains\PhpStorm\ExpectedValues"/>
+            </errorLevel>
+        </UndefinedAttributeClass>
+        <InvalidCatch>
+            <errorLevel type="suppress">
+                <file name="src/GRPC/Dispatcher.php"/>
+                <file name="src/Http/Dispatcher.php"/>
+                <file name="src/Queue/Dispatcher.php"/>
+            </errorLevel>
+        </InvalidCatch>
+        <InvalidReturnType>
+            <errorLevel type="suppress">
+                <file name="src/Queue/Dispatcher.php"/>
+                <file name="src/Http/Dispatcher.php"/>
+                <file name="src/GRPC/Dispatcher.php"/>
+            </errorLevel>
+        </InvalidReturnType>
+    </issueHandlers>
+</psalm>

@@ -1,0 +1,37 @@
+{
+  "name": "spiral/nyholm-bridge",
+  "type": "library",
+  "description": "Spiral Framework: Nyholm PSR-7/PSR-17 bridge",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Wolfy-J",
+      "email": "wolfy.jd@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "nyholm/psr7": "^1.4",
+    "spiral/http": "^3.0",
+    "spiral/boot": "^3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5.20",
+    "vimeo/psalm": ">=4.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Spiral\\Nyholm\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Spiral\\Nyholm\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "spiral/composer-publish-plugin": true
+    }
+  }
+}

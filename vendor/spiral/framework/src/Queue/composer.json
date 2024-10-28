@@ -1,0 +1,75 @@
+{
+    "name": "spiral/queue",
+    "type": "library",
+    "description": "Spiral: Jobs and Queue",
+    "license": "MIT",
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/spiral"
+        }
+    ],
+    "homepage": "https://spiral.dev",
+    "support": {
+        "issues": "https://github.com/spiral/framework/issues",
+        "source": "https://github.com/spiral/queue"
+    },
+    "authors": [
+        {
+            "name": "Anton Titov (wolfy-j)",
+            "email": "wolfy-j@spiralscout.com"
+        },
+        {
+            "name": "Pavel Butchnev (butschster)",
+            "email": "pavel.buchnev@spiralscout.com"
+        },
+        {
+            "name": "Aleksei Gagarin (roxblnfk)",
+            "email": "alexey.gagarin@spiralscout.com"
+        },
+        {
+            "name": "Maksim Smakouz (msmakouz)",
+            "email": "maksim.smakouz@spiralscout.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "ext-json": "*",
+        "spiral/core": "^3.14.6",
+        "spiral/hmvc": "^3.14.6",
+        "spiral/serializer": "^3.14.6",
+        "spiral/snapshots": "^3.14.6",
+        "spiral/telemetry": "^3.14.6",
+        "spiral/tokenizer": "^3.14.6",
+        "spiral/attributes": "^2.8|^3.0",
+        "doctrine/inflector": "^1.4|^2.0",
+        "ramsey/uuid": "^4.2.3",
+        "psr/event-dispatcher": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spiral\\Queue\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spiral\\Tests\\Queue\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.1",
+        "mockery/mockery": "^1.5",
+        "spiral/boot": "^3.14.6",
+        "vimeo/psalm": "^5.9"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.15.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
