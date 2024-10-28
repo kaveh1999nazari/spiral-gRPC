@@ -2,7 +2,9 @@
 
 namespace App\Endpoint\RPC;
 
+use App\Attribute\ValidateBy;
 use App\Repository\UserRepository;
+use App\Request\UserRegisterRequest;
 use GRPC\User\RegisterReq;
 use GRPC\User\UserGrpcInterface;
 use Spiral\RoadRunner\GRPC;
@@ -14,6 +16,7 @@ class UserService implements UserGrpcInterface
         protected readonly UserRepository $userRepository
     ){}
 
+    #[ValidateBy(UserRegisterRequest::class)]
     public function Register(GRPC\ContextInterface $ctx, RegisterReq $in): RegisterRes
     {
         $mobile = $in->getMobile();
