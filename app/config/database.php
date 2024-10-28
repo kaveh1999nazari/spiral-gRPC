@@ -75,7 +75,7 @@ return [
         ),
         'mysql' => new Config\MySQLDriverConfig(
             connection: new Config\MySQL\TcpConnectionConfig(
-                database: 'spiral',
+                database: 'spiral1',
                 host: '127.0.0.1',
                 port: 3306,
                 user: 'root',
