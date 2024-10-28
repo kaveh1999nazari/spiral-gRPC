@@ -39,7 +39,7 @@ return [
      */
     'databases' => [
         'default' => [
-            'driver' => env('DB_CONNECTION', 'sqlite'),
+            'driver' => env('DB_CONNECTION', 'mysql'),
         ],
     ],
 
@@ -75,11 +75,11 @@ return [
         ),
         'mysql' => new Config\MySQLDriverConfig(
             connection: new Config\MySQL\TcpConnectionConfig(
-                database: env('DB_DATABASE', 'spiral'),
-                host: env('DB_HOST', '127.0.0.1'),
-                port: (int)env('DB_PORT', 3307),
-                user: env('DB_USERNAME', 'root'),
-                password: env('DB_PASSWORD', ''),
+                database: 'spiral',
+                host: '127.0.0.1',
+                port: 3306,
+                user: 'root',
+                password: 'root',
             ),
             queryCache: env('DB_QUERY_CACHE', true),
             options: [
