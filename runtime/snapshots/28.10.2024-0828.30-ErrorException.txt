@@ -1,0 +1,50 @@
+[ErrorException]
+Undefined array key 4 in vendor/spiral/framework/src/Tokenizer/src/Reflection/ReflectionFile.php:324
+
+ 1. Spiral\Exceptions\ExceptionHandler->handleError() at vendor/spiral/framework/src/Tokenizer/src/Reflection/ReflectionFile.php:324
+ 2. Spiral\Tokenizer\Reflection\ReflectionFile->registerNamespace() at vendor/spiral/framework/src/Tokenizer/src/Reflection/ReflectionFile.php:247
+ 3. Spiral\Tokenizer\Reflection\ReflectionFile->locateDeclarations() at vendor/spiral/framework/src/Tokenizer/src/Reflection/ReflectionFile.php:121
+ 4. Spiral\Tokenizer\Reflection\ReflectionFile->__construct() at vendor/cycle/migrations/src/FileRepository.php:138
+ 5. Cycle\Migrations\FileRepository->getFiles() at vendor/cycle/migrations/src/FileRepository.php:126
+ 6. Cycle\Migrations\FileRepository->getFilesIterator() at vendor/cycle/migrations/src/FileRepository.php:55
+ 7. Cycle\Migrations\FileRepository->getMigrations() at vendor/cycle/migrations/src/Migrator.php:95
+ 8. Cycle\Migrations\Migrator->getMigrations() at vendor/spiral/cycle-bridge/src/Console/Command/CycleOrm/MigrateCommand.php:42
+ 9. Spiral\Cycle\Console\Command\CycleOrm\MigrateCommand->perform()
+10. ReflectionMethod->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:59
+11. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+12. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Console/src/CommandCore.php:36
+13. Spiral\Console\CommandCore->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:116
+14. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:76
+15. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Console/src/Interceptor/AttributeInterceptor.php:27
+16. Spiral\Console\Interceptor\AttributeInterceptor->process() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:111
+17. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Console/src/Command.php:114
+18. Spiral\Console\Command->Spiral\Console\{closure}() at vendor/spiral/framework/src/Core/src/Container.php:405
+19. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+20. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+21. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+22. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Console/src/Command.php:100
+23. Spiral\Console\Command->execute() at vendor/symfony/console/Command/Command.php:279
+24. Symfony\Component\Console\Command\Command->run() at vendor/symfony/console/Application.php:1029
+25. Symfony\Component\Console\Application->doRunCommand() at vendor/symfony/console/Application.php:316
+26. Symfony\Component\Console\Application->doRun() at vendor/spiral/framework/src/Console/src/Console.php:87
+27. Spiral\Console\Console->Spiral\Console\{closure}()
+28. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+29. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+30. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+31. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+32. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+33. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+34. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Console/src/Console.php:80
+35. Spiral\Console\Console->run() at vendor/spiral/framework/src/Console/src/Console.php:51
+36. Spiral\Console\Console->start() at vendor/spiral/framework/src/Framework/Console/ConsoleDispatcher.php:55
+37. Spiral\Console\ConsoleDispatcher->serve() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:316
+38. Spiral\Boot\AbstractKernel::Spiral\Boot\{closure}()
+39. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+40. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+41. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+42. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+43. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+44. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+45. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:312
+46. Spiral\Boot\AbstractKernel->serve() at app.php:31
+
