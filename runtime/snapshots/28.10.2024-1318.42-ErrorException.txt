@@ -1,7 +1,0 @@
-[ErrorException]
-strict_types declaration must be the very first statement in the script in app/config/grpc.php:5
-
-1. Spiral\Exceptions\ExceptionHandler->handleError() at app/config/grpc.php:5
-2. Spiral\Exceptions\ExceptionHandler->handleError() at vendor/spiral/framework/src/Exceptions/src/ExceptionHandler.php:162
-3. Spiral\Exceptions\ExceptionHandler->handleShutdown()
-
