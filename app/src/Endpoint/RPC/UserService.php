@@ -20,7 +20,7 @@ class UserService implements UserGrpcInterface
     public function Register(GRPC\ContextInterface $ctx, RegisterReq $in): RegisterRes
     {
         $mobile = $in->getMobile();
-        $password = $in->getPassword();
+        $password = password_hash($in->getPassword(), PASSWORD_BCRYPT);
 
         $user = $this->userRepository->create($mobile, $password);
 
