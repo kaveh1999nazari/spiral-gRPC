@@ -40,7 +40,7 @@ final class ValidatorInterceptor implements InterceptorInterface
                 );
             }
         }
-        
+
         return $handler->handle($context);
     }
 }
