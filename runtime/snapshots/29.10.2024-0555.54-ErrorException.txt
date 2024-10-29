@@ -1,0 +1,7 @@
+[ErrorException]
+Cannot declare class App\Domain\Repository\UserRepository, because the name is already in use in app/src/Repository/UserRepository.php:9
+
+1. Spiral\Exceptions\ExceptionHandler->handleError() at app/src/Repository/UserRepository.php:9
+2. Spiral\Exceptions\ExceptionHandler->handleError() at vendor/spiral/framework/src/Exceptions/src/ExceptionHandler.php:162
+3. Spiral\Exceptions\ExceptionHandler->handleShutdown()
+

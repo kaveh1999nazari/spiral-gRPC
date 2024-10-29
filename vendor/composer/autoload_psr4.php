@@ -163,6 +163,7 @@ return array(
     'Clue\\StreamFilter\\' => array($vendorDir . '/clue/stream-filter/src'),
     'Buggregator\\Trap\\' => array($vendorDir . '/buggregator/trap/src'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
+    'App\\Request\\' => array($baseDir . '/app/src/Request'),
     'App\\Repository\\' => array($baseDir . '/app/src/Repository'),
     'App\\Entity\\' => array($baseDir . '/app/src/Entity'),
     'App\\Endpoint\\RPC\\' => array($baseDir . '/app/src/Endpoint/RPC'),

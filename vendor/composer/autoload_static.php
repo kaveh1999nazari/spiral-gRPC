@@ -256,6 +256,7 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         ),
         'A' => 
         array (
+            'App\\Request\\' => 12,
             'App\\Repository\\' => 15,
             'App\\Entity\\' => 11,
             'App\\Endpoint\\RPC\\' => 17,
@@ -904,6 +905,10 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'App\\Request\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/src/Request',
         ),
         'App\\Repository\\' => 
         array (
