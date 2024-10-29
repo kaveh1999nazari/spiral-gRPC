@@ -1,5 +1,5 @@
 [Cycle\Database\Exception\StatementException\ConstrainException]
-SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '09126880345' for key 'users.unique_mobile_index' in vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:74
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '09126880342' for key 'users.unique_mobile_index' in vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:74
 
  1. Cycle\Database\Driver\MySQL\MySQLDriver->mapException() at vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:74
  2. Cycle\Database\Driver\MySQL\MySQLDriver->mapException() at vendor/cycle/database/src/Driver/Driver.php:461
@@ -48,7 +48,7 @@ SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '091268803
 45. Spiral\Boot\AbstractKernel->serve() at app.php:31
 
 [PDOException]
-SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '09126880345' for key 'users.unique_mobile_index' in vendor/cycle/database/src/Driver/Driver.php:457
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '09126880342' for key 'users.unique_mobile_index' in vendor/cycle/database/src/Driver/Driver.php:457
 
  1. PDOStatement->execute() at vendor/cycle/database/src/Driver/Driver.php:457
  2. Cycle\Database\Driver\Driver->statement() at vendor/cycle/database/src/Driver/Driver.php:227
