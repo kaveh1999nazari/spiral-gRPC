@@ -32,6 +32,7 @@
             "GRPC\\": "generated",
             "App\\Entity\\" : "app/src/Entity",
             "App\\Repository\\" : "app/src/Repository",
+            "App\\Request\\" : "app/src/Request",
             "App\\Endpoint\\RPC\\" : "app/src/Endpoint/RPC"
         }
     },
