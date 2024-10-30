@@ -15,6 +15,7 @@
         "ext-sockets": "*",
         "firebase/php-jwt": "^6.10",
         "grpc/grpc": "^1.42",
+        "kreait/firebase-php": "^7.15",
         "spiral/cycle-bridge": "^2.10",
         "spiral/framework": "^3.8",
         "spiral/nyholm-bridge": "^1.3",
