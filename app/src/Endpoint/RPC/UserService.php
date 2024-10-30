@@ -4,6 +4,7 @@ namespace App\Endpoint\RPC;
 
 use App\Attribute\ValidateBy;
 use App\Entity\User;
+use App\Request\UserLoginRequest;
 use App\Request\UserRegisterRequest;
 use Cycle\ORM\ORMInterface;
 use Firebase\JWT\JWT;
@@ -40,6 +41,7 @@ class UserService implements UserGrpcInterface
         return $res;
     }
 
+    #[ValidateBy(UserLoginRequest::class)]
     public function Login(GRPC\ContextInterface $ctx, LoginReq $in): LoginRes
     {
         $mobile = $in->getMobile();
