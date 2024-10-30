@@ -47,6 +47,9 @@ class Kernel extends \Spiral\Framework\Kernel
             // Core Services
             Framework\SnapshotsBootloader::class,
 
+            \Spiral\Bootloader\Auth\HttpAuthBootloader::class,
+            \Spiral\Cycle\Bootloader\AuthTokensBootloader::class,
+
             // Security and validation
             Framework\Security\EncrypterBootloader::class,
             Framework\Security\FiltersBootloader::class,
