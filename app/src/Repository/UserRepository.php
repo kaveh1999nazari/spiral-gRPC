@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Cycle\ORM\EntityManager;
-use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Select;
 use Cycle\ORM\Select\Repository;
 
