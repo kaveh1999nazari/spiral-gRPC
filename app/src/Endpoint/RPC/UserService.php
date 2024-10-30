@@ -20,7 +20,6 @@ use GRPC\User\RegisterRes;
 
 class UserService implements UserGrpcInterface
 {
-    private $secrectKey = "your_key";
     public function __construct(
         protected readonly ORMInterface $orm,
         private readonly AuthContextInterface $auth,
@@ -47,16 +46,12 @@ class UserService implements UserGrpcInterface
         $mobile = $in->getMobile();
         $password = $in->getPassword();
 
-        print_r($mobile);
-
         $user = $this->orm->getRepository(User::class)
             ->findByMobile($mobile);
 
         if ($user && password_verify($password, $user->getPassword()))
         {
             $token = $this->tokens->create(['sub' => $user->getId()]);
-
-            print_r($token->getToken());
 
             $response = new LoginRes();
             $response->setToken($token->getID());
