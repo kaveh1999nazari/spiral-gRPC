@@ -2,7 +2,6 @@
 
 namespace App\Auth\Storage;
 
-use App\Auth\JWT\TokenEncoder;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Firebase\JWT\ExpiredException;
