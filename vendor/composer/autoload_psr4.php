@@ -139,6 +139,7 @@ return array(
     'GPBMetadata\\Google\\Cloud\\' => array($vendorDir . '/google/common-protos/metadata/Cloud'),
     'GPBMetadata\\Google\\Api\\' => array($vendorDir . '/google/common-protos/metadata/Api'),
     'GPBMetadata\\' => array($vendorDir . '/roadrunner-php/roadrunner-api-dto/generated/GPBMetadata'),
+    'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Fidry\\CpuCoreCounter\\' => array($vendorDir . '/fidry/cpu-core-counter/src'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
