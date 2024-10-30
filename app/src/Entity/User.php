@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
+use App\Repository\UserRepository;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Column;
-use Cycle\ORM\RepositoryInterface;
 
-#[Entity(repository: RepositoryInterface::class, table: "users")]
+#[Entity(repository: UserRepository::class, table: "users")]
 class User
 {
     #[Column(type: 'primary')]
