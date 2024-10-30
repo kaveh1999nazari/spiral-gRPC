@@ -5,10 +5,15 @@ namespace App\Repository;
 use App\Entity\User;
 use Cycle\ORM\EntityManager;
 use Cycle\ORM\ORMInterface;
+use Cycle\ORM\Select;
+use Cycle\ORM\Select\Repository;
 
-class UserRepository
+class UserRepository extends Repository
 {
-    public function __construct(private ORMInterface $orm){}
+    public function __construct(Select $select, private readonly EntityManager $entityManager)
+    {
+        parent::__construct($select);
+    }
 
     public function create(string $mobile, string $password): User
     {
@@ -17,10 +22,14 @@ class UserRepository
         $user->setMobile($mobile);
         $user->setPassword($password);
 
-        $tr = new EntityManager($this->orm);
-        $tr->persist($user);
-        $tr->run();
+        $this->entityManager->persist($user);
+        $this->entityManager->run();
 
         return $user;
+    }
+
+    public function findByMobile(string $mobile): ?User
+    {
+        return $this->findOne(['mobile' => $mobile]);
     }
 }
