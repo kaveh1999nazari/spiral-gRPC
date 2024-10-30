@@ -8,6 +8,7 @@ option php_metadata_namespace = "GRPC\\User\\GPBMetadata";
 
 service UserGrpc {
     rpc Register (RegisterReq) returns (RegisterRes);
+    rpc Login (LoginReq) returns (LoginRes);
 }
 
 message RegisterReq {
@@ -17,4 +18,14 @@ message RegisterReq {
 
 message RegisterRes {
     int32 id = 1;
+}
+
+message LoginReq {
+    string mobile = 1;
+    string password = 2;
+}
+
+message LoginRes {
+    string token = 1;
+    string message = 2;
 }
