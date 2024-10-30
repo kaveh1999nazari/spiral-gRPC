@@ -217,6 +217,7 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         ),
         'F' => 
         array (
+            'Firebase\\JWT\\' => 13,
             'Fidry\\CpuCoreCounter\\' => 21,
         ),
         'E' => 
@@ -809,6 +810,10 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         'GPBMetadata\\' => 
         array (
             0 => __DIR__ . '/..' . '/roadrunner-php/roadrunner-api-dto/generated/GPBMetadata',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Fidry\\CpuCoreCounter\\' => 
         array (
