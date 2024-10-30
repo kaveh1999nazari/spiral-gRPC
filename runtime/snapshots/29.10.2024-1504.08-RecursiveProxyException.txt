@@ -1,13 +1,15 @@
-[TypeError]
-Spiral\Validator\CallableRule::__construct(): Argument #1 ($check) must be of type callable, string given, called in /home/kaveh/Desktop/spiral-gRPC/vendor/spiral/validator/src/RulesProvider.php on line 77 in vendor/spiral/validator/src/CallableRule.php:25
+[Spiral\Core\Exception\Container\RecursiveProxyException]
+Recursive proxy detected for `Spiral\Auth\AuthContextInterface`.
+Binding scope: `root`.
+Calling scope: `root.grpc.grpc-request`. in vendor/spiral/framework/src/Core/src/Internal/Proxy/Resolver.php:55
 
- 1. Spiral\Validator\CallableRule->__construct() at vendor/spiral/validator/src/CallableRule.php:25
- 2. Spiral\Validator\CallableRule->__construct() at vendor/spiral/validator/src/RulesProvider.php:77
- 3. Spiral\Validator\RulesProvider->makeRule() at vendor/spiral/validator/src/RulesProvider.php:47
- 4. Spiral\Validator\RulesProvider->getRules() at vendor/spiral/validator/src/AbstractValidator.php:88
- 5. Spiral\Validator\AbstractValidator->validate() at vendor/spiral/validator/src/AbstractValidator.php:57
- 6. Spiral\Validator\AbstractValidator->getErrors() at vendor/spiral/validator/src/AbstractValidator.php:52
- 7. Spiral\Validator\AbstractValidator->isValid() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:36
+ 1. Spiral\Core\Internal\Proxy\Resolver::resolve() at vendor/spiral/framework/src/Core/src/Internal/Proxy/Resolver.php:55
+ 2. Spiral\Core\Internal\Proxy\Resolver::resolve() at vendor/spiral/framework/src/Core/src/Internal/Proxy.php(60) : eval()'d code:8
+ 3. Spiral\Auth\AuthContextInterface SCOPED PROXY->start() at app/src/Endpoint/RPC/UserService.php:66
+ 4. App\Endpoint\RPC\UserService->Login() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
+ 5. Spiral\RoadRunner\GRPC\Invoker->invoke() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/InvokerCore.php:36
+ 6. Spiral\RoadRunnerBridge\GRPC\Interceptor\InvokerCore->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:117
+ 7. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:44
  8. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
  9. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
 10. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35

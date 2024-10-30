@@ -1,0 +1,19 @@
+[Spiral\RoadRunner\GRPC\Exception\NotFoundException]
+Service `USER.UserGrpc` not found. in vendor/spiral/roadrunner-grpc/src/Exception/GRPCException.php:50
+
+ 1. Spiral\RoadRunner\GRPC\Exception\GRPCException::create() at vendor/spiral/roadrunner-grpc/src/Exception/GRPCException.php:50
+ 2. Spiral\RoadRunner\GRPC\Exception\GRPCException::create() at vendor/spiral/roadrunner-grpc/src/Server.php:143
+ 3. Spiral\RoadRunner\GRPC\Server->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:77
+ 4. Spiral\RoadRunner\GRPC\Server->tick() at vendor/spiral/roadrunner-grpc/src/Server.php:118
+ 5. Spiral\RoadRunner\GRPC\Server->serve() at vendor/spiral/roadrunner-bridge/src/GRPC/Dispatcher.php:43
+ 6. Spiral\RoadRunnerBridge\GRPC\Dispatcher->serve() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:316
+ 7. Spiral\Boot\AbstractKernel::Spiral\Boot\{closure}()
+ 8. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+ 9. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+10. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+11. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+12. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+13. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+14. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:312
+15. Spiral\Boot\AbstractKernel->serve() at app.php:31
+

@@ -24,4 +24,15 @@ class UserGrpcClient implements UserGrpcInterface
 
         return $response;
     }
+
+    public function Login(ContextInterface $ctx, LoginReq $in): LoginRes
+    {
+        [$response, $status] = $this->core->callAction(UserGrpcInterface::class, '/'.self::NAME.'/Login', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\User\LoginRes::class,
+        ]);
+
+        return $response;
+    }
 }

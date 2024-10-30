@@ -1,0 +1,40 @@
+[Spiral\Core\Exception\Container\RecursiveProxyException]
+Recursive proxy detected for `Spiral\Auth\AuthContextInterface`.
+Binding scope: `root`.
+Calling scope: `root.grpc.grpc-request`. in vendor/spiral/framework/src/Core/src/Internal/Proxy/Resolver.php:55
+
+ 1. Spiral\Core\Internal\Proxy\Resolver::resolve() at vendor/spiral/framework/src/Core/src/Internal/Proxy/Resolver.php:55
+ 2. Spiral\Core\Internal\Proxy\Resolver::resolve() at vendor/spiral/framework/src/Core/src/Internal/Proxy.php(60) : eval()'d code:8
+ 3. Spiral\Auth\AuthContextInterface SCOPED PROXY->start() at app/src/Endpoint/RPC/UserService.php:62
+ 4. App\Endpoint\RPC\UserService->Login() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
+ 5. Spiral\RoadRunner\GRPC\Invoker->invoke() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/InvokerCore.php:36
+ 6. Spiral\RoadRunnerBridge\GRPC\Interceptor\InvokerCore->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:117
+ 7. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:44
+ 8. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
+ 9. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
+10. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35
+11. Spiral\Core\InterceptableCore->callAction() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:40
+12. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->Spiral\RoadRunnerBridge\GRPC\Interceptor\{closure}()
+13. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+14. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+15. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+16. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+17. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+18. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+19. Spiral\Core\Container->runScope() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:38
+20. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->invoke() at vendor/spiral/roadrunner-grpc/src/ServiceWrapper.php:74
+21. Spiral\RoadRunner\GRPC\ServiceWrapper->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:146
+22. Spiral\RoadRunner\GRPC\Server->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:77
+23. Spiral\RoadRunner\GRPC\Server->tick() at vendor/spiral/roadrunner-grpc/src/Server.php:118
+24. Spiral\RoadRunner\GRPC\Server->serve() at vendor/spiral/roadrunner-bridge/src/GRPC/Dispatcher.php:43
+25. Spiral\RoadRunnerBridge\GRPC\Dispatcher->serve() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:316
+26. Spiral\Boot\AbstractKernel::Spiral\Boot\{closure}()
+27. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+28. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+29. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+30. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+31. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+32. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+33. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:312
+34. Spiral\Boot\AbstractKernel->serve() at app.php:31
+
