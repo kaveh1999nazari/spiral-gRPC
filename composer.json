@@ -13,6 +13,7 @@
         "ext-grpc": "*",
         "ext-mbstring": "*",
         "ext-sockets": "*",
+        "firebase/php-jwt": "^6.10",
         "grpc/grpc": "^1.42",
         "spiral/cycle-bridge": "^2.10",
         "spiral/framework": "^3.8",
