@@ -20,9 +20,12 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305043 extends Migration
                 'unsigned' => false,
                 'zerofill' => false,
             ])
-            ->addColumn('mobile', 'string', ['nullable' => false, 'defaultValue' => null, 'unique' => true, 'size' => 255])
+            ->addColumn('mobile', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 255])
             ->addColumn('password', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 255])
             ->setPrimaryKeys(['id'])
+            ->addIndex(['mobile'], [
+                'unique' => true,
+            ])
             ->create();
     }
 
