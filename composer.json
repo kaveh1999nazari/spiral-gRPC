@@ -32,9 +32,9 @@
         "psr-4": {
             "App\\": "app/src",
             "GRPC\\": "generated",
-            "App\\Entity\\" : "app/src/Entity",
-            "App\\Repository\\" : "app/src/Repository",
-            "App\\Request\\" : "app/src/Request",
+            "App\\Entity\\" : "app/src/Domain/Entity",
+            "App\\Repository\\" : "app/src/Domain/Repository",
+            "App\\Request\\" : "app/src/Domain/Request",
             "App\\Endpoint\\RPC\\" : "app/src/Endpoint/RPC"
         }
     },

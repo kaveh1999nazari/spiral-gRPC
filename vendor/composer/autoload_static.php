@@ -1034,15 +1034,15 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         ),
         'App\\Request\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/app/src/Request',
+            0 => __DIR__ . '/../..' . '/app/src/Domain/Request',
         ),
         'App\\Repository\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/app/src/Repository',
+            0 => __DIR__ . '/../..' . '/app/src/Domain/Repository',
         ),
         'App\\Entity\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/app/src/Entity',
+            0 => __DIR__ . '/../..' . '/app/src/Domain/Entity',
         ),
         'App\\Endpoint\\RPC\\' => 
         array (

@@ -6,9 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/generated" isTestSource="false" packagePrefix="GRPC\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/app/src/Endpoint/RPC" isTestSource="false" packagePrefix="App\Endpoint\RPC\" />
-      <sourceFolder url="file://$MODULE_DIR$/app/src/Entity" isTestSource="false" packagePrefix="App\Entity\" />
-      <sourceFolder url="file://$MODULE_DIR$/app/src/Repository" isTestSource="false" packagePrefix="App\Repository\" />
-      <sourceFolder url="file://$MODULE_DIR$/app/src/Request" isTestSource="false" packagePrefix="App\Request\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/src/Domain/Entity" isTestSource="false" packagePrefix="App\Entity\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/src/Domain/Repository" isTestSource="false" packagePrefix="App\Repository\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/src/Domain/Request" isTestSource="false" packagePrefix="App\Request\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/amphp/amp" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/amphp/byte-stream" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/brick/math" />
