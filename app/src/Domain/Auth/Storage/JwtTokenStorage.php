@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Auth\Storage;
+namespace App\Domain\Auth\Storage;
 
+use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-use Firebase\JWT\ExpiredException;
 use Spiral\Auth\TokenInterface;
 use Spiral\Auth\TokenStorageInterface;
 

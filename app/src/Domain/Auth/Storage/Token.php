@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Auth\Storage;
+namespace App\Domain\Auth\Storage;
 
 use DateTimeInterface;
 use Spiral\Auth\TokenInterface;
