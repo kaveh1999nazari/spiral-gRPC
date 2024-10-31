@@ -190,6 +190,8 @@ return array(
     'App\\Repository\\' => array($baseDir . '/app/src/Domain/Repository'),
     'App\\Entity\\' => array($baseDir . '/app/src/Domain/Entity'),
     'App\\Endpoint\\RPC\\' => array($baseDir . '/app/src/Endpoint/RPC'),
+    'App\\Auth\\Storage\\' => array($baseDir . '/app/src/Auth/Storage'),
+    'App\\Attribute\\' => array($baseDir . '/app/src/Domain/Attribute'),
     'App\\' => array($baseDir . '/app/src'),
     'Amp\\ByteStream\\' => array($vendorDir . '/amphp/byte-stream/lib'),
     'Amp\\' => array($vendorDir . '/amphp/amp/lib'),

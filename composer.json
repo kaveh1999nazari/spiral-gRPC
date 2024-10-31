@@ -35,6 +35,8 @@
             "App\\Entity\\" : "app/src/Domain/Entity",
             "App\\Repository\\" : "app/src/Domain/Repository",
             "App\\Request\\" : "app/src/Domain/Request",
+            "App\\Attribute\\" : "app/src/Domain/Attribute",
+            "App\\Auth\\Storage\\" : "app/src/Auth/Storage",
             "App\\Endpoint\\RPC\\" : "app/src/Endpoint/RPC"
         }
     },

@@ -294,6 +294,8 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
             'App\\Repository\\' => 15,
             'App\\Entity\\' => 11,
             'App\\Endpoint\\RPC\\' => 17,
+            'App\\Auth\\Storage\\' => 17,
+            'App\\Attribute\\' => 14,
             'App\\' => 4,
             'Amp\\ByteStream\\' => 15,
             'Amp\\' => 4,
@@ -1047,6 +1049,14 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         'App\\Endpoint\\RPC\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/src/Endpoint/RPC',
+        ),
+        'App\\Auth\\Storage\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/src/Auth/Storage',
+        ),
+        'App\\Attribute\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/src/Domain/Attribute',
         ),
         'App\\' => 
         array (
