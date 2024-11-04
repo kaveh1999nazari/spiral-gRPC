@@ -13,6 +13,7 @@
         "ext-grpc": "*",
         "ext-mbstring": "*",
         "ext-sockets": "*",
+        "barsam/validation-spiral": "dev-main",
         "firebase/php-jwt": "^6.10",
         "grpc/grpc": "^1.42",
         "kreait/firebase-php": "^7.15",
@@ -31,13 +32,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/src",
-            "GRPC\\": "generated",
-            "App\\Entity\\" : "app/src/Domain/Entity",
-            "App\\Repository\\" : "app/src/Domain/Repository",
-            "App\\Request\\" : "app/src/Domain/Request",
-            "App\\Attribute\\" : "app/src/Domain/Attribute",
-            "App\\Auth\\Storage\\" : "app/src/Domain/Auth/Storage",
-            "App\\Endpoint\\RPC\\" : "app/src/Endpoint/RPC"
+            "GRPC\\": "generated"
         }
     },
     "autoload-dev": {
@@ -68,5 +63,11 @@
         "psalm:config": "psalm"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../ValidatorInterceptor"
+        }
+    ]
 }

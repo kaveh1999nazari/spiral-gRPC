@@ -4,8 +4,38 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9778e20a9ffab16bf339e18caa9ee584",
+    "content-hash": "9b4e6ef5f707beb01b6fde0c8b727cb7",
     "packages": [
+        {
+            "name": "barsam/validation-spiral",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../ValidatorInterceptor",
+                "reference": "7401e10f4abd0c800a1a3abb33111e52cac401de"
+            },
+            "require": {
+                "google/common-protos": "^4.8",
+                "spiral/framework": "^3.14",
+                "spiral/roadrunner-grpc": "^3.4",
+                "spiral/validator": "^1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Barsam\\ValidationSpiral\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "kaveh1999nazari",
+                    "email": "kaveh1999nazari@gmail.com"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            }
+        },
         {
             "name": "beste/clock",
             "version": "3.0.0",
@@ -11238,7 +11268,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "barsam/validation-spiral": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
