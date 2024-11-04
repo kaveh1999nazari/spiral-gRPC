@@ -2,10 +2,10 @@
 
 namespace App\Endpoint\RPC;
 
-use App\Attribute\ValidateBy;
 use App\Entity\User;
 use App\Request\UserLoginRequest;
 use App\Request\UserRegisterRequest;
+use Barsam\ValidationSpiral\Attribute\ValidateBy;
 use Cycle\ORM\ORMInterface;
 use Firebase\JWT\JWT;
 use GRPC\User\LoginReq;
@@ -22,7 +22,6 @@ class UserService implements UserGrpcInterface
 {
     public function __construct(
         protected readonly ORMInterface $orm,
-        private readonly AuthContextInterface $auth,
         private readonly TokenStorageInterface $tokens
     ){}
 
