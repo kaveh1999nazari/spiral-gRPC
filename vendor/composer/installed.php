@@ -3,7 +3,7 @@
         'name' => 'spiral/app',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8419b596cfbdd5196d259ce7ff9981b3ef50d6de',
+        'reference' => '058aac8bd574f5f7250a117d447aa9a68fde0672',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -27,6 +27,15 @@
             'install_path' => __DIR__ . '/../amphp/byte-stream',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'barsam/validation-spiral' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '7401e10f4abd0c800a1a3abb33111e52cac401de',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../barsam/validation-spiral',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'beste/clock' => array(
             'pretty_version' => '3.0.0',
@@ -1118,7 +1127,7 @@
         'spiral/app' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8419b596cfbdd5196d259ce7ff9981b3ef50d6de',
+            'reference' => '058aac8bd574f5f7250a117d447aa9a68fde0672',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
