@@ -41,6 +41,6 @@ return [
     'servicesBasePath' => directory('root') . '/proto',
 
     'interceptors' => [
-        \App\Endpoint\Interceptor\ValidatorInterceptor::class,
+        \Barsam\ValidationSpiral\Interceptor\ValidatorInterceptor::class,
     ],
 ];
