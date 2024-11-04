@@ -167,6 +167,39 @@
             "install-path": "../amphp/byte-stream"
         },
         {
+            "name": "barsam/validation-spiral",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../ValidatorInterceptor",
+                "reference": "7401e10f4abd0c800a1a3abb33111e52cac401de"
+            },
+            "require": {
+                "google/common-protos": "^4.8",
+                "spiral/framework": "^3.14",
+                "spiral/roadrunner-grpc": "^3.4",
+                "spiral/validator": "^1.5"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Barsam\\ValidationSpiral\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "kaveh1999nazari",
+                    "email": "kaveh1999nazari@gmail.com"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            },
+            "install-path": "../barsam/validation-spiral"
+        },
+        {
             "name": "beste/clock",
             "version": "3.0.0",
             "version_normalized": "3.0.0.0",
