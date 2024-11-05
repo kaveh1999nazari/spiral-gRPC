@@ -1,0 +1,1 @@
+[2024-11-05T07:31:26.414418+00:00] ERROR: Spiral\RoadRunner\GRPC\Exception\GRPCException: {"mobile":"Value does not match required pattern."} in /home/kaveh/Desktop/ValidatorInterceptor/src/Interceptor/ValidatorInterceptor.php at line 38 []
