@@ -32,6 +32,7 @@ return [
      */
     'services' => [
         directory('root') . '/proto/user.proto',
+        directory('root') . '/proto/admin.proto',
     ],
 
     /**
@@ -42,5 +43,6 @@ return [
 
     'interceptors' => [
         \Barsam\ValidationSpiral\Interceptor\ValidatorInterceptor::class,
+        \App\Endpoint\Interceptor\AuthenticationInterceptor::class,
     ],
 ];
