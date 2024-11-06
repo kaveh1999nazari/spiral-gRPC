@@ -22,6 +22,7 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305043 extends Migration
             ])
             ->addColumn('mobile', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 255])
             ->addColumn('password', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 255])
+            ->addColumn('rule', 'string', ['defaultValue' => "user", 'size' => 255])
             ->setPrimaryKeys(['id'])
             ->addIndex(['mobile'], [
                 'unique' => true,
