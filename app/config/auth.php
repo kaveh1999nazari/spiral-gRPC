@@ -10,6 +10,5 @@ return [
             'algorithm' => 'HS256',
             'expiresAt' => '+30 days',
         ]),
-        // ...
-    ]
+    ],
 ];
