@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package Admin;
+
+option php_namespace = "GRPC\\Admin";
+option php_metadata_namespace = "GRPC\\Admin\\GPBMetadata";
+
+
+service AdminGrpc {
+    rpc categoryCreate (categoryCreateRequest) returns (categoryCreateResponse);
+}
+
+message categoryCreateRequest {
+    string name = 1;
+}
+
+message categoryCreateResponse {
+    int32 id = 1;
+}
