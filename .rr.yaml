@@ -8,6 +8,7 @@ grpc:
       num_workers: 3
     proto:
         - proto/user.proto
+        - proto/admin.proto
 server:
     command: 'php app.php'
     relay: pipes
