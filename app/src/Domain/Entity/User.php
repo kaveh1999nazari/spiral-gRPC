@@ -15,6 +15,8 @@ class User
     private string $mobile;
     #[Column(type: 'string')]
     private string $password;
+    #[Column(type: 'string')]
+    private string $rule;
 
     public function getId(): int
     {
@@ -42,4 +44,10 @@ class User
     {
         $this->password = $password;
     }
+
+    public function getRule(): string
+    {
+        return $this->rule;
+    }
+
 }

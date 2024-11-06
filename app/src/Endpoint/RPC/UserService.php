@@ -54,6 +54,7 @@ class UserService implements UserGrpcInterface
 
             $response = new LoginRes();
             $response->setToken($token->getID());
+            $response->setMessage($user->getRule());
             return $response;
         }
         $response = new LoginRes();
