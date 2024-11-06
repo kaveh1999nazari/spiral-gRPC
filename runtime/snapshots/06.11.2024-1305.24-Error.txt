@@ -1,7 +1,7 @@
-[ErrorException]
-Undefined array key 0 in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:27
+[Error]
+Call to a member function getErrors() on string in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:21
 
- 1. Spiral\Exceptions\ExceptionHandler->handleError() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:27
+ 1. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:21
  2. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
  3. Spiral\Core\InterceptorPipeline->handle() at /home/kaveh/Desktop/ValidatorInterceptor/src/Interceptor/ValidatorInterceptor.php:45
  4. Barsam\ValidationSpiral\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
