@@ -1,9 +1,9 @@
-[ErrorException]
-Trying to access array offset on null in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:20
+[Error]
+Cannot use object of type App\Endpoint\RPC\CategoryService as array in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:27
 
- 1. Spiral\Exceptions\ExceptionHandler->handleError() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:20
+ 1. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:27
  2. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
- 3. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:47
+ 3. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:45
  4. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
  5. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
  6. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35

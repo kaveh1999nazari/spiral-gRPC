@@ -1,9 +1,9 @@
-[ErrorException]
-Trying to access array offset on null in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:20
+[Spiral\RoadRunner\GRPC\Exception\GRPCException]
+please login! in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:19
 
- 1. Spiral\Exceptions\ExceptionHandler->handleError() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:20
+ 1. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:19
  2. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
- 3. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:46
+ 3. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:45
  4. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
  5. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
  6. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35
