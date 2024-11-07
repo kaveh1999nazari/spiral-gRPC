@@ -3,7 +3,7 @@
 namespace App\Endpoint\RPC;
 
 use App\Domain\Attribute\AuthenticatedBy;
-use App\Domain\Entity\Category;
+use App\Entity\Category;
 use Cycle\ORM\ORMInterface;
 use GRPC\Admin\AdminGrpcInterface;
 use GRPC\Admin\categoryCreateRequest;
@@ -19,10 +19,11 @@ class CategoryService implements AdminGrpcInterface
     {
         $name = $in->getName();
 
-        $category = $this->orm->getRepository(Category::class)->create($name);
+        //$category = $this->orm->getRepository(Category::class)->create($name);
 
         $response = new categoryCreateResponse();
-        $response->setId($category->getId());
+        //$response->setId($category->getId());
+        $response->setId(1);
         return $response;
     }
 

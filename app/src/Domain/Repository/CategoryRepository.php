@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Repository;
+namespace App\Repository;
 
-use App\Domain\Entity\Category;
+use App\Entity\Category;
 use Cycle\ORM\EntityManager;
 use Cycle\ORM\Select;
 use Cycle\ORM\Select\Repository;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Entity;
+namespace App\Entity;
 
-use App\Domain\Repository\CategoryRepository;
+use App\Repository\CategoryRepository;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Column;
 
