@@ -1,7 +1,7 @@
 [ErrorException]
-Trying to access array offset on null in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:20
+Undefined array key 0 in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:35
 
- 1. Spiral\Exceptions\ExceptionHandler->handleError() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:20
+ 1. Spiral\Exceptions\ExceptionHandler->handleError() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:35
  2. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
  3. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
  4. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35
