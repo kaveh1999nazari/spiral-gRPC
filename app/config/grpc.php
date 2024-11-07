@@ -43,6 +43,6 @@ return [
 
     'interceptors' => [
         \App\Endpoint\Interceptor\ValidatorInterceptor::class,
-        //\App\Endpoint\Interceptor\AuthenticationInterceptor::class,
+        \App\Endpoint\Interceptor\AuthenticationInterceptor::class,
     ],
 ];
