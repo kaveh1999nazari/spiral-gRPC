@@ -1,0 +1,5 @@
+[2024-11-07T07:54:17.197070+00:00] ERROR: ErrorException: Trying to access array offset on null in /home/kaveh-msi/Desktop/spiral-gRPC/app/src/Endpoint/Interceptor/AuthenticationInterceptor.php at line 20 []
+[2024-11-07T07:54:49.803674+00:00] ERROR: ErrorException: Trying to access array offset on null in /home/kaveh-msi/Desktop/spiral-gRPC/app/src/Endpoint/Interceptor/AuthenticationInterceptor.php at line 20 []
+[2024-11-07T07:56:24.473416+00:00] ERROR: ErrorException: Trying to access array offset on null in /home/kaveh-msi/Desktop/spiral-gRPC/app/src/Endpoint/Interceptor/AuthenticationInterceptor.php at line 20 []
+[2024-11-07T07:56:52.973976+00:00] ERROR: ErrorException: Trying to access array offset on null in /home/kaveh-msi/Desktop/spiral-gRPC/app/src/Endpoint/Interceptor/AuthenticationInterceptor.php at line 20 []
+[2024-11-07T07:57:47.590677+00:00] ERROR: ErrorException: Trying to access array offset on null in /home/kaveh-msi/Desktop/spiral-gRPC/app/src/Endpoint/Interceptor/AuthenticationInterceptor.php at line 20 []
