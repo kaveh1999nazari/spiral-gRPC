@@ -1,8 +1,8 @@
-[ErrorException]
-Trying to access array offset on null in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:41
+[Spiral\RoadRunner\GRPC\Exception\GRPCException]
+Unauthorized: Missing token. in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:48
 
- 1. Spiral\Exceptions\ExceptionHandler->handleError() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:41
- 2. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:33
+ 1. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:48
+ 2. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:28
  3. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
  4. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:45
  5. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112

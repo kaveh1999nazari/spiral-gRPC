@@ -1,8 +1,8 @@
 [Spiral\RoadRunner\GRPC\Exception\GRPCException]
-Unauthorized: Invalid token. in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:67
+Unauthorized: Invalid token. in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:57
 
- 1. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:67
- 2. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:34
+ 1. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:57
+ 2. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:28
  3. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
  4. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:45
  5. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112

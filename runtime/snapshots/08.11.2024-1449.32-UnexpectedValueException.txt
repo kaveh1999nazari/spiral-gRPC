@@ -3,8 +3,8 @@
 
  1. Firebase\JWT\JWT::getKey() at vendor/firebase/php-jwt/src/JWT.php:473
  2. Firebase\JWT\JWT::getKey() at vendor/firebase/php-jwt/src/JWT.php:138
- 3. Firebase\JWT\JWT::decode() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:62
- 4. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:35
+ 3. Firebase\JWT\JWT::decode() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:58
+ 4. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:28
  5. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
  6. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:45
  7. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
