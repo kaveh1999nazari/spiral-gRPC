@@ -31,9 +31,9 @@ class AuthenticationInterceptor implements InterceptorInterface
         return $handler->handle($context);
     }
 
-    private function checkAuth(AuthenticatedBy $attribute, CallContextInterface $ctx): void
+    private function checkAuth(AuthenticatedBy $attribute, CallContextInterface $context): void
     {
-        $token = $ctx->getArguments()['ctx']['authorization'][0] ?? null;
+        $token = $context->getArguments()['ctx']['authorization'][0] ?? null;
 
         if (empty($token)) {
             throw new GRPCException(
