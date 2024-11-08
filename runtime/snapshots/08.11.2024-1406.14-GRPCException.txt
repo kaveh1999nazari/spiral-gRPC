@@ -1,0 +1,35 @@
+[Spiral\RoadRunner\GRPC\Exception\GRPCException]
+Unauthorized: Missing authorization token. in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:45
+
+ 1. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:45
+ 2. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:34
+ 3. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
+ 4. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:45
+ 5. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
+ 6. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
+ 7. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35
+ 8. Spiral\Core\InterceptableCore->callAction() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:40
+ 9. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->Spiral\RoadRunnerBridge\GRPC\Interceptor\{closure}()
+10. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+11. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+12. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+13. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+14. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+15. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+16. Spiral\Core\Container->runScope() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:38
+17. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->invoke() at vendor/spiral/roadrunner-grpc/src/ServiceWrapper.php:74
+18. Spiral\RoadRunner\GRPC\ServiceWrapper->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:146
+19. Spiral\RoadRunner\GRPC\Server->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:77
+20. Spiral\RoadRunner\GRPC\Server->tick() at vendor/spiral/roadrunner-grpc/src/Server.php:118
+21. Spiral\RoadRunner\GRPC\Server->serve() at vendor/spiral/roadrunner-bridge/src/GRPC/Dispatcher.php:43
+22. Spiral\RoadRunnerBridge\GRPC\Dispatcher->serve() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:316
+23. Spiral\Boot\AbstractKernel::Spiral\Boot\{closure}()
+24. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+25. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+26. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+27. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+28. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+29. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+30. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:312
+31. Spiral\Boot\AbstractKernel->serve() at app.php:31
+

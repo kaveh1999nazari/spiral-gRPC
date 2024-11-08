@@ -1,8 +1,8 @@
-[ArgumentCountError]
-Too few arguments to function Spiral\Cycle\Auth\Token::__construct(), 1 passed in /home/kaveh-msi/PhpstormProjects/spiral-gRPC/app/src/Endpoint/Interceptor/AuthenticationInterceptor.php on line 26 and at least 4 expected in vendor/spiral/cycle-bridge/src/Auth/Token.php:35
+[ErrorException]
+Trying to access array offset on null in app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:42
 
- 1. Spiral\Cycle\Auth\Token->__construct() at vendor/spiral/cycle-bridge/src/Auth/Token.php:35
- 2. Spiral\Cycle\Auth\Token->__construct() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:26
+ 1. Spiral\Exceptions\ExceptionHandler->handleError() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:42
+ 2. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:34
  3. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
  4. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:45
  5. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
