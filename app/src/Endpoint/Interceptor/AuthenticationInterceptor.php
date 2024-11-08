@@ -3,39 +3,53 @@
 namespace App\Endpoint\Interceptor;
 
 use App\Domain\Attribute\AuthenticatedBy;
+use Firebase\JWT\JWT;
 use Google\Rpc\Code;
-use Spiral\Auth\AuthContextInterface;
+use Spiral\Attributes\ReaderInterface;
 use Spiral\Interceptors\Context\CallContextInterface;
 use Spiral\Interceptors\HandlerInterface;
 use Spiral\Interceptors\InterceptorInterface;
-use Spiral\Auth\Exception\AuthException;
 use Spiral\RoadRunner\GRPC\Exception\GRPCException;
 
 class AuthenticationInterceptor implements InterceptorInterface
 {
+    public function __construct(
+        private readonly ReaderInterface $reader
+    ) {
+    }
+
     public function intercept(CallContextInterface $context, HandlerInterface $handler): mixed
     {
-        $token = (string) $context->getArguments()['ctx']['authorization'][0];
+        $requestClass = $context->getTarget()->getPath();
+        $reflectMethod = new \ReflectionMethod($context->getArguments()['service'], $requestClass[1]);
+        $attribute = $this->reader->firstFunctionMetadata($reflectMethod, AuthenticatedBy::class);
+
+        if ($attribute !== null) {
+            $this->checkAuth($attribute, $context);
+        }
+
+        return $handler->handle($context);
+    }
+
+    private function checkAuth(AuthenticatedBy $attribute, CallContextInterface $ctx): void
+    {
+        $token = $ctx->getArguments()['ctx']['authorization'][0] ?? null;
+
         if (empty($token)) {
             throw new GRPCException(
-                "please login at first!",
+                'Unauthorized: Missing authorization token.',
                 code: Code::UNAUTHENTICATED
             );
         }
 
-        $requestClass = $context->getTarget()->getPath();
-        $reflectMethod = new \ReflectionMethod($context->getArguments()['service'], $requestClass[1]);
-        $attributeDetails = $reflectMethod->getAttributes(AuthenticatedBy::class);
+        $token = substr($token, 7);
 
-
-//        if (empty($attributeDetails)) {
-//            $requiredRule = $attributeDetails[0]->getArguments()[0];
-//            if (($token->getPayload()['rule'] ?? '') !== $requiredRule) {
-//                throw new AuthException('Access denied: Admin rule required.');
-//            }
-//        }
-
-        return $handler->handle($context);
+        if (empty($token)) {
+            throw new GRPCException(
+                'Unauthorized: Missing token.',
+                code: Code::UNAUTHENTICATED
+            );
+        }
     }
 }
 
