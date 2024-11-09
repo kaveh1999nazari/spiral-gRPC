@@ -30,7 +30,7 @@ user.protoUSER"/
 password (	"*
 LoginRes
 token (	
-message (	2e
+message (	2e
 UserGrpc0
 Register.USER.RegisterReq.USER.RegisterRes\'
 Login.USER.LoginReq.USER.LoginResB$Ê	GRPC\\UserâGRPC\\User\\GPBMetadatabproto3'

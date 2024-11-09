@@ -20,6 +20,7 @@ class UserRepository extends Repository
         $user = new User();
         $user->setMobile($mobile);
         $user->setPassword($password);
+        $user->setRoles(['user']);
 
         $this->entityManager->persist($user);
         $this->entityManager->run();
