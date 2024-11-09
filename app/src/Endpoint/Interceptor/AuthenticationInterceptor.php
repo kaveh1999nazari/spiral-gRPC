@@ -3,7 +3,10 @@
 namespace App\Endpoint\Interceptor;
 
 use App\Domain\Attribute\AuthenticatedBy;
+use App\Entity\User;
+use Cycle\ORM\ORMInterface;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use Google\Rpc\Code;
 use Spiral\Attributes\ReaderInterface;
 use Spiral\Interceptors\Context\CallContextInterface;
@@ -13,10 +16,13 @@ use Spiral\RoadRunner\GRPC\Exception\GRPCException;
 
 class AuthenticationInterceptor implements InterceptorInterface
 {
+    private string $secret = "secret";
+    private string $algorithm = 'HS256';
+
     public function __construct(
-        private readonly ReaderInterface $reader
-    ) {
-    }
+        private readonly ReaderInterface $reader,
+        private readonly ORMInterface $orm
+    ) {}
 
     public function intercept(CallContextInterface $context, HandlerInterface $handler): mixed
     {
@@ -47,6 +53,17 @@ class AuthenticationInterceptor implements InterceptorInterface
         if (empty($token)) {
             throw new GRPCException(
                 'Unauthorized: Missing token.',
+                code: Code::UNAUTHENTICATED
+            );
+        }
+
+        $decode = (array) JWT::decode($token, new Key($this->secret, $this->algorithm));
+        $rule = $this->orm->getRepository(User::class)->findByPK($decode['sub'])->getRule();
+
+        if ($rule !== $attribute->rule)
+        {
+            throw new GRPCException(
+                'Unauthorized: only Admin Access.',
                 code: Code::UNAUTHENTICATED
             );
         }
