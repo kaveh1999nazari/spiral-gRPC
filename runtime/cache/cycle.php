@@ -1,42 +1,4 @@
 <?php return array (
-  'category' => 
-  array (
-    1 => 'App\\Entity\\Category',
-    2 => 'Cycle\\ORM\\Mapper\\Mapper',
-    3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Repository\\CategoryRepository',
-    5 => 'default',
-    6 => 'categories',
-    7 => 
-    array (
-      0 => 'id',
-    ),
-    8 => 
-    array (
-      0 => 'id',
-    ),
-    9 => 
-    array (
-      'id' => 'id',
-      'name' => 'name',
-    ),
-    10 => 
-    array (
-    ),
-    12 => NULL,
-    13 => 
-    array (
-      'id' => 'int',
-    ),
-    14 => 
-    array (
-    ),
-    19 => NULL,
-    20 => 
-    array (
-      'id' => 2,
-    ),
-  ),
   'user' => 
   array (
     1 => 'App\\Entity\\User',
@@ -59,6 +21,44 @@
       'mobile' => 'mobile',
       'password' => 'password',
       'rule' => 'rule',
+    ),
+    10 => 
+    array (
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
+  'category' => 
+  array (
+    1 => 'App\\Entity\\Category',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Repository\\CategoryRepository',
+    5 => 'default',
+    6 => 'categories',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'name' => 'name',
     ),
     10 => 
     array (
