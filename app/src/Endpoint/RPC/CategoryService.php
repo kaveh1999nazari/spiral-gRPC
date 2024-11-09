@@ -14,7 +14,7 @@ use Spiral\RoadRunner\GRPC;
 class CategoryService implements AdminGrpcInterface
 {
     public function __construct(protected readonly ORMInterface $orm){}
-    #[AuthenticatedBy]
+    #[AuthenticatedBy(['guest', 'user2'])]
     public function categoryCreate(GRPC\ContextInterface $ctx, CategoryCreateRequest $in): CategoryCreateResponse
     {
         $name = $in->getName();

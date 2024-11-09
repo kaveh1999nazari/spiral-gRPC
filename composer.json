@@ -67,7 +67,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../ValidatorInterceptor"
+            "url": "../spiral-grpc-authentication"
         }
     ]
 }

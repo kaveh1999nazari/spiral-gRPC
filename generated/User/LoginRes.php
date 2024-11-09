@@ -18,9 +18,9 @@ class LoginRes extends \Google\Protobuf\Internal\Message
      */
     protected $token = '';
     /**
-     * Generated from protobuf field <code>string message = 2;</code>
+     * Generated from protobuf field <code>repeated string message = 3;</code>
      */
-    protected $message = '';
+    private $message;
 
     /**
      * Constructor.
@@ -29,7 +29,7 @@ class LoginRes extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $token
-     *     @type string $message
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $message
      * }
      */
     public function __construct($data = NULL) {
@@ -60,8 +60,8 @@ class LoginRes extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string message = 2;</code>
-     * @return string
+     * Generated from protobuf field <code>repeated string message = 3;</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getMessage()
     {
@@ -69,14 +69,14 @@ class LoginRes extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string message = 2;</code>
-     * @param string $var
+     * Generated from protobuf field <code>repeated string message = 3;</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setMessage($var)
     {
-        GPBUtil::checkString($var, True);
-        $this->message = $var;
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->message = $arr;
 
         return $this;
     }

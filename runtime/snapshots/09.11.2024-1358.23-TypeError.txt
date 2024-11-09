@@ -1,0 +1,39 @@
+[TypeError]
+App\Domain\Attribute\AuthenticatedBy::__construct(): Argument #1 ($rule) must be of type string, array given in app/src/Domain/Attribute/AuthenticatedBy.php:8
+
+ 1. App\Domain\Attribute\AuthenticatedBy->__construct() at app/src/Domain/Attribute/AuthenticatedBy.php:8
+ 2. App\Domain\Attribute\AuthenticatedBy->__construct()
+ 3. ReflectionClass->newInstanceArgs() at vendor/spiral/attributes/src/Internal/Instantiator/NamedArgumentsInstantiator.php:18
+ 4. Spiral\Attributes\Internal\Instantiator\NamedArgumentsInstantiator->instantiate() at vendor/spiral/attributes/src/Internal/AttributeReader.php:51
+ 5. Spiral\Attributes\Internal\AttributeReader->getFunctionMetadata() at vendor/spiral/attributes/src/Reader.php:20
+ 6. Spiral\Attributes\Reader->firstFunctionMetadata() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:31
+ 7. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
+ 8. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:45
+ 9. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
+10. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
+11. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35
+12. Spiral\Core\InterceptableCore->callAction() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:40
+13. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->Spiral\RoadRunnerBridge\GRPC\Interceptor\{closure}()
+14. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+15. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+16. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+17. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+18. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+19. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+20. Spiral\Core\Container->runScope() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:38
+21. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->invoke() at vendor/spiral/roadrunner-grpc/src/ServiceWrapper.php:74
+22. Spiral\RoadRunner\GRPC\ServiceWrapper->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:146
+23. Spiral\RoadRunner\GRPC\Server->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:77
+24. Spiral\RoadRunner\GRPC\Server->tick() at vendor/spiral/roadrunner-grpc/src/Server.php:118
+25. Spiral\RoadRunner\GRPC\Server->serve() at vendor/spiral/roadrunner-bridge/src/GRPC/Dispatcher.php:43
+26. Spiral\RoadRunnerBridge\GRPC\Dispatcher->serve() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:316
+27. Spiral\Boot\AbstractKernel::Spiral\Boot\{closure}()
+28. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+29. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+30. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+31. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+32. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+33. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+34. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:312
+35. Spiral\Boot\AbstractKernel->serve() at app.php:31
+

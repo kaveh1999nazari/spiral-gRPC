@@ -1,0 +1,40 @@
+[InvalidArgumentException]
+Expect string. in vendor/google/protobuf/src/Google/Protobuf/Internal/GPBUtil.php:74
+
+ 1. Google\Protobuf\Internal\GPBUtil::checkString() at vendor/google/protobuf/src/Google/Protobuf/Internal/GPBUtil.php:74
+ 2. Google\Protobuf\Internal\GPBUtil::checkString() at generated/User/LoginRes.php:78
+ 3. GRPC\User\LoginRes->setMessage() at app/src/Endpoint/RPC/UserService.php:54
+ 4. App\Endpoint\RPC\UserService->Login() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
+ 5. Spiral\RoadRunner\GRPC\Invoker->invoke() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/InvokerCore.php:36
+ 6. Spiral\RoadRunnerBridge\GRPC\Interceptor\InvokerCore->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:117
+ 7. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:37
+ 8. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
+ 9. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:45
+10. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
+11. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:70
+12. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptableCore.php:35
+13. Spiral\Core\InterceptableCore->callAction() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:40
+14. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->Spiral\RoadRunnerBridge\GRPC\Interceptor\{closure}()
+15. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+16. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+17. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+18. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+19. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+20. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+21. Spiral\Core\Container->runScope() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/Invoker.php:38
+22. Spiral\RoadRunnerBridge\GRPC\Interceptor\Invoker->invoke() at vendor/spiral/roadrunner-grpc/src/ServiceWrapper.php:74
+23. Spiral\RoadRunner\GRPC\ServiceWrapper->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:146
+24. Spiral\RoadRunner\GRPC\Server->invoke() at vendor/spiral/roadrunner-grpc/src/Server.php:77
+25. Spiral\RoadRunner\GRPC\Server->tick() at vendor/spiral/roadrunner-grpc/src/Server.php:118
+26. Spiral\RoadRunner\GRPC\Server->serve() at vendor/spiral/roadrunner-bridge/src/GRPC/Dispatcher.php:43
+27. Spiral\RoadRunnerBridge\GRPC\Dispatcher->serve() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:316
+28. Spiral\Boot\AbstractKernel::Spiral\Boot\{closure}()
+29. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+30. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+31. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+32. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+33. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+34. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+35. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:312
+36. Spiral\Boot\AbstractKernel->serve() at app.php:31
+

@@ -44,6 +44,8 @@ class ServiceBootloader extends Bootloader
                 'services' => [
                     AdminGrpcClient::class => ['host' => $env->get('ADMIN_GRPC_HOST', '127.0.0.1:9000')],
                     UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9001')],
+                    AdminGrpcClient::class => ['host' => $env->get('ADMIN_GRPC_HOST', '127.0.0.1:9002')],
+                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9003')],
                 ],
             ]
         );
@@ -54,6 +56,40 @@ class ServiceBootloader extends Bootloader
      */
     private function initServices(Container $container): void
     {
+        $container->bindSingleton(
+            AdminGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): AdminGrpcInterface
+            {
+                $service = $config->getService(AdminGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(AdminGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            UserGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): UserGrpcInterface
+            {
+                $service = $config->getService(UserGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(UserGrpcClient::class, ['core' => $core]);
+            }
+        );
         $container->bindSingleton(
             AdminGrpcInterface::class,
             static function(GRPCServicesConfig $config) use($container): AdminGrpcInterface

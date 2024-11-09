@@ -31,25 +31,22 @@ class AuthenticationInterceptor implements InterceptorInterface
         $attribute = $this->reader->firstFunctionMetadata($reflectMethod, AuthenticatedBy::class);
 
         if ($attribute !== null) {
-            $this->checkAuth($attribute, $context);
+            $this->checkAuth($attribute->rule, $context->getArguments()['ctx']['authorization'][0]);
         }
 
         return $handler->handle($context);
     }
 
-    private function checkAuth(AuthenticatedBy $attribute, CallContextInterface $context): void
+    private function checkAuth(array $requiredRoles, string $headerValue): void
     {
-        $token = $context->getArguments()['ctx']['authorization'][0] ?? null;
-
-        if (empty($token)) {
+        if (empty($headerValue)) {
             throw new GRPCException(
                 'Unauthorized: Missing authorization token.',
                 code: Code::UNAUTHENTICATED
             );
         }
 
-        $token = substr($token, 7);
-
+        $token = substr($headerValue, 7);
         if (empty($token)) {
             throw new GRPCException(
                 'Unauthorized: Missing token.',
@@ -57,13 +54,17 @@ class AuthenticationInterceptor implements InterceptorInterface
             );
         }
 
-        $decode = (array) JWT::decode($token, new Key($this->secret, $this->algorithm));
-        $rule = $this->orm->getRepository(User::class)->findByPK($decode['sub'])->getRule();
+        $decode = JWT::decode($token, new Key($this->secret, $this->algorithm));
+        $userRoles = $this->orm->getRepository(User::class)
+            ->findByPK($decode->sub)
+            ->getRoles();
 
-        if ($rule !== $attribute->rule)
+        $intersectRoles = array_intersect($userRoles, $requiredRoles);
+        if (empty($intersectRoles))
         {
+            $requiredRolesString = implode(',', $requiredRoles);
             throw new GRPCException(
-                'Unauthorized: only Admin Access.',
+                "Unauthorized: only ({$requiredRolesString}) can access.",
                 code: Code::UNAUTHENTICATED
             );
         }

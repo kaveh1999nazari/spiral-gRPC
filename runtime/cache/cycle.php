@@ -20,7 +20,7 @@
       'id' => 'id',
       'mobile' => 'mobile',
       'password' => 'password',
-      'rule' => 'rule',
+      'roles' => 'roles',
     ),
     10 => 
     array (
