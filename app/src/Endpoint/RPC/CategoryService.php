@@ -19,11 +19,10 @@ class CategoryService implements AdminGrpcInterface
     {
         $name = $in->getName();
 
-        //$category = $this->orm->getRepository(Category::class)->create($name);
+        $category = $this->orm->getRepository(Category::class)->create($name);
 
         $response = new categoryCreateResponse();
-        //$response->setId($category->getId());
-        $response->setId(1);
+        $response->setId($category->getId());
         return $response;
     }
 
