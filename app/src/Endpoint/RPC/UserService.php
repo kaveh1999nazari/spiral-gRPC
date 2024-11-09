@@ -42,20 +42,22 @@ class UserService implements UserGrpcInterface
         $mobile = $in->getMobile();
         $password = $in->getPassword();
 
+        /** @var User $user */
         $user = $this->orm->getRepository(User::class)
             ->findByMobile($mobile);
 
         if ($user && password_verify($password, $user->getPassword()))
         {
             $token = $this->tokens->create(['sub' => $user->getId()]);
+            print_r($user->getRoles());
 
             $response = new LoginRes();
             $response->setToken($token->getID());
-            $response->setMessage($user->getRule());
+            $response->setMessage($user->getRoles());
             return $response;
         }
         $response = new LoginRes();
-        $response->setMessage("Authentication failed.");
+        $response->setMessage(["Authentication failed."]);
         return $response;
 
     }
