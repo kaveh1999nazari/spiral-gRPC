@@ -27,5 +27,5 @@ message LoginReq {
 
 message LoginRes {
     string token = 1;
-    string message = 2;
+    repeated string message = 3;
 }
