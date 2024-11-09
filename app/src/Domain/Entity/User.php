@@ -15,8 +15,8 @@ class User
     private string $mobile;
     #[Column(type: 'string')]
     private string $password;
-    #[Column(type: 'string')]
-    private string $rule;
+    #[Column(type: 'json')]
+    private string $roles;
 
     public function getId(): int
     {
@@ -45,9 +45,14 @@ class User
         $this->password = $password;
     }
 
-    public function getRule(): string
+    public function getRoles(): array
     {
-        return $this->rule;
+        return json_decode($this->roles, true);
+    }
+
+    public function setRoles(array $roles): void
+    {
+        $this->roles = json_encode($roles);
     }
 
 }
