@@ -1,0 +1,1 @@
+[2024-11-10T06:01:32.645581+00:00] ERROR: Spiral\RoadRunner\GRPC\Exception\GRPCException: Unauthorized: only (admin) can access. in /home/kaveh/Desktop/spiral-gRPC/app/src/Endpoint/Interceptor/AuthenticationInterceptor.php at line 66 []
