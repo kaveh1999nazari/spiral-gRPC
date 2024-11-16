@@ -5,13 +5,13 @@ namespace App\Endpoint\RPC;
 use App\Domain\Attribute\AuthenticatedBy;
 use App\Domain\Entity\Category;
 use Cycle\ORM\ORMInterface;
-use GRPC\Admin\AdminGrpcInterface;
-use GRPC\Admin\categoryCreateRequest;
-use GRPC\Admin\categoryCreateResponse;
+use GRPC\category\categoryCreateRequest;
+use GRPC\category\categoryCreateResponse;
+use GRPC\category\CategoryGrpcInterface;
 use Spiral\RoadRunner\GRPC;
 
 
-class CategoryService implements AdminGrpcInterface
+class CategoryService implements CategoryGrpcInterface
 {
     public function __construct(protected readonly ORMInterface $orm){}
     #[AuthenticatedBy(['admin'])]

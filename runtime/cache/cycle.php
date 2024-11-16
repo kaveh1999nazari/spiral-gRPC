@@ -77,6 +77,67 @@
       'id' => 2,
     ),
   ),
+  'product' => 
+  array (
+    1 => 'App\\Domain\\Entity\\Product',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\ProductRepository',
+    5 => 'default',
+    6 => 'products',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'name' => 'name',
+      'description' => 'description',
+      'image' => 'image',
+      'category_id' => 'category_id',
+    ),
+    10 => 
+    array (
+      'category' => 
+      array (
+        0 => 12,
+        1 => 'category',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 
+          array (
+            0 => 'category_id',
+          ),
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'category_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
   'token' => 
   array (
     1 => 'Spiral\\Cycle\\Auth\\Token',

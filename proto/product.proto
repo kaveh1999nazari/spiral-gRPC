@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package product;
+
+option php_namespace = "GRPC\\product";
+option php_metadata_namespace = "GRPC\\product\\GPBMetadata";
+
+
+service ProductGrpc {
+    rpc ProductCreate (productCreateRequest) returns (productCreateResponse);
+}
+
+message productCreateRequest {
+    string name = 1;
+    string description = 2;
+    repeated string image = 3;
+    int32 categoryId = 4;
+}
+
+message productCreateResponse {
+    int32 id = 1;
+    string name = 2;
+}

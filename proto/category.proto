@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package Admin;
+package category;
 
-option php_namespace = "GRPC\\Admin";
-option php_metadata_namespace = "GRPC\\Admin\\GPBMetadata";
+option php_namespace = "GRPC\\category";
+option php_metadata_namespace = "GRPC\\category\\GPBMetadata";
 
 
-service AdminGrpc {
+service CategoryGrpc {
     rpc categoryCreate (categoryCreateRequest) returns (categoryCreateResponse);
 }
 

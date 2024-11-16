@@ -32,7 +32,8 @@ return [
      */
     'services' => [
         directory('root') . '/proto/user.proto',
-        directory('root') . '/proto/admin.proto',
+        directory('root') . '/proto/category.proto',
+        directory('root') . '/proto/product.proto',
     ],
 
     /**
