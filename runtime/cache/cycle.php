@@ -1,10 +1,10 @@
 <?php return array (
   'user' => 
   array (
-    1 => 'App\\Entity\\User',
+    1 => 'App\\Domain\\Entity\\User',
     2 => 'Cycle\\ORM\\Mapper\\Mapper',
     3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Repository\\UserRepository',
+    4 => 'App\\Domain\\Repository\\UserRepository',
     5 => 'default',
     6 => 'users',
     7 => 
@@ -41,10 +41,10 @@
   ),
   'category' => 
   array (
-    1 => 'App\\Entity\\Category',
+    1 => 'App\\Domain\\Entity\\Category',
     2 => 'Cycle\\ORM\\Mapper\\Mapper',
     3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Repository\\CategoryRepository',
+    4 => 'App\\Domain\\Repository\\CategoryRepository',
     5 => 'default',
     6 => 'categories',
     7 => 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Request;
+namespace App\Domain\Request;
 
 class UserLoginRequest implements BaseRequest
 {

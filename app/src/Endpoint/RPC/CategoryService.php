@@ -3,7 +3,7 @@
 namespace App\Endpoint\RPC;
 
 use App\Domain\Attribute\AuthenticatedBy;
-use App\Entity\Category;
+use App\Domain\Entity\Category;
 use Cycle\ORM\ORMInterface;
 use GRPC\Admin\AdminGrpcInterface;
 use GRPC\Admin\categoryCreateRequest;

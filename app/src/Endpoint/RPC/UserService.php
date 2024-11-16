@@ -2,9 +2,9 @@
 
 namespace App\Endpoint\RPC;
 
-use App\Entity\User;
-use App\Request\UserLoginRequest;
-use App\Request\UserRegisterRequest;
+use App\Domain\Entity\User;
+use App\Domain\Request\UserLoginRequest;
+use App\Domain\Request\UserRegisterRequest;
 use App\Domain\Attribute\ValidateBy;
 use Cycle\ORM\ORMInterface;
 use GRPC\User\LoginReq;
