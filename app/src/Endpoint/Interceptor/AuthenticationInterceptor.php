@@ -3,7 +3,7 @@
 namespace App\Endpoint\Interceptor;
 
 use App\Domain\Attribute\AuthenticatedBy;
-use App\Entity\User;
+use App\Domain\Entity\User;
 use Cycle\ORM\ORMInterface;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;

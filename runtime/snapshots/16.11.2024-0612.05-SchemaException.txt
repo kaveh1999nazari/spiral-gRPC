@@ -1,11 +1,11 @@
-[Error]
-Call to undefined method App\Entity\User Cycle ORM Proxy::getRule() in app/src/Endpoint/RPC/UserService.php:54
+[Cycle\ORM\Exception\SchemaException]
+Undefined schema `App\Entity\User`, not found. in vendor/cycle/orm/src/Schema.php:123
 
- 1. App\Endpoint\RPC\UserService->Login() at app/src/Endpoint/RPC/UserService.php:54
- 2. App\Endpoint\RPC\UserService->Login() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
- 3. Spiral\RoadRunner\GRPC\Invoker->invoke() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/InvokerCore.php:36
- 4. Spiral\RoadRunnerBridge\GRPC\Interceptor\InvokerCore->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:117
- 5. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:37
+ 1. Cycle\ORM\Schema->define() at vendor/cycle/orm/src/Schema.php:123
+ 2. Cycle\ORM\Schema->define() at vendor/cycle/orm/src/Service/Implementation/RepositoryProvider.php:43
+ 3. Cycle\ORM\Service\Implementation\RepositoryProvider->getRepository() at vendor/cycle/orm/src/ORM.php:149
+ 4. Cycle\ORM\ORM->getRepository() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:58
+ 5. App\Endpoint\Interceptor\AuthenticationInterceptor->checkAuth() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:34
  6. App\Endpoint\Interceptor\AuthenticationInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112
  7. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/ValidatorInterceptor.php:45
  8. App\Endpoint\Interceptor\ValidatorInterceptor->intercept() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:112

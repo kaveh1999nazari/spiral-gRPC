@@ -1,7 +1,7 @@
-[Cycle\Database\Exception\StatementException]
-SQLSTATE[22032]: <<Unknown error>>: 3140 Invalid JSON text: "Invalid value." at position 0 in value for column 'users.rule'. in vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:89
+[Cycle\Database\Exception\StatementException\ConstrainException]
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'laptop4' for key 'categories.categories_index_name_672f6806c3092' in vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:74
 
- 1. Cycle\Database\Driver\MySQL\MySQLDriver->mapException() at vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:89
+ 1. Cycle\Database\Driver\MySQL\MySQLDriver->mapException() at vendor/cycle/database/src/Driver/MySQL/MySQLDriver.php:74
  2. Cycle\Database\Driver\MySQL\MySQLDriver->mapException() at vendor/cycle/database/src/Driver/Driver.php:461
  3. Cycle\Database\Driver\Driver->statement() at vendor/cycle/database/src/Driver/Driver.php:227
  4. Cycle\Database\Driver\Driver->execute() at vendor/cycle/database/src/Query/InsertQuery.php:124
@@ -13,9 +13,9 @@ SQLSTATE[22032]: <<Unknown error>>: 3140 Invalid JSON text: "Invalid value." at 
 10. Cycle\ORM\Transaction\UnitOfWork->resolveRelations() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:219
 11. Cycle\ORM\Transaction\UnitOfWork->walkPool() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:96
 12. Cycle\ORM\Transaction\UnitOfWork->run() at vendor/cycle/orm/src/EntityManager.php:47
-13. Cycle\ORM\EntityManager->run() at app/src/Domain/Repository/UserRepository.php:25
-14. App\Repository\UserRepository->create() at app/src/Endpoint/RPC/UserService.php:32
-15. App\Endpoint\RPC\UserService->Register() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
+13. Cycle\ORM\EntityManager->run() at app/src/Domain/Repository/CategoryRepository.php:24
+14. App\Domain\Repository\CategoryRepository->create() at app/src/Endpoint/RPC/CategoryService.php:22
+15. App\Endpoint\RPC\CategoryService->categoryCreate() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
 16. Spiral\RoadRunner\GRPC\Invoker->invoke() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/InvokerCore.php:36
 17. Spiral\RoadRunnerBridge\GRPC\Interceptor\InvokerCore->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:117
 18. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:37
@@ -50,7 +50,7 @@ SQLSTATE[22032]: <<Unknown error>>: 3140 Invalid JSON text: "Invalid value." at 
 47. Spiral\Boot\AbstractKernel->serve() at app.php:31
 
 [PDOException]
-SQLSTATE[22032]: <<Unknown error>>: 3140 Invalid JSON text: "Invalid value." at position 0 in value for column 'users.rule'. in vendor/cycle/database/src/Driver/Driver.php:457
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'laptop4' for key 'categories.categories_index_name_672f6806c3092' in vendor/cycle/database/src/Driver/Driver.php:457
 
  1. PDOStatement->execute() at vendor/cycle/database/src/Driver/Driver.php:457
  2. Cycle\Database\Driver\Driver->statement() at vendor/cycle/database/src/Driver/Driver.php:227
@@ -63,9 +63,9 @@ SQLSTATE[22032]: <<Unknown error>>: 3140 Invalid JSON text: "Invalid value." at 
  9. Cycle\ORM\Transaction\UnitOfWork->resolveRelations() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:219
 10. Cycle\ORM\Transaction\UnitOfWork->walkPool() at vendor/cycle/orm/src/Transaction/UnitOfWork.php:96
 11. Cycle\ORM\Transaction\UnitOfWork->run() at vendor/cycle/orm/src/EntityManager.php:47
-12. Cycle\ORM\EntityManager->run() at app/src/Domain/Repository/UserRepository.php:25
-13. App\Repository\UserRepository->create() at app/src/Endpoint/RPC/UserService.php:32
-14. App\Endpoint\RPC\UserService->Register() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
+12. Cycle\ORM\EntityManager->run() at app/src/Domain/Repository/CategoryRepository.php:24
+13. App\Domain\Repository\CategoryRepository->create() at app/src/Endpoint/RPC/CategoryService.php:22
+14. App\Endpoint\RPC\CategoryService->categoryCreate() at vendor/spiral/roadrunner-grpc/src/Invoker.php:32
 15. Spiral\RoadRunner\GRPC\Invoker->invoke() at vendor/spiral/roadrunner-bridge/src/GRPC/Interceptor/InvokerCore.php:36
 16. Spiral\RoadRunnerBridge\GRPC\Interceptor\InvokerCore->callAction() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:117
 17. Spiral\Core\InterceptorPipeline->handle() at app/src/Endpoint/Interceptor/AuthenticationInterceptor.php:37
