@@ -17,7 +17,6 @@ class ProductRepository extends Repository
 
     public function create(string $name, string $description, ?array $image, Category $category): Product
     {
-        print_r($image);
         $product = new Product();
         $product->setName($name);
         $product->setDescription($description);
