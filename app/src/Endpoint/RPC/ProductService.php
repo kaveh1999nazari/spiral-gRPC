@@ -23,12 +23,13 @@ class ProductService implements ProductGrpcInterface
         $categoryId = $in->getCategoryId();
 
         $category = $this->orm->getRepository(Category::class)->findByPK($categoryId);
-
+        
         if (!$category) {
             throw new \Exception("Category not found for ID: $categoryId");
         }
 
-        $product = $this->orm->getRepository(Product::class)->create($name, $description, $image, $category->getId());
+        $product = $this->orm->getRepository(Product::class)
+            ->create($name, $description, $image, $category);
 
 
         $response = new ProductCreateResponse();
