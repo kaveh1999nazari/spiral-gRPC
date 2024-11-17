@@ -16,9 +16,9 @@ class Product
     private string $name;
     #[Column(type:'string')]
     private string $description;
-    #[Column(type:'json')]
-    private array $image;
-    #[BelongsTo(target: Category::class, innerKey: 'category_id', nullable: false)]
+    #[Column(type:'string')]
+    private string $image;
+    #[BelongsTo(target: Category::class, nullable: false)]
     private Category $category;
 
     public function getId(): int
@@ -47,22 +47,22 @@ class Product
     }
     public function getImage(): array
     {
-    return $this->image;
+    return json_decode($this->image);
     }
 
     public function setImage(array $image): void
     {
-        $this->image = $image;
+        $this->image = json_encode($image);
     }
 
-    public function getCategoryId(): int
+    public function getCategory(): Category
     {
-        return $this->category_id;
+        return $this->category;
     }
 
-    public function setCategoryId(int $category_id): void
+    public function setCategory(Category $category)
     {
-        $this->category_id = $category_id;
+        $this->category = $category;
     }
 
 }
