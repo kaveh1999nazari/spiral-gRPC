@@ -62,6 +62,29 @@
     ),
     10 => 
     array (
+      'products' => 
+      array (
+        0 => 11,
+        1 => 'product',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          41 => 
+          array (
+          ),
+          42 => 
+          array (
+          ),
+          33 => 
+          array (
+            0 => 'id',
+          ),
+          32 => 'category_id',
+          4 => NULL,
+        ),
+      ),
     ),
     12 => NULL,
     13 => 
@@ -112,10 +135,7 @@
         array (
           30 => true,
           31 => false,
-          33 => 
-          array (
-            0 => 'category_id',
-          ),
+          33 => 'category_id',
           32 => 
           array (
             0 => 'id',
