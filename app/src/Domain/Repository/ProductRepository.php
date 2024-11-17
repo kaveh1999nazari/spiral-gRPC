@@ -15,16 +15,22 @@ class ProductRepository extends Repository
         parent::__construct($select);
     }
 
-    public function create(string $name, ?string $description, ?array $image, int $categoryId): Product
+    public function create(string $name, string $description, ?array $image, Category $category): Product
     {
+        print_r($image);
         $product = new Product();
         $product->setName($name);
         $product->setDescription($description);
         $product->setImage($image);
-        $product->setCategoryId($categoryId);
+        $product->setCategory($category);
 
-        $this->entityManager->persist($product);
-        $this->entityManager->run();
+        try {
+            $this->entityManager->persist($product)
+                ->run();
+        } catch (\Exception $e) {
+            print_r($e);
+            exit;
+        }
 
         return $product;
     }
