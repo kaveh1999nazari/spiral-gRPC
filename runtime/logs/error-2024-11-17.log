@@ -24,3 +24,4 @@
 [2024-11-17T12:05:41.915613+00:00] ERROR: Spiral\Goridge\Exception\HeaderException: Unable to read frame header: Incorrect header size in /home/kaveh/PhpstormProjects/spiral-gRPC/vendor/spiral/goridge/src/StreamRelay.php at line 80 []
 [2024-11-17T12:05:41.916171+00:00] ERROR: Spiral\Goridge\Exception\HeaderException: Unable to read frame header: Incorrect header size in /home/kaveh/PhpstormProjects/spiral-gRPC/vendor/spiral/goridge/src/StreamRelay.php at line 80 []
 [2024-11-17T12:05:41.916259+00:00] ERROR: Spiral\Goridge\Exception\HeaderException: Unable to read frame header: Incorrect header size in /home/kaveh/PhpstormProjects/spiral-gRPC/vendor/spiral/goridge/src/StreamRelay.php at line 80 []
+[2024-11-17T12:17:48.178794+00:00] ERROR: Spiral\RoadRunner\GRPC\Exception\GRPCException: Unauthorized: Missing token. in /home/kaveh/PhpstormProjects/spiral-gRPC/app/src/Endpoint/Interceptor/AuthenticationInterceptor.php at line 51 []
