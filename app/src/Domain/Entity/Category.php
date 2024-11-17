@@ -14,9 +14,9 @@ class Category
     private int $id;
     #[Column(type:"string")]
     private string $name;
-//    #[HasMany(target: Product::class)]
-//    private array $products = [];
 
+    #[HasMany(target: Product::class)]
+    private array $products;
 
     public function getId(): int
     {
