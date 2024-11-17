@@ -2,6 +2,7 @@
 
 namespace App\Endpoint\RPC;
 
+use App\Domain\Attribute\AuthenticatedBy;
 use App\Domain\Entity\Category;
 use App\Domain\Entity\Product;
 use Cycle\ORM\ORMInterface;
@@ -15,6 +16,7 @@ class ProductService implements ProductGrpcInterface
 {
     public function __construct(private readonly ORMInterface $orm){}
 
+    #[AuthenticatedBy(['admin'])]
     public function ProductCreate(GRPC\ContextInterface $ctx, ProductCreateRequest $in): ProductCreateResponse
     {
         $name = $in->getName();
