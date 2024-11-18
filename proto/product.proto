@@ -13,7 +13,7 @@ service ProductGrpc {
 message productCreateRequest {
     string name = 1;
     string description = 2;
-    repeated string image = 3;
+    repeated bytes image = 3;
     int32 categoryId = 4;
 }
 
