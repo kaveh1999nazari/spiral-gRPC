@@ -22,7 +22,7 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
      */
     protected $description = '';
     /**
-     * Generated from protobuf field <code>repeated string image = 3;</code>
+     * Generated from protobuf field <code>repeated bytes image = 3;</code>
      */
     private $image;
     /**
@@ -92,7 +92,7 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string image = 3;</code>
+     * Generated from protobuf field <code>repeated bytes image = 3;</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getImage()
@@ -101,13 +101,13 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string image = 3;</code>
+     * Generated from protobuf field <code>repeated bytes image = 3;</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setImage($var)
     {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::BYTES);
         $this->image = $arr;
 
         return $this;
