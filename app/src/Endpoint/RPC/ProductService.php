@@ -21,7 +21,7 @@ class ProductService implements ProductGrpcInterface
     {
         $name = $in->getName();
         $description = $in->getDescription() ?? null;
-        $image = iterator_to_array($in->getImage()) ?? [];
+        $images = iterator_to_array($in->getImage()) ?? [];
         $categoryId = $in->getCategoryId();
 
         $category = $this->orm->getRepository(Category::class)->findByPK($categoryId);
@@ -30,8 +30,22 @@ class ProductService implements ProductGrpcInterface
             throw new \Exception("Category not found for ID: $categoryId");
         }
 
+        $storagePath = __DIR__ . '/../../storage/products/';
+        if (!is_dir($storagePath)) {
+            mkdir($storagePath, 0777, true);
+        }
+
+        $imagePaths = [];
+        foreach ($images as $image) {
+            $fileName = uniqid('product_', true) . ".jpg";
+            $filePath = $storagePath . $fileName;
+
+            file_put_contents($filePath, $image);
+            $imagePaths[] = $fileName;
+        }
+
         $product = $this->orm->getRepository(Product::class)
-            ->create($name, $description, $image, $category);
+            ->create($name, $description, $imagePaths, $category);
 
 
         $response = new ProductCreateResponse();
