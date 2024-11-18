@@ -21,7 +21,7 @@ class Product
 productCreateRequest
 name (	
 description (	
-image (	
+image (
 
 categoryId ("1
 productCreateResponse
