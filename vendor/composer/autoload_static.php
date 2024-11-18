@@ -8,30 +8,29 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '03c9ae09e99b02788654216e02a98740' => __DIR__ . '/..' . '/cycle/database/src/polyfill.php',
         '9df1f6f4b0e2f1dc94cbe0397955df64' => __DIR__ . '/..' . '/cycle/database/src/functions_polyfill.php',
-        'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         'ee3f63fba4aee765c47ba535aa9e0804' => __DIR__ . '/..' . '/spiral/attributes/src/polyfill.php',
+        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '9c67151ae59aff4788964ce8eb2a0f43' => __DIR__ . '/..' . '/clue/stream-filter/src/functions_include.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         'e8aa6e4b5a1db2f56ae794f1505391a8' => __DIR__ . '/..' . '/amphp/amp/lib/functions.php',
         '76cd0796156622033397994f25b0d8fc' => __DIR__ . '/..' . '/amphp/amp/lib/Internal/functions.php',
         '1232758e40b1d31bb295b6907de02c63' => __DIR__ . '/..' . '/beste/clock/src/Clock.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
         '1cb541c2fdab334e9f0f4c92d5f24d67' => __DIR__ . '/..' . '/spiral/data-grid/src/helpers.php',
-        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '6cd5651c4fef5ed6b63e8d8b8ffbf3cc' => __DIR__ . '/..' . '/amphp/byte-stream/lib/functions.php',
         '06b8a576aaa70a8517a94b7ff6b37e5c' => __DIR__ . '/..' . '/beste/json/src/Json.php',
         '07b1ee5452fd654afe38b8b111296565' => __DIR__ . '/..' . '/buggregator/trap/src/functions.php',
@@ -39,12 +38,13 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
+        '1d8afcffe816206cc825781058b1bbd0' => __DIR__ . '/..' . '/spiral/dumper/src/functions.php',
         'cbfbf9c3f27af043a3a9ca7b3924f423' => __DIR__ . '/..' . '/spiral/framework/src/Boot/src/helpers.php',
         'c2e18bf36247490543e3e208b2e7fd46' => __DIR__ . '/..' . '/spiral/framework/src/Framework/helpers.php',
         '22ac011754b6808e1c825f553ba8422f' => __DIR__ . '/..' . '/spiral/framework/src/Scaffolder/src/helpers.php',
         '5593852dde92f26503ce17f2bbc7640e' => __DIR__ . '/..' . '/spiral/framework/src/Stempler/src/helpers.php',
         '10b4eb2aeceaed9f2173ba8fc3220f0f' => __DIR__ . '/..' . '/spiral/framework/src/Translator/src/helpers.php',
-        '1d8afcffe816206cc825781058b1bbd0' => __DIR__ . '/..' . '/spiral/dumper/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -141,6 +141,7 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
             'Spiral\\DotEnv\\' => 14,
             'Spiral\\Distribution\\' => 20,
             'Spiral\\Debug\\' => 13,
+            'Spiral\\DatabaseSeeder\\' => 22,
             'Spiral\\DataGrid\\' => 16,
             'Spiral\\Cycle\\' => 13,
             'Spiral\\Csrf\\' => 12,
@@ -199,6 +200,8 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
             'League\\Flysystem\\' => 17,
             'Lcobucci\\JWT\\' => 13,
             'LanguageServerProtocol\\' => 23,
+            'Laminas\\Stdlib\\' => 15,
+            'Laminas\\Hydrator\\' => 17,
         ),
         'K' => 
         array (
@@ -250,6 +253,7 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
             'Firebase\\JWT\\' => 13,
             'Fig\\Http\\Message\\' => 17,
             'Fidry\\CpuCoreCounter\\' => 21,
+            'Faker\\' => 6,
         ),
         'E' => 
         array (
@@ -283,20 +287,15 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         ),
         'B' => 
         array (
+            'Butschster\\Tests\\' => 17,
+            'Butschster\\EntityFaker\\' => 23,
             'Buggregator\\Trap\\' => 17,
             'Brick\\Math\\' => 11,
             'Beste\\Clock\\' => 12,
             'Beste\\Cache\\' => 12,
-            'Barsam\\ValidationSpiral\\' => 24,
         ),
         'A' => 
         array (
-            'App\\Request\\' => 12,
-            'App\\Repository\\' => 15,
-            'App\\Entity\\' => 11,
-            'App\\Endpoint\\RPC\\' => 17,
-            'App\\Auth\\Storage\\' => 17,
-            'App\\Attribute\\' => 14,
             'App\\' => 4,
             'Amp\\ByteStream\\' => 15,
             'Amp\\' => 4,
@@ -614,6 +613,10 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
             0 => __DIR__ . '/..' . '/spiral/dumper/src',
             1 => __DIR__ . '/..' . '/spiral/framework/src/Debug/src',
         ),
+        'Spiral\\DatabaseSeeder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spiral-packages/database-seeder/src',
+        ),
         'Spiral\\DataGrid\\' => 
         array (
             0 => __DIR__ . '/..' . '/spiral/data-grid/src',
@@ -791,6 +794,14 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         array (
             0 => __DIR__ . '/..' . '/felixfbecker/language-server-protocol/src',
         ),
+        'Laminas\\Stdlib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laminas/laminas-stdlib/src',
+        ),
+        'Laminas\\Hydrator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laminas/laminas-hydrator/src',
+        ),
         'Kreait\\Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/kreait/firebase-tokens/src/JWT',
@@ -935,6 +946,10 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         array (
             0 => __DIR__ . '/..' . '/fidry/cpu-core-counter/src',
         ),
+        'Faker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
+        ),
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
@@ -1019,6 +1034,14 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         array (
             0 => __DIR__ . '/..' . '/clue/stream-filter/src',
         ),
+        'Butschster\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/butschster/entity-faker/tests',
+        ),
+        'Butschster\\EntityFaker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/butschster/entity-faker/src',
+        ),
         'Buggregator\\Trap\\' => 
         array (
             0 => __DIR__ . '/..' . '/buggregator/trap/src',
@@ -1034,34 +1057,6 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         'Beste\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/beste/in-memory-cache/src',
-        ),
-        'Barsam\\ValidationSpiral\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/barsam/validation-spiral/src',
-        ),
-        'App\\Request\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/src/Domain/Request',
-        ),
-        'App\\Repository\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/src/Domain/Repository',
-        ),
-        'App\\Entity\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/src/Domain/Entity',
-        ),
-        'App\\Endpoint\\RPC\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/src/Endpoint/RPC',
-        ),
-        'App\\Auth\\Storage\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/src/Domain/Auth/Storage',
-        ),
-        'App\\Attribute\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/src/Domain/Attribute',
         ),
         'App\\' => 
         array (

@@ -163,6 +163,11 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-client" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/rize/uri-template" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/butschster/entity-faker" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fakerphp/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-hydrator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-stdlib" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spiral-packages/database-seeder" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

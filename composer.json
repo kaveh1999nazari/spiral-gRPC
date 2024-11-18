@@ -13,7 +13,6 @@
         "ext-grpc": "*",
         "ext-mbstring": "*",
         "ext-sockets": "*",
-        "barsam/validation-spiral": "dev-main",
         "firebase/php-jwt": "^6.10",
         "grpc/grpc": "^1.42",
         "kreait/firebase-php": "^7.15",
@@ -25,9 +24,10 @@
         "spiral/validator": "^1.5"
     },
     "require-dev": {
+        "spiral-packages/database-seeder": "^3.3",
+        "spiral/dumper": "^3.2.1",
         "spiral/testing": "^2.3",
-        "vimeo/psalm": "^5.9",
-        "spiral/dumper": "^3.2.1"
+        "vimeo/psalm": "^5.9"
     },
     "autoload": {
         "psr-4": {
@@ -63,11 +63,5 @@
         "psalm:config": "psalm"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../spiral-grpc-authentication"
-        }
-    ]
+    "prefer-stable": true
 }

@@ -13,3 +13,11 @@ grpc:
 server:
     command: 'php app.php'
     relay: pipes
+fileserver:
+  address: 127.0.0.1:10101
+  calculate_etag: true
+  weak: false
+  stream_request_body: true
+  serve:
+    - prefix: "/"
+      root: "./public/uploads"

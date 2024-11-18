@@ -9,12 +9,15 @@ use Cycle\ORM\ORMInterface;
 use GRPC\product\productCreateRequest;
 use GRPC\product\productCreateResponse;
 use GRPC\product\ProductGrpcInterface;
+use Spiral\Boot\DirectoriesInterface;
 use Spiral\RoadRunner\GRPC;
 
 
 class ProductService implements ProductGrpcInterface
 {
-    public function __construct(private readonly ORMInterface $orm){}
+    public function __construct(private readonly ORMInterface $orm,
+                                private readonly DirectoriesInterface $dirs
+    ){}
 
     #[AuthenticatedBy(['admin'])]
     public function ProductCreate(GRPC\ContextInterface $ctx, ProductCreateRequest $in): ProductCreateResponse
@@ -30,18 +33,23 @@ class ProductService implements ProductGrpcInterface
             throw new \Exception("Category not found for ID: $categoryId");
         }
 
-        $storagePath = __DIR__ . '/../../storage/products/';
-        if (!is_dir($storagePath)) {
-            mkdir($storagePath, 0777, true);
-        }
-
         $imagePaths = [];
-        foreach ($images as $image) {
-            $fileName = uniqid('product_', true) . ".jpg";
-            $filePath = $storagePath . $fileName;
+        if (!empty($images)) {
+            $storagePath = $this->dirs->get('public');
+            $datePath = date('Y/m/d/H');
+            $uploadPath = $storagePath . '/uploads/' . $datePath;
 
-            file_put_contents($filePath, $image);
-            $imagePaths[] = $fileName;
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0777, true);
+            }
+
+            foreach ($images as $image) {
+                $fileName = uniqid("image_") . ".jpg";
+                $filePath = $uploadPath . '/' . $fileName;
+
+                file_put_contents($filePath, $image);
+                $imagePaths[] = $fileName;
+            }
         }
 
         $product = $this->orm->getRepository(Product::class)

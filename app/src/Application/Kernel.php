@@ -14,6 +14,7 @@ use Spiral\Nyholm\Bootloader\NyholmBootloader;
 use Spiral\Prototype\Bootloader\PrototypeBootloader;
 use Spiral\RoadRunnerBridge\Bootloader as RoadRunnerBridge;
 use Spiral\Scaffolder\Bootloader\ScaffolderBootloader;
+use Spiral\Storage\Bootloader\StorageBootloader;
 use Spiral\Tokenizer\Bootloader\TokenizerListenerBootloader;
 use Spiral\Validation\Bootloader\ValidationBootloader;
 use Spiral\Validator\Bootloader\ValidatorBootloader;
@@ -82,6 +83,9 @@ class Kernel extends \Spiral\Framework\Kernel
 
             // Fast code prototyping
             PrototypeBootloader::class,
+
+            // Storage
+            StorageBootloader::class,
         ];
     }
 }

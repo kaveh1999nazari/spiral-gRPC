@@ -1,0 +1,88 @@
+{
+    "name": "spiral-packages/database-seeder",
+    "description": "The package provides the ability to seed your database with data using seed classes",
+    "keywords": [
+        "spiral-packages",
+        "spiral",
+        "seeder",
+        "database-seeder"
+    ],
+    "homepage": "https://github.com/spiral-packages/database-seeder",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anton Titov (wolfy-j)",
+            "email": "wolfy-j@spiralscout.com"
+        },
+        {
+            "name": "Pavel Buchnev (butschster)",
+            "email": "pavel.buchnev@spiralscout.com"
+        },
+        {
+            "name": "Aleksei Gagarin (roxblnfk)",
+            "email": "alexey.gagarin@spiralscout.com"
+        },
+        {
+            "name": "Maksim Smakouz (msmakouz)",
+            "email": "maksim.smakouz@spiralscout.com"
+        },
+        {
+            "name": "Spiral Community",
+            "homepage": "https://github.com/spiral/framework/graphs/contributors"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "butschster/entity-faker": "^2.0",
+        "fakerphp/faker": "^1.23",
+        "laminas/laminas-hydrator": "^4.3",
+        "spiral/attributes": "^2.0 || ^3.1.2",
+        "spiral/scaffolder": "^3.8",
+        "spiral/boot": "^3.8",
+        "spiral/console": "^3.8"
+    },
+    "require-dev": {
+        "spiral/framework": "^3.8",
+        "mockery/mockery": "^1.6",
+        "phpunit/phpunit": "^10.3",
+        "vimeo/psalm": "^5.15",
+        "spiral/cycle-bridge": "^2.5",
+        "spiral/testing": "^2.6",
+        "cycle/database": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spiral\\DatabaseSeeder\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\App\\": "tests/app/src",
+            "Tests\\Database\\": "tests/app/database",
+            "Tests\\": "tests/src"
+        }
+    },
+    "suggest": {
+        "spiral/testing": "To use the Spiral\\DatabaseSeeder\\TestCase class and helpers to test an app with DB",
+        "spiral/cycle-bridge": "For easy database and ORM configuration in a test application"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "psalm": "vendor/bin/psalm --config=psalm.xml ./src"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "spiral/composer-publish-plugin": false
+        }
+    },
+    "extra": {
+        "spiral": {
+            "bootloaders": [
+                "Spiral\\DatabaseSeeder\\Bootloader\\DatabaseSeederBootloader"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

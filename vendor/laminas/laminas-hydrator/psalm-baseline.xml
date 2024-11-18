@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
+  <file src="src/Aggregate/AggregateHydrator.php">
+    <DocblockTypeContradiction>
+      <code><![CDATA[null === $this->eventManager]]></code>
+    </DocblockTypeContradiction>
+    <MissingConstructor>
+      <code><![CDATA[$eventManager]]></code>
+    </MissingConstructor>
+  </file>
+  <file src="src/ArraySerializable.php">
+    <DeprecatedClass>
+      <code><![CDATA[ArraySerializable::class]]></code>
+    </DeprecatedClass>
+  </file>
+  <file src="src/ArraySerializableHydrator.php">
+    <MixedArgument>
+      <code><![CDATA[$original]]></code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$key]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess>
+      <code><![CDATA[$data[$name]]]></code>
+      <code><![CDATA[$data[$name]]]></code>
+    </MixedArrayAccess>
+    <MixedArrayAssignment>
+      <code><![CDATA[$data[$name]]]></code>
+    </MixedArrayAssignment>
+    <MixedAssignment>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$data[$name]]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$original]]></code>
+      <code><![CDATA[$replacement[$name]]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+    </MixedAssignment>
+    <MixedInferredReturnType>
+      <code><![CDATA[array]]></code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$data]]></code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/ClassMethods.php">
+    <DeprecatedClass>
+      <code><![CDATA[ClassMethods::class]]></code>
+    </DeprecatedClass>
+  </file>
+  <file src="src/ClassMethodsHydrator.php">
+    <DocblockTypeContradiction>
+      <code><![CDATA[$options instanceof Traversable]]></code>
+      <code><![CDATA[null === $this->extractionMethodsCache[$objectClass]]]></code>
+    </DocblockTypeContradiction>
+    <MixedArgument>
+      <code><![CDATA[$options['methodExistsCheck']]]></code>
+      <code><![CDATA[$options['underscoreSeparatedKeys']]]></code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$property]]></code>
+      <code><![CDATA[$property]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$values[$realAttributeName]]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[$this->hydrationMethodsCache[$propertyFqn]]]></code>
+    </MixedMethodCall>
+    <NoValue>
+      <code><![CDATA[$options]]></code>
+    </NoValue>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getMethodExistsCheck]]></code>
+    </PossiblyUnusedMethod>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$this->hydrationMethodsCache[$propertyFqn]]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/DelegatingHydrator.php">
+    <MixedInferredReturnType>
+      <code><![CDATA[HydratorInterface]]></code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->hydrators->get($object::class)]]></code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/DelegatingHydratorFactory.php">
+    <MixedInferredReturnType>
+      <code><![CDATA[ContainerInterface]]></code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$container->get('HydratorManager')]]></code>
+      <code><![CDATA[$container->get('Zend\Hydrator\HydratorPluginManager')]]></code>
+      <code><![CDATA[$container->get(HydratorPluginManager::class)]]></code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/Filter/FilterComposite.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$filter]]></code>
+      <code><![CDATA[$filter]]></code>
+    </MixedArgumentTypeCoercion>
+  </file>
+  <file src="src/Filter/FilterEnabledInterface.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[hasFilter]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Filter/NumberOfParameterFilter.php">
+    <MixedAssignment>
+      <code><![CDATA[$reflectionMethod]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[getNumberOfParameters]]></code>
+    </MixedMethodCall>
+  </file>
+  <file src="src/Filter/OptionalParametersFilter.php">
+    <MixedArgument>
+      <code><![CDATA[$reflectionMethod->getParameters()]]></code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code><![CDATA[$reflectionMethod]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[getParameters]]></code>
+    </MixedMethodCall>
+  </file>
+  <file src="src/HydratorAwareInterface.php">
+    <UnusedClass>
+      <code><![CDATA[HydratorAwareInterface]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/HydratorPluginManager.php">
+    <DeprecatedClass>
+      <code><![CDATA[ArraySerializable::class]]></code>
+      <code><![CDATA[ClassMethods::class]]></code>
+      <code><![CDATA[ObjectProperty::class]]></code>
+      <code><![CDATA[Reflection::class]]></code>
+    </DeprecatedClass>
+    <PossiblyUnusedProperty>
+      <code><![CDATA[$shareByDefault]]></code>
+    </PossiblyUnusedProperty>
+  </file>
+  <file src="src/HydratorPluginManagerFactory.php">
+    <DeprecatedClass>
+      <code><![CDATA[new Config($config['hydrators'])]]></code>
+    </DeprecatedClass>
+    <UnusedParam>
+      <code><![CDATA[$name]]></code>
+    </UnusedParam>
+  </file>
+  <file src="src/HydratorProviderInterface.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getHydratorConfig]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Iterator/HydratingIteratorIterator.php">
+    <InvalidArgument>
+      <code><![CDATA[$data]]></code>
+    </InvalidArgument>
+    <MixedMethodCall>
+      <code><![CDATA[new $prototype()]]></code>
+    </MixedMethodCall>
+  </file>
+  <file src="src/Module.php">
+    <MixedAssignment>
+      <code><![CDATA[$container]]></code>
+      <code><![CDATA[$serviceListener]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[addServiceManager]]></code>
+      <code><![CDATA[get]]></code>
+    </MixedMethodCall>
+    <UnusedClass>
+      <code><![CDATA[Module]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/NamingStrategy/MapNamingStrategy.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$key]]></code>
+      <code><![CDATA[$value]]></code>
+    </MissingClosureParamType>
+  </file>
+  <file src="src/NamingStrategy/UnderscoreNamingStrategy/CamelCaseToUnderscoreFilter.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+    </MissingClosureParamType>
+    <MixedArgument>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/NamingStrategy/UnderscoreNamingStrategy/StringSupportTrait.php">
+    <DocblockTypeContradiction>
+      <code><![CDATA[$this->mbStringSupport === null]]></code>
+      <code><![CDATA[$this->pcreUnicodeSupport === null]]></code>
+    </DocblockTypeContradiction>
+    <MissingConstructor>
+      <code><![CDATA[$mbStringSupport]]></code>
+      <code><![CDATA[$mbStringSupport]]></code>
+      <code><![CDATA[$pcreUnicodeSupport]]></code>
+      <code><![CDATA[$pcreUnicodeSupport]]></code>
+    </MissingConstructor>
+  </file>
+  <file src="src/NamingStrategy/UnderscoreNamingStrategy/UnderscoreToCamelCaseFilter.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$matches]]></code>
+      <code><![CDATA[$matches]]></code>
+      <code><![CDATA[$matches]]></code>
+      <code><![CDATA[$value]]></code>
+    </MissingClosureParamType>
+    <MixedArgument>
+      <code><![CDATA[$matches[2]]]></code>
+      <code><![CDATA[$matches[2]]]></code>
+      <code><![CDATA[$matches[2]]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value[0]]]></code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$pcreInfo->replacement]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess>
+      <code><![CDATA[$matches[2]]]></code>
+      <code><![CDATA[$matches[2]]]></code>
+      <code><![CDATA[$matches[2]]]></code>
+      <code><![CDATA[$value[0]]]></code>
+    </MixedArrayAccess>
+  </file>
+  <file src="src/ObjectProperty.php">
+    <DeprecatedClass>
+      <code><![CDATA[ObjectProperty::class]]></code>
+    </DeprecatedClass>
+  </file>
+  <file src="src/ObjectPropertyHydrator.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$name]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment>
+      <code><![CDATA[$data[$name]]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+    </MixedAssignment>
+    <UnsupportedReferenceUsage>
+      <code><![CDATA[$properties = &self::$skippedPropertiesCache[$object::class]]]></code>
+    </UnsupportedReferenceUsage>
+  </file>
+  <file src="src/Reflection.php">
+    <DeprecatedClass>
+      <code><![CDATA[Reflection::class]]></code>
+    </DeprecatedClass>
+  </file>
+  <file src="src/ReflectionHydrator.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$key]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment>
+      <code><![CDATA[$result[$propertyName]]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="src/StandaloneHydratorPluginManager.php">
+    <DeprecatedClass>
+      <code><![CDATA[ArraySerializable::class]]></code>
+      <code><![CDATA[ClassMethods::class]]></code>
+      <code><![CDATA[ObjectProperty::class]]></code>
+      <code><![CDATA[Reflection::class]]></code>
+    </DeprecatedClass>
+    <InvalidStringClass>
+      <code><![CDATA[new $class()]]></code>
+    </InvalidStringClass>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[! $class]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/StandaloneHydratorPluginManagerFactory.php">
+    <UnusedParam>
+      <code><![CDATA[$container]]></code>
+    </UnusedParam>
+  </file>
+  <file src="src/Strategy/BooleanStrategy.php">
+    <DocblockTypeContradiction>
+      <code><![CDATA[! is_int($falseValue) && ! is_string($falseValue)]]></code>
+      <code><![CDATA[! is_int($trueValue) && ! is_string($trueValue)]]></code>
+      <code><![CDATA[! is_string($value) && ! is_int($value)]]></code>
+      <code><![CDATA[is_bool($value)]]></code>
+    </DocblockTypeContradiction>
+    <MixedArgument>
+      <code><![CDATA[is_object($falseValue) ? $falseValue::class : gettype($falseValue)]]></code>
+      <code><![CDATA[is_object($trueValue) ? $trueValue::class : gettype($trueValue)]]></code>
+      <code><![CDATA[is_object($value) ? $value::class : gettype($value)]]></code>
+      <code><![CDATA[is_object($value) ? $value::class : gettype($value)]]></code>
+    </MixedArgument>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+    </MoreSpecificImplementedParamType>
+    <RedundantCondition>
+      <code><![CDATA[gettype($falseValue)]]></code>
+      <code><![CDATA[gettype($trueValue)]]></code>
+      <code><![CDATA[gettype($value)]]></code>
+      <code><![CDATA[gettype($value)]]></code>
+    </RedundantCondition>
+    <TypeDoesNotContainType>
+      <code><![CDATA[is_object($falseValue)]]></code>
+      <code><![CDATA[is_object($trueValue)]]></code>
+      <code><![CDATA[is_object($value)]]></code>
+      <code><![CDATA[is_object($value)]]></code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/Strategy/ClosureStrategy.php">
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$func]]></code>
+      <code><![CDATA[$func]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Strategy/CollectionStrategy.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$this->objectClassName]]></code>
+    </ArgumentTypeCoercion>
+    <DocblockTypeContradiction>
+      <code><![CDATA[is_array($value)]]></code>
+      <code><![CDATA[is_array($value)]]></code>
+    </DocblockTypeContradiction>
+    <MixedArgument>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$object]]></code>
+      <code><![CDATA[is_object($value) ? $value::class : gettype($value)]]></code>
+      <code><![CDATA[is_object($value) ? $value::class : gettype($value)]]></code>
+    </MixedArgument>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+    </MoreSpecificImplementedParamType>
+    <RedundantCondition>
+      <code><![CDATA[gettype($value)]]></code>
+      <code><![CDATA[gettype($value)]]></code>
+    </RedundantCondition>
+    <TypeDoesNotContainType>
+      <code><![CDATA[is_object($value)]]></code>
+      <code><![CDATA[is_object($value)]]></code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/Strategy/DateTimeImmutableFormatterStrategy.php">
+    <MixedAssignment>
+      <code><![CDATA[$hydrated]]></code>
+    </MixedAssignment>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$hydrated]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Strategy/ExplodeStrategy.php">
+    <DocblockTypeContradiction>
+      <code><![CDATA[is_array($value)]]></code>
+      <code><![CDATA[is_string($value)]]></code>
+    </DocblockTypeContradiction>
+    <MixedArgument>
+      <code><![CDATA[is_object($value) ? $value::class : gettype($value)]]></code>
+      <code><![CDATA[is_object($value) ? $value::class : gettype($value)]]></code>
+    </MixedArgument>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+    </MoreSpecificImplementedParamType>
+    <RedundantCast>
+      <code><![CDATA[(string) $value]]></code>
+      <code><![CDATA[(string) $value]]></code>
+    </RedundantCast>
+    <RedundantCondition>
+      <code><![CDATA[gettype($value)]]></code>
+      <code><![CDATA[gettype($value)]]></code>
+      <code><![CDATA[is_numeric($value)]]></code>
+      <code><![CDATA[is_string($value) || is_numeric($value)]]></code>
+    </RedundantCondition>
+    <RedundantConditionGivenDocblockType>
+      <code><![CDATA[is_string($value)]]></code>
+    </RedundantConditionGivenDocblockType>
+    <TypeDoesNotContainType>
+      <code><![CDATA[is_object($value)]]></code>
+      <code><![CDATA[is_object($value)]]></code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/Strategy/HydratorStrategy.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$this->objectClassName]]></code>
+    </ArgumentTypeCoercion>
+    <DocblockTypeContradiction>
+      <code><![CDATA[gettype($value)]]></code>
+    </DocblockTypeContradiction>
+    <MixedInferredReturnType>
+      <code><![CDATA[object|string|null]]></code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$value]]></code>
+    </MixedReturnStatement>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$value]]></code>
+    </MoreSpecificImplementedParamType>
+    <RedundantConditionGivenDocblockType>
+      <code><![CDATA[is_object($value)]]></code>
+    </RedundantConditionGivenDocblockType>
+  </file>
+  <file src="src/Strategy/SerializableStrategy.php">
+    <DeprecatedClass>
+      <code><![CDATA[SerializerFactory::factory($this->serializer, $options)]]></code>
+      <code><![CDATA[SerializerFactory::getDefaultAdapter()]]></code>
+    </DeprecatedClass>
+    <DocblockTypeContradiction>
+      <code><![CDATA[iterator_to_array($serializerOptions)]]></code>
+      <code><![CDATA[null === $this->serializer]]></code>
+    </DocblockTypeContradiction>
+    <MixedArgument>
+      <code><![CDATA[$value]]></code>
+    </MixedArgument>
+    <NoValue>
+      <code><![CDATA[$serializerOptions]]></code>
+    </NoValue>
+    <RedundantConditionGivenDocblockType>
+      <code><![CDATA[is_array($serializerOptions)]]></code>
+    </RedundantConditionGivenDocblockType>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$serializerOptions]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Strategy/StrategyChain.php">
+    <MixedAssignment>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Strategy/StrategyEnabledInterface.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[removeStrategy]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Aggregate/AggregateHydratorFunctionalTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getHydratorSet]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Aggregate/HydratorListenerTest.php">
+    <InternalMethod>
+      <code><![CDATA[onExtract]]></code>
+      <code><![CDATA[onHydrate]]></code>
+    </InternalMethod>
+  </file>
+  <file src="test/ArraySerializableHydratorTest.php">
+    <InvalidArgument>
+      <code><![CDATA['thisIsNotAnObject']]></code>
+      <code><![CDATA['thisIsNotAnObject']]></code>
+    </InvalidArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[arrayDataProvider]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/ArraySerializableTest.php">
+    <DeprecatedClass>
+      <code><![CDATA[ArraySerializable::class]]></code>
+      <code><![CDATA[new ArraySerializable()]]></code>
+    </DeprecatedClass>
+  </file>
+  <file src="test/ClassMethodsHydratorTest.php">
+    <InvalidArgument>
+      <code><![CDATA[$options]]></code>
+      <code><![CDATA['invalid options']]></code>
+      <code><![CDATA['non-object']]></code>
+      <code><![CDATA['non-object']]></code>
+    </InvalidArgument>
+  </file>
+  <file src="test/ClassMethodsTest.php">
+    <DeprecatedClass>
+      <code><![CDATA[ClassMethods::class]]></code>
+      <code><![CDATA[new ClassMethods()]]></code>
+    </DeprecatedClass>
+  </file>
+  <file src="test/Filter/FilterCompositeTest.php">
+    <MixedArgument>
+      <code><![CDATA[$andFilters]]></code>
+      <code><![CDATA[$orFilters]]></code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$andFilters]]></code>
+      <code><![CDATA[$andFilters]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$orFilters]]></code>
+      <code><![CDATA[$orFilters]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment>
+      <code><![CDATA[$andFilters]]></code>
+      <code><![CDATA[$orFilters]]></code>
+      <code><![CDATA[$value]]></code>
+    </MixedAssignment>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[invalidFiltersProvider]]></code>
+      <code><![CDATA[providerCompositionFiltering]]></code>
+      <code><![CDATA[validFiltersProvider]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Filter/MethodMatchFilterTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerFilter]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Filter/NumberOfParameterFilterTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[methodWithNoParameters]]></code>
+      <code><![CDATA[methodWithOptionalParameters]]></code>
+    </PossiblyUnusedMethod>
+    <PossiblyUnusedParam>
+      <code><![CDATA[$parameter]]></code>
+    </PossiblyUnusedParam>
+  </file>
+  <file src="test/Filter/OptionalParametersFilterTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[methodProvider]]></code>
+      <code><![CDATA[methodWithMultipleMandatoryParameters]]></code>
+      <code><![CDATA[methodWithMultipleOptionalParameters]]></code>
+      <code><![CDATA[methodWithSingleMandatoryParameter]]></code>
+      <code><![CDATA[methodWithSingleOptionalParameter]]></code>
+      <code><![CDATA[methodWithoutParameters]]></code>
+    </PossiblyUnusedMethod>
+    <PossiblyUnusedParam>
+      <code><![CDATA[$otherParameter]]></code>
+      <code><![CDATA[$otherParameter]]></code>
+      <code><![CDATA[$parameter]]></code>
+      <code><![CDATA[$parameter]]></code>
+      <code><![CDATA[$parameter]]></code>
+      <code><![CDATA[$parameter]]></code>
+    </PossiblyUnusedParam>
+  </file>
+  <file src="test/HydratorClosureStrategyTest.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+    </MissingClosureParamType>
+    <MixedArgument>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+    </MixedArgument>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[getStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[removeStrategy]]></code>
+    </UndefinedInterfaceMethod>
+    <UndefinedPropertyFetch>
+      <code><![CDATA[$entity->field3]]></code>
+    </UndefinedPropertyFetch>
+  </file>
+  <file src="test/HydratorObjectPropertyTest.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$property]]></code>
+    </MissingClosureParamType>
+  </file>
+  <file src="test/HydratorStrategyTest.php">
+    <MixedArgument>
+      <code><![CDATA[$attributes['entities']]]></code>
+      <code><![CDATA[$attributes['entities']]]></code>
+    </MixedArgument>
+    <MixedArrayAssignment>
+      <code><![CDATA[$attributes['entities'][]]]></code>
+    </MixedArrayAssignment>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[underscoreHandlingDataProvider]]></code>
+    </PossiblyUnusedMethod>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[addStrategy]]></code>
+      <code><![CDATA[getStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[hasStrategy]]></code>
+      <code><![CDATA[removeStrategy]]></code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="test/HydratorTest.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$property]]></code>
+      <code><![CDATA[$property]]></code>
+      <code><![CDATA[$property]]></code>
+    </MissingClosureParamType>
+    <MixedArgument>
+      <code><![CDATA[$property]]></code>
+      <code><![CDATA[$property]]></code>
+    </MixedArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[filterProvider]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Iterator/HydratingArrayIteratorTest.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA['not a real class']]></code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="test/Iterator/HydratingIteratorIteratorTest.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA['not a real class']]></code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="test/NamingStrategy/IdentityNamingStrategyTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getTestedNames]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/NamingStrategy/MapNamingStrategyTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[invalidKeyArrays]]></code>
+      <code><![CDATA[invalidMapValues]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/NamingStrategy/UnderscoreNamingStrategy/CamelCaseToUnderscoreFilterTest.php">
+    <InternalClass>
+      <code><![CDATA[new CamelCaseToUnderscoreFilter()]]></code>
+      <code><![CDATA[new CamelCaseToUnderscoreFilter()]]></code>
+      <code><![CDATA[new CamelCaseToUnderscoreFilter()]]></code>
+    </InternalClass>
+    <InternalMethod>
+      <code><![CDATA[filter]]></code>
+      <code><![CDATA[filter]]></code>
+      <code><![CDATA[filter]]></code>
+    </InternalMethod>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[nonUnicodeProvider]]></code>
+      <code><![CDATA[unicodeProvider]]></code>
+      <code><![CDATA[unicodeProviderWithoutMbStrings]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/NamingStrategy/UnderscoreNamingStrategy/UnderscoreToCamelCaseFilterTest.php">
+    <InternalClass>
+      <code><![CDATA[new UnderscoreToCamelCaseFilter()]]></code>
+      <code><![CDATA[new UnderscoreToCamelCaseFilter()]]></code>
+      <code><![CDATA[new UnderscoreToCamelCaseFilter()]]></code>
+    </InternalClass>
+    <InternalMethod>
+      <code><![CDATA[filter]]></code>
+      <code><![CDATA[filter]]></code>
+      <code><![CDATA[filter]]></code>
+    </InternalMethod>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[nonUnicodeProvider]]></code>
+      <code><![CDATA[unicodeProvider]]></code>
+      <code><![CDATA[unicodeWithoutMbStringsProvider]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/ObjectPropertyHydratorTest.php">
+    <InvalidArgument>
+      <code><![CDATA['thisIsNotAnObject']]></code>
+      <code><![CDATA['thisIsNotAnObject']]></code>
+    </InvalidArgument>
+  </file>
+  <file src="test/ObjectPropertyTest.php">
+    <DeprecatedClass>
+      <code><![CDATA[ObjectProperty::class]]></code>
+      <code><![CDATA[new ObjectProperty()]]></code>
+    </DeprecatedClass>
+  </file>
+  <file src="test/ReflectionHydratorTest.php">
+    <InvalidArgument>
+      <code><![CDATA[$argument]]></code>
+      <code><![CDATA[$argument]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="test/ReflectionTest.php">
+    <DeprecatedClass>
+      <code><![CDATA[Reflection::class]]></code>
+      <code><![CDATA[new Reflection()]]></code>
+    </DeprecatedClass>
+  </file>
+  <file src="test/StandaloneHydratorPluginManagerFactoryTest.php">
+    <DeprecatedClass>
+      <code><![CDATA[ArraySerializable::class]]></code>
+      <code><![CDATA[ArraySerializable::class]]></code>
+      <code><![CDATA[ClassMethods::class]]></code>
+      <code><![CDATA[ClassMethods::class]]></code>
+      <code><![CDATA[ObjectProperty::class]]></code>
+      <code><![CDATA[ObjectProperty::class]]></code>
+      <code><![CDATA[Reflection::class]]></code>
+      <code><![CDATA[Reflection::class]]></code>
+    </DeprecatedClass>
+  </file>
+  <file src="test/StandaloneHydratorPluginManagerTest.php">
+    <DeprecatedClass>
+      <code><![CDATA[Hydrator\ArraySerializable::class]]></code>
+      <code><![CDATA[Hydrator\ClassMethods::class]]></code>
+      <code><![CDATA[Hydrator\ObjectProperty::class]]></code>
+      <code><![CDATA[Hydrator\Reflection::class]]></code>
+    </DeprecatedClass>
+    <MixedArgument>
+      <code><![CDATA[$factories]]></code>
+    </MixedArgument>
+    <MixedArrayAccess>
+      <code><![CDATA[$factories[Hydrator\DelegatingHydrator::class]]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$factories]]></code>
+      <code><![CDATA[$factories]]></code>
+      <code><![CDATA[$instance]]></code>
+    </MixedAssignment>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[knownServices]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Strategy/BooleanStrategyTest.php">
+    <InvalidArgument>
+      <code><![CDATA[5]]></code>
+      <code><![CDATA[false]]></code>
+      <code><![CDATA[true]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="test/Strategy/CollectionStrategyTest.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$data]]></code>
+    </MissingClosureParamType>
+    <MissingClosureReturnType>
+      <code><![CDATA[static function ($data) {]]></code>
+    </MissingClosureReturnType>
+    <MixedArgument>
+      <code><![CDATA[$data]]></code>
+    </MixedArgument>
+    <MixedMethodCall>
+      <code><![CDATA[hydrate]]></code>
+    </MixedMethodCall>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerInvalidObjectClassName]]></code>
+      <code><![CDATA[providerInvalidObjectForExtraction]]></code>
+      <code><![CDATA[providerInvalidValueForExtraction]]></code>
+      <code><![CDATA[providerInvalidValueForHydration]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Strategy/DateTimeFormatterStrategyTest.php">
+    <MixedAssignment>
+      <code><![CDATA[$date]]></code>
+      <code><![CDATA[$date]]></code>
+      <code><![CDATA[$extracted]]></code>
+      <code><![CDATA[$extracted]]></code>
+      <code><![CDATA[$hydrated]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[format]]></code>
+      <code><![CDATA[getName]]></code>
+      <code><![CDATA[getTimezone]]></code>
+    </MixedMethodCall>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[formatsWithSpecialCharactersProvider]]></code>
+      <code><![CDATA[invalidValuesForHydration]]></code>
+      <code><![CDATA[validUnHydratableValues]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Strategy/DateTimeImmutableFormatterStrategyTest.php">
+    <MixedMethodCall>
+      <code><![CDATA[format]]></code>
+    </MixedMethodCall>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[dataProviderForInvalidDateValues]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Strategy/ExplodeStrategyTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getValidHydratedValues]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Strategy/HydratorStrategyTest.php">
+    <MissingClosureParamType>
+      <code><![CDATA[$data]]></code>
+    </MissingClosureParamType>
+    <MissingClosureReturnType>
+      <code><![CDATA[static function ($data) {]]></code>
+    </MissingClosureReturnType>
+    <MixedArgument>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$object]]></code>
+      <code><![CDATA[$objectClassName]]></code>
+      <code><![CDATA[$value]]></code>
+    </MixedArgument>
+    <MixedMethodCall>
+      <code><![CDATA[hydrate]]></code>
+    </MixedMethodCall>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerEmptyOrSameObjects]]></code>
+      <code><![CDATA[providerInvalidObjectClassName]]></code>
+      <code><![CDATA[providerInvalidObjectForExtraction]]></code>
+      <code><![CDATA[providerInvalidValueForExtraction]]></code>
+      <code><![CDATA[providerInvalidValueForHydration]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Strategy/SerializableStrategyTest.php">
+    <DeprecatedClass>
+      <code><![CDATA[Serializer::factory('phpserialize')]]></code>
+      <code><![CDATA[Serializer::factory('phpserialize')]]></code>
+      <code><![CDATA[Serializer::factory('phpserialize')]]></code>
+    </DeprecatedClass>
+    <MixedAssignment>
+      <code><![CDATA[$serialized]]></code>
+      <code><![CDATA[$serialized]]></code>
+    </MixedAssignment>
+  </file>
+</files>
