@@ -3,7 +3,9 @@
 namespace App\Domain\Entity;
 
 use Cycle\Annotated\Annotation\Column;
+use Cycle\Annotated\Annotation\Entity;
 
+#[Entity(role: 'option', table: 'options')]
 class Option
 {
     #[Column(type: "primary")]
