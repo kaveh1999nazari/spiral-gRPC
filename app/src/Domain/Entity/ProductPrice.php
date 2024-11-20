@@ -3,12 +3,12 @@
 namespace App\Domain\Entity;
 
 
+use App\Domain\Repository\ProductPriceRepository;
 use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Relation\BelongsTo;
-use Spiral\Interceptors\Context\Target;
 
-#[Entity(repository: ProductPrice::class, role: "productPrice", table: "productprices")]
+#[Entity(repository: ProductPriceRepository::class, table: "productprices")]
 class ProductPrice
 {
     #[Column(type: "primary")]
