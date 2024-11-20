@@ -173,6 +173,7 @@ return array(
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/src'),
     'Defuse\\Crypto\\' => array($vendorDir . '/defuse/php-encryption/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
+    'Database\\' => array($baseDir . '/app/src/database'),
     'Cycle\\Schema\\Renderer\\' => array($vendorDir . '/cycle/schema-renderer/src'),
     'Cycle\\Schema\\Generator\\Migrations\\' => array($vendorDir . '/cycle/schema-migrations-generator/src'),
     'Cycle\\Schema\\' => array($vendorDir . '/cycle/schema-builder/src'),
