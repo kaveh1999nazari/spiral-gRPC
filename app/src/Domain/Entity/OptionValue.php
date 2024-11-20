@@ -3,8 +3,10 @@
 namespace App\Domain\Entity;
 
 use Cycle\Annotated\Annotation\Column;
+use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Relation\BelongsTo;
 
+#[Entity(role: 'optionValue', table: 'optionvalues')]
 class OptionValue
 {
     #[Column(type: "primary")]
