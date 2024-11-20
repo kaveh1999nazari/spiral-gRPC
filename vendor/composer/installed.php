@@ -3,7 +3,7 @@
         'name' => 'spiral/app',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '1b39ad9a628a4a9142a4e62838f783d5bd82a025',
+        'reference' => 'fddbc441d94ce3c74c09b8355792424c92e53384',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -80,7 +80,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../butschster/entity-faker',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'clue/stream-filter' => array(
             'pretty_version' => 'v1.7.0',
@@ -281,7 +281,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../fakerphp/faker',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'felixfbecker/advanced-json-rpc' => array(
             'pretty_version' => 'v3.2.1',
@@ -485,7 +485,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-hydrator',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'laminas/laminas-stdlib' => array(
             'pretty_version' => '3.20.0',
@@ -494,7 +494,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-stdlib',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'lcobucci/jwt' => array(
             'pretty_version' => '5.4.0',
@@ -1152,7 +1152,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../spiral-packages/database-seeder',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'spiral/annotated-routes' => array(
             'dev_requirement' => false,
@@ -1163,7 +1163,7 @@
         'spiral/app' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '1b39ad9a628a4a9142a4e62838f783d5bd82a025',
+            'reference' => 'fddbc441d94ce3c74c09b8355792424c92e53384',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1887,7 +1887,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../webmozart/assert',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'yiisoft/friendly-exception' => array(
             'pretty_version' => '1.1.0',
