@@ -268,6 +268,7 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
             'Doctrine\\Common\\Lexer\\' => 22,
             'Defuse\\Crypto\\' => 14,
             'DeepCopy\\' => 9,
+            'Database\\' => 9,
         ),
         'C' => 
         array (
@@ -981,6 +982,10 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'Database\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/src/database',
         ),
         'Cycle\\Schema\\Renderer\\' => 
         array (
