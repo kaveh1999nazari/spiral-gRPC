@@ -86,6 +86,9 @@ class Kernel extends \Spiral\Framework\Kernel
 
             // Storage
             StorageBootloader::class,
+
+            //Database seeder
+            \Spiral\DatabaseSeeder\Bootloader\DatabaseSeederBootloader::class,
         ];
     }
 }
