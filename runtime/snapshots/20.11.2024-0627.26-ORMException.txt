@@ -1,0 +1,48 @@
+[Cycle\ORM\Exception\ORMException]
+Unable to resolve role of `App\Domain\Entity\Option`. in vendor/cycle/orm/src/Service/Implementation/EntityFactory.php:100
+
+ 1. Cycle\ORM\Service\Implementation\EntityFactory->resolveRole() at vendor/cycle/orm/src/Service/Implementation/EntityFactory.php:100
+ 2. Cycle\ORM\Service\Implementation\EntityFactory->resolveRole() at vendor/cycle/orm/src/ORM.php:81
+ 3. Cycle\ORM\ORM->resolveRole() at vendor/spiral-packages/database-seeder/src/Seeder/Executor.php:58
+ 4. Spiral\DatabaseSeeder\Seeder\Executor->isNotExists() at vendor/spiral-packages/database-seeder/src/Seeder/Executor.php:45
+ 5. Spiral\DatabaseSeeder\Seeder\Executor->seed() at vendor/spiral-packages/database-seeder/src/Seeder/Executor.php:35
+ 6. Spiral\DatabaseSeeder\Seeder\Executor->execute() at vendor/spiral-packages/database-seeder/src/Console/Command/SeedCommand.php:45
+ 7. Spiral\DatabaseSeeder\Console\Command\SeedCommand->perform()
+ 8. ReflectionMethod->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:59
+ 9. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+10. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Console/src/CommandCore.php:36
+11. Spiral\Console\CommandCore->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:116
+12. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:76
+13. Spiral\Core\InterceptorPipeline->callAction() at vendor/spiral/framework/src/Console/src/Interceptor/AttributeInterceptor.php:27
+14. Spiral\Console\Interceptor\AttributeInterceptor->process() at vendor/spiral/framework/src/Hmvc/src/InterceptorPipeline.php:111
+15. Spiral\Core\InterceptorPipeline->handle() at vendor/spiral/framework/src/Console/src/Command.php:114
+16. Spiral\Console\Command->Spiral\Console\{closure}() at vendor/spiral/framework/src/Core/src/Container.php:405
+17. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+18. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+19. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+20. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Console/src/Command.php:100
+21. Spiral\Console\Command->execute() at vendor/symfony/console/Command/Command.php:279
+22. Symfony\Component\Console\Command\Command->run() at vendor/symfony/console/Application.php:1029
+23. Symfony\Component\Console\Application->doRunCommand() at vendor/symfony/console/Application.php:316
+24. Symfony\Component\Console\Application->doRun() at vendor/spiral/framework/src/Console/src/Console.php:87
+25. Spiral\Console\Console->Spiral\Console\{closure}()
+26. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+27. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+28. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+29. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+30. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+31. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+32. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Console/src/Console.php:80
+33. Spiral\Console\Console->run() at vendor/spiral/framework/src/Console/src/Console.php:51
+34. Spiral\Console\Console->start() at vendor/spiral/framework/src/Framework/Console/ConsoleDispatcher.php:55
+35. Spiral\Console\ConsoleDispatcher->serve() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:316
+36. Spiral\Boot\AbstractKernel::Spiral\Boot\{closure}()
+37. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+38. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+39. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+40. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+41. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+42. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+43. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:312
+44. Spiral\Boot\AbstractKernel->serve() at app.php:31
+

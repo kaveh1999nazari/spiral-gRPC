@@ -1,0 +1,34 @@
+[Symfony\Component\Console\Exception\RuntimeException]
+The "--class" option does not exist. in vendor/symfony/console/Input/ArgvInput.php:220
+
+ 1. Symfony\Component\Console\Input\ArgvInput->addLongOption() at vendor/symfony/console/Input/ArgvInput.php:220
+ 2. Symfony\Component\Console\Input\ArgvInput->addLongOption() at vendor/symfony/console/Input/ArgvInput.php:147
+ 3. Symfony\Component\Console\Input\ArgvInput->parseLongOption() at vendor/symfony/console/Input/ArgvInput.php:82
+ 4. Symfony\Component\Console\Input\ArgvInput->parseToken() at vendor/symfony/console/Input/ArgvInput.php:71
+ 5. Symfony\Component\Console\Input\ArgvInput->parse() at vendor/symfony/console/Input/Input.php:53
+ 6. Symfony\Component\Console\Input\Input->bind() at vendor/spiral/framework/src/Console/src/InputProxy.php:46
+ 7. Spiral\Console\InputProxy->bind() at vendor/symfony/console/Command/Command.php:238
+ 8. Symfony\Component\Console\Command\Command->run() at vendor/symfony/console/Application.php:1029
+ 9. Symfony\Component\Console\Application->doRunCommand() at vendor/symfony/console/Application.php:316
+10. Symfony\Component\Console\Application->doRun() at vendor/spiral/framework/src/Console/src/Console.php:87
+11. Spiral\Console\Console->Spiral\Console\{closure}()
+12. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+13. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+14. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+15. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+16. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+17. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+18. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Console/src/Console.php:80
+19. Spiral\Console\Console->run() at vendor/spiral/framework/src/Console/src/Console.php:51
+20. Spiral\Console\Console->start() at vendor/spiral/framework/src/Framework/Console/ConsoleDispatcher.php:55
+21. Spiral\Console\ConsoleDispatcher->serve() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:316
+22. Spiral\Boot\AbstractKernel::Spiral\Boot\{closure}()
+23. ReflectionFunction->invokeArgs() at vendor/spiral/framework/src/Core/src/Internal/Invoker.php:77
+24. Spiral\Core\Internal\Invoker->invoke() at vendor/spiral/framework/src/Core/src/Container.php:292
+25. Spiral\Core\Container->invoke() at vendor/spiral/framework/src/Core/src/Container.php:404
+26. Spiral\Core\Container::Spiral\Core\{closure}() at vendor/spiral/framework/src/Core/src/ContainerScope.php:46
+27. Spiral\Core\ContainerScope::runScope() at vendor/spiral/framework/src/Core/src/Container.php:399
+28. Spiral\Core\Container->runIsolatedScope() at vendor/spiral/framework/src/Core/src/Container.php:181
+29. Spiral\Core\Container->runScope() at vendor/spiral/framework/src/Boot/src/AbstractKernel.php:312
+30. Spiral\Boot\AbstractKernel->serve() at app.php:31
+
