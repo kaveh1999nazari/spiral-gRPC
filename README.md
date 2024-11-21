@@ -16,7 +16,7 @@
     </div>
     <div class="changelog">
         <div class="version" id="v1-2-1">
-            <h2>v1.2.1</h2>
+            <h2>Last update V1.2.1</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user with mobile and password</li>
@@ -37,24 +37,6 @@
                 <li>Resolved upload storage issues</li>
             </ul>
         </div>
-        <div class="version" id="v1-2">
-            <h2>v1.2</h2>
-            <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
-            <ul class="features">
-                <li>Register user with mobile and password</li>
-                <li>Login with mobile and password</li>
-                <li>JWT-based User Authentication</li>
-                <li>Admin can:
-                    <ul>
-                        <li>Create categories</li>
-                        <li>Assign access permissions</li>
-                        <li>Create products</li>
-                        <li>Upload images (Base64 or binary)</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- Add other versions dynamically -->
     </div>
 </body>
 </html>
