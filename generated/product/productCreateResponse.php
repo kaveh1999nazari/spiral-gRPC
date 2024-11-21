@@ -21,6 +21,10 @@ class productCreateResponse extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string name = 2;</code>
      */
     protected $name = '';
+    /**
+     * Generated from protobuf field <code>string price = 3;</code>
+     */
+    protected $price = '';
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class productCreateResponse extends \Google\Protobuf\Internal\Message
      *
      *     @type int $id
      *     @type string $name
+     *     @type string $price
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class productCreateResponse extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->name = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string price = 3;</code>
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Generated from protobuf field <code>string price = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setPrice($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->price = $var;
 
         return $this;
     }

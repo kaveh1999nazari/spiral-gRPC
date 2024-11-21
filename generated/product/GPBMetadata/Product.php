@@ -16,20 +16,27 @@ class Product
         }
         $pool->internalAddGeneratedFile(
             '
-Ü
-product.protoproduct"|
+û
+product.protoproduct"í
 productCreateRequest
 name (	
 description (	
 image (
 
 categoryId (
-price (	
-options (	"1
+price (	;
+options (2*.product.productCreateRequest.OptionsEntryC
+OptionsEntry
+key ("
+value (2.product.OptionList:8"@
 productCreateResponse
 
 id (
-name (	2]
+name (	
+price (	"
+
+OptionList
+values (	2]
 ProductGrpcN
 ProductCreate.product.productCreateRequest.product.productCreateResponseB*ÊGRPC\\productâGRPC\\product\\GPBMetadatabproto3'
         , true);

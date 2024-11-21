@@ -34,7 +34,7 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
      */
     protected $price = '';
     /**
-     * Generated from protobuf field <code>repeated string options = 6;</code>
+     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 6;</code>
      */
     private $options;
 
@@ -49,7 +49,7 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $image
      *     @type int $categoryId
      *     @type string $price
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $options
+     *     @type array|\Google\Protobuf\Internal\MapField $options
      * }
      */
     public function __construct($data = NULL) {
@@ -168,8 +168,8 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string options = 6;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 6;</code>
+     * @return \Google\Protobuf\Internal\MapField
      */
     public function getOptions()
     {
@@ -177,13 +177,13 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string options = 6;</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 6;</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
      * @return $this
      */
     public function setOptions($var)
     {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::INT32, \Google\Protobuf\Internal\GPBType::MESSAGE, \GRPC\product\OptionList::class);
         $this->options = $arr;
 
         return $this;

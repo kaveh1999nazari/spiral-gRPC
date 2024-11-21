@@ -16,10 +16,15 @@ message productCreateRequest {
     repeated bytes image = 3;
     int32 categoryId = 4;
     string price = 5;
-    repeated string options = 6;
+    map<int32, OptionList> options = 6;
 }
 
 message productCreateResponse {
     int32 id = 1;
     string name = 2;
+    string price = 3;
+}
+
+message OptionList {
+    repeated string values = 1;
 }
