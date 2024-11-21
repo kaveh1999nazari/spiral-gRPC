@@ -10,6 +10,19 @@
             line-height: 1.6;
             margin: 20px;
         }
+        .header {
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 24px;
+        }
+        .header a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
         .changelog {
             max-width: 800px;
             margin: 0 auto;
@@ -31,6 +44,15 @@
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>Project Changelog</h1>
+        <p>Powered by:</p>
+        <ul>
+            <li><a href="https://spiral.dev" target="_blank">Spiral Framework</a></li>
+            <li><a href="https://cycle-orm.dev" target="_blank">Cycle ORM</a></li>
+            <li><a href="https://grpc.io" target="_blank">gRPC</a></li>
+        </ul>
+    </div>
     <div class="changelog">
         <div class="version" id="v1-2-1">
             <h2>v1.2.1</h2>
@@ -75,11 +97,3 @@
     </div>
 </body>
 </html>
-
-
-Alternatively, you can create an issue on GitHub to report a bug or request a feature:
-
-[Create an Issue on GitHub](https://github.com/spiral/framework/issues/new/choose)
-
-We welcome any feedback or suggestions you may have, and are always happy to help troubleshoot any issues you may
-encounter.
