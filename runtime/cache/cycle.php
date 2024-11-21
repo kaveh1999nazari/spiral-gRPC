@@ -90,6 +90,63 @@
       'id' => 2,
     ),
   ),
+  'productPrice' => 
+  array (
+    1 => 'App\\Domain\\Entity\\ProductPrice',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\ProductPriceRepository',
+    5 => 'default',
+    6 => 'productprices',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'options' => 'options',
+      'price' => 'price',
+      'product_id' => 'product_id',
+    ),
+    10 => 
+    array (
+      'product' => 
+      array (
+        0 => 12,
+        1 => 'product',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'product_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'product_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
   'optionValue' => 
   array (
     1 => 'App\\Domain\\Entity\\OptionValue',
