@@ -16,14 +16,16 @@ class Product
         }
         $pool->internalAddGeneratedFile(
             '
-¼
-product.protoproduct"\\
+Ü
+product.protoproduct"|
 productCreateRequest
 name (	
 description (	
 image (
 
-categoryId ("1
+categoryId (
+price (	
+options (	"1
 productCreateResponse
 
 id (

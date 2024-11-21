@@ -29,6 +29,14 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 categoryId = 4;</code>
      */
     protected $categoryId = 0;
+    /**
+     * Generated from protobuf field <code>string price = 5;</code>
+     */
+    protected $price = '';
+    /**
+     * Generated from protobuf field <code>repeated string options = 6;</code>
+     */
+    private $options;
 
     /**
      * Constructor.
@@ -40,6 +48,8 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
      *     @type string $description
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $image
      *     @type int $categoryId
+     *     @type string $price
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $options
      * }
      */
     public function __construct($data = NULL) {
@@ -131,6 +141,50 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->categoryId = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string price = 5;</code>
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Generated from protobuf field <code>string price = 5;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setPrice($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->price = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string options = 6;</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string options = 6;</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setOptions($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->options = $arr;
 
         return $this;
     }
