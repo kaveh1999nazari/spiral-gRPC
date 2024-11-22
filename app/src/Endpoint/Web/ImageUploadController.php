@@ -44,9 +44,7 @@ class ImageUploadController
 
         $file->moveTo(sprintf('%s/%s', $storagePath, $fileName));
 
-        $imagePath = sprintf('/uploads/%s/%s/%s/%s', $year, $month, $day, $fileName);
-
-        return $this->jsonResponse(['status' => 'success', 'image_path' => $imagePath]);
+        return $this->jsonResponse(['status' => 'success', 'image_file_name' => $fileName]);
     }
 
     private function jsonResponse(array $data, int $status = 200): ResponseInterface
