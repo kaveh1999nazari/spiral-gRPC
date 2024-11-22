@@ -2,6 +2,10 @@
 
 namespace App\Domain\Request;
 
+
+use App\Domain\Entity\Option;
+use Cycle\ORM\ORMInterface;
+
 class ProductStoreRequest implements BaseRequest
 {
     public function getRules(): array
@@ -12,7 +16,14 @@ class ProductStoreRequest implements BaseRequest
             "images" => ['string'],
             "categoryId" => ['required', 'integer'],
             "price" => ['required', 'string'],
-            "options" => ['required', 'array']
+            "options" => ['required', 'array', function ($values) {
+//                print_r($values);
+//                foreach ($values as $key => $value)
+//                {
+//                    print_r($key);
+//                }
+                return true;
+            }],
         ];
     }
 }
