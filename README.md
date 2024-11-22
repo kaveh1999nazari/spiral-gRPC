@@ -16,7 +16,7 @@
     </div>
     <div class="changelog">
         <div class="version" id="v1-2-1">
-            <h2>Last update V1.2.1</h2>
+            <h2>Last update V1.2.2</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user with mobile and password</li>
@@ -26,8 +26,8 @@
                     <ul>
                         <li>Create categories</li>
                         <li>Assign access permissions</li>
-                        <li>Create products</li>
-                        <li>Upload images (Base64 or binary)</li>
+                        <li>create products with prices and their options</li>
+                        <li>Upload images base on api</li>
                     </ul>
                 </li>
                 <li>Added Seeder for Product Options</li>
