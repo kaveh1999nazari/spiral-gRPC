@@ -13,6 +13,7 @@ use Spiral\Monolog\Bootloader\MonologBootloader;
 use Spiral\Nyholm\Bootloader\NyholmBootloader;
 use Spiral\Prototype\Bootloader\PrototypeBootloader;
 use Spiral\RoadRunnerBridge\Bootloader as RoadRunnerBridge;
+use Spiral\Router\Bootloader\AnnotatedRoutesBootloader;
 use Spiral\Scaffolder\Bootloader\ScaffolderBootloader;
 use Spiral\Storage\Bootloader\StorageBootloader;
 use Spiral\Tokenizer\Bootloader\TokenizerListenerBootloader;
@@ -89,6 +90,12 @@ class Kernel extends \Spiral\Framework\Kernel
 
             //Database seeder
             \Spiral\DatabaseSeeder\Bootloader\DatabaseSeederBootloader::class,
+
+            //Route
+            AnnotatedRoutesBootloader::class,
+
+            // Http
+            RoadRunnerBridge\HttpBootloader::class,
         ];
     }
 }
