@@ -43,22 +43,26 @@ class ProductService implements ProductGrpcInterface
             throw new \Exception("Category not found for ID: $categoryId");
         }
 
+
         $imagePaths = [];
         if (!empty($images)) {
             $storagePath = $this->dirs->get('public');
-            $datePath = date('Y/m/d/H');
+            $datePath = date('Y/m/d');
             $uploadPath = $storagePath . '/uploads/' . $datePath;
 
             if (!is_dir($uploadPath)) {
-                mkdir($uploadPath, 0777, true);
+                throw new \Exception("Upload directory does not exist: $uploadPath");
             }
 
             foreach ($images as $image) {
-                $fileName = uniqid("image_") . ".jpg";
-                $filePath = $uploadPath . '/' . $fileName;
+                $filePath = $uploadPath . '/' . $image;
 
-                file_put_contents($filePath, $image);
-                $imagePaths[] = $fileName;
+                if (!file_exists($filePath)) {
+                    throw new \Exception("File not found at path: $filePath");
+                }
+
+                $relativePath = $image;
+                $imagePaths[] = $relativePath;
             }
         }
 
