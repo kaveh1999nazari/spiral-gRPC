@@ -13,6 +13,16 @@ grpc:
 server:
     command: 'php app.php'
     relay: pipes
+
+http:
+  address: 127.0.0.1:8080
+  static:
+    dir: "public"
+    forbid: [".php", ".htaccess"]
+  pool:
+    num_workers: 2
+    debug: true
+
 fileserver:
   address: 127.0.0.1:10101
   calculate_etag: true
