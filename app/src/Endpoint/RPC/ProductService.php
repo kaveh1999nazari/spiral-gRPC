@@ -18,9 +18,11 @@ use Spiral\RoadRunner\GRPC;
 
 class ProductService implements ProductGrpcInterface
 {
-    public function __construct(private readonly ORMInterface $orm,
+    public function __construct(private readonly ORMInterface         $orm,
                                 private readonly DirectoriesInterface $dirs,
-    ){}
+    )
+    {
+    }
 
     #[AuthenticatedBy(['admin'])]
     #[ValidateBy(ProductStoreRequest::class)]
@@ -72,8 +74,7 @@ class ProductService implements ProductGrpcInterface
         $productId = $this->orm->getRepository(Product::class)->findByPK($product->getId());
         $cartesianOptions = $this->cartesian($options);
 
-        foreach ($cartesianOptions as $combination)
-        {
+        foreach ($cartesianOptions as $combination) {
             $this->orm->getRepository(ProductPrice::class)
                 ->create($productId, $combination, $price);
         }
@@ -84,17 +85,15 @@ class ProductService implements ProductGrpcInterface
         $response->setPrice($price);
         return $response;
     }
+
     private function cartesian($input)
     {
-        $result = [[]];
+        $result = [];
         foreach ($input as $key => $values) {
-            $append = [];
-            foreach ($result as $product) {
-                foreach ($values as $value) {
-                    $append[] = array_merge($product, [$key => $value]);
-                }
+            foreach ($values as $value) {
+                $x = [$key, $value];
+                $result[] = $x;
             }
-            $result = $append;
         }
         return $result;
     }
