@@ -10,7 +10,6 @@ use GRPC\category\categoryCreateResponse;
 use GRPC\category\CategoryGrpcInterface;
 use Spiral\RoadRunner\GRPC;
 
-
 class CategoryService implements CategoryGrpcInterface
 {
     public function __construct(protected readonly ORMInterface $orm){}
@@ -25,5 +24,4 @@ class CategoryService implements CategoryGrpcInterface
         $response->setId($category->getId());
         return $response;
     }
-
 }
