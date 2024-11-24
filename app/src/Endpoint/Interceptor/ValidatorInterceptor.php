@@ -4,6 +4,7 @@ namespace App\Endpoint\Interceptor;
 
 use App\Domain\Attribute\ValidateBy;
 use Google\Rpc\Code;
+use Psr\Container\ContainerInterface;
 use Spiral\Interceptors\Context\CallContextInterface;
 use Spiral\Interceptors\HandlerInterface;
 use Spiral\Interceptors\InterceptorInterface;
@@ -14,7 +15,8 @@ use Spiral\Validation\ValidationProviderInterface;
 final class ValidatorInterceptor implements InterceptorInterface
 {
     public function __construct(
-        private readonly ValidationProviderInterface $provider
+        private readonly ValidationProviderInterface $provider,
+        private readonly ContainerInterface $container
     ) {
     }
     public function intercept(CallContextInterface $context, HandlerInterface $handler): mixed
@@ -25,7 +27,7 @@ final class ValidatorInterceptor implements InterceptorInterface
 
         if (!empty($attributeDetails)) {
             $validationClass = $attributeDetails[0]->getArguments()[0];
-            $validationClassInstance = new $validationClass();
+            $validationClassInstance = $this->container->get($validationClass);
 
             $input = $context->getArguments()['message']->serializeToJsonString();
             $input = json_decode($input, true);
