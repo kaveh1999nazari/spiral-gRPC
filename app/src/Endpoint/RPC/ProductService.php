@@ -91,8 +91,7 @@ class ProductService implements ProductGrpcInterface
         $result = [];
         foreach ($input as $key => $values) {
             foreach ($values as $value) {
-                $x = [$key, $value];
-                $result[] = $x;
+                $result[] = [$key, $value];
             }
         }
         return $result;
