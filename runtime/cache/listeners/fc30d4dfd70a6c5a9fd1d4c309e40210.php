@@ -4,7 +4,8 @@
   2 => 'App\\Domain\\Entity\\ProductOption',
   3 => 'App\\Domain\\Entity\\User',
   4 => 'App\\Domain\\Entity\\Category',
-  5 => 'App\\Domain\\Entity\\OptionValue',
-  6 => 'App\\Domain\\Entity\\Product',
-  7 => 'Spiral\\Cycle\\Auth\\Token',
+  5 => 'App\\Domain\\Entity\\Cart',
+  6 => 'App\\Domain\\Entity\\OptionValue',
+  7 => 'App\\Domain\\Entity\\Product',
+  8 => 'Spiral\\Cycle\\Auth\\Token',
 );
