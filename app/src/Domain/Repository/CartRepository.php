@@ -7,12 +7,14 @@ use App\Domain\Entity\ProductPrice;
 use App\Domain\Entity\User;
 use Cycle\ORM\EntityManager;
 use Cycle\ORM\Select;
+use Cycle\ORM\Select\Repository;
 
-class CartRepository
+class CartRepository extends Repository
 {
 
-    public function __construct(private readonly EntityManager $entityManager)
+    public function __construct(Select $select, private readonly EntityManager $entityManager)
     {
+        parent::__construct($select);
     }
 
     public function create(User $user, string $uuid, ProductPrice $productPrice, int $number, string $totalPrice): Cart
@@ -28,6 +30,8 @@ class CartRepository
         $this->entityManager->run();
 
         return $cart;
+
+
 
     }
 
