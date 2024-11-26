@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package cart;
+
+option php_namespace = "GRPC\\cart";
+option php_metadata_namespace = "GRPC\\cart\\GPBMetadata";
+
+
+service CartGrpc {
+    rpc CartCreate (cartCreateRequest) returns (cartCreateResponse);
+}
+
+message cartCreateRequest {
+    int32 ProductPriceId = 1;
+    int32 number = 2;
+    string totalPrice = 3;
+}
+
+message cartCreateResponse {
+    int32 id = 1;
+    int32 userId = 2;
+    string uuid = 3;
+}
