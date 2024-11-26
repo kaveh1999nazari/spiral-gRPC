@@ -16,8 +16,8 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         'ee3f63fba4aee765c47ba535aa9e0804' => __DIR__ . '/..' . '/spiral/attributes/src/polyfill.php',
+        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
@@ -31,6 +31,7 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
         '1cb541c2fdab334e9f0f4c92d5f24d67' => __DIR__ . '/..' . '/spiral/data-grid/src/helpers.php',
+        '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         '6cd5651c4fef5ed6b63e8d8b8ffbf3cc' => __DIR__ . '/..' . '/amphp/byte-stream/lib/functions.php',
         '06b8a576aaa70a8517a94b7ff6b37e5c' => __DIR__ . '/..' . '/beste/json/src/Json.php',
         '07b1ee5452fd654afe38b8b111296565' => __DIR__ . '/..' . '/buggregator/trap/src/functions.php',
@@ -89,12 +90,14 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
             'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\String\\' => 25,
             'Symfony\\Component\\Mime\\' => 23,
+            'Symfony\\Component\\Messenger\\' => 28,
             'Symfony\\Component\\Mailer\\' => 25,
             'Symfony\\Component\\HttpClient\\' => 29,
             'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\Filesystem\\' => 29,
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\Console\\' => 26,
+            'Symfony\\Component\\Clock\\' => 24,
             'Spiral\\Views\\' => 13,
             'Spiral\\Validator\\' => 17,
             'Spiral\\Validation\\' => 18,
@@ -145,6 +148,7 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
             'Spiral\\DataGrid\\' => 16,
             'Spiral\\Cycle\\' => 13,
             'Spiral\\Csrf\\' => 12,
+            'Spiral\\Cqrs\\' => 12,
             'Spiral\\Core\\' => 12,
             'Spiral\\Cookies\\' => 15,
             'Spiral\\Console\\' => 15,
@@ -403,6 +407,10 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         array (
             0 => __DIR__ . '/..' . '/symfony/mime',
         ),
+        'Symfony\\Component\\Messenger\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/messenger',
+        ),
         'Symfony\\Component\\Mailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/mailer',
@@ -426,6 +434,10 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Symfony\\Component\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/clock',
         ),
         'Spiral\\Views\\' => 
         array (
@@ -630,6 +642,10 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         'Spiral\\Csrf\\' => 
         array (
             0 => __DIR__ . '/..' . '/spiral/framework/src/Csrf/src',
+        ),
+        'Spiral\\Cqrs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spiral-packages/cqrs/src',
         ),
         'Spiral\\Core\\' => 
         array (
