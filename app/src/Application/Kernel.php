@@ -96,6 +96,9 @@ class Kernel extends \Spiral\Framework\Kernel
 
             // Http
             RoadRunnerBridge\HttpBootloader::class,
+
+            //UUID
+            \Spiral\Cqrs\Bootloader\CqrsBootloader::class,
         ];
     }
 }
