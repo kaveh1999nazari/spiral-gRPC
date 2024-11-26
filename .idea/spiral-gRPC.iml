@@ -169,6 +169,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-hydrator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-stdlib" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/spiral-packages/database-seeder" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spiral-packages/cqrs" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/messenger" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
