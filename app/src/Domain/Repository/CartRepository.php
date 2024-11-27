@@ -17,10 +17,10 @@ class CartRepository extends Repository
         parent::__construct($select);
     }
 
-    public function create(User $user, string $uuid, ProductPrice $productPrice, int $number, string $totalPrice): Cart
+    public function create(?User $user, string $uuid, ProductPrice $productPrice, int $number, string $totalPrice): Cart
     {
         $cart = new Cart();
-        $cart->setUser($user);
+        $cart->setUser($user) ;
         $cart->setUuid($uuid);
         $cart->setProductPrice($productPrice);
         $cart->setNumber($number);
