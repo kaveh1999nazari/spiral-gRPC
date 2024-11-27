@@ -12,8 +12,8 @@ class Cart
 {
     #[Column(type: 'primary')]
     private int $id;
-    #[BelongsTo(target: User::class)]
-    private User $user;
+    #[BelongsTo(target: User::class, nullable: true)]
+    private ?User $user = null;
     #[Column(type: 'string')]
     private string $uuid;
     #[BelongsTo(target: ProductPrice::class)]
@@ -28,12 +28,12 @@ class Cart
         return $this->id;
     }
 
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(User $user): void
+    public function setUser(?User $user): void
     {
         $this->user = $user;
     }
