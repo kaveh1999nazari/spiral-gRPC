@@ -21,10 +21,6 @@ class cartCreateRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 number = 2;</code>
      */
     protected $number = 0;
-    /**
-     * Generated from protobuf field <code>string totalPrice = 3;</code>
-     */
-    protected $totalPrice = '';
 
     /**
      * Constructor.
@@ -34,7 +30,6 @@ class cartCreateRequest extends \Google\Protobuf\Internal\Message
      *
      *     @type int $ProductPriceId
      *     @type int $number
-     *     @type string $totalPrice
      * }
      */
     public function __construct($data = NULL) {
@@ -82,28 +77,6 @@ class cartCreateRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->number = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>string totalPrice = 3;</code>
-     * @return string
-     */
-    public function getTotalPrice()
-    {
-        return $this->totalPrice;
-    }
-
-    /**
-     * Generated from protobuf field <code>string totalPrice = 3;</code>
-     * @param string $var
-     * @return $this
-     */
-    public function setTotalPrice($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->totalPrice = $var;
 
         return $this;
     }

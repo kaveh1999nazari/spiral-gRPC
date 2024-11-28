@@ -18,17 +18,17 @@ class Cart
             '
 ž
 
-cart.protocart"O
+cart.protocart";
 cartCreateRequest
 ProductPriceId (
-number (
-
-totalPrice (	">
+number ("R
 cartCreateResponse
 
 id (
 userId (
-uuid (	2K
+uuid (	
+
+totalPrice (	2K
 CartGrpc?
 
 CartCreate.cart.cartCreateRequest.cart.cartCreateResponseB$Ê	GRPC\\cartâGRPC\\cart\\GPBMetadatabproto3'
