@@ -2,7 +2,6 @@
 
 namespace App\Endpoint\RPC;
 
-use App\Domain\Attribute\AuthenticatedBy;
 use App\Domain\Entity\Cart;
 use App\Domain\Entity\ProductPrice;
 use App\Domain\Entity\User;
@@ -25,13 +24,15 @@ class CartService implements CartGrpcInterface
     public function CartCreate(GRPC\ContextInterface $ctx, CartCreateRequest $in): CartCreateResponse
     {
         $number = $in->getNumber();
-        $totalPrice = $in->getTotalPrice();
         $productPrice = $in->getProductPriceId();
 
         $productPriceId = $this->ORM->getRepository(ProductPrice::class)->findByPK($productPrice);
         if(! $productPriceId){
             throw new \InvalidArgumentException("Product Not Found!");
         }
+
+        $price = $productPriceId->getPrice();
+        $totalPrice = $number * $price;
 
         $authHeader = $ctx->getValue("authorization");
 
@@ -41,21 +42,25 @@ class CartService implements CartGrpcInterface
             $token = null;
         }
 
+        $response = new cartCreateResponse();
+
         if (! $token) {
             $userId = null;
             $uuid = Uuid::uuid4()->toString();
             $cart = $this->ORM->getRepository(Cart::class)->create($userId, $uuid, $productPriceId, $number, $totalPrice);
+            $response->setUserId(0);
+            $response->setUuid($uuid);
         } else {
             $decode = JWT::decode($token, new Key("secret", 'HS256'));
             $userId = $this->ORM->getRepository(User::class)->findByPK($decode->sub);
             $uuid = "";
-            $cart = $this->ORM->getRepository(Cart::class)->create($userId, $uuid, $productPriceId, $number, $totalPrice);
+            $cart = $this->ORM->getRepository(Cart::class)->create($userId, $uuid, $productPriceId, $number, $totalPrice);$response->setId($cart->getId());
+            $response->setUserId($userId->getId());
+            $response->setUuid($uuid);
         }
 
-        $response = new cartCreateResponse();
         $response->setId($cart->getId());
-        $response->setUserId(0);
-        $response->setUuid($uuid);
+        $response->setTotalPrice($totalPrice);
 
         return $response;
 
