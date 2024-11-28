@@ -33,8 +33,8 @@
                 <li>User can:
                     <ul>
                         <li>Create carts</li>
-                        <li>See all carts</li>
-                        <li>Delete cart ids</li>
+                        <li>See all carts(1.3.1)</li>
+                        <li>Delete cart ids(1.3.2)</li>
                     </ul>
                 </li>
                 <li>Guest can:
