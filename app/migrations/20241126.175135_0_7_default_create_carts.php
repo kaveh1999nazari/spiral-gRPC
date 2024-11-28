@@ -30,6 +30,7 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305050 extends Migration
                 'onUpdate' => 'CASCADE'
             ])
             ->addColumn('total_price', 'string', ['nullable' => false, 'size' => 255])
+            ->addColumn('number', 'integer', ['nullable' => false])
             ->setPrimaryKeys(['id'])
             ->addIndex(['uuid', 'user_id'], [
                 'nullable' => true,
