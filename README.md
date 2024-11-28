@@ -40,8 +40,8 @@
                 <li>Guest can:
                     <ul>
                         <li>Create carts with own UUID</li>
-                        <li>See all carts with own UUID</li>
-                        <li>Delete cart ids with own UUID</li>
+                        <li>See all carts with own UUID(1.3.1)</li>
+                        <li>Delete cart ids with own UUID(1.3.2)</li>
                     </ul>
                 </li>
                 <li>Added Seeder for Product Options</li>
