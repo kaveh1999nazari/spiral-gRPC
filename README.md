@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v1-2-3">
-            <h2>Last update V1.2.3</h2>
+        <div class="version" id="v1-3">
+            <h2>Last update V1.3</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user with mobile and password</li>
