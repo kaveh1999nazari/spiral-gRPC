@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v1-3">
-            <h2>Last update V1.3</h2>
+        <div class="version" id="v1-3-1">
+            <h2>Last update V1.3.1</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user with mobile and password</li>
@@ -33,14 +33,14 @@
                 <li>User can:
                     <ul>
                         <li>Create carts</li>
-                        <li>See all carts(1.3.1)</li>
+                        <li>See all carts</li>
                         <li>Delete cart ids(1.3.2)</li>
                     </ul>
                 </li>
                 <li>Guest can:
                     <ul>
                         <li>Create carts with own UUID</li>
-                        <li>See all carts with own UUID(1.3.1)</li>
+                        <li>See all carts with own UUID</li>
                         <li>Delete cart ids with own UUID(1.3.2)</li>
                     </ul>
                 </li>
