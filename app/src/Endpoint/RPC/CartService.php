@@ -8,11 +8,15 @@ use App\Domain\Entity\User;
 use Cycle\ORM\ORMInterface;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use Google\Rpc\Code;
 use GRPC\cart\cartCreateRequest;
 use GRPC\cart\cartCreateResponse;
 use GRPC\cart\CartGrpcInterface;
+use GRPC\cart\cartListRequest;
+use GRPC\cart\cartListResponse;
 use Ramsey\Uuid\Uuid;
 use Spiral\RoadRunner\GRPC;
+use Spiral\RoadRunner\GRPC\Exception\GRPCException;
 
 
 class CartService implements CartGrpcInterface
@@ -64,6 +68,62 @@ class CartService implements CartGrpcInterface
 
         return $response;
 
+    }
+
+    public function CartList(GRPC\ContextInterface $ctx, CartListRequest $in): CartListResponse
+    {
+        $authHeader = $ctx->getValue("authorization");
+        $uuidHeader = $ctx->getValue("header");
+
+        $userId = null;
+        $uuid = null;
+
+        if (is_array($authHeader) && isset($authHeader[0]) && !empty($authHeader[0])) {
+            $token = substr($authHeader[0], 7);
+            try {
+                $decoded = JWT::decode($token, new Key("secret", 'HS256'));
+                $userId = $decoded->sub;
+            } catch (\Exception $e) {
+                throw new GRPCException(
+                    message: "Invalid token!",
+                    code: Code::UNAUTHENTICATED
+                );
+            }
+        } elseif (is_array($uuidHeader) && isset($uuidHeader[0])) {
+            $uuid = $uuidHeader[0];
+        } else {
+            throw new GRPCException(
+                message: "Authorization or UUID header required!",
+                code: Code::UNAUTHENTICATED
+            );
+        }
+
+        $cartRepository = $this->ORM->getRepository(Cart::class);
+        if ($userId) {
+            $carts = $cartRepository->select()->where('user_id', $userId)->fetchAll();
+        } elseif ($uuid) {
+            $carts = $cartRepository->select()->where('uuid', $uuid)->fetchAll();
+        } else {
+            $carts = [];
+        }
+
+        $response = new cartListResponse();
+        $allTotalPrice = 0;
+
+        foreach ($carts as $cart) {
+            $allTotalPrice += $cart->getTotalPrice();
+        }
+
+        if (!empty($carts)) {
+            $response->setCartId($carts[0]->getId());
+            $response->setProductPriceId($carts[0]->getProductPrice()->getId());
+            $response->setNumber($carts[0]->getNumber());
+            $response->setAllTotalPrice($allTotalPrice);
+            $response->setUserId($userId ?? 0);
+            $response->setUuid($uuid ?? $carts[0]->getUuid());
+        }
+
+        return $response;
     }
 
 }
