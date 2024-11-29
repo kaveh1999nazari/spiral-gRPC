@@ -11,6 +11,8 @@ use Firebase\JWT\Key;
 use Google\Rpc\Code;
 use GRPC\cart\cartCreateRequest;
 use GRPC\cart\cartCreateResponse;
+use GRPC\cart\cartDeleteRequest;
+use GRPC\cart\cartDeleteResponse;
 use GRPC\cart\CartGrpcInterface;
 use GRPC\cart\cartListRequest;
 use GRPC\cart\cartListResponse;
@@ -122,6 +124,27 @@ class CartService implements CartGrpcInterface
             $response->setUserId($userId ?? 0);
             $response->setUuid($uuid ?? $carts[0]->getUuid());
         }
+
+        return $response;
+    }
+
+    public function CartDelete(GRPC\ContextInterface $ctx, CartDeleteRequest $in): CartDeleteResponse
+    {
+        $token = substr($ctx->getValue("authorization")[0], 7);
+        $decode = JWT::decode($token, new Key("secret", 'HS256'));
+        $user = $this->ORM->getRepository(User::class)->findByPK($decode->sub);
+
+        if ($user){
+            $deleteCart = $this->ORM->getRepository(Cart::class)->deleteByUser($user->getId());
+        }else{
+            throw new GRPCException(
+                message: "the User not found",
+                code: Code::NOT_FOUND
+            );
+        }
+
+        $response = new cartDeleteResponse();
+        $response->setMessage("Delete successfully");
 
         return $response;
     }
