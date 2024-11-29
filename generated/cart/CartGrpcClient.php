@@ -24,4 +24,15 @@ class CartGrpcClient implements CartGrpcInterface
 
         return $response;
     }
+
+    public function CartList(ContextInterface $ctx, CartListRequest $in): CartListResponse
+    {
+        [$response, $status] = $this->core->callAction(CartGrpcInterface::class, '/'.self::NAME.'/CartList', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\cart\CartListResponse::class,
+        ]);
+
+        return $response;
+    }
 }

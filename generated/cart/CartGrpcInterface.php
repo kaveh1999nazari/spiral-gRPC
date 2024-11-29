@@ -19,4 +19,13 @@ interface CartGrpcInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function CartCreate(GRPC\ContextInterface $ctx, CartCreateRequest $in): CartCreateResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param CartListRequest $in
+    * @return CartListResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function CartList(GRPC\ContextInterface $ctx, CartListRequest $in): CartListResponse;
 }
