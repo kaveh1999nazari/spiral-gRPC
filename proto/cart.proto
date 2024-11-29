@@ -8,6 +8,7 @@ option php_metadata_namespace = "GRPC\\cart\\GPBMetadata";
 
 service CartGrpc {
     rpc CartCreate (cartCreateRequest) returns (cartCreateResponse);
+    rpc CartList (cartListRequest) returns (cartListResponse);
 }
 
 message cartCreateRequest {
@@ -20,4 +21,17 @@ message cartCreateResponse {
     int32 userId = 2;
     string uuid = 3;
     string totalPrice = 4;
+}
+
+message cartListRequest {
+
+}
+
+message cartListResponse {
+    int32 cartId = 1;
+    int32 ProductPriceId = 2;
+    int32 number = 3;
+    int64 allTotalPrice = 4;
+    int32 userId = 5;
+    string uuid = 6;
 }
