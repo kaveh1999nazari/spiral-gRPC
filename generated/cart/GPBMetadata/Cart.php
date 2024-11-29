@@ -16,7 +16,7 @@ class Cart
         }
         $pool->internalAddGeneratedFile(
             '
-î
+û
 
 cart.protocart";
 cartCreateRequest
@@ -36,11 +36,17 @@ totalPrice (	"
 number (
 allTotalPrice (
 userId (
-uuid (	2†
+uuid (	"#
+cartDeleteRequest
+cartId ("%
+cartDeleteResponse
+message (	2Ç
 CartGrpc?
 
 CartCreate.cart.cartCreateRequest.cart.cartCreateResponse9
-CartList.cart.cartListRequest.cart.cartListResponseB$Ê	GRPC\\cartâGRPC\\cart\\GPBMetadatabproto3'
+CartList.cart.cartListRequest.cart.cartListResponse?
+
+CartDelete.cart.cartDeleteRequest.cart.cartDeleteResponseB$Ê	GRPC\\cartâGRPC\\cart\\GPBMetadatabproto3'
         , true);
 
         static::$is_initialized = true;

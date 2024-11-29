@@ -28,4 +28,13 @@ interface CartGrpcInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function CartList(GRPC\ContextInterface $ctx, CartListRequest $in): CartListResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param CartDeleteRequest $in
+    * @return CartDeleteResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function CartDelete(GRPC\ContextInterface $ctx, CartDeleteRequest $in): CartDeleteResponse;
 }

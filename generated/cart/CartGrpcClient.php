@@ -35,4 +35,15 @@ class CartGrpcClient implements CartGrpcInterface
 
         return $response;
     }
+
+    public function CartDelete(ContextInterface $ctx, CartDeleteRequest $in): CartDeleteResponse
+    {
+        [$response, $status] = $this->core->callAction(CartGrpcInterface::class, '/'.self::NAME.'/CartDelete', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\cart\CartDeleteResponse::class,
+        ]);
+
+        return $response;
+    }
 }
