@@ -130,17 +130,52 @@ class CartService implements CartGrpcInterface
 
     public function CartDelete(GRPC\ContextInterface $ctx, CartDeleteRequest $in): CartDeleteResponse
     {
-        $token = substr($ctx->getValue("authorization")[0], 7);
-        $decode = JWT::decode($token, new Key("secret", 'HS256'));
-        $user = $this->ORM->getRepository(User::class)->findByPK($decode->sub);
+        $authHeader = $ctx->getValue("authorization");
+        $uuidHeader = $ctx->getValue("header");
+
+        $user = null;
+        $uuid = null;
+
+        if (is_array($authHeader) && isset($authHeader[0]) && !empty($authHeader[0])) {
+            $token = substr($authHeader[0], 7);
+            try {
+                $decoded = JWT::decode($token, new Key("secret", 'HS256'));
+                $user = $decoded->sub;
+            } catch (\Exception $e) {
+                throw new GRPCException(
+                    message: "Invalid token!",
+                    code: Code::UNAUTHENTICATED
+                );
+            }
+        } elseif (is_array($uuidHeader) && isset($uuidHeader[0])) {
+            $uuid = $uuidHeader[0];
+        } else {
+            throw new GRPCException(
+                message: "Authorization or UUID header required!",
+                code: Code::UNAUTHENTICATED
+            );
+        }
 
         if ($user){
-            $deleteCart = $this->ORM->getRepository(Cart::class)->deleteByUser($user->getId());
+            try {
+                $deleteCartByUser = $this->ORM->getRepository(Cart::class)
+                    ->deleteByUser($in->getCartId(), $user);
+            }catch (\Exception $e){
+                throw new GRPCException(
+                    message: "the User not found",
+                    code: Code::NOT_FOUND
+                );
+            }
         }else{
-            throw new GRPCException(
-                message: "the User not found",
-                code: Code::NOT_FOUND
-            );
+            try {
+                $deleteCartByUUID = $this->ORM->getRepository(Cart::class)
+                    ->deleteByUUID($in->getCartId(),$uuid);
+            }catch (\Exception $e){
+                throw new GRPCException(
+                    message: "the UUID not found",
+                    code: Code::NOT_FOUND
+                );
+            }
         }
 
         $response = new cartDeleteResponse();
