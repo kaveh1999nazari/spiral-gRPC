@@ -15,9 +15,9 @@ use Spiral\RoadRunner\GRPC\Exception\GRPCException;
 class CartRepository extends Repository
 {
 
-    public function __construct(Select $select,
+    public function __construct(Select                         $select,
                                 private readonly EntityManager $entityManager,
-                                private readonly ORMInterface $ORM
+                                private readonly ORMInterface  $ORM
     )
     {
         parent::__construct($select);
@@ -26,7 +26,7 @@ class CartRepository extends Repository
     public function create(?User $user, string $uuid, ProductPrice $productPrice, int $number, string $totalPrice): Cart
     {
         $cart = new Cart();
-        $cart->setUser($user) ;
+        $cart->setUser($user);
         $cart->setUuid($uuid);
         $cart->setProductPrice($productPrice);
         $cart->setNumber($number);
@@ -39,23 +39,51 @@ class CartRepository extends Repository
 
     }
 
-    public function deleteByUser(int $userId): Cart
+    public function deleteByUser(int $id, int $userId): Cart
     {
-        $carts = $this->ORM->getRepository(Cart::class)->select()->where('user_id', $userId)->fetchAll();
+        $carts = $this->ORM->getRepository(Cart::class)
+            ->select()
+            ->where('user_id', $userId)
+            ->where("id", $id)
+            ->fetchAll();
 
-        if(! $carts) {
+        if (!$carts) {
             throw new GRPCException(
                 message: "the cart is not exist!",
                 code: Code::UNAVAILABLE
             );
         }
 
-        foreach($carts as $cart) {
+        foreach ($carts as $cart) {
             $this->entityManager->delete($cart);
         }
         $this->entityManager->run();
 
         return $cart;
 
+    }
+
+    public function deleteByUUID(int $id, string $uuid): Cart
+    {
+        $carts = $this->ORM->getRepository(Cart::class)
+            ->select()
+            ->where('uuid', $uuid)
+            ->where("id", $id)
+            ->fetchAll();
+
+        if (!$carts) {
+            throw new GRPCException(
+                message: "the cart is not exist!",
+                code: Code::UNAVAILABLE
+            );
+        }
+
+        foreach ($carts as $cart) {
+            $this->entityManager->delete($cart);
+        }
+
+        $this->entityManager->run();
+
+        return $cart;
     }
 }
