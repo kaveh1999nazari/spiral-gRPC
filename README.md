@@ -49,6 +49,7 @@
             <p><strong>Fixes:</strong></p>
             <ul class="fixes">
                 <li>Resolved upload storage issues</li>
+                <li>Resolved adding repetitive product-id</li>
             </ul>
         </div>
     </div>
