@@ -34,7 +34,10 @@ class CartService implements CartGrpcInterface
 
         $productPriceId = $this->ORM->getRepository(ProductPrice::class)->findByPK($productPrice);
         if(! $productPriceId){
-            throw new \InvalidArgumentException("Product Not Found!");
+            throw new GRPCException(
+                message: "Product Not Found!",
+                code: Code::NOT_FOUND
+            );
         }
 
         $price = $productPriceId->getPrice();
