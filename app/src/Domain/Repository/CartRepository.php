@@ -39,6 +39,22 @@ class CartRepository extends Repository
 
     }
 
+    public function update(int $cart_id,?User $user, string $uuid, ProductPrice $productPrice, int $number, string $totalPrice): Cart
+    {
+        $cart = $this->ORM->getRepository(Cart::class)->findByPK($cart_id);
+
+        $cart->setUser($user);
+        $cart->setUuid($uuid);
+        $cart->setProductPrice($productPrice);
+        $cart->setNumber($number);
+        $cart->setTotalPrice($totalPrice);
+
+        $this->entityManager->persist($cart);
+        $this->entityManager->run();
+
+        return $cart;
+
+    }
     public function deleteByUser(int $id, int $userId): Cart
     {
         $carts = $this->ORM->getRepository(Cart::class)
