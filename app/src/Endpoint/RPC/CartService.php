@@ -23,8 +23,9 @@ use Spiral\RoadRunner\GRPC\Exception\GRPCException;
 
 class CartService implements CartGrpcInterface
 {
-    private static string $authorizationHeader = "authorization";
-    private static string $uuidHeader = "header";
+    const AUTHORIZATIONHEADER = "authorization",
+        UUIDHEADER = 'header';
+
     public function __construct(private readonly ORMInterface $ORM)
     {
     }
@@ -35,18 +36,18 @@ class CartService implements CartGrpcInterface
         $number = $in->getNumber();
         $productPrice = $in->getProductPriceId();
 
-        $authHeader = $ctx->getValue(self::$authorizationHeader);
+        $authHeader = $ctx->getValue(self::AUTHORIZATIONHEADER);
 
-        $productPriceId = $this->ORM->getRepository(ProductPrice::class)->findByPK($productPrice);
+        $productPrice = $this->ORM->getRepository(ProductPrice::class)->findByPK($productPrice);
 
-        if (!$productPriceId) {
+        if (!$productPrice) {
             throw new GRPCException(
                 message: "Product Not Found!",
                 code: Code::NOT_FOUND
             );
         }
 
-        $price = $productPriceId->getPrice();
+        $price = $productPrice->getPrice();
 
         $totalPrice = $number * $price;
 
@@ -59,28 +60,29 @@ class CartService implements CartGrpcInterface
 
         $response = new cartCreateResponse();
 
-        if (! $token) {
-            $userId = null;
-            $uuid = $ctx->getValue(self::$uuidHeader)[0] ?? Uuid::uuid4()->toString();
+        if (!$token) {
+            $user = null;
+            $uuid = $ctx->getValue(self::UUIDHEADER)[0] ?? Uuid::uuid4()->toString();
 
             $existProductByUUID = $this->ORM->getRepository(Cart::class)
                 ->select()
                 ->where('uuid', $uuid)
-                ->where("productPrice_id", $productPriceId->getId())
+                ->where("productPrice_id", $productPrice->getId())
                 ->fetchOne();
-            if($existProductByUUID){
+
+            if ($existProductByUUID) {
 
                 $updatedNumber = $existProductByUUID->getNumber() + $number;
 
                 $updatedTotalPrice = $existProductByUUID->getTotalPrice() + $totalPrice;
 
                 $cart = $this->ORM->getRepository(Cart::class)
-                    ->create($userId, $uuid, $productPriceId, $updatedNumber, $updatedTotalPrice);
+                    ->update($existProductByUUID->getId(), $user, $uuid, $productPrice, $updatedNumber, $updatedTotalPrice);
 
-            }else{
+            } else {
 
                 $cart = $this->ORM->getRepository(Cart::class)
-                    ->create($userId, $uuid, $productPriceId, $number, $totalPrice);
+                    ->create($user, $uuid, $productPrice, $number, $totalPrice);
 
             }
 
@@ -90,36 +92,36 @@ class CartService implements CartGrpcInterface
         } else {
             $decode = JWT::decode($token, new Key("secret", 'HS256'));
 
-            $userId = $this->ORM->getRepository(User::class)
+            $user = $this->ORM->getRepository(User::class)
                 ->findByPK($decode->sub);
 
             $uuid = "";
 
             $existProductByUser = $this->ORM->getRepository(Cart::class)
                 ->select()
-                ->where('id', $userId->getId())
-                ->where("productPrice_id", $productPriceId->getId())
+                ->where('user_id', $user->getId())
+                ->where("productPrice_id", $productPrice->getId())
                 ->fetchOne();
 
-            if ($existProductByUser){
+            if ($existProductByUser) {
 
                 $updatedNumber = $existProductByUser->getNumber() + $number;
 
                 $updatedTotalPrice = $existProductByUser->getTotalPrice() + $totalPrice;
 
                 $cart = $this->ORM->getRepository(Cart::class)
-                    ->create($userId, $uuid, $productPriceId, $updatedNumber, $updatedTotalPrice);
+                    ->update($existProductByUser->getId(), $user, $uuid, $productPrice, $updatedNumber, $updatedTotalPrice);
 
-            }else{
+            } else {
 
                 $cart = $this->ORM->getRepository(Cart::class)
-                    ->create($userId, $uuid, $productPriceId, $number, $totalPrice);
+                    ->create($user, $uuid, $productPrice, $number, $totalPrice);
 
             }
 
             $response->setId($cart->getId());
 
-            $response->setUserId($userId->getId());
+            $response->setUserId($user->getId());
 
             $response->setUuid($uuid);
         }
@@ -134,8 +136,8 @@ class CartService implements CartGrpcInterface
 
     public function CartList(GRPC\ContextInterface $ctx, CartListRequest $in): CartListResponse
     {
-        $authHeader = $ctx->getValue(self::$authorizationHeader);
-        $uuidHeader = $ctx->getValue(self::$uuidHeader);
+        $authHeader = $ctx->getValue(self::AUTHORIZATIONHEADER);
+        $uuidHeader = $ctx->getValue(self::UUIDHEADER);
 
         $userId = null;
         $uuid = null;
@@ -208,8 +210,8 @@ class CartService implements CartGrpcInterface
 
     public function CartDelete(GRPC\ContextInterface $ctx, CartDeleteRequest $in): CartDeleteResponse
     {
-        $authHeader = $ctx->getValue(self::$authorizationHeader);
-        $uuidHeader = $ctx->getValue(self::$uuidHeader);
+        $authHeader = $ctx->getValue(self::AUTHORIZATIONHEADER);
+        $uuidHeader = $ctx->getValue(self::UUIDHEADER);
 
         $user = null;
         $uuid = null;
