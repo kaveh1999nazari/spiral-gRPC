@@ -29,12 +29,17 @@ message cartListRequest {
 }
 
 message cartListResponse {
+    repeated CartItem carts = 1;
+    int64 allTotalPrice = 2;
+    int32 userId = 3;
+    string uuid = 4;
+}
+
+message CartItem {
     int32 cartId = 1;
-    int32 ProductPriceId = 2;
+    int32 productPriceId = 2;
     int32 number = 3;
-    int64 allTotalPrice = 4;
-    int32 userId = 5;
-    string uuid = 6;
+    int64 totalPrice = 4;
 }
 
 message cartDeleteRequest {
