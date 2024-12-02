@@ -16,7 +16,7 @@ class Cart
         }
         $pool->internalAddGeneratedFile(
             '
-û
+º
 
 cart.protocart";
 cartCreateRequest
@@ -29,14 +29,18 @@ cart.protocart";
 uuid (	
 
 totalPrice (	"
-cartListRequest"
-cartListResponse
+cartListRequest"f
+cartListResponse
+carts (2.cart.CartItem
+allTotalPrice (
+userId (
+uuid (	"V
+CartItem
 cartId (
-ProductPriceId (
-number (
-allTotalPrice (
-userId (
-uuid (	"#
+productPriceId (
+number (
+
+totalPrice ("#
 cartDeleteRequest
 cartId ("%
 cartDeleteResponse
