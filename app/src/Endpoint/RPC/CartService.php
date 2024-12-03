@@ -43,8 +43,13 @@ class CartService implements CartGrpcInterface
         $authHeader = $ctx->getValue(self::AUTH_HEADER);
         $token = $this->extractToken($authHeader);
 
-        $uuid = $ctx->getValue(self::UUID_HEADER)[0] ?? Uuid::uuid4()->toString();
-        $user = $token ? $this->getUserFromToken($token) : null;
+        if($token){
+            $user = $this->getUserFromToken($token);
+            $uuid = "";
+        }else{
+            $user = null;
+            $uuid = $ctx->getValue(self::UUID_HEADER)[0] ?? Uuid::uuid4()->toString();
+        }
 
         $cart = $this->handleCart($uuid, $user, $productPrice, $number, $totalPrice);
 
@@ -161,9 +166,19 @@ class CartService implements CartGrpcInterface
 
     private function fetchCarts($cartRepository, ?int $userId, ?string $uuid): array
     {
-        return $userId
-            ? $cartRepository->select()->where('user_id', $userId)->fetchAll()
-            : $cartRepository->select()->where('uuid', $uuid)->fetchAll();
+        try {
+            if ($userId) {
+                return $cartRepository->select()->where('user_id', $userId)->fetchAll();
+            } elseif ($uuid) {
+                return $cartRepository->select()->where('uuid', $uuid)->fetchAll();
+            }
+        } catch (\Exception $e) {
+            throw new GRPCException(
+                Message: "this Cart is Empty or Not Found!",
+                code: Code::NOT_FOUND
+            );
+        }
+
     }
 
     private function buildListResponse(array $carts, ?int $userId, ?string $uuid): cartListResponse
@@ -208,7 +223,7 @@ class CartService implements CartGrpcInterface
                 : $cartRepository->deleteByUUID($cartId, $uuid);
         } catch (\Exception $e) {
             throw new GRPCException(
-                message: $userId ? "User not found!" : "UUID not found!",
+                message: "Cart not found!",
                 code: Code::NOT_FOUND
             );
         }
