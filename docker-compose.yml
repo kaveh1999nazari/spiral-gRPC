@@ -1,0 +1,39 @@
+name: 'spiral-grpc'
+services:
+  spiral-grpc:
+    build:
+      context: ./
+      dockerfile: docker/spiral-grpc/local.dockerfile
+    restart: unless-stopped
+    working_dir: /var/www
+    tty: true
+    volumes:
+      - ./:/var/www
+    ports:
+      - "9002:9002"
+    depends_on:
+      - db
+    networks:
+      - spiral-network
+
+  db:
+    image: mysql:8.0
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spiral
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - spiral-network
+
+volumes:
+  mysql_data:
+
+networks:
+  spiral-network:
+    driver: bridge
