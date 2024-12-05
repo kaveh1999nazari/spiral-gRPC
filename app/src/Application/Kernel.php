@@ -99,6 +99,9 @@ class Kernel extends \Spiral\Framework\Kernel
 
             //UUID
             \Spiral\Cqrs\Bootloader\CqrsBootloader::class,
+
+            // Mailer
+            \Spiral\SendIt\Bootloader\MailerBootloader::class,
         ];
     }
 }
