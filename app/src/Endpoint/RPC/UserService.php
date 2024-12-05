@@ -3,11 +3,14 @@
 namespace App\Endpoint\RPC;
 
 use App\Domain\Entity\User;
-use App\Domain\Request\UserLoginRequest;
+use App\Domain\Request\UserLoginEmailRequest;
+use App\Domain\Request\UserLoginMobileRequest;
 use App\Domain\Request\UserRegisterRequest;
 use App\Domain\Attribute\ValidateBy;
 use Cycle\ORM\ORMInterface;
 use Google\Rpc\Code;
+use GRPC\user\LoginEmailRequest;
+use GRPC\user\LoginEmailResponse;
 use GRPC\user\LoginMobileRequest;
 use GRPC\user\LoginMobileResponse;
 use GRPC\user\RegisterUserRequest;
@@ -19,9 +22,11 @@ use Spiral\RoadRunner\GRPC;
 class UserService implements UserGrpcInterface
 {
     public function __construct(
-        protected readonly ORMInterface $orm,
+        protected readonly ORMInterface        $orm,
         private readonly TokenStorageInterface $tokens
-    ){}
+    )
+    {
+    }
 
     #[ValidateBy(UserRegisterRequest::class)]
     public function Register(GRPC\ContextInterface $ctx, RegisterUserRequest $in): RegisterUserResponse
@@ -49,7 +54,7 @@ class UserService implements UserGrpcInterface
 
         $user = $this->orm->getRepository(User::class)
             ->create($firstName, $lastName, $mobile, $email, $password,
-                     $fatherName, $nationalCode, $birthDate);
+                $fatherName, $nationalCode, $birthDate);
 
         $response = new RegisterUserResponse();
         $response->setId($user->getId());
@@ -57,7 +62,7 @@ class UserService implements UserGrpcInterface
         return $response;
     }
 
-    #[ValidateBy(UserLoginRequest::class)]
+    #[ValidateBy(UserLoginMobileRequest::class)]
     public function LoginByMobile(GRPC\ContextInterface $ctx, LoginMobileRequest $in): LoginMobileResponse
     {
         $mobile = $in->getMobile();
@@ -67,17 +72,39 @@ class UserService implements UserGrpcInterface
         $user = $this->orm->getRepository(User::class)
             ->findByMobile($mobile);
 
-        if ($user && password_verify($password, $user->getPassword()))
-        {
+        $response = new LoginMobileResponse();
+
+        if ($user && password_verify($password, $user->getPassword())) {
             $token = $this->tokens->create(['sub' => $user->getId()]);
-            $response = new LoginMobileResponse();
             $response->setToken($token->getID());
             $response->setMessage($user->getRoles());
             return $response;
+        }else{
+            $response->setMessage(["Authentication failed."]);
+
         }
-        $response = new LoginMobileResponse();
-        $response->setMessage(["Authentication failed."]);
         return $response;
 
+    }
+
+    #[ValidateBy(UserLoginEmailRequest::class)]
+    public function LoginByEmail(GRPC\ContextInterface $ctx, LoginEmailRequest $in): LoginEmailResponse
+    {
+        $email = $in->getEmail();
+        $password = $in->getPassword();
+
+        $user = $this->orm->getRepository(User::class)->findOne(['email' => $email]);
+
+        $response = new LoginEmailResponse();
+
+        if ($user && password_verify($password, $user->getPassword())) {
+            $token = $this->tokens->create(['sub' => $user->getId()]);
+            $response->setMessage($user->getRoles());
+            $response->setToken($token->getID());
+        }else{
+            $response->setMessage(["Authentication failed."]);
+
+        }
+        return $response;
     }
 }
