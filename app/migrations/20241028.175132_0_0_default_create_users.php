@@ -12,19 +12,20 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305043 extends Migration
     public function up(): void
     {
         $this->table('users')
-            ->addColumn('id', 'primary', [
-                'nullable' => false,
-                'defaultValue' => null,
-                'size' => 11,
-                'autoIncrement' => true,
-                'unsigned' => false,
-                'zerofill' => false,
-            ])
-            ->addColumn('mobile', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 255])
-            ->addColumn('password', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 255])
+            ->addColumn('id', 'primary', ['nullable' => false, 'size' => 11, 'autoIncrement' => true,])
+            ->addColumn('first_name', 'string', ['nullable' => true, 'defaultValue' => null, 'size' => 100])
+            ->addColumn('last_name', 'string', ['nullable' => true, 'defaultValue' => null, 'size' => 100])
+            ->addColumn('mobile', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 12])
+            ->addColumn('email', 'string', ['nullable' => true, 'defaultValue' => null, 'size' => 100])
+            ->addColumn('father_name', 'string', ['nullable' => true, 'defaultValue' => null, 'size' => 100])
+            ->addColumn('national_code', 'string', ['nullable' => true, 'defaultValue' => null, 'size' => 12])
+            ->addColumn('birth_date', 'date', ['nullable' => true, 'defaultValue' => null, 'size' => 10])
+            ->addColumn('password', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 100])
             ->addColumn('roles', 'json')
+            ->addColumn('create_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
+            ->addColumn('updated_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
             ->setPrimaryKeys(['id'])
-            ->addIndex(['mobile'], [
+            ->addIndex(['mobile', 'email', 'national_code'], [
                 'unique' => true,
             ])
             ->create();
