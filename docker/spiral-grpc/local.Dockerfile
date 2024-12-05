@@ -18,6 +18,9 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     postgresql-client-common \
     xvfb \
+    protobuf-compiler \
+    libgrpc-dev \
+    libprotobuf-dev \
     libfontconfig
 
 # Clear cache
@@ -29,6 +32,10 @@ RUN docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-install pdo pdo_pgsql mbstring zip exif pcntl bcmath xml intl
 RUN pecl install redis
 RUN docker-php-ext-enable redis
+
+#install GRPC
+RUN pecl install grpc protobuf \
+    && docker-php-ext-enable grpc protobuf
 
 # install php:mysql
 RUN docker-php-ext-install pdo_mysql
