@@ -14,13 +14,24 @@ class UserRepository extends Repository
         parent::__construct($select);
     }
 
-    public function create(string $mobile, string $password): User
+    public function create(?string $firstName, ?string $lastName,
+                           string $mobile, string $email,
+                           string $password, ?string $fatherName,
+                           ?string $nationalCode, ?\DateTimeImmutable $birthDate): User
     {
 
         $user = new User();
+        $user->setFirstName($firstName);
+        $user->setLastName($lastName);
         $user->setMobile($mobile);
+        $user->setEmail($email);
         $user->setPassword($password);
+        $user->setFatherName($fatherName);
+        $user->setNationalCode($nationalCode);
+        $user->setBirthDate($birthDate);
         $user->setRoles(['user']);
+        $user->setCreatedAt(new \DateTimeImmutable());
+        $user->setUpdatedAt(new \DateTimeImmutable());
 
         $this->entityManager->persist($user);
         $this->entityManager->run();
