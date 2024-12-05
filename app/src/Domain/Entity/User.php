@@ -33,7 +33,10 @@ class User
     private \DateTimeImmutable $created_at;
     #[Column(type: 'datetime')]
     private \DateTimeImmutable $updated_at;
-
+    #[Column(type: 'string', nullable: true)]
+    private ?string $otpCode;
+    #[Column(type: 'datetime', nullable: true)]
+    private ?\DateTimeImmutable $otpExpiredAt;
     public function getId(): int
     {
         return $this->id;
@@ -148,6 +151,26 @@ class User
     public function setUpdatedAt(\DateTimeImmutable $updated_at): void
     {
         $this->updated_at = $updated_at;
+    }
+
+    public function getOtpCode(): ?string
+    {
+        return $this->otpCode;
+    }
+
+    public function setOtpCode(?string $otpCode): void
+    {
+        $this->otpCode = $otpCode;
+    }
+
+    public function getOtpExpiredAt(): ?\DateTimeImmutable
+    {
+        return $this->otpExpiredAt;
+    }
+
+    public function setOtpExpiredAt(?\DateTimeImmutable $otpExpiredAt): void
+    {
+        $this->otpExpiredAt = $otpExpiredAt;
     }
 
 }
