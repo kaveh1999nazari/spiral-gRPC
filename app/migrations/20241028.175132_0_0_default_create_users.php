@@ -21,6 +21,8 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305043 extends Migration
             ->addColumn('national_code', 'string', ['nullable' => true, 'defaultValue' => null, 'size' => 12])
             ->addColumn('birth_date', 'date', ['nullable' => true, 'defaultValue' => null, 'size' => 10])
             ->addColumn('password', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 100])
+            ->addColumn('otp_code', 'string',['nullable' => true , 'size' => 10])
+            ->addColumn('otp_expired_at', 'datetime',['nullable' => true])
             ->addColumn('roles', 'json')
             ->addColumn('created_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
             ->addColumn('updated_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
