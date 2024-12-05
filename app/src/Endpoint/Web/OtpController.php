@@ -2,15 +2,12 @@
 
 namespace App\Endpoint\Web;
 
-use App\Domain\Repository\UserRepository;
-use Cycle\ORM\EntityManager;
 use Cycle\ORM\ORMInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Spiral\Http\Request\InputManager;
 use Spiral\Mailer\Message;
 use Spiral\Router\Annotation\Route;
-use Spiral\Http\Response;
 use App\Domain\Entity\User;
 use Spiral\Mailer\MailerInterface;
 
