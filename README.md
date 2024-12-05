@@ -15,13 +15,14 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v1-3-3">
-            <h2>Last update V1.3.3</h2>
+        <div class="version" id="v1-4">
+            <h2>Last update V1.4</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user with mobile and password</li>
                 <li>Login with mobile and password</li>
                 <li>JWT-based User Authentication</li>
+                <li>Add docker and manage by docker</li>
                 <li>Admin can:
                     <ul>
                         <li>Create categories</li>
