@@ -30,6 +30,9 @@ RUN docker-php-ext-install pdo pdo_pgsql mbstring zip exif pcntl bcmath xml intl
 RUN pecl install redis
 RUN docker-php-ext-enable redis
 
+# install php:mysql
+RUN docker-php-ext-install pdo_mysql
+
 # Configure PHP
 RUN sed -i -e "s/upload_max_filesize = .*/upload_max_filesize = 40M/g" \
         -e "s/post_max_size = .*/post_max_size = 40M/g" \
@@ -41,8 +44,8 @@ RUN sed -i -e "s/upload_max_filesize = .*/upload_max_filesize = 40M/g" \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Supervisor
-COPY docker/supervisor/loan_management_local.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker/supervisor/spiral_gRPC_local.conf /etc/supervisor/conf.d/supervisord.conf
 CMD ["/usr/bin/supervisord", "-n"]
 
 WORKDIR /var/www
-EXPOSE 9001
+EXPOSE 9002
