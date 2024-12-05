@@ -8,6 +8,7 @@ use Cycle\ORM\ORMInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Spiral\Http\Request\InputManager;
+use Spiral\Mailer\Message;
 use Spiral\Router\Annotation\Route;
 use Spiral\Http\Response;
 use App\Domain\Entity\User;
@@ -38,14 +39,14 @@ class OtpController
 
         $this->ORM->getRepository(User::class)->setOtpForUser($user, $otp, $expiration);
 
-//        $emailBody = "Hi {$user->getFirstName()} {$user->getLastName()}!\n\nYour code is: {$otp}\n\nspiral-gRPC Team";
-//
-//        $message = $this->mailer->createMessage();
-//        $message->setTo($user->getEmail())
-//            ->setSubject('Your OTP Code')
-//            ->setBody($emailBody);
-//
-//        $this->mailer->send($message);
+        $this->mailer->send(new Message(
+            'emails/otp.email.dark.php',
+            $user->getEmail(),
+            [
+                'name' => $user->getFirstName() . ' ' . $user->getLastName(),
+                'otp' => $otp,
+            ]
+        ));
 
         return $this->jsonResponse(['message' => 'OTP sent successfully', 'otp_code' => $otp]);
     }
