@@ -22,10 +22,16 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305043 extends Migration
             ->addColumn('birth_date', 'date', ['nullable' => true, 'defaultValue' => null, 'size' => 10])
             ->addColumn('password', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 100])
             ->addColumn('roles', 'json')
-            ->addColumn('create_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
-            ->addColumn('updated_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
+            ->addColumn('created_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
+            ->addColumn('updated_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
             ->setPrimaryKeys(['id'])
-            ->addIndex(['mobile', 'email', 'national_code'], [
+            ->addIndex(['mobile'], [
+                'unique' => true,
+            ])
+            ->addIndex(['national_code'], [
+                'unique' => true,
+            ])
+            ->addIndex(['email'], [
                 'unique' => true,
             ])
             ->create();
