@@ -13,12 +13,12 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305043 extends Migration
     {
         $this->table('users')
             ->addColumn('id', 'primary', ['nullable' => false, 'size' => 11, 'autoIncrement' => true,])
-            ->addColumn('first_name', 'string', ['nullable' => true, 'defaultValue' => null, 'size' => 100])
-            ->addColumn('last_name', 'string', ['nullable' => true, 'defaultValue' => null, 'size' => 100])
+            ->addColumn('first_name', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 100])
+            ->addColumn('last_name', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 100])
             ->addColumn('mobile', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 12])
             ->addColumn('email', 'string', ['nullable' => true, 'defaultValue' => null, 'size' => 100])
             ->addColumn('father_name', 'string', ['nullable' => true, 'defaultValue' => null, 'size' => 100])
-            ->addColumn('national_code', 'string', ['nullable' => true, 'defaultValue' => null, 'size' => 12])
+            ->addColumn('national_code', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 12])
             ->addColumn('birth_date', 'date', ['nullable' => true, 'defaultValue' => null, 'size' => 10])
             ->addColumn('password', 'string', ['nullable' => false, 'defaultValue' => null, 'size' => 100])
             ->addColumn('otp_code', 'string',['nullable' => true , 'size' => 10])
@@ -33,9 +33,7 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305043 extends Migration
             ->addIndex(['national_code'], [
                 'unique' => true,
             ])
-            ->addIndex(['email'], [
-                'unique' => true,
-            ])
+
             ->create();
     }
 
