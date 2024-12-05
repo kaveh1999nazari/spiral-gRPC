@@ -15,13 +15,24 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v1-4">
-            <h2>Last update V1.4</h2>
+        <div class="version" id="v2.0">
+            <h2>Last update V2.0</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
-                <li>Register user with mobile and password</li>
-                <li>Login with mobile and password</li>
-                <li>JWT-based User Authentication</li>
+                <li>Register user:
+                    <ul>
+                        <li>with user personal information</li>
+                        <li>with google account</li>
+                        <li>Receive a welcome email if add email</li>
+                    </ul>
+                <li>Login user:
+                    <ul>
+                        <li>with Email and OTP</li>
+                        <li>with Email and password</li>
+                        <li>with mobile and password</li>
+                        <li>Receive a notification login email</li>
+                        <li>JWT-based User Authentication</li>
+                    </ul>
                 <li>Add docker and manage by docker</li>
                 <li>Admin can:
                     <ul>
