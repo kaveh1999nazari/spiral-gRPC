@@ -13,6 +13,8 @@ use GRPC\user\LoginEmailRequest;
 use GRPC\user\LoginEmailResponse;
 use GRPC\user\LoginMobileRequest;
 use GRPC\user\LoginMobileResponse;
+use GRPC\user\LoginOTPRequest;
+use GRPC\user\LoginOTPResponse;
 use GRPC\user\RegisterUserRequest;
 use GRPC\user\RegisterUserResponse;
 use GRPC\user\UserGrpcInterface;
@@ -79,7 +81,7 @@ class UserService implements UserGrpcInterface
             $response->setToken($token->getID());
             $response->setMessage($user->getRoles());
             return $response;
-        }else{
+        } else {
             $response->setMessage(["Authentication failed."]);
 
         }
@@ -101,10 +103,30 @@ class UserService implements UserGrpcInterface
             $token = $this->tokens->create(['sub' => $user->getId()]);
             $response->setMessage($user->getRoles());
             $response->setToken($token->getID());
-        }else{
+        } else {
             $response->setMessage(["Authentication failed."]);
 
         }
+        return $response;
+    }
+
+    public function LoginByOTP(GRPC\ContextInterface $ctx, LoginOTPRequest $in): LoginOTPResponse
+    {
+        $email = $in->getEmail();
+        $code = $in->getCode();
+
+        $user = $this->orm->getRepository(User::class)->findOne(['email' => $email]);
+
+        $response = new LoginOTPResponse();
+
+        if ($user && $code === $user->getOtpCode() && $user->getOtpExpiredAt() > new \DateTimeImmutable()) {
+            $token = $this->tokens->create(['sub' => $user->getId()]);
+            $response->setMessage($user->getRoles());
+            $response->setToken($token->getID());
+        }else{
+            $response->setMessage(["Authentication failed."]);
+        }
+
         return $response;
     }
 }
