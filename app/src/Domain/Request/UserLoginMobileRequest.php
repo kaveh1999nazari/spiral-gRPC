@@ -2,7 +2,7 @@
 
 namespace App\Domain\Request;
 
-class UserLoginRequest implements BaseRequest
+class UserLoginMobileRequest implements BaseRequest
 {
     public function getRules(): array
     {

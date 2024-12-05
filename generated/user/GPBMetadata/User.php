@@ -16,7 +16,7 @@ class User
         }
         $pool->internalAddGeneratedFile(
             '
-ª
+Ù
 
 user.protouser"­
 RegisterUserRequest
@@ -39,10 +39,17 @@ birth_date (	"3
 password (	"5
 LoginMobileResponse
 token (	
-message (	2“
+message (	"4
+LoginEmailRequest
+email (	
+password (	"4
+LoginEmailResponse
+token (	
+message (	2Ö
 UserGrpcA
 Register.user.RegisterUserRequest.user.RegisterUserResponseD
-LoginByMobile.user.LoginMobileRequest.user.LoginMobileResponseB$Ê	GRPC\\userâGRPC\\user\\GPBMetadatabproto3'
+LoginByMobile.user.LoginMobileRequest.user.LoginMobileResponseA
+LoginByEmail.user.LoginEmailRequest.user.LoginEmailResponseB$Ê	GRPC\\userâGRPC\\user\\GPBMetadatabproto3'
         , true);
 
         static::$is_initialized = true;

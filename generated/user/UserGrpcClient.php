@@ -35,4 +35,15 @@ class UserGrpcClient implements UserGrpcInterface
 
         return $response;
     }
+
+    public function LoginByEmail(ContextInterface $ctx, LoginEmailRequest $in): LoginEmailResponse
+    {
+        [$response, $status] = $this->core->callAction(UserGrpcInterface::class, '/'.self::NAME.'/LoginByEmail', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\user\LoginEmailResponse::class,
+        ]);
+
+        return $response;
+    }
 }

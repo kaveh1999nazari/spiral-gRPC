@@ -28,4 +28,13 @@ interface UserGrpcInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function LoginByMobile(GRPC\ContextInterface $ctx, LoginMobileRequest $in): LoginMobileResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param LoginEmailRequest $in
+    * @return LoginEmailResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function LoginByEmail(GRPC\ContextInterface $ctx, LoginEmailRequest $in): LoginEmailResponse;
 }
