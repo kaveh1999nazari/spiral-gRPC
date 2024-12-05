@@ -46,4 +46,15 @@ class UserGrpcClient implements UserGrpcInterface
 
         return $response;
     }
+
+    public function LoginByOTP(ContextInterface $ctx, LoginOTPRequest $in): LoginOTPResponse
+    {
+        [$response, $status] = $this->core->callAction(UserGrpcInterface::class, '/'.self::NAME.'/LoginByOTP', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\user\LoginOTPResponse::class,
+        ]);
+
+        return $response;
+    }
 }

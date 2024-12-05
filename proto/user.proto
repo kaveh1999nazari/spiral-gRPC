@@ -10,7 +10,7 @@ service UserGrpc {
     rpc Register (RegisterUserRequest) returns (RegisterUserResponse);
     rpc LoginByMobile (LoginMobileRequest) returns (LoginMobileResponse);
     rpc LoginByEmail (LoginEmailRequest) returns (LoginEmailResponse);
-//    rpc LoginByOTP (LoginOTPRequest) returns (LoginOTPResponse);
+    rpc LoginByOTP (LoginOTPRequest) returns (LoginOTPResponse);
 }
 
 message RegisterUserRequest {
@@ -49,10 +49,14 @@ message LoginEmailResponse {
     repeated string message = 2;
 }
 
-//message LoginOTPRequest {
-//}
-//
-//message LoginOTPResponse {
-//}
+message LoginOTPRequest {
+    string email = 1;
+    string code = 2;
+}
+
+message LoginOTPResponse {
+    string token = 1;
+    repeated string message = 2;
+}
 
 

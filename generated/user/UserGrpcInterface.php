@@ -37,4 +37,13 @@ interface UserGrpcInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function LoginByEmail(GRPC\ContextInterface $ctx, LoginEmailRequest $in): LoginEmailResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param LoginOTPRequest $in
+    * @return LoginOTPResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function LoginByOTP(GRPC\ContextInterface $ctx, LoginOTPRequest $in): LoginOTPResponse;
 }
