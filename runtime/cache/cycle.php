@@ -294,6 +294,8 @@
       'roles' => 'roles',
       'created_at' => 'created_at',
       'updated_at' => 'updated_at',
+      'otpCode' => 'otp_code',
+      'otpExpiredAt' => 'otp_expired_at',
     ),
     10 => 
     array (
@@ -305,6 +307,7 @@
       'birthDate' => 'datetime',
       'created_at' => 'datetime',
       'updated_at' => 'datetime',
+      'otpExpiredAt' => 'datetime',
     ),
     14 => 
     array (
