@@ -3,14 +3,17 @@ services:
   spiral-grpc:
     build:
       context: ./
-      dockerfile: docker/spiral-grpc/local.dockerfile
+      dockerfile: docker/spiral-grpc/local.Dockerfile
     restart: unless-stopped
     working_dir: /var/www
     tty: true
     volumes:
       - ./:/var/www
     ports:
-      - "9002:9002"
+      - "9002:9002" #GRPC
+      - "8181:8181" #HTTP
+      - "10101:10101" #file_server
+      - "6002:6002" #RPC
     depends_on:
       - db
     networks:
