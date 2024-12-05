@@ -283,9 +283,17 @@
     9 => 
     array (
       'id' => 'id',
+      'firstName' => 'first_name',
+      'lastName' => 'last_name',
+      'email' => 'email',
       'mobile' => 'mobile',
       'password' => 'password',
+      'fatherName' => 'father_name',
+      'nationalCode' => 'national_code',
+      'birthDate' => 'birth_date',
       'roles' => 'roles',
+      'created_at' => 'created_at',
+      'updated_at' => 'updated_at',
     ),
     10 => 
     array (
@@ -294,6 +302,9 @@
     13 => 
     array (
       'id' => 'int',
+      'birthDate' => 'datetime',
+      'created_at' => 'datetime',
+      'updated_at' => 'datetime',
     ),
     14 => 
     array (
