@@ -43,4 +43,13 @@ class UserRepository extends Repository
     {
         return $this->findOne(['mobile' => $mobile]);
     }
+
+    public function setOtpForUser(User $user, int $otp, \DateTimeImmutable $expiration): void
+    {
+        $user->setOtpCode($otp);
+        $user->setOtpExpiredAt($expiration);
+
+        $this->entityManager->persist($user);
+        $this->entityManager->run();
+    }
 }
