@@ -90,6 +90,103 @@
       'id' => 2,
     ),
   ),
+  'userResident' => 
+  array (
+    1 => 'App\\Domain\\Entity\\UserResident',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\UserResidentRepository',
+    5 => 'default',
+    6 => 'user_residents',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'address' => 'address',
+      'postalCode' => 'postal_code',
+      'createdAt' => 'created_at',
+      'updatedAt' => 'updated_at',
+      'user_id' => 'user_id',
+      'province_id' => 'province_id',
+      'city_id' => 'city_id',
+    ),
+    10 => 
+    array (
+      'user' => 
+      array (
+        0 => 12,
+        1 => 'user',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'user_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'province' => 
+      array (
+        0 => 12,
+        1 => 'province',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'province_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'city' => 
+      array (
+        0 => 12,
+        1 => 'city',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'city_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'createdAt' => 'datetime',
+      'updatedAt' => 'datetime',
+      'user_id' => 'int',
+      'province_id' => 'int',
+      'city_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
   'productPrice' => 
   array (
     1 => 'App\\Domain\\Entity\\ProductPrice',
@@ -137,6 +234,100 @@
     array (
       'id' => 'int',
       'product_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
+  'province' => 
+  array (
+    1 => 'App\\Domain\\Entity\\Province',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'Cycle\\ORM\\Select\\Repository',
+    5 => 'default',
+    6 => 'provinces',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'name' => 'name',
+    ),
+    10 => 
+    array (
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
+  'city' => 
+  array (
+    1 => 'App\\Domain\\Entity\\City',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'Cycle\\ORM\\Select\\Repository',
+    5 => 'default',
+    6 => 'cities',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'name' => 'name',
+      'province_id' => 'province_id',
+    ),
+    10 => 
+    array (
+      'province' => 
+      array (
+        0 => 12,
+        1 => 'province',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'province_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'province_id' => 'int',
     ),
     14 => 
     array (
