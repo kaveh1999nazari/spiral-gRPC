@@ -2,12 +2,16 @@
 
 namespace App\Endpoint\RPC;
 
+use App\Domain\Entity\City;
+use App\Domain\Entity\Province;
 use App\Domain\Entity\User;
+use App\Domain\Entity\UserResident;
 use App\Domain\Request\UserLoginEmailRequest;
 use App\Domain\Request\UserLoginMobileRequest;
 use App\Domain\Request\UserLoginOTPRequest;
 use App\Domain\Request\UserRegisterRequest;
 use App\Domain\Attribute\ValidateBy;
+use App\Domain\Request\UserRegisterResidentRequest;
 use Cycle\ORM\ORMInterface;
 use Google\Rpc\Code;
 use GRPC\user\LoginEmailRequest;
@@ -17,6 +21,8 @@ use GRPC\user\LoginMobileResponse;
 use GRPC\user\LoginOTPRequest;
 use GRPC\user\LoginOTPResponse;
 use GRPC\user\RegisterUserRequest;
+use GRPC\user\RegisterUserResidentRequest;
+use GRPC\user\RegisterUserResidentResponse;
 use GRPC\user\RegisterUserResponse;
 use GRPC\user\UserGrpcInterface;
 use Spiral\Auth\TokenStorageInterface;
@@ -35,7 +41,7 @@ class UserService implements UserGrpcInterface
     }
 
     #[ValidateBy(UserRegisterRequest::class)]
-    public function Register(GRPC\ContextInterface $ctx, RegisterUserRequest $in): RegisterUserResponse
+    public function RegisterUser(GRPC\ContextInterface $ctx, RegisterUserRequest $in): RegisterUserResponse
     {
         $firstName = $in->getFirstName() ?? null;
         $lastName = $in->getLastName() ?? null;
@@ -69,6 +75,29 @@ class UserService implements UserGrpcInterface
         $response = new RegisterUserResponse();
         $response->setId($user->getId());
         $response->setMessage("successfully account:{$mobile} created");
+        return $response;
+    }
+
+    #[ValidateBy(UserRegisterResidentRequest::class)]
+    public function RegisterUserResident(GRPC\ContextInterface $ctx, RegisterUserResidentRequest $in): RegisterUserResidentResponse
+    {
+        $userId = $in->getUser();
+        $address = $in->getAddress();
+        $postalCode = $in->getPostalCode();
+        $provinceId = $in->getProvince();
+        $cityId = $in->getCity();
+
+        $user = $this->orm->getRepository(User::class)->findByPK($userId);
+        $province = $this->orm->getRepository(Province::class)->findByPK($provinceId);
+        $city = $this->orm->getRepository(City::class)->findByPK($cityId);
+
+        $userResident = $this->orm->getRepository(UserResident::class)->create($user, $address,
+            $postalCode, $province, $city);
+
+        $response = new RegisterUserResidentResponse();
+        $response->setId($user->getId());
+        $response->setMessage("User Resident account: {$user->getMobile()} successfully create");
+
         return $response;
     }
 
