@@ -18,7 +18,16 @@ interface UserGrpcInterface extends GRPC\ServiceInterface
     *
     * @throws GRPC\Exception\InvokeException
     */
-    public function Register(GRPC\ContextInterface $ctx, RegisterUserRequest $in): RegisterUserResponse;
+    public function RegisterUser(GRPC\ContextInterface $ctx, RegisterUserRequest $in): RegisterUserResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param RegisterUserResidentRequest $in
+    * @return RegisterUserResidentResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function RegisterUserResident(GRPC\ContextInterface $ctx, RegisterUserResidentRequest $in): RegisterUserResidentResponse;
 
     /**
     * @param GRPC\ContextInterface $ctx
