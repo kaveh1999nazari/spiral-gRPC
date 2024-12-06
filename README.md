@@ -22,7 +22,7 @@
                 <li>Register user:
                     <ul>
                         <li>with user personal information</li>
-                        <li>with google account</li>
+                        <li>with user personal resident information</li>
                         <li>Receive a welcome email if add email</li>
                     </ul>
                 <li>Login user:
