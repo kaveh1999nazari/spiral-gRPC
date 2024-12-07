@@ -49,6 +49,15 @@ interface UserGrpcInterface extends GRPC\ServiceInterface
 
     /**
     * @param GRPC\ContextInterface $ctx
+    * @param UpdateUserRequest $in
+    * @return UpdateUserResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function UpdateUser(GRPC\ContextInterface $ctx, UpdateUserRequest $in): UpdateUserResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
     * @param LoginMobileRequest $in
     * @return LoginMobileResponse
     *

@@ -11,6 +11,7 @@ service UserGrpc {
     rpc RegisterUserResident (RegisterUserResidentRequest) returns (RegisterUserResidentResponse);
     rpc RegisterUserEducation (RegisterUserEducationRequest) returns (RegisterUserEducationResponse);
     rpc RegisterUserJob (RegisterUserJobRequest) returns (RegisterUserJobResponse);
+    rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
     rpc LoginByMobile (LoginMobileRequest) returns (LoginMobileResponse);
     rpc LoginByEmail (LoginEmailRequest) returns (LoginEmailResponse);
     rpc LoginByOTP (LoginOTPRequest) returns (LoginOTPResponse);
@@ -74,6 +75,24 @@ message RegisterUserJobResponse {
     int32 id = 1;
     string message = 2;
 }
+
+message UpdateUserRequest {
+    int32 user = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string mobile = 4;
+    string email = 5;
+    string password = 6;
+    string father_name = 7;
+    string national_code = 8;
+    string birth_date = 9;
+    string code = 10;
+}
+
+message UpdateUserResponse {
+    string message = 1;
+}
+
 
 message LoginMobileRequest {
     string mobile = 1;
