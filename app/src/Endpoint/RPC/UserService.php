@@ -7,11 +7,13 @@ use App\Domain\Entity\Degree;
 use App\Domain\Entity\Province;
 use App\Domain\Entity\User;
 use App\Domain\Entity\UserEducation;
+use App\Domain\Entity\UserJob;
 use App\Domain\Entity\UserResident;
 use App\Domain\Request\UserLoginEmailRequest;
 use App\Domain\Request\UserLoginMobileRequest;
 use App\Domain\Request\UserLoginOTPRequest;
 use App\Domain\Request\UserRegisterEducationRequest;
+use App\Domain\Request\UserRegisterJobRequest;
 use App\Domain\Request\UserRegisterRequest;
 use App\Domain\Attribute\ValidateBy;
 use App\Domain\Request\UserRegisterResidentRequest;
@@ -25,6 +27,8 @@ use GRPC\user\LoginOTPRequest;
 use GRPC\user\LoginOTPResponse;
 use GRPC\user\RegisterUserEducationRequest;
 use GRPC\user\RegisterUserEducationResponse;
+use GRPC\user\RegisterUserJobRequest;
+use GRPC\user\RegisterUserJobResponse;
 use GRPC\user\RegisterUserRequest;
 use GRPC\user\RegisterUserResidentRequest;
 use GRPC\user\RegisterUserResidentResponse;
@@ -40,7 +44,7 @@ class UserService implements UserGrpcInterface
     public function __construct(
         protected readonly ORMInterface        $orm,
         private readonly TokenStorageInterface $tokens,
-        private readonly MailerInterface $mailer,
+        private readonly MailerInterface       $mailer,
     )
     {
     }
@@ -72,7 +76,7 @@ class UserService implements UserGrpcInterface
             ->create($firstName, $lastName, $mobile, $email, $password,
                 $fatherName, $nationalCode, $birthDate);
 
-        if ($user->getEmail()){
+        if ($user->getEmail()) {
             $this->sendWelcomeEmail($user->getFirstName(), $user->getLastName(), $user->getEmail());
         }
 
@@ -120,6 +124,36 @@ class UserService implements UserGrpcInterface
         $response = new RegisterUserEducationResponse();
         $response->setId($user->getId());
         $response->setMessage("User Education account: {$user->getMobile()} successfully create");
+
+        return $response;
+
+    }
+
+    #[ValidateBy(UserRegisterJobRequest::class)]
+    public function RegisterUserJob(GRPC\ContextInterface $ctx, RegisterUserJobRequest $in): RegisterUserJobResponse
+    {
+        $userId = $in->getUser();
+        $provinceId = $in->getProvince();
+        $cityId = $in->getCity();
+        $title = $in->getTitle();
+        $phone = $in->getPhone();
+        $postalCode = $in->getPostalCode();
+        $address = $in->getAddress();
+        $monthlySalary = $in->getMonthlySalary();
+        $workExperienceDuration = $in->getWorkExperienceDuration();
+        $workType = $in->getWorkType();
+        $contractType = $in->getContractType();
+
+        $user = $this->orm->getRepository(User::class)->findByPK($userId);
+        $province = $this->orm->getRepository(Province::class)->findByPK($provinceId);
+        $city = $this->orm->getRepository(City::class)->findByPK($cityId);
+
+        $userJob = $this->orm->getRepository(UserJob::class)->create($user, $province, $city, $title,
+            $phone, $postalCode, $address, $monthlySalary, $workExperienceDuration, $workType, $contractType);
+
+        $response = new RegisterUserJobResponse();
+        $response->setId($user->getId());
+        $response->setMessage("User Job account: {$user->getMobile()} successfully create");
 
         return $response;
 
@@ -195,7 +229,7 @@ class UserService implements UserGrpcInterface
             $this->sendLoginNotificationEmail($user->getFirstName(),
                 $user->getLastName(),
                 $user->getEmail());
-        }else{
+        } else {
             $response->setMessage(["Authentication failed."]);
         }
 
