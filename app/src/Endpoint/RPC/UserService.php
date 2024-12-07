@@ -17,6 +17,7 @@ use App\Domain\Request\UserRegisterJobRequest;
 use App\Domain\Request\UserRegisterRequest;
 use App\Domain\Attribute\ValidateBy;
 use App\Domain\Request\UserRegisterResidentRequest;
+use App\Domain\Request\UserUpdateRequest;
 use Cycle\ORM\ORMInterface;
 use Google\Rpc\Code;
 use GRPC\user\LoginEmailRequest;
@@ -33,11 +34,14 @@ use GRPC\user\RegisterUserRequest;
 use GRPC\user\RegisterUserResidentRequest;
 use GRPC\user\RegisterUserResidentResponse;
 use GRPC\user\RegisterUserResponse;
+use GRPC\user\UpdateUserRequest;
+use GRPC\user\UpdateUserResponse;
 use GRPC\user\UserGrpcInterface;
 use Spiral\Auth\TokenStorageInterface;
 use Spiral\Mailer\MailerInterface;
 use Spiral\Mailer\Message;
 use Spiral\RoadRunner\GRPC;
+use Spiral\RoadRunner\GRPC\Exception\GRPCException;
 
 class UserService implements UserGrpcInterface
 {
@@ -52,13 +56,13 @@ class UserService implements UserGrpcInterface
     #[ValidateBy(UserRegisterRequest::class)]
     public function RegisterUser(GRPC\ContextInterface $ctx, RegisterUserRequest $in): RegisterUserResponse
     {
-        $firstName = $in->getFirstName() ?? null;
-        $lastName = $in->getLastName() ?? null;
-        $email = $in->getEmail() ?? null;
+        $firstName = $in->getFirstName();
+        $lastName = $in->getLastName();
+        $email = $in->getEmail();
         $mobile = $in->getMobile();
         $password = password_hash($in->getPassword(), PASSWORD_BCRYPT);
         $fatherName = $in->getFatherName() ?? null;
-        $nationalCode = $in->getNationalCode() ?? null;
+        $nationalCode = $in->getNationalCode();
         $birthDateString = $in->getBirthDate() ?? null;
 
         $birthDate = null;
@@ -157,6 +161,58 @@ class UserService implements UserGrpcInterface
 
         return $response;
 
+    }
+
+    #[ValidateBy(UserUpdateRequest::class)]
+    public function UpdateUser(GRPC\ContextInterface $ctx, UpdateUserRequest $in): UpdateUserResponse
+    {
+        $userId = $in->getUser();
+        $user = $this->orm->getRepository(User::class)->findByPK($userId);
+        if (!$user) {
+            return throw new GRPCException(
+                message: "User Not Find",
+                code: Code::NOT_FOUND
+            );
+        }
+
+        $firstName = $in->getFirstName();
+        $lastName = $in->getLastName();
+        $email = $in->getEmail();
+        $mobile = $in->getMobile();
+        $password = password_hash($in->getPassword(), PASSWORD_BCRYPT);
+        $fatherName = $in->getFatherName();
+        $nationalCode = $in->getNationalCode();
+        $birthDateString = $in->getBirthDate();
+
+        $birthDate = null;
+
+        if ($birthDateString) {
+            $birthDate = \DateTimeImmutable::createFromFormat('Y-m-d', $birthDateString);
+            if (!$birthDate || $birthDate->format('Y-m-d') !== $birthDateString) {
+                throw new GRPC\Exception\GRPCException(
+                    message: "Invalid birth date format. Expected format: YYYY-MM-DD.",
+                    code: Code::OUT_OF_RANGE
+                );
+            }
+        }
+        $code = $in->getCode();
+        if ($code === $user->getOtpCode() && $user->getOtpExpiredAt() > new \DateTimeImmutable())
+        {
+            $users = $this->orm->getRepository(User::class)->update($userId, $firstName ?: null, $lastName?: null,
+                $mobile ?: null,$email ?: null, $password ?: null,
+                $fatherName ?: null, $nationalCode ?: null, $birthDate ?: null);
+
+            $response = new UpdateUserResponse();
+            $response->setMessage("update account : {$users->getMobile()} successfully");
+
+            return $response;
+
+        }else{
+            throw new GRPCException(
+                message: "your code is invalid or expired!",
+                code: Code::UNAUTHENTICATED
+            );
+        }
     }
 
     #[ValidateBy(UserLoginMobileRequest::class)]
