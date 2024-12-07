@@ -4,20 +4,24 @@ namespace App\Domain\Repository;
 
 use App\Domain\Entity\User;
 use Cycle\ORM\EntityManager;
+use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Select;
 use Cycle\ORM\Select\Repository;
+use Google\Rpc\Code;
+use Spiral\RoadRunner\GRPC\Exception\GRPCException;
 
 class UserRepository extends Repository
 {
-    public function __construct(Select $select, private readonly EntityManager $entityManager)
+    public function __construct(Select                        $select, private readonly EntityManager $entityManager,
+                                private readonly ORMInterface $ORM)
     {
         parent::__construct($select);
     }
 
-    public function create(?string $firstName, ?string $lastName,
+    public function create(string $firstName, string $lastName,
                            string $mobile, string $email,
-                           string $password, ?string $fatherName,
-                           ?string $nationalCode, ?\DateTimeImmutable $birthDate): User
+                           string $password, string $fatherName,
+                           string $nationalCode, \DateTimeImmutable $birthDate): User
     {
 
         $user = new User();
@@ -37,6 +41,47 @@ class UserRepository extends Repository
         $this->entityManager->run();
 
         return $user;
+    }
+
+    public function update(int $userId, ?string $firstName, ?string $lastName,
+                           ?string $mobile, ?string $email,
+                           ?string $password, ?string $fatherName,
+                           ?string $nationalCode, ?\DateTimeImmutable $birthDate): User
+    {
+        $user = $this->ORM->getRepository(User::class)->findByPK($userId);
+
+        if ($firstName !== null) {
+            $user->setFirstName($firstName);
+        }
+        if ($lastName !== null) {
+            $user->setLastName($lastName);
+        }
+        if ($mobile !== null) {
+            $user->setMobile($mobile);
+        }
+        if ($email !== null) {
+            $user->setEmail($email);
+        }
+        if ($password !== null) {
+            $user->setPassword($password);
+        }
+        if ($fatherName !== null) {
+            $user->setFatherName($fatherName);
+        }
+        if ($nationalCode !== null) {
+            $user->setNationalCode($nationalCode);
+        }
+        if ($birthDate !== null) {
+            $user->setBirthDate($birthDate);
+        }
+
+        $user->setUpdatedAt(new \DateTimeImmutable());
+
+        $this->entityManager->persist($user);
+        $this->entityManager->run();
+
+        return $user;
+
     }
 
     public function findByMobile(string $mobile): ?User
