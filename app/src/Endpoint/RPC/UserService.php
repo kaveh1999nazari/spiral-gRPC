@@ -11,6 +11,7 @@ use App\Domain\Entity\UserResident;
 use App\Domain\Request\UserLoginEmailRequest;
 use App\Domain\Request\UserLoginMobileRequest;
 use App\Domain\Request\UserLoginOTPRequest;
+use App\Domain\Request\UserRegisterEducationRequest;
 use App\Domain\Request\UserRegisterRequest;
 use App\Domain\Attribute\ValidateBy;
 use App\Domain\Request\UserRegisterResidentRequest;
@@ -67,7 +68,6 @@ class UserService implements UserGrpcInterface
             }
         }
 
-
         $user = $this->orm->getRepository(User::class)
             ->create($firstName, $lastName, $mobile, $email, $password,
                 $fatherName, $nationalCode, $birthDate);
@@ -105,6 +105,7 @@ class UserService implements UserGrpcInterface
         return $response;
     }
 
+    #[ValidateBy(UserRegisterEducationRequest::class)]
     public function RegisterUserEducation(GRPC\ContextInterface $ctx, RegisterUserEducationRequest $in): RegisterUserEducationResponse
     {
         $userId = $in->getUser();
