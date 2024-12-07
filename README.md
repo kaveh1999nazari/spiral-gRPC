@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.0.1">
-            <h2>Last update V2.0.1</h2>
+        <div class="version" id="v2.0.2">
+            <h2>Last update V2.0.2</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
@@ -46,6 +46,7 @@
                 </li>
                 <li>User can:
                     <ul>
+                        <li>update the profile by OTP</li>
                         <li>Create carts</li>
                         <li>See all carts</li>
                         <li>Delete cart ids</li>
