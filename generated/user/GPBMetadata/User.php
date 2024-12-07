@@ -16,7 +16,7 @@ class User
         }
         $pool->internalAddGeneratedFile(
             '
-¯
+¾
 
 user.protouser"­
 RegisterUserRequest
@@ -85,7 +85,7 @@ birth_date	 (	
 code
  (	"%
 UpdateUserResponse
-message (	"{
+message (	"‰
 UpdateUserResidentRequest
 
 id (
@@ -93,7 +93,8 @@ birth_date	 (	
 address (	
 postal_code (	
 province (
-city ("-
+city (
+code (	"-
 UpdateUserResidentResponse
 message (	"6
 LoginMobileRequest

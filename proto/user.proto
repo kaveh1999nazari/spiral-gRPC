@@ -101,6 +101,7 @@ message UpdateUserResidentRequest {
     string postal_code = 4;
     int32 province = 5;
     int32 city = 6;
+    string code = 7;
 }
 
 message UpdateUserResidentResponse {

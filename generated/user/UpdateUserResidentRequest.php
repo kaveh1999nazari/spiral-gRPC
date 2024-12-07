@@ -37,6 +37,10 @@ class UpdateUserResidentRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 city = 6;</code>
      */
     protected $city = 0;
+    /**
+     * Generated from protobuf field <code>string code = 7;</code>
+     */
+    protected $code = '';
 
     /**
      * Constructor.
@@ -50,6 +54,7 @@ class UpdateUserResidentRequest extends \Google\Protobuf\Internal\Message
      *     @type string $postal_code
      *     @type int $province
      *     @type int $city
+     *     @type string $code
      * }
      */
     public function __construct($data = NULL) {
@@ -185,6 +190,28 @@ class UpdateUserResidentRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->city = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string code = 7;</code>
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Generated from protobuf field <code>string code = 7;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCode($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->code = $var;
 
         return $this;
     }
