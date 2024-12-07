@@ -252,14 +252,23 @@ class UserService implements UserGrpcInterface
         $city = $this->orm->getRepository(City::class)
             ->findByPK($cityId);
 
-        $userResident = $this->orm->getRepository(UserResident::class)
-            ->update($id, $address ?: null, $postalCode ?: null,
-                $province ?: null, $city ?: null);
+        $code = $in->getCode();
+        if ($code && $code === $user->getUser()->getOtpCode() && $user->getUser()->getOtpExpiredAt() > new \DateTimeImmutable())
+        {
+            $userResident = $this->orm->getRepository(UserResident::class)
+                ->update($id, $address ?: null, $postalCode ?: null,
+                    $province ?: null, $city ?: null);
 
-        $response = new UpdateUserResidentResponse();
-        $response->setMessage("update account : {$user->getUser()->getMobile()} resident's successfully");
+            $response = new UpdateUserResidentResponse();
+            $response->setMessage("update account : {$user->getUser()->getMobile()} resident's successfully");
 
-        return $response;
+            return $response;
+
+        }else{
+            throw new GRPCException(
+                message: "Code is Invalid or expired!",code: Code::UNAUTHENTICATED
+            );
+        }
 
     }
 
