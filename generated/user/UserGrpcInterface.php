@@ -31,6 +31,15 @@ interface UserGrpcInterface extends GRPC\ServiceInterface
 
     /**
     * @param GRPC\ContextInterface $ctx
+    * @param RegisterUserEducationRequest $in
+    * @return RegisterUserEducationResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function RegisterUserEducation(GRPC\ContextInterface $ctx, RegisterUserEducationRequest $in): RegisterUserEducationResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
     * @param LoginMobileRequest $in
     * @return LoginMobileResponse
     *
