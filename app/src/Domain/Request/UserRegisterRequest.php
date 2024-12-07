@@ -39,7 +39,7 @@ class UserRegisterRequest implements BaseRequest
 
             "nationalCode" => [
                 'required',
-                ['string::length', 10]
+                ['regexp', '/[0-9]{10}$/'],
             ],
 
             "birthDate" => [
