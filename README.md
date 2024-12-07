@@ -15,14 +15,16 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.0">
-            <h2>Last update V2.0</h2>
+        <div class="version" id="v2.0.1">
+            <h2>Last update V2.0.1</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
                     <ul>
                         <li>with user personal information</li>
                         <li>with user personal resident information</li>
+                        <li>with user personal education information</li>
+                        <li>with user personal job information</li>
                         <li>Receive a welcome email if add email</li>
                     </ul>
                 <li>Login user:
