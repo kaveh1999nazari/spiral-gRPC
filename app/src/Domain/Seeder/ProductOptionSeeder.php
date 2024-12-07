@@ -1,6 +1,6 @@
 <?php
 
-namespace App\database\seeder;
+namespace App\Domain\Seeder;
 
 use App\Domain\Entity\Option;
 use App\Domain\Entity\OptionValue;

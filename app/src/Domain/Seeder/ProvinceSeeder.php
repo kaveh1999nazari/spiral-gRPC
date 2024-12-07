@@ -1,6 +1,6 @@
 <?php
 
-namespace App\database\seeder;
+namespace App\Domain\Seeder;
 
 use App\Domain\Entity\Province;
 use Spiral\DatabaseSeeder\Attribute\Seeder;
