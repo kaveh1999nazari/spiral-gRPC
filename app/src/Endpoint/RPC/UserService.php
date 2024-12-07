@@ -99,12 +99,16 @@ class UserService implements UserGrpcInterface
         $provinceId = $in->getProvince();
         $cityId = $in->getCity();
 
-        $user = $this->orm->getRepository(User::class)->findByPK($userId);
-        $province = $this->orm->getRepository(Province::class)->findByPK($provinceId);
-        $city = $this->orm->getRepository(City::class)->findByPK($cityId);
+        $user = $this->orm->getRepository(User::class)
+            ->findByPK($userId);
+        $province = $this->orm->getRepository(Province::class)
+            ->findByPK($provinceId);
+        $city = $this->orm->getRepository(City::class)
+            ->findByPK($cityId);
 
-        $userResident = $this->orm->getRepository(UserResident::class)->create($user, $address,
-            $postalCode, $province, $city);
+        $userResident = $this->orm->getRepository(UserResident::class)
+            ->create($user, $address,
+                $postalCode, $province, $city);
 
         $response = new RegisterUserResidentResponse();
         $response->setId($user->getId());
@@ -120,10 +124,13 @@ class UserService implements UserGrpcInterface
         $university = $in->getUniversity();
         $degreeId = $in->getDegree();
 
-        $user = $this->orm->getRepository(User::class)->findByPK($userId);
-        $degree = $this->orm->getRepository(Degree::class)->findByPK($degreeId);
+        $user = $this->orm->getRepository(User::class)
+            ->findByPK($userId);
+        $degree = $this->orm->getRepository(Degree::class)
+            ->findByPK($degreeId);
 
-        $userEducation = $this->orm->getRepository(UserEducation::class)->create($user, $university, $degree);
+        $userEducation = $this->orm->getRepository(UserEducation::class)
+            ->create($user, $university, $degree);
 
         $response = new RegisterUserEducationResponse();
         $response->setId($user->getId());
@@ -148,12 +155,17 @@ class UserService implements UserGrpcInterface
         $workType = $in->getWorkType();
         $contractType = $in->getContractType();
 
-        $user = $this->orm->getRepository(User::class)->findByPK($userId);
-        $province = $this->orm->getRepository(Province::class)->findByPK($provinceId);
-        $city = $this->orm->getRepository(City::class)->findByPK($cityId);
+        $user = $this->orm->getRepository(User::class)
+            ->findByPK($userId);
+        $province = $this->orm->getRepository(Province::class)
+            ->findByPK($provinceId);
+        $city = $this->orm->getRepository(City::class)
+            ->findByPK($cityId);
 
-        $userJob = $this->orm->getRepository(UserJob::class)->create($user, $province, $city, $title,
-            $phone, $postalCode, $address, $monthlySalary, $workExperienceDuration, $workType, $contractType);
+        $userJob = $this->orm->getRepository(UserJob::class)
+            ->create($user, $province, $city, $title,
+                $phone, $postalCode, $address, $monthlySalary,
+                $workExperienceDuration, $workType, $contractType);
 
         $response = new RegisterUserJobResponse();
         $response->setId($user->getId());
@@ -167,7 +179,8 @@ class UserService implements UserGrpcInterface
     public function UpdateUser(GRPC\ContextInterface $ctx, UpdateUserRequest $in): UpdateUserResponse
     {
         $userId = $in->getUser();
-        $user = $this->orm->getRepository(User::class)->findByPK($userId);
+        $user = $this->orm->getRepository(User::class)
+            ->findByPK($userId);
         if (!$user) {
             return throw new GRPCException(
                 message: "User Not Find",
@@ -196,18 +209,18 @@ class UserService implements UserGrpcInterface
             }
         }
         $code = $in->getCode();
-        if ($code === $user->getOtpCode() && $user->getOtpExpiredAt() > new \DateTimeImmutable())
-        {
-            $users = $this->orm->getRepository(User::class)->update($userId, $firstName ?: null, $lastName?: null,
-                $mobile ?: null,$email ?: null, $password ?: null,
-                $fatherName ?: null, $nationalCode ?: null, $birthDate ?: null);
+        if ($code === $user->getOtpCode() && $user->getOtpExpiredAt() > new \DateTimeImmutable()) {
+            $users = $this->orm->getRepository(User::class)
+                ->update($userId, $firstName ?: null, $lastName ?: null,
+                    $mobile ?: null, $email ?: null, $password ?: null,
+                    $fatherName ?: null, $nationalCode ?: null, $birthDate ?: null);
 
             $response = new UpdateUserResponse();
             $response->setMessage("update account : {$users->getMobile()} successfully");
 
             return $response;
 
-        }else{
+        } else {
             throw new GRPCException(
                 message: "your code is invalid or expired!",
                 code: Code::UNAUTHENTICATED
@@ -250,7 +263,8 @@ class UserService implements UserGrpcInterface
         $email = $in->getEmail();
         $password = $in->getPassword();
 
-        $user = $this->orm->getRepository(User::class)->findOne(['email' => $email]);
+        $user = $this->orm->getRepository(User::class)
+            ->findOne(['email' => $email]);
 
         $response = new LoginEmailResponse();
 
@@ -274,7 +288,8 @@ class UserService implements UserGrpcInterface
         $email = $in->getEmail();
         $code = $in->getCode();
 
-        $user = $this->orm->getRepository(User::class)->findOne(['email' => $email]);
+        $user = $this->orm->getRepository(User::class)
+            ->findOne(['email' => $email]);
 
         $response = new LoginOTPResponse();
 
