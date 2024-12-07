@@ -35,6 +35,8 @@ use GRPC\user\RegisterUserResidentRequest;
 use GRPC\user\RegisterUserResidentResponse;
 use GRPC\user\RegisterUserResponse;
 use GRPC\user\UpdateUserRequest;
+use GRPC\user\UpdateUserResidentRequest;
+use GRPC\user\UpdateUserResidentResponse;
 use GRPC\user\UpdateUserResponse;
 use GRPC\user\UserGrpcInterface;
 use Spiral\Auth\TokenStorageInterface;
@@ -226,6 +228,39 @@ class UserService implements UserGrpcInterface
                 code: Code::UNAUTHENTICATED
             );
         }
+    }
+
+    public function UpdateUserResident(GRPC\ContextInterface $ctx, UpdateUserResidentRequest $in): UpdateUserResidentResponse
+    {
+        $id = $in->getId();
+        $userId = $in->getUser();
+        $address = $in->getAddress();
+        $postalCode = $in->getPostalCode();
+        $provinceId = $in->getProvince();
+        $cityId = $in->getCity();
+
+        $user = $this->orm->getRepository(UserResident::class)
+            ->findOne(['user_id' => $userId]);
+        if (!$user) {
+            throw new GRPCException(
+                message: "Not Found User!", code: Code::NOT_FOUND
+            );
+        }
+
+        $province = $this->orm->getRepository(Province::class)
+            ->findByPK($provinceId);
+        $city = $this->orm->getRepository(City::class)
+            ->findByPK($cityId);
+
+        $userResident = $this->orm->getRepository(UserResident::class)
+            ->update($id, $address ?: null, $postalCode ?: null,
+                $province ?: null, $city ?: null);
+
+        $response = new UpdateUserResidentResponse();
+        $response->setMessage("update account : {$user->getUser()->getMobile()} resident's successfully");
+
+        return $response;
+
     }
 
     #[ValidateBy(UserLoginMobileRequest::class)]
