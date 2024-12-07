@@ -12,6 +12,7 @@ service UserGrpc {
     rpc RegisterUserEducation (RegisterUserEducationRequest) returns (RegisterUserEducationResponse);
     rpc RegisterUserJob (RegisterUserJobRequest) returns (RegisterUserJobResponse);
     rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
+    rpc UpdateUserResident (UpdateUserResidentRequest) returns (UpdateUserResidentResponse);
     rpc LoginByMobile (LoginMobileRequest) returns (LoginMobileResponse);
     rpc LoginByEmail (LoginEmailRequest) returns (LoginEmailResponse);
     rpc LoginByOTP (LoginOTPRequest) returns (LoginOTPResponse);
@@ -90,6 +91,19 @@ message UpdateUserRequest {
 }
 
 message UpdateUserResponse {
+    string message = 1;
+}
+
+message UpdateUserResidentRequest {
+    int32 id = 1;
+    int32 user = 2;
+    string address = 3;
+    string postal_code = 4;
+    int32 province = 5;
+    int32 city = 6;
+}
+
+message UpdateUserResidentResponse {
     string message = 1;
 }
 
