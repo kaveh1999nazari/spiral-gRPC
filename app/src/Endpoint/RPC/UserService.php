@@ -3,8 +3,10 @@
 namespace App\Endpoint\RPC;
 
 use App\Domain\Entity\City;
+use App\Domain\Entity\Degree;
 use App\Domain\Entity\Province;
 use App\Domain\Entity\User;
+use App\Domain\Entity\UserEducation;
 use App\Domain\Entity\UserResident;
 use App\Domain\Request\UserLoginEmailRequest;
 use App\Domain\Request\UserLoginMobileRequest;
@@ -20,6 +22,8 @@ use GRPC\user\LoginMobileRequest;
 use GRPC\user\LoginMobileResponse;
 use GRPC\user\LoginOTPRequest;
 use GRPC\user\LoginOTPResponse;
+use GRPC\user\RegisterUserEducationRequest;
+use GRPC\user\RegisterUserEducationResponse;
 use GRPC\user\RegisterUserRequest;
 use GRPC\user\RegisterUserResidentRequest;
 use GRPC\user\RegisterUserResidentResponse;
@@ -99,6 +103,25 @@ class UserService implements UserGrpcInterface
         $response->setMessage("User Resident account: {$user->getMobile()} successfully create");
 
         return $response;
+    }
+
+    public function RegisterUserEducation(GRPC\ContextInterface $ctx, RegisterUserEducationRequest $in): RegisterUserEducationResponse
+    {
+        $userId = $in->getUser();
+        $university = $in->getUniversity();
+        $degreeId = $in->getDegree();
+
+        $user = $this->orm->getRepository(User::class)->findByPK($userId);
+        $degree = $this->orm->getRepository(Degree::class)->findByPK($degreeId);
+
+        $userEducation = $this->orm->getRepository(UserEducation::class)->create($user, $university, $degree);
+
+        $response = new RegisterUserEducationResponse();
+        $response->setId($user->getId());
+        $response->setMessage("User Education account: {$user->getMobile()} successfully create");
+
+        return $response;
+
     }
 
     #[ValidateBy(UserLoginMobileRequest::class)]
