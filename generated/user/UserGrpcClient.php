@@ -51,6 +51,17 @@ class UserGrpcClient implements UserGrpcInterface
         return $response;
     }
 
+    public function RegisterUserJob(ContextInterface $ctx, RegisterUserJobRequest $in): RegisterUserJobResponse
+    {
+        [$response, $status] = $this->core->callAction(UserGrpcInterface::class, '/'.self::NAME.'/RegisterUserJob', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\user\RegisterUserJobResponse::class,
+        ]);
+
+        return $response;
+    }
+
     public function LoginByMobile(ContextInterface $ctx, LoginMobileRequest $in): LoginMobileResponse
     {
         [$response, $status] = $this->core->callAction(UserGrpcInterface::class, '/'.self::NAME.'/LoginByMobile', [
