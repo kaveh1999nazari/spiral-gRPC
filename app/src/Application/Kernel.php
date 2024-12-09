@@ -102,6 +102,9 @@ class Kernel extends \Spiral\Framework\Kernel
 
             // Mailer
             \Spiral\SendIt\Bootloader\MailerBootloader::class,
+
+            // Queue
+            \Spiral\Queue\Bootloader\QueueBootloader::class,
         ];
     }
 }
