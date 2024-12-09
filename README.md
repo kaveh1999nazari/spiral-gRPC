@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.0.2">
-            <h2>Last update V2.0.2</h2>
+        <div class="version" id="v2.0.3">
+            <h2>Last update V2.0.3</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
@@ -60,6 +60,7 @@
                     </ul>
                 </li>
                 <li>Added Seeder for Product Options</li>
+                <li>Added Q-Notification</li>
             </ul>
             <p><strong>Fixes:</strong></p>
             <ul class="fixes">
