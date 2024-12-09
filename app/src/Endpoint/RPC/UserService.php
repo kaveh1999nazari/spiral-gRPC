@@ -2,6 +2,7 @@
 
 namespace App\Endpoint\RPC;
 
+use App\Domain\Attribute\ValidateBy;
 use App\Domain\Entity\City;
 use App\Domain\Entity\Degree;
 use App\Domain\Entity\Province;
@@ -15,10 +16,11 @@ use App\Domain\Request\UserLoginOTPRequest;
 use App\Domain\Request\UserRegisterEducationRequest;
 use App\Domain\Request\UserRegisterJobRequest;
 use App\Domain\Request\UserRegisterRequest;
-use App\Domain\Attribute\ValidateBy;
 use App\Domain\Request\UserRegisterResidentRequest;
 use App\Domain\Request\UserUpdateRequest;
 use App\Domain\Request\UserUpdateResidentRequest;
+use App\Endpoint\Job\SendLoginNotificationEmailJob;
+use App\Endpoint\Job\SendWelcomeEmailJob;
 use Cycle\ORM\ORMInterface;
 use Google\Rpc\Code;
 use GRPC\user\LoginEmailRequest;
@@ -41,8 +43,7 @@ use GRPC\user\UpdateUserResidentResponse;
 use GRPC\user\UpdateUserResponse;
 use GRPC\user\UserGrpcInterface;
 use Spiral\Auth\TokenStorageInterface;
-use Spiral\Mailer\MailerInterface;
-use Spiral\Mailer\Message;
+use Spiral\Queue\QueueInterface;
 use Spiral\RoadRunner\GRPC;
 use Spiral\RoadRunner\GRPC\Exception\GRPCException;
 
@@ -51,7 +52,7 @@ class UserService implements UserGrpcInterface
     public function __construct(
         protected readonly ORMInterface        $orm,
         private readonly TokenStorageInterface $tokens,
-        private readonly MailerInterface       $mailer,
+        private readonly QueueInterface $queue,
     )
     {
     }
@@ -83,8 +84,13 @@ class UserService implements UserGrpcInterface
             ->create($firstName, $lastName, $mobile, $email, $password,
                 $fatherName, $nationalCode, $birthDate);
 
+
         if ($user->getEmail()) {
-            $this->sendWelcomeEmail($user->getFirstName(), $user->getLastName(), $user->getEmail());
+            $this->queue->push(SendWelcomeEmailJob::class, [
+                'firstName' => $user->getFirstName(),
+                'lastName' => $user->getLastName(),
+                'email' => $user->getEmail(),
+            ]);
         }
 
         $response = new RegisterUserResponse();
@@ -290,9 +296,11 @@ class UserService implements UserGrpcInterface
             $token = $this->tokens->create(['sub' => $user->getId()]);
             $response->setToken($token->getID());
             $response->setMessage($user->getRoles());
-            $this->sendLoginNotificationEmail($user->getFirstName(),
-                $user->getLastName(),
-                $user->getEmail());
+            $this->queue->push(SendLoginNotificationEmailJob::class, [
+                'firstName' => $user->getFirstName(),
+                'lastName' => $user->getLastName(),
+                'email' => $user->getEmail(),
+            ]);
             return $response;
         } else {
             $response->setMessage(["Authentication failed."]);
@@ -318,9 +326,11 @@ class UserService implements UserGrpcInterface
             $token = $this->tokens->create(['sub' => $user->getId()]);
             $response->setMessage($user->getRoles());
             $response->setToken($token->getID());
-            $this->sendLoginNotificationEmail($user->getFirstName(),
-                $user->getLastName(),
-                $user->getEmail());
+            $this->queue->push(SendLoginNotificationEmailJob::class, [
+                'firstName' => $user->getFirstName(),
+                'lastName' => $user->getLastName(),
+                'email' => $user->getEmail(),
+            ]);
         } else {
             $response->setMessage(["Authentication failed."]);
         }
@@ -343,9 +353,11 @@ class UserService implements UserGrpcInterface
             $token = $this->tokens->create(['sub' => $user->getId()]);
             $response->setMessage($user->getRoles());
             $response->setToken($token->getID());
-            $this->sendLoginNotificationEmail($user->getFirstName(),
-                $user->getLastName(),
-                $user->getEmail());
+            $this->queue->push(SendLoginNotificationEmailJob::class, [
+                'firstName' => $user->getFirstName(),
+                'lastName' => $user->getLastName(),
+                'email' => $user->getEmail(),
+            ]);
         } else {
             $response->setMessage(["Authentication failed."]);
         }
@@ -353,30 +365,4 @@ class UserService implements UserGrpcInterface
         return $response;
     }
 
-    private function sendWelcomeEmail(?string $firstName, ?string $lastName, ?string $email)
-    {
-        $this->mailer->send(new Message(
-            'emails/welcome.email.dark.php',
-            $email,
-            [
-                'first_name' => $firstName,
-                'last_name' => $lastName
-            ]
-
-        ));
-    }
-
-    private function sendLoginNotificationEmail(?string $firstName, ?string $lastName, ?string $email)
-    {
-        $this->mailer->send(new Message(
-            'emails/login.email.dark.php',
-            $email,
-            [
-                'first_name' => $firstName,
-                'last_name' => $lastName,
-                'login_time' => date('Y-m-d H:i:s')
-            ]
-
-        ));
-    }
 }
