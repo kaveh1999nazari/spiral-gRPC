@@ -18,6 +18,7 @@ use App\Domain\Request\UserRegisterRequest;
 use App\Domain\Attribute\ValidateBy;
 use App\Domain\Request\UserRegisterResidentRequest;
 use App\Domain\Request\UserUpdateRequest;
+use App\Domain\Request\UserUpdateResidentRequest;
 use Cycle\ORM\ORMInterface;
 use Google\Rpc\Code;
 use GRPC\user\LoginEmailRequest;
@@ -230,6 +231,7 @@ class UserService implements UserGrpcInterface
         }
     }
 
+    #[ValidateBy(UserUpdateResidentRequest::class)]
     public function UpdateUserResident(GRPC\ContextInterface $ctx, UpdateUserResidentRequest $in): UpdateUserResidentResponse
     {
         $id = $in->getId();
