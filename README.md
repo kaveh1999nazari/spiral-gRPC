@@ -60,7 +60,7 @@
                     </ul>
                 </li>
                 <li>Added Seeder for Product Options</li>
-                <li>Added Q-Notification</li>
+                <li>Added Queue-Notification</li>
             </ul>
             <p><strong>Fixes:</strong></p>
             <ul class="fixes">
