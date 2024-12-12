@@ -18,14 +18,14 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305050 extends Migration
                 'unsigned' => false,
                 'zerofill' => false,
             ])
-            ->addColumn('user_id', 'integer')
+            ->addColumn('user_id', 'integer', ['nullable' => true])
             ->addForeignKey(['user_id'], 'users', ['id'], [
                 'onDelete' => 'CASCADE',
                 'onUpdate' => 'CASCADE'
             ])
-            ->addColumn('uuid', 'string')
-            ->addColumn('product_price_id', 'integer', ['nullable' => false])
-            ->addForeignKey(['product_price_id'], 'productprices', ['id'], [
+            ->addColumn('uuid', 'string', ['nullable' => true])
+            ->addColumn('productPrice_id', 'integer', ['nullable' => false])
+            ->addForeignKey(['productPrice_id'], 'productprices', ['id'], [
                 'onDelete' => 'CASCADE',
                 'onUpdate' => 'CASCADE'
             ])
