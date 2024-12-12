@@ -5,6 +5,7 @@ namespace App\Endpoint\RPC;
 use App\Domain\Attribute\ValidateBy;
 use App\Domain\Entity\City;
 use App\Domain\Entity\Degree;
+use App\Domain\Entity\Media;
 use App\Domain\Entity\Province;
 use App\Domain\Entity\User;
 use App\Domain\Entity\UserEducation;
@@ -68,6 +69,7 @@ class UserService implements UserGrpcInterface
         $fatherName = $in->getFatherName() ?? null;
         $nationalCode = $in->getNationalCode();
         $birthDateString = $in->getBirthDate() ?? null;
+        $picturePath = $in->getPicture();
 
         $birthDate = null;
         if ($birthDateString) {
@@ -83,6 +85,12 @@ class UserService implements UserGrpcInterface
         $user = $this->orm->getRepository(User::class)
             ->create($firstName, $lastName, $mobile, $email, $password,
                 $fatherName, $nationalCode, $birthDate);
+
+        if ($picturePath){
+            $name = substr($picturePath, 26);
+            $this->orm->getRepository(Media::class)
+                ->upload('user', $user->getId(), $name, $picturePath);
+        }
 
 
         if ($user->getEmail()) {
@@ -107,6 +115,7 @@ class UserService implements UserGrpcInterface
         $postalCode = $in->getPostalCode();
         $provinceId = $in->getProvince();
         $cityId = $in->getCity();
+        $picturePath = $in->getPostalCodeFile() ?? null;
 
         $user = $this->orm->getRepository(User::class)
             ->findByPK($userId);
@@ -118,6 +127,12 @@ class UserService implements UserGrpcInterface
         $userResident = $this->orm->getRepository(UserResident::class)
             ->create($user, $address,
                 $postalCode, $province, $city);
+
+        if ($picturePath){
+            $name = substr($picturePath, 26);
+            $this->orm->getRepository(Media::class)
+                ->upload('userResident', $user->getId(), $name, $picturePath);
+        }
 
         $response = new RegisterUserResidentResponse();
         $response->setId($user->getId());
@@ -132,6 +147,7 @@ class UserService implements UserGrpcInterface
         $userId = $in->getUser();
         $university = $in->getUniversity();
         $degreeId = $in->getDegree();
+        $picturePath = $in->getEducationFile() ?? null;
 
         $user = $this->orm->getRepository(User::class)
             ->findByPK($userId);
@@ -140,6 +156,12 @@ class UserService implements UserGrpcInterface
 
         $userEducation = $this->orm->getRepository(UserEducation::class)
             ->create($user, $university, $degree);
+
+        if ($picturePath){
+            $name = substr($picturePath, 26);
+            $this->orm->getRepository(Media::class)
+                ->upload('userEducation', $user->getId(), $name, $picturePath);
+        }
 
         $response = new RegisterUserEducationResponse();
         $response->setId($user->getId());
@@ -205,6 +227,7 @@ class UserService implements UserGrpcInterface
         $fatherName = $in->getFatherName();
         $nationalCode = $in->getNationalCode();
         $birthDateString = $in->getBirthDate();
+        $picturePath = $in->getPicture();
 
         $birthDate = null;
 
@@ -223,6 +246,12 @@ class UserService implements UserGrpcInterface
                 ->update($userId, $firstName ?: null, $lastName ?: null,
                     $mobile ?: null, $email ?: null, $password ?: null,
                     $fatherName ?: null, $nationalCode ?: null, $birthDate ?: null);
+
+            if ($picturePath){
+                $name = substr($picturePath, 26);
+                $this->orm->getRepository(Media::class)
+                    ->upload('user', $user->getId(), $name, $picturePath);
+            }
 
             $response = new UpdateUserResponse();
             $response->setMessage("update account : {$users->getMobile()} successfully");
@@ -246,6 +275,7 @@ class UserService implements UserGrpcInterface
         $postalCode = $in->getPostalCode();
         $provinceId = $in->getProvince();
         $cityId = $in->getCity();
+        $picturePath = $in->getPostalCodeFile() ?? null;
 
         $user = $this->orm->getRepository(UserResident::class)
             ->findOne(['user_id' => $userId]);
@@ -266,6 +296,12 @@ class UserService implements UserGrpcInterface
             $userResident = $this->orm->getRepository(UserResident::class)
                 ->update($id, $address ?: null, $postalCode ?: null,
                     $province ?: null, $city ?: null);
+
+            if ($picturePath){
+                $name = substr($picturePath, 26);
+                $this->orm->getRepository(Media::class)
+                    ->upload('UserResident', $user->getId(), $name, $picturePath);
+            }
 
             $response = new UpdateUserResidentResponse();
             $response->setMessage("update account : {$user->getUser()->getMobile()} resident's successfully");
