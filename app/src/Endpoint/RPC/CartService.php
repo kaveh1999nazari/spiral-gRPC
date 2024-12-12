@@ -39,21 +39,21 @@ class CartService implements CartGrpcInterface
      */
     public function CartCreate(GRPC\ContextInterface $ctx, CartCreateRequest $in): CartCreateResponse
     {
-        $productPrice = $this->getProductPrice($in->getProductPriceId());
-
-        $totalPrice = $this->calculateTotalPrice($productPrice->getPrice(), $in->getNumber());
-
         $authHeader = $ctx->getValue(self::AUTH_HEADER);
 
         $token = $this->extractToken($authHeader);
 
-        if($token){
+        if ($token) {
             $user = $this->getUserFromToken($token);
             $uuid = "";
-        }else{
+        } else {
             $user = null;
             $uuid = $ctx->getValue(self::UUID_HEADER)[0] ?? Uuid::uuid4()->toString();
         }
+
+        $productPrice = $this->getProductPrice($in->getProductPriceId());
+
+        $totalPrice = $this->calculateTotalPrice($productPrice->getPrice(), $in->getNumber());
 
         $cart = $this->handleCart($uuid, $user, $productPrice, $in->getNumber(), $totalPrice);
 
@@ -158,25 +158,28 @@ class CartService implements CartGrpcInterface
     private function handleCart(string $uuid, ?User $user, ProductPrice $productPrice, int $number, float $totalPrice): Cart
     {
         $cartRepository = $this->ORM->getRepository(Cart::class);
-
-        $existingCart = $user ? $cartRepository->select()
-                                                ->where('user_id', $user->getId())
-                                                ->where('productPrice_id', $productPrice->getId())
-                                                ->fetchOne()
-            :                   $cartRepository->select()
-                                                ->where('uuid', $uuid)
-                                                ->where('productPrice_id', $productPrice->getId())
-                                                ->fetchOne();
+        if ($user) {
+            $existingCart = $cartRepository->select()
+                ->where('user_id', $user->getId())
+                ->where('productPrice_id', $productPrice->getId())
+                ->fetchOne();
+        } else {
+            $existingCart = $cartRepository->select()
+                ->where('uuid', $uuid)
+                ->where('productPrice_id', $productPrice->getId())
+                ->fetchOne();
+        }
 
         if ($existingCart) {
             $number += $existingCart->getNumber();
             $totalPrice += $existingCart->getTotalPrice();
             return $cartRepository->createOrUpdate($existingCart->getId(), $user,
                 $uuid, $productPrice, $number, $totalPrice);
+        } else {
+            return $cartRepository->createOrUpdate(null, $user,
+                $uuid, $productPrice, $number, $totalPrice);
         }
 
-        return $cartRepository->createOrUpdate(null, $user,
-            $uuid, $productPrice, $number, $totalPrice);
     }
 
     /**
