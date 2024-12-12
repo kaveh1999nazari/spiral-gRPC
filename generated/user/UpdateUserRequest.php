@@ -50,7 +50,11 @@ class UpdateUserRequest extends \Google\Protobuf\Internal\Message
      */
     protected $birth_date = '';
     /**
-     * Generated from protobuf field <code>string code = 10;</code>
+     * Generated from protobuf field <code>string picture = 10;</code>
+     */
+    protected $picture = '';
+    /**
+     * Generated from protobuf field <code>string code = 11;</code>
      */
     protected $code = '';
 
@@ -69,6 +73,7 @@ class UpdateUserRequest extends \Google\Protobuf\Internal\Message
      *     @type string $father_name
      *     @type string $national_code
      *     @type string $birth_date
+     *     @type string $picture
      *     @type string $code
      * }
      */
@@ -276,7 +281,29 @@ class UpdateUserRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string code = 10;</code>
+     * Generated from protobuf field <code>string picture = 10;</code>
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Generated from protobuf field <code>string picture = 10;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setPicture($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->picture = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string code = 11;</code>
      * @return string
      */
     public function getCode()
@@ -285,7 +312,7 @@ class UpdateUserRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string code = 10;</code>
+     * Generated from protobuf field <code>string code = 11;</code>
      * @param string $var
      * @return $this
      */

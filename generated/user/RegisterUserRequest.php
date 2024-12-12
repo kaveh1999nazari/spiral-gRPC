@@ -45,6 +45,10 @@ class RegisterUserRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string birth_date = 8;</code>
      */
     protected $birth_date = '';
+    /**
+     * Generated from protobuf field <code>string picture = 9;</code>
+     */
+    protected $picture = '';
 
     /**
      * Constructor.
@@ -60,6 +64,7 @@ class RegisterUserRequest extends \Google\Protobuf\Internal\Message
      *     @type string $father_name
      *     @type string $national_code
      *     @type string $birth_date
+     *     @type string $picture
      * }
      */
     public function __construct($data = NULL) {
@@ -239,6 +244,28 @@ class RegisterUserRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->birth_date = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string picture = 9;</code>
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Generated from protobuf field <code>string picture = 9;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setPicture($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->picture = $var;
 
         return $this;
     }

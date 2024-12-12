@@ -25,6 +25,10 @@ class RegisterUserEducationRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 degree = 3;</code>
      */
     protected $degree = 0;
+    /**
+     * Generated from protobuf field <code>string education_file = 4;</code>
+     */
+    protected $education_file = '';
 
     /**
      * Constructor.
@@ -35,6 +39,7 @@ class RegisterUserEducationRequest extends \Google\Protobuf\Internal\Message
      *     @type int $user
      *     @type string $university
      *     @type int $degree
+     *     @type string $education_file
      * }
      */
     public function __construct($data = NULL) {
@@ -104,6 +109,28 @@ class RegisterUserEducationRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->degree = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string education_file = 4;</code>
+     * @return string
+     */
+    public function getEducationFile()
+    {
+        return $this->education_file;
+    }
+
+    /**
+     * Generated from protobuf field <code>string education_file = 4;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setEducationFile($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->education_file = $var;
 
         return $this;
     }

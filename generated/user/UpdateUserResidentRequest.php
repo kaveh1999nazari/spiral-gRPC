@@ -38,7 +38,11 @@ class UpdateUserResidentRequest extends \Google\Protobuf\Internal\Message
      */
     protected $city = 0;
     /**
-     * Generated from protobuf field <code>string code = 7;</code>
+     * Generated from protobuf field <code>string postal_code_file = 7;</code>
+     */
+    protected $postal_code_file = '';
+    /**
+     * Generated from protobuf field <code>string code = 8;</code>
      */
     protected $code = '';
 
@@ -54,6 +58,7 @@ class UpdateUserResidentRequest extends \Google\Protobuf\Internal\Message
      *     @type string $postal_code
      *     @type int $province
      *     @type int $city
+     *     @type string $postal_code_file
      *     @type string $code
      * }
      */
@@ -195,7 +200,29 @@ class UpdateUserResidentRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string code = 7;</code>
+     * Generated from protobuf field <code>string postal_code_file = 7;</code>
+     * @return string
+     */
+    public function getPostalCodeFile()
+    {
+        return $this->postal_code_file;
+    }
+
+    /**
+     * Generated from protobuf field <code>string postal_code_file = 7;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setPostalCodeFile($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->postal_code_file = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string code = 8;</code>
      * @return string
      */
     public function getCode()
@@ -204,7 +231,7 @@ class UpdateUserResidentRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string code = 7;</code>
+     * Generated from protobuf field <code>string code = 8;</code>
      * @param string $var
      * @return $this
      */

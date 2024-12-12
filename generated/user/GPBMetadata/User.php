@@ -16,9 +16,9 @@ class User
         }
         $pool->internalAddGeneratedFile(
             '
-¾
+­
 
-user.protouser"­
+user.protouser"¾
 RegisterUserRequest
 
 first_name (	
@@ -29,26 +29,29 @@ first_name (	
 father_name (	
 national_code (	
 
-birth_date (	"3
+birth_date (	
+picture	 (	"3
 RegisterUserResponse
 
 id (
-message (	"q
+message (	"‹
 RegisterUserResidentRequest
 user (
 address (	
 postal_code (	
 province (
-city (";
+city (
+postal_code_file (	";
 RegisterUserResidentResponse
 
 id (
-message (	"P
+message (	"h
 RegisterUserEducationRequest
 user (
 
 university (	
-degree ("<
+degree (
+education_file (	"<
 RegisterUserEducationResponse
 
 id (
@@ -69,7 +72,7 @@ university (	
 RegisterUserJobResponse
 
 id (
-message (	"Ç
+message (	"Ø
 UpdateUserRequest
 user (
 
@@ -81,11 +84,12 @@ first_name (	
 father_name (	
 national_code (	
 
-birth_date	 (	
-code
- (	"%
+birth_date	 (	
+picture
+ (	
+code (	"%
 UpdateUserResponse
-message (	"‰
+message (	"£
 UpdateUserResidentRequest
 
 id (
@@ -93,8 +97,9 @@ birth_date	 (	
 address (	
 postal_code (	
 province (
-city (
-code (	"-
+city (
+postal_code_file (	
+code (	"-
 UpdateUserResidentResponse
 message (	"6
 LoginMobileRequest

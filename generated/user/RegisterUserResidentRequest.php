@@ -33,6 +33,10 @@ class RegisterUserResidentRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 city = 5;</code>
      */
     protected $city = 0;
+    /**
+     * Generated from protobuf field <code>string postal_code_file = 6;</code>
+     */
+    protected $postal_code_file = '';
 
     /**
      * Constructor.
@@ -45,6 +49,7 @@ class RegisterUserResidentRequest extends \Google\Protobuf\Internal\Message
      *     @type string $postal_code
      *     @type int $province
      *     @type int $city
+     *     @type string $postal_code_file
      * }
      */
     public function __construct($data = NULL) {
@@ -158,6 +163,28 @@ class RegisterUserResidentRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->city = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string postal_code_file = 6;</code>
+     * @return string
+     */
+    public function getPostalCodeFile()
+    {
+        return $this->postal_code_file;
+    }
+
+    /**
+     * Generated from protobuf field <code>string postal_code_file = 6;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setPostalCodeFile($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->postal_code_file = $var;
 
         return $this;
     }
