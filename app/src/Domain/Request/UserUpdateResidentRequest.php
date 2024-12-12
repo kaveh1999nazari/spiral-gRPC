@@ -30,6 +30,10 @@ class UserUpdateResidentRequest implements BaseRequest
             'city' => [
             ],
 
+            "picture" => [
+                ['regexp', '/\.(jpg|jpeg|png|gif)$/i']
+            ],
+
             "code" => [
                 "required"
             ]
