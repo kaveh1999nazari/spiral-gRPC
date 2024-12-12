@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.0.4">
-            <h2>Last update V2.0.4</h2>
+        <div class="version" id="v2.0.5">
+            <h2>Last update V2.0.5</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
@@ -68,6 +68,8 @@
                 <li>Resolved upload storage issues</li>
                 <li>Resolved adding repetitive product-id</li>
                 <li>Resolved some bugs in Cart</li>
+                <li>Resolved some bugs in User</li>
+                <li>Resolved text email of sending otp</li>
             </ul>
         </div>
     </div>
