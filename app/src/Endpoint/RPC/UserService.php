@@ -61,35 +61,22 @@ class UserService implements UserGrpcInterface
     #[ValidateBy(UserRegisterRequest::class)]
     public function RegisterUser(GRPC\ContextInterface $ctx, RegisterUserRequest $in): RegisterUserResponse
     {
-        $firstName = $in->getFirstName();
-        $lastName = $in->getLastName();
-        $email = $in->getEmail();
-        $mobile = $in->getMobile();
         $password = password_hash($in->getPassword(), PASSWORD_BCRYPT);
-        $fatherName = $in->getFatherName() ?? null;
-        $nationalCode = $in->getNationalCode();
-        $birthDateString = $in->getBirthDate() ?? null;
-        $picturePath = $in->getPicture();
 
-        $birthDate = null;
-        if ($birthDateString) {
-            $birthDate = \DateTimeImmutable::createFromFormat('Y-m-d', $birthDateString);
-            if (!$birthDate || $birthDate->format('Y-m-d') !== $birthDateString) {
-                throw new GRPC\Exception\GRPCException(
-                    message: "Invalid birth date format. Expected format: YYYY-MM-DD.",
-                    code: Code::OUT_OF_RANGE
-                );
-            }
+        if ($in->getBirthDate()) {
+            $birthDate = \DateTimeImmutable::createFromFormat('Y-m-d', $in->getBirthDate());
         }
 
         $user = $this->orm->getRepository(User::class)
-            ->create($firstName, $lastName, $mobile, $email, $password,
-                $fatherName, $nationalCode, $birthDate);
+            ->create($in->getFirstName(), $in->getLastName(), $in->getMobile(), $in->getEmail(), $password,
+                $in->getFatherName(), $in->getNationalCode(), $birthDate);
 
-        if ($picturePath){
-            $name = substr($picturePath, 26);
-            $this->orm->getRepository(Media::class)
-                ->upload('user', $user->getId(), $name, $picturePath);
+        if ($in->getPicture()){
+            $imageName = substr($in->getPicture(), 26);
+            $this->uploadMedia('user',
+                $user->getId(),
+                $imageName,
+                $in->getPicture());
         }
 
 
@@ -103,35 +90,33 @@ class UserService implements UserGrpcInterface
 
         $response = new RegisterUserResponse();
         $response->setId($user->getId());
-        $response->setMessage("successfully account:{$mobile} created");
+        $response->setMessage("successfully account:{$user->getMobile()} created");
         return $response;
     }
 
     #[ValidateBy(UserRegisterResidentRequest::class)]
     public function RegisterUserResident(GRPC\ContextInterface $ctx, RegisterUserResidentRequest $in): RegisterUserResidentResponse
     {
-        $userId = $in->getUser();
-        $address = $in->getAddress();
-        $postalCode = $in->getPostalCode();
-        $provinceId = $in->getProvince();
-        $cityId = $in->getCity();
-        $picturePath = $in->getPostalCodeFile() ?? null;
-
         $user = $this->orm->getRepository(User::class)
-            ->findByPK($userId);
+            ->findByPK($in->getUser());
         $province = $this->orm->getRepository(Province::class)
-            ->findByPK($provinceId);
+            ->findByPK($in->getProvince());
         $city = $this->orm->getRepository(City::class)
-            ->findByPK($cityId);
+            ->findByPK($in->getCity());
 
-        $userResident = $this->orm->getRepository(UserResident::class)
-            ->create($user, $address,
-                $postalCode, $province, $city);
+        $this->orm->getRepository(UserResident::class)
+            ->create($user,
+                $in->getAddress(),
+                $in->getPostalCode(),
+                $province,
+                $city);
 
-        if ($picturePath){
-            $name = substr($picturePath, 26);
-            $this->orm->getRepository(Media::class)
-                ->upload('userResident', $user->getId(), $name, $picturePath);
+        if ($in->getPostalCodeFile()){
+            $name = substr($in->getPostalCodeFile(), 26);
+            $this->uploadMedia('userResident',
+                    $user->getId(),
+                    $name,
+                    $in->getPostalCodeFile());
         }
 
         $response = new RegisterUserResidentResponse();
@@ -144,23 +129,20 @@ class UserService implements UserGrpcInterface
     #[ValidateBy(UserRegisterEducationRequest::class)]
     public function RegisterUserEducation(GRPC\ContextInterface $ctx, RegisterUserEducationRequest $in): RegisterUserEducationResponse
     {
-        $userId = $in->getUser();
-        $university = $in->getUniversity();
-        $degreeId = $in->getDegree();
-        $picturePath = $in->getEducationFile() ?? null;
-
         $user = $this->orm->getRepository(User::class)
-            ->findByPK($userId);
+            ->findByPK($in->getUser());
         $degree = $this->orm->getRepository(Degree::class)
-            ->findByPK($degreeId);
+            ->findByPK($in->getDegree());
 
-        $userEducation = $this->orm->getRepository(UserEducation::class)
-            ->create($user, $university, $degree);
+        $this->orm->getRepository(UserEducation::class)
+            ->create($user, $in->getUniversity(), $degree);
 
-        if ($picturePath){
-            $name = substr($picturePath, 26);
-            $this->orm->getRepository(Media::class)
-                ->upload('userEducation', $user->getId(), $name, $picturePath);
+        if ($in->getEducationFile()){
+            $name = substr($in->getEducationFile(), 26);
+            $this->uploadMedia('userEducation',
+                $user->getId(),
+                $name,
+                $in->getEducationFile());
         }
 
         $response = new RegisterUserEducationResponse();
@@ -174,29 +156,17 @@ class UserService implements UserGrpcInterface
     #[ValidateBy(UserRegisterJobRequest::class)]
     public function RegisterUserJob(GRPC\ContextInterface $ctx, RegisterUserJobRequest $in): RegisterUserJobResponse
     {
-        $userId = $in->getUser();
-        $provinceId = $in->getProvince();
-        $cityId = $in->getCity();
-        $title = $in->getTitle();
-        $phone = $in->getPhone();
-        $postalCode = $in->getPostalCode();
-        $address = $in->getAddress();
-        $monthlySalary = $in->getMonthlySalary();
-        $workExperienceDuration = $in->getWorkExperienceDuration();
-        $workType = $in->getWorkType();
-        $contractType = $in->getContractType();
-
         $user = $this->orm->getRepository(User::class)
-            ->findByPK($userId);
+            ->findByPK($in->getUser());
         $province = $this->orm->getRepository(Province::class)
-            ->findByPK($provinceId);
+            ->findByPK($in->getProvince());
         $city = $this->orm->getRepository(City::class)
-            ->findByPK($cityId);
+            ->findByPK($in->getCity());
 
-        $userJob = $this->orm->getRepository(UserJob::class)
-            ->create($user, $province, $city, $title,
-                $phone, $postalCode, $address, $monthlySalary,
-                $workExperienceDuration, $workType, $contractType);
+        $this->orm->getRepository(UserJob::class)
+            ->create($user, $province, $city, $in->getTitle(),
+                $in->getPhone(), $in->getPostalCode(), $in->getAddress(), $in->getMonthlySalary(),
+                $in->getWorkExperienceDuration(), $in->getWorkType(), $in->getContractType());
 
         $response = new RegisterUserJobResponse();
         $response->setId($user->getId());
@@ -209,52 +179,37 @@ class UserService implements UserGrpcInterface
     #[ValidateBy(UserUpdateRequest::class)]
     public function UpdateUser(GRPC\ContextInterface $ctx, UpdateUserRequest $in): UpdateUserResponse
     {
-        $userId = $in->getUser();
         $user = $this->orm->getRepository(User::class)
-            ->findByPK($userId);
+            ->findByPK($in->getUser());
         if (!$user) {
             return throw new GRPCException(
-                message: "User Not Find",
+                message: "User Not Found",
                 code: Code::NOT_FOUND
             );
         }
 
-        $firstName = $in->getFirstName();
-        $lastName = $in->getLastName();
-        $email = $in->getEmail();
-        $mobile = $in->getMobile();
         $password = password_hash($in->getPassword(), PASSWORD_BCRYPT);
-        $fatherName = $in->getFatherName();
-        $nationalCode = $in->getNationalCode();
-        $birthDateString = $in->getBirthDate();
-        $picturePath = $in->getPicture();
 
-        $birthDate = null;
-
-        if ($birthDateString) {
-            $birthDate = \DateTimeImmutable::createFromFormat('Y-m-d', $birthDateString);
-            if (!$birthDate || $birthDate->format('Y-m-d') !== $birthDateString) {
-                throw new GRPC\Exception\GRPCException(
-                    message: "Invalid birth date format. Expected format: YYYY-MM-DD.",
-                    code: Code::OUT_OF_RANGE
-                );
-            }
+        if ($in->getBirthDate()) {
+            $birthDate = \DateTimeImmutable::createFromFormat('Y-m-d', $in->getBirthDate());
         }
-        $code = $in->getCode();
-        if ($code === $user->getOtpCode() && $user->getOtpExpiredAt() > new \DateTimeImmutable()) {
-            $users = $this->orm->getRepository(User::class)
-                ->update($userId, $firstName ?: null, $lastName ?: null,
-                    $mobile ?: null, $email ?: null, $password ?: null,
-                    $fatherName ?: null, $nationalCode ?: null, $birthDate ?: null);
 
-            if ($picturePath){
-                $name = substr($picturePath, 26);
-                $this->orm->getRepository(Media::class)
-                    ->upload('user', $user->getId(), $name, $picturePath);
+        if ($in->getCode() === $user->getOtpCode() && $user->getOtpExpiredAt() > new \DateTimeImmutable()) {
+            $this->orm->getRepository(User::class)
+                ->update($user->getId(), $in->getFirstName() ?: null, $in->getLastName() ?: null,
+                    $in->getMobile() ?: null, $in->getEmail() ?: null, $password ?: null,
+                    $in->getFatherName() ?: null, $in->getNationalCode() ?: null, $birthDate ?: null);
+
+            if ($in->getPicture()){
+                $name = substr($in->getPicture(), 26);
+                $this->uploadMedia('user',
+                    $user->getId(),
+                    $name,
+                    $in->getPicture());
             }
 
             $response = new UpdateUserResponse();
-            $response->setMessage("update account : {$users->getMobile()} successfully");
+            $response->setMessage("update account : {$user->getMobile()} successfully");
 
             return $response;
 
@@ -269,16 +224,8 @@ class UserService implements UserGrpcInterface
     #[ValidateBy(UserUpdateResidentRequest::class)]
     public function UpdateUserResident(GRPC\ContextInterface $ctx, UpdateUserResidentRequest $in): UpdateUserResidentResponse
     {
-        $id = $in->getId();
-        $userId = $in->getUser();
-        $address = $in->getAddress();
-        $postalCode = $in->getPostalCode();
-        $provinceId = $in->getProvince();
-        $cityId = $in->getCity();
-        $picturePath = $in->getPostalCodeFile() ?? null;
-
         $user = $this->orm->getRepository(UserResident::class)
-            ->findOne(['user_id' => $userId]);
+            ->findOne(['user_id' => $in->getUser()]);
         if (!$user) {
             throw new GRPCException(
                 message: "Not Found User!", code: Code::NOT_FOUND
@@ -286,21 +233,22 @@ class UserService implements UserGrpcInterface
         }
 
         $province = $this->orm->getRepository(Province::class)
-            ->findByPK($provinceId);
+            ->findByPK($in->getProvince());
         $city = $this->orm->getRepository(City::class)
-            ->findByPK($cityId);
+            ->findByPK($in->getCity());
 
-        $code = $in->getCode();
-        if ($code && $code === $user->getUser()->getOtpCode() && $user->getUser()->getOtpExpiredAt() > new \DateTimeImmutable())
+        if ($in->getCode() && $in->getCode() === $user->getUser()->getOtpCode() && $user->getUser()->getOtpExpiredAt() > new \DateTimeImmutable())
         {
-            $userResident = $this->orm->getRepository(UserResident::class)
-                ->update($id, $address ?: null, $postalCode ?: null,
+            $this->orm->getRepository(UserResident::class)
+                ->update($in->getId(), $in->getAddress() ?: null, $in->getPostalCode() ?: null,
                     $province ?: null, $city ?: null);
 
-            if ($picturePath){
-                $name = substr($picturePath, 26);
-                $this->orm->getRepository(Media::class)
-                    ->upload('UserResident', $user->getId(), $name, $picturePath);
+            if ($in->getPostalCodeFile()){
+                $name = substr($in->getPostalCodeFile(), 26);
+                $this->uploadMedia('UserResident',
+                    $user->getId(),
+                    $name,
+                    $in->getPostalCodeFile());
             }
 
             $response = new UpdateUserResidentResponse();
@@ -319,16 +267,13 @@ class UserService implements UserGrpcInterface
     #[ValidateBy(UserLoginMobileRequest::class)]
     public function LoginByMobile(GRPC\ContextInterface $ctx, LoginMobileRequest $in): LoginMobileResponse
     {
-        $mobile = $in->getMobile();
-        $password = $in->getPassword();
-
         /** @var User $user */
         $user = $this->orm->getRepository(User::class)
-            ->findByMobile($mobile);
+            ->findByMobile($in->getMobile());
 
         $response = new LoginMobileResponse();
 
-        if ($user && password_verify($password, $user->getPassword())) {
+        if ($user && password_verify($in->getPassword(), $user->getPassword())) {
             $token = $this->tokens->create(['sub' => $user->getId()]);
             $response->setToken($token->getID());
             $response->setMessage($user->getRoles());
@@ -350,15 +295,12 @@ class UserService implements UserGrpcInterface
     #[ValidateBy(UserLoginEmailRequest::class)]
     public function LoginByEmail(GRPC\ContextInterface $ctx, LoginEmailRequest $in): LoginEmailResponse
     {
-        $email = $in->getEmail();
-        $password = $in->getPassword();
-
         $user = $this->orm->getRepository(User::class)
-            ->findOne(['email' => $email]);
+            ->findOne(['email' => $in->getEmail()]);
 
         $response = new LoginEmailResponse();
 
-        if ($user && password_verify($password, $user->getPassword())) {
+        if ($user && password_verify($in->getPassword(), $user->getPassword())) {
             $token = $this->tokens->create(['sub' => $user->getId()]);
             $response->setMessage($user->getRoles());
             $response->setToken($token->getID());
@@ -377,15 +319,12 @@ class UserService implements UserGrpcInterface
     #[ValidateBy(UserLoginOTPRequest::class)]
     public function LoginByOTP(GRPC\ContextInterface $ctx, LoginOTPRequest $in): LoginOTPResponse
     {
-        $email = $in->getEmail();
-        $code = $in->getCode();
-
         $user = $this->orm->getRepository(User::class)
-            ->findOne(['email' => $email]);
+            ->findOne(['email' => $in->getEmail()]);
 
         $response = new LoginOTPResponse();
 
-        if ($user && $code === $user->getOtpCode() && $user->getOtpExpiredAt() > new \DateTimeImmutable()) {
+        if ($user && $in->getCode() === $user->getOtpCode() && $user->getOtpExpiredAt() > new \DateTimeImmutable()) {
             $token = $this->tokens->create(['sub' => $user->getId()]);
             $response->setMessage($user->getRoles());
             $response->setToken($token->getID());
@@ -399,6 +338,13 @@ class UserService implements UserGrpcInterface
         }
 
         return $response;
+    }
+
+    private function uploadMedia(string $entityName, int $entityId,
+                                 string $imageName, string $imagePath)
+    {
+        $this->orm->getRepository(Media::class)
+            ->upload($entityName, $entityId, $imageName, $imagePath);
     }
 
 }
