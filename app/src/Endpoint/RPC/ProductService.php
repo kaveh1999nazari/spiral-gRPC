@@ -28,24 +28,58 @@ class ProductService implements ProductGrpcInterface
     #[ValidateBy(ProductStoreRequest::class)]
     public function ProductCreate(GRPC\ContextInterface $ctx, ProductCreateRequest $in): ProductCreateResponse
     {
-        $name = $in->getName();
-        $description = $in->getDescription() ?? null;
-        $images = iterator_to_array($in->getImage()) ?? [];
-        $categoryId = $in->getCategoryId();
-        $price = $in->getPrice();
-        $options = [];
-
         foreach ($in->getOptions() as $key => $optionList) {
             $options[$key] = iterator_to_array($optionList->getValues());
         }
 
-        $category = $this->orm->getRepository(Category::class)->findByPK($categoryId);
+        $category = $this->orm->getRepository(Category::class)
+            ->findByPK($in->getCategoryId());
 
         if (!$category) {
-            throw new \Exception("Category not found for ID: $categoryId");
+            throw new \Exception("Category not found for ID: {$in->getCategoryId()}");
         }
 
+        $imagePaths = $this->checkUploadImage(iterator_to_array($in->getImage()));
 
+
+        $product = $this->orm->getRepository(Product::class)
+            ->create($in->getName(), $in->getDescription(), $imagePaths, $category);
+
+        $this->createProductPrice($product->getId(), $options, $in->getPrice());
+
+        $response = new ProductCreateResponse();
+        $response->setId($product->getId());
+        $response->setName($product->getName());
+        $response->setPrice($in->getPrice());
+        return $response;
+    }
+
+    private function cartesian($input)
+    {
+        $result = [];
+        foreach ($input as $key => $values) {
+            foreach ($values as $value) {
+                $result[] = [$key, $value];
+            }
+        }
+        return $result;
+    }
+
+    private function createProductPrice(int $id, array $options, string $price): void
+    {
+        $product = $this->orm->getRepository(Product::class)
+            ->findByPK($id);
+
+        $cartesianOptions = $this->cartesian($options);
+
+        foreach ($cartesianOptions as $combination) {
+            $this->orm->getRepository(ProductPrice::class)
+                ->create($product, $combination, $price);
+        }
+    }
+
+    private function checkUploadImage(array $images): array
+    {
         $imagePaths = [];
         if (!empty($images)) {
             $storagePath = $this->dirs->get('public');
@@ -64,36 +98,11 @@ class ProductService implements ProductGrpcInterface
                 }
 
                 $relativePath = $image;
+
                 $imagePaths[] = $relativePath;
             }
         }
 
-        $product = $this->orm->getRepository(Product::class)
-            ->create($name, $description, $imagePaths, $category);
-
-        $productId = $this->orm->getRepository(Product::class)->findByPK($product->getId());
-        $cartesianOptions = $this->cartesian($options);
-
-        foreach ($cartesianOptions as $combination) {
-            $this->orm->getRepository(ProductPrice::class)
-                ->create($productId, $combination, $price);
-        }
-
-        $response = new ProductCreateResponse();
-        $response->setId($product->getId());
-        $response->setName($product->getName());
-        $response->setPrice($price);
-        return $response;
-    }
-
-    private function cartesian($input)
-    {
-        $result = [];
-        foreach ($input as $key => $values) {
-            foreach ($values as $value) {
-                $result[] = [$key, $value];
-            }
-        }
-        return $result;
+        return $imagePaths;
     }
 }
