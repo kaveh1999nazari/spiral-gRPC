@@ -8,7 +8,7 @@ use Spiral\DatabaseSeeder\Attribute\Seeder;
 use Spiral\DatabaseSeeder\Seeder\AbstractSeeder;
 
 #[Seeder]
-class optionSeeder extends AbstractSeeder
+class OptionSeeder extends AbstractSeeder
 {
     public function run(): \Generator
     {
