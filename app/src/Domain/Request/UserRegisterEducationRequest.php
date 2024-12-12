@@ -20,6 +20,10 @@ class UserRegisterEducationRequest implements BaseRequest
                 'required',
             ],
 
+            "educationFile" => [
+                ['regexp', '/\.(jpg|jpeg|png|gif)$/i']
+            ]
+
         ];
     }
 
