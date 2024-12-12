@@ -39,6 +39,11 @@ class UserUpdateRequest implements BaseRequest
             "birthDate" => [
                 ['regexp', '/^\d{4}-\d{2}-\d{2}$/'],
             ],
+
+            "picture" => [
+                ['regexp', '/\.(jpg|jpeg|png|gif)$/i']
+            ],
+
             "code" => [
                 "required"
             ]
