@@ -27,6 +27,7 @@ message RegisterUserRequest {
     string father_name = 6;
     string national_code = 7;
     string birth_date = 8;
+    string picture = 9;
 }
 
 message RegisterUserResponse {
@@ -40,6 +41,7 @@ message RegisterUserResidentRequest {
     string postal_code = 3;
     int32 province = 4;
     int32 city = 5;
+    string postal_code_file = 6;
 }
 
 message RegisterUserResidentResponse {
@@ -51,6 +53,7 @@ message RegisterUserEducationRequest {
     int32 user = 1;
     string university = 2;
     int32 degree = 3;
+    string education_file = 4;
 }
 
 message RegisterUserEducationResponse {
@@ -87,7 +90,8 @@ message UpdateUserRequest {
     string father_name = 7;
     string national_code = 8;
     string birth_date = 9;
-    string code = 10;
+    string picture = 10;
+    string code = 11;
 }
 
 message UpdateUserResponse {
@@ -101,7 +105,8 @@ message UpdateUserResidentRequest {
     string postal_code = 4;
     int32 province = 5;
     int32 city = 6;
-    string code = 7;
+    string postal_code_file = 7;
+    string code = 8;
 }
 
 message UpdateUserResidentResponse {
@@ -138,5 +143,4 @@ message LoginOTPResponse {
     string token = 1;
     repeated string message = 2;
 }
-
 
