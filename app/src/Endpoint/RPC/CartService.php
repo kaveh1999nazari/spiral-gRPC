@@ -32,15 +32,19 @@ class CartService implements CartGrpcInterface
     {
     }
 
+    /**
+     * @param GRPC\ContextInterface $ctx
+     * @param cartCreateRequest $in
+     * @return cartCreateResponse
+     */
     public function CartCreate(GRPC\ContextInterface $ctx, CartCreateRequest $in): CartCreateResponse
     {
-        $number = $in->getNumber();
-        $productPriceId = $in->getProductPriceId();
+        $productPrice = $this->getProductPrice($in->getProductPriceId());
 
-        $productPrice = $this->getProductPrice($productPriceId);
-        $totalPrice = $this->calculateTotalPrice($productPrice->getPrice(), $number);
+        $totalPrice = $this->calculateTotalPrice($productPrice->getPrice(), $in->getNumber());
 
         $authHeader = $ctx->getValue(self::AUTH_HEADER);
+
         $token = $this->extractToken($authHeader);
 
         if($token){
@@ -51,21 +55,32 @@ class CartService implements CartGrpcInterface
             $uuid = $ctx->getValue(self::UUID_HEADER)[0] ?? Uuid::uuid4()->toString();
         }
 
-        $cart = $this->handleCart($uuid, $user, $productPrice, $number, $totalPrice);
+        $cart = $this->handleCart($uuid, $user, $productPrice, $in->getNumber(), $totalPrice);
 
         return $this->buildCreateResponse($cart, $user, $uuid, $totalPrice);
     }
 
+    /**
+     * @param GRPC\ContextInterface $ctx
+     * @param cartListRequest $in
+     * @return cartListResponse
+     */
     public function CartList(GRPC\ContextInterface $ctx, CartListRequest $in): CartListResponse
     {
         [$userId, $uuid] = $this->extractAuthOrUUID($ctx);
 
         $cartRepository = $this->ORM->getRepository(Cart::class);
+
         $carts = $this->fetchCarts($cartRepository, $userId, $uuid);
 
         return $this->buildListResponse($carts, $userId, $uuid);
     }
 
+    /**
+     * @param GRPC\ContextInterface $ctx
+     * @param cartDeleteRequest $in
+     * @return cartDeleteResponse
+     */
     public function CartDelete(GRPC\ContextInterface $ctx, CartDeleteRequest $in): CartDeleteResponse
     {
         [$user, $uuid] = $this->extractAuthOrUUID($ctx);
@@ -78,8 +93,10 @@ class CartService implements CartGrpcInterface
         return $response;
     }
 
-    // ======== Helper Methods ========
-
+    /**
+     * @param int $productPriceId
+     * @return ProductPrice
+     */
     private function getProductPrice(int $productPriceId): ProductPrice
     {
         $productPrice = $this->ORM->getRepository(ProductPrice::class)->findByPK($productPriceId);
@@ -92,11 +109,20 @@ class CartService implements CartGrpcInterface
         return $productPrice;
     }
 
+    /**
+     * @param float $price
+     * @param int $number
+     * @return float
+     */
     private function calculateTotalPrice(float $price, int $number): float
     {
         return $price * $number;
     }
 
+    /**
+     * @param array|null $authHeader
+     * @return string|null
+     */
     private function extractToken(?array $authHeader): ?string
     {
         return (is_array($authHeader) && isset($authHeader[0]) && !empty($authHeader[0]))
@@ -104,6 +130,10 @@ class CartService implements CartGrpcInterface
             : null;
     }
 
+    /**
+     * @param string $token
+     * @return User|null
+     */
     private function getUserFromToken(string $token): ?User
     {
         try {
@@ -117,22 +147,45 @@ class CartService implements CartGrpcInterface
         }
     }
 
+    /**
+     * @param string $uuid
+     * @param User|null $user
+     * @param ProductPrice $productPrice
+     * @param int $number
+     * @param float $totalPrice
+     * @return Cart
+     */
     private function handleCart(string $uuid, ?User $user, ProductPrice $productPrice, int $number, float $totalPrice): Cart
     {
         $cartRepository = $this->ORM->getRepository(Cart::class);
-        $existingCart = $user
-            ? $cartRepository->select()->where('user_id', $user->getId())->where('productPrice_id', $productPrice->getId())->fetchOne()
-            : $cartRepository->select()->where('uuid', $uuid)->where('productPrice_id', $productPrice->getId())->fetchOne();
+
+        $existingCart = $user ? $cartRepository->select()
+                                                ->where('user_id', $user->getId())
+                                                ->where('productPrice_id', $productPrice->getId())
+                                                ->fetchOne()
+            :                   $cartRepository->select()
+                                                ->where('uuid', $uuid)
+                                                ->where('productPrice_id', $productPrice->getId())
+                                                ->fetchOne();
 
         if ($existingCart) {
             $number += $existingCart->getNumber();
             $totalPrice += $existingCart->getTotalPrice();
-            return $cartRepository->createOrUpdate($existingCart->getId(), $user, $uuid, $productPrice, $number, $totalPrice);
+            return $cartRepository->createOrUpdate($existingCart->getId(), $user,
+                $uuid, $productPrice, $number, $totalPrice);
         }
 
-        return $cartRepository->createOrUpdate(null, $user, $uuid, $productPrice, $number, $totalPrice);
+        return $cartRepository->createOrUpdate(null, $user,
+            $uuid, $productPrice, $number, $totalPrice);
     }
 
+    /**
+     * @param Cart $cart
+     * @param User|null $user
+     * @param string $uuid
+     * @param float $totalPrice
+     * @return cartCreateResponse
+     */
     private function buildCreateResponse(Cart $cart, ?User $user, string $uuid, float $totalPrice): cartCreateResponse
     {
         $response = new cartCreateResponse();
@@ -143,6 +196,10 @@ class CartService implements CartGrpcInterface
         return $response;
     }
 
+    /**
+     * @param GRPC\ContextInterface $ctx
+     * @return array
+     */
     private function extractAuthOrUUID(GRPC\ContextInterface $ctx): array
     {
         $authHeader = $ctx->getValue(self::AUTH_HEADER);
@@ -164,6 +221,12 @@ class CartService implements CartGrpcInterface
         );
     }
 
+    /**
+     * @param $cartRepository
+     * @param int|null $userId
+     * @param string|null $uuid
+     * @return array
+     */
     private function fetchCarts($cartRepository, ?int $userId, ?string $uuid): array
     {
         try {
@@ -181,6 +244,12 @@ class CartService implements CartGrpcInterface
 
     }
 
+    /**
+     * @param array $carts
+     * @param int|null $userId
+     * @param string|null $uuid
+     * @return cartListResponse
+     */
     private function buildListResponse(array $carts, ?int $userId, ?string $uuid): cartListResponse
     {
         $response = new cartListResponse();
@@ -213,6 +282,12 @@ class CartService implements CartGrpcInterface
         return $response;
     }
 
+    /**
+     * @param int $cartId
+     * @param int|null $userId
+     * @param string|null $uuid
+     * @return void
+     */
     private function deleteCart(int $cartId, ?int $userId, ?string $uuid): void
     {
         $cartRepository = $this->ORM->getRepository(Cart::class);
