@@ -26,8 +26,12 @@ class UserRegisterResidentRequest implements BaseRequest
             ],
 
             'city' => [
-                'required'
+                'required',
             ],
+
+            "postalCodeFile" => [
+                ['regexp', '/\.(jpg|jpeg|png|gif)$/i']
+            ]
         ];
     }
 }
