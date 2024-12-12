@@ -16,9 +16,8 @@ class CategoryService implements CategoryGrpcInterface
     #[AuthenticatedBy(['admin'])]
     public function categoryCreate(GRPC\ContextInterface $ctx, CategoryCreateRequest $in): CategoryCreateResponse
     {
-        $name = $in->getName();
 
-        $category = $this->orm->getRepository(Category::class)->create($name);
+        $category = $this->orm->getRepository(Category::class)->create($in->getName());
 
         $response = new categoryCreateResponse();
         $response->setId($category->getId());
