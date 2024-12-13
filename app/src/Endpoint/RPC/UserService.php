@@ -20,8 +20,7 @@ use App\Domain\Request\UserRegisterRequest;
 use App\Domain\Request\UserRegisterResidentRequest;
 use App\Domain\Request\UserUpdateRequest;
 use App\Domain\Request\UserUpdateResidentRequest;
-use App\Endpoint\Job\SendLoginNotificationEmailJob;
-use App\Endpoint\Job\SendWelcomeEmailJob;
+use App\Endpoint\Job\SendUserNotificationEmailJob;
 use Cycle\ORM\ORMInterface;
 use Google\Rpc\Code;
 use GRPC\user\LoginEmailRequest;
@@ -53,7 +52,7 @@ class UserService implements UserGrpcInterface
     public function __construct(
         protected readonly ORMInterface        $orm,
         private readonly TokenStorageInterface $tokens,
-        private readonly QueueInterface $queue,
+        private readonly QueueInterface        $queue,
     )
     {
     }
@@ -71,7 +70,7 @@ class UserService implements UserGrpcInterface
             ->create($in->getFirstName(), $in->getLastName(), $in->getMobile(), $in->getEmail(), $password,
                 $in->getFatherName(), $in->getNationalCode(), $birthDate);
 
-        if ($in->getPicture()){
+        if ($in->getPicture()) {
             $imageName = substr($in->getPicture(), 26);
             $this->uploadMedia('user',
                 $user->getId(),
@@ -81,11 +80,7 @@ class UserService implements UserGrpcInterface
 
 
         if ($user->getEmail()) {
-            $this->queue->push(SendWelcomeEmailJob::class, [
-                'firstName' => $user->getFirstName(),
-                'lastName' => $user->getLastName(),
-                'email' => $user->getEmail(),
-            ]);
+            $this->sendMailNotification(true, $user);
         }
 
         $response = new RegisterUserResponse();
@@ -111,12 +106,12 @@ class UserService implements UserGrpcInterface
                 $province,
                 $city);
 
-        if ($in->getPostalCodeFile()){
+        if ($in->getPostalCodeFile()) {
             $name = substr($in->getPostalCodeFile(), 26);
             $this->uploadMedia('userResident',
-                    $user->getId(),
-                    $name,
-                    $in->getPostalCodeFile());
+                $user->getId(),
+                $name,
+                $in->getPostalCodeFile());
         }
 
         $response = new RegisterUserResidentResponse();
@@ -137,7 +132,7 @@ class UserService implements UserGrpcInterface
         $this->orm->getRepository(UserEducation::class)
             ->create($user, $in->getUniversity(), $degree);
 
-        if ($in->getEducationFile()){
+        if ($in->getEducationFile()) {
             $name = substr($in->getEducationFile(), 26);
             $this->uploadMedia('userEducation',
                 $user->getId(),
@@ -200,7 +195,7 @@ class UserService implements UserGrpcInterface
                     $in->getMobile() ?: null, $in->getEmail() ?: null, $password ?: null,
                     $in->getFatherName() ?: null, $in->getNationalCode() ?: null, $birthDate ?: null);
 
-            if ($in->getPicture()){
+            if ($in->getPicture()) {
                 $name = substr($in->getPicture(), 26);
                 $this->uploadMedia('user',
                     $user->getId(),
@@ -237,13 +232,12 @@ class UserService implements UserGrpcInterface
         $city = $this->orm->getRepository(City::class)
             ->findByPK($in->getCity());
 
-        if ($in->getCode() && $in->getCode() === $user->getUser()->getOtpCode() && $user->getUser()->getOtpExpiredAt() > new \DateTimeImmutable())
-        {
+        if ($in->getCode() && $in->getCode() === $user->getUser()->getOtpCode() && $user->getUser()->getOtpExpiredAt() > new \DateTimeImmutable()) {
             $this->orm->getRepository(UserResident::class)
                 ->update($in->getId(), $in->getAddress() ?: null, $in->getPostalCode() ?: null,
                     $province ?: null, $city ?: null);
 
-            if ($in->getPostalCodeFile()){
+            if ($in->getPostalCodeFile()) {
                 $name = substr($in->getPostalCodeFile(), 26);
                 $this->uploadMedia('UserResident',
                     $user->getId(),
@@ -256,9 +250,9 @@ class UserService implements UserGrpcInterface
 
             return $response;
 
-        }else{
+        } else {
             throw new GRPCException(
-                message: "Code is Invalid or expired!",code: Code::UNAUTHENTICATED
+                message: "Code is Invalid or expired!", code: Code::UNAUTHENTICATED
             );
         }
 
@@ -274,14 +268,14 @@ class UserService implements UserGrpcInterface
         $response = new LoginMobileResponse();
 
         if ($user && password_verify($in->getPassword(), $user->getPassword())) {
+
             $token = $this->tokens->create(['sub' => $user->getId()]);
+
             $response->setToken($token->getID());
             $response->setMessage($user->getRoles());
-            $this->queue->push(SendLoginNotificationEmailJob::class, [
-                'firstName' => $user->getFirstName(),
-                'lastName' => $user->getLastName(),
-                'email' => $user->getEmail(),
-            ]);
+
+            $this->sendMailNotification(false, $user);
+
             return $response;
         } else {
             $response->setMessage(["Authentication failed."]);
@@ -301,14 +295,13 @@ class UserService implements UserGrpcInterface
         $response = new LoginEmailResponse();
 
         if ($user && password_verify($in->getPassword(), $user->getPassword())) {
+
             $token = $this->tokens->create(['sub' => $user->getId()]);
+
             $response->setMessage($user->getRoles());
             $response->setToken($token->getID());
-            $this->queue->push(SendLoginNotificationEmailJob::class, [
-                'firstName' => $user->getFirstName(),
-                'lastName' => $user->getLastName(),
-                'email' => $user->getEmail(),
-            ]);
+
+            $this->sendMailNotification(false, $user);
         } else {
             $response->setMessage(["Authentication failed."]);
         }
@@ -324,15 +317,17 @@ class UserService implements UserGrpcInterface
 
         $response = new LoginOTPResponse();
 
-        if ($user && $in->getCode() === $user->getOtpCode() && $user->getOtpExpiredAt() > new \DateTimeImmutable()) {
+        if ($user &&
+            $in->getCode() === $user->getOtpCode() &&
+            $user->getOtpExpiredAt() > new \DateTimeImmutable() ) {
+
             $token = $this->tokens->create(['sub' => $user->getId()]);
+
             $response->setMessage($user->getRoles());
             $response->setToken($token->getID());
-            $this->queue->push(SendLoginNotificationEmailJob::class, [
-                'firstName' => $user->getFirstName(),
-                'lastName' => $user->getLastName(),
-                'email' => $user->getEmail(),
-            ]);
+
+            $this->sendMailNotification(false, $user);
+
         } else {
             $response->setMessage(["Authentication failed."]);
         }
@@ -345,6 +340,14 @@ class UserService implements UserGrpcInterface
     {
         $this->orm->getRepository(Media::class)
             ->upload($entityName, $entityId, $imageName, $imagePath);
+    }
+
+    private function sendMailNotification(bool $bool, User $user): void
+    {
+        $this->queue->push(SendUserNotificationEmailJob::class, [
+            'isNewUser' => $bool,
+            'user' => $user
+        ]);
     }
 
 }
