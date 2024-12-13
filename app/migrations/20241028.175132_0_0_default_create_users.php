@@ -27,7 +27,7 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305043 extends Migration
             ->addColumn('created_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
             ->addColumn('updated_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
             ->setPrimaryKeys(['id'])
-            ->addIndex(['mobile'], [
+            ->addIndex(['mobile', 'email'], [
                 'unique' => true,
             ])
             ->addIndex(['national_code'], [
