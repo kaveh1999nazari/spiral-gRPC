@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.0.5">
-            <h2>Last update V2.0.5</h2>
+        <div class="version" id="v2.1">
+            <h2>Last update V2.1</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
@@ -42,6 +42,7 @@
                         <li>Assign access permissions</li>
                         <li>create products with prices and their options</li>
                         <li>Upload images base on api</li>
+                        <li>Can update order status</li>
                     </ul>
                 </li>
                 <li>User can:
@@ -50,6 +51,8 @@
                         <li>Create carts</li>
                         <li>See all carts</li>
                         <li>Delete cart ids</li>
+                        <li>Place an Order</li>
+                        <li>Can see order status</li>
                     </ul>
                 </li>
                 <li>Guest can:
