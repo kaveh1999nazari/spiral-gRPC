@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package order;
+
+option php_namespace = "GRPC\\order";
+option php_metadata_namespace = "GRPC\\order\\GPBMetadata";
+
+
+service OrderGrpc {
+    rpc OrderCreate (orderCreateRequest) returns (orderCreateResponse);
+    //    rpc CartUpdate (orderUpdateRequest) returns (orderUpdateResponse);
+//        rpc CartList (orderListRequest) returns (orderListResponse);
+    //    rpc CartDelete (orderDeleteRequest) returns (orderDeleteResponse);
+}
+
+message orderCreateRequest {
+    int32 user_id = 1;
+}
+
+message orderCreateResponse {
+    int32 user_id = 1;
+    string status = 2;
+    string total_price = 3;
+}
+
+//message orderUpdateRequest {
+//
+//}
+
+//message orderUpdateResponse {
+//    int64 allTotalPrice = 2;
+//    int32 userId = 3;
+//    string uuid = 4;
+//}
+
+//message orderListRequest {
+//    int32 cartId = 1;
+//    int32 productPriceId = 2;
+//    int32 number = 3;
+//    int64 totalPrice = 4;
+//}
+//
+//message orderListResponse {
+//    int32 cartId = 1;
+//}
+
+//message orderDeleteRequest {
+//    string message = 1;
+//}
+
+//message orderDeleteResponse {
+//    string message = 1;
+//}
