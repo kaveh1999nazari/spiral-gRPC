@@ -15,5 +15,6 @@
   13 => 'App\\Domain\\Entity\\Province',
   14 => 'App\\Domain\\Entity\\Product',
   15 => 'App\\Domain\\Entity\\City',
-  16 => 'Spiral\\Cycle\\Auth\\Token',
+  16 => 'App\\Domain\\Entity\\OrderItem',
+  17 => 'Spiral\\Cycle\\Auth\\Token',
 );
