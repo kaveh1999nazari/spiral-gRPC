@@ -5,6 +5,7 @@ namespace App\Domain\Entity;
 use App\Domain\Repository\UserRepository;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Column;
+use Cycle\Annotated\Annotation\Relation\HasMany;
 
 #[Entity(repository: UserRepository::class, table: "users")]
 class User
@@ -37,6 +38,8 @@ class User
     private ?string $otpCode;
     #[Column(type: 'datetime', nullable: true)]
     private ?\DateTimeImmutable $otpExpiredAt;
+    #[HasMany(target: Cart::class)]
+    private array $cart;
     public function getId(): int
     {
         return $this->id;
@@ -171,6 +174,16 @@ class User
     public function setOtpExpiredAt(?\DateTimeImmutable $otpExpiredAt): void
     {
         $this->otpExpiredAt = $otpExpiredAt;
+    }
+
+    public function getCart(): array
+    {
+        return $this->cart;
+    }
+
+    public function setCart(array $cart): void
+    {
+        $this->cart = $cart;
     }
 
 }
