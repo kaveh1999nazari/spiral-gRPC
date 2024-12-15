@@ -40,6 +40,11 @@ class User
     private ?\DateTimeImmutable $otpExpiredAt;
     #[HasMany(target: Cart::class)]
     private array $cart;
+    #[HasMany(target: Order::class)]
+    private array $order;
+    #[HasMany(target: OrderItem::class)]
+    private array $orderItem;
+
     public function getId(): int
     {
         return $this->id;
@@ -184,6 +189,26 @@ class User
     public function setCart(array $cart): void
     {
         $this->cart = $cart;
+    }
+
+    public function getOrder(): array
+    {
+        return $this->order;
+    }
+
+    public function setOrder(array $order): void
+    {
+        $this->order = $order;
+    }
+
+    public function getOrderItem(): array
+    {
+        return $this->orderItem;
+    }
+
+    public function setOrderItem(array $orderItem): void
+    {
+        $this->orderItem = $orderItem;
     }
 
 }
