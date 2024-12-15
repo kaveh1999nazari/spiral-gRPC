@@ -1,10 +1,10 @@
 version: '3'
 rpc:
-  listen: 'tcp://0.0.0.0:6002'
-#    listen: 'tcp://127.0.0.1:6001'
+#  listen: 'tcp://0.0.0.0:6002'
+    listen: 'tcp://127.0.0.1:6001'
 grpc:
-    listen: 'tcp://0.0.0.0:9002'
-#    listen: 'tcp://127.0.0.1:9001'
+#    listen: 'tcp://0.0.0.0:9002'
+    listen: 'tcp://127.0.0.1:9001'
     pool:
       debug: true
       num_workers: 3
@@ -13,13 +13,14 @@ grpc:
         - proto/category.proto
         - proto/product.proto
         - proto/cart.proto
+        - proto/order.proto
 server:
     command: 'php app.php'
     relay: pipes
 
 http:
-  address: 0.0.0.0:8181
-#  address: 127.0.0.1:8080
+#  address: 0.0.0.0:8181
+  address: 127.0.0.1:8080
   static:
     dir: "public"
     forbid: [".php", ".htaccess"]
@@ -28,8 +29,8 @@ http:
     debug: true
 
 fileserver:
-  address: 0.0.0.0:10101
-#  address: 127.0.0.1:10101
+#  address: 0.0.0.0:10101
+  address: 127.0.0.1:10101
   calculate_etag: true
   weak: false
   stream_request_body: true
