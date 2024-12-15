@@ -470,6 +470,52 @@
           4 => NULL,
         ),
       ),
+      'order' => 
+      array (
+        0 => 11,
+        1 => 'order',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          41 => 
+          array (
+          ),
+          42 => 
+          array (
+          ),
+          33 => 
+          array (
+            0 => 'id',
+          ),
+          32 => 'user_id',
+          4 => NULL,
+        ),
+      ),
+      'orderItem' => 
+      array (
+        0 => 11,
+        1 => 'orderItem',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          41 => 
+          array (
+          ),
+          42 => 
+          array (
+          ),
+          33 => 
+          array (
+            0 => 'id',
+          ),
+          32 => 'user_id',
+          4 => NULL,
+        ),
+      ),
     ),
     12 => NULL,
     13 => 
