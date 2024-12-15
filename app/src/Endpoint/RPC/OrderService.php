@@ -8,10 +8,12 @@ use App\Domain\Entity\Order;
 use App\Domain\Entity\OrderItem;
 use App\Domain\Entity\User;
 use Cycle\ORM\ORMInterface;
+use Google\Rpc\Code;
 use GRPC\order\orderCreateRequest;
 use GRPC\order\orderCreateResponse;
 use GRPC\order\OrderGrpcInterface;
 use Spiral\RoadRunner\GRPC;
+use Spiral\RoadRunner\GRPC\Exception\GRPCException;
 
 class OrderService implements OrderGrpcInterface
 {
@@ -22,9 +24,17 @@ class OrderService implements OrderGrpcInterface
     public function OrderCreate(GRPC\ContextInterface $ctx, OrderCreateRequest $in): OrderCreateResponse
     {
         $user = $this->ORM->getRepository(User::class)->findByPK($in->getUserId());
+
+        if (! $user->getCart())
+        {
+            throw new GRPCException(
+                message: "You have not cart yet.",
+                code: Code::NOT_FOUND
+            );
+        }
+
         $totalPrice = $this->calculateTotalPrice($user);
 
-        print_r($user->getCart()[0]->getProductPrice()->getId());
         $order = $this->ORM->getRepository(Order::class)->create($user, $totalPrice);
 
         $this->setOrderItems($user, $order);
@@ -58,10 +68,13 @@ class OrderService implements OrderGrpcInterface
 
     private function setOrderItems(User $user, Order $order): OrderItem
     {
+        $orderItems = [];
         foreach ($user->getCart() as $cart){
-            return $this->ORM->getRepository(OrderItem::class)
+            $orderItem = $this->ORM->getRepository(OrderItem::class)
                 ->create($user, $order, $cart->getProductPrice()->getId(),
                         $cart->getNumber(), $cart->getTotalPrice(), $order->getStatus());
+            $orderItems = $orderItem;
         }
+        return $orderItems;
     }
 }
