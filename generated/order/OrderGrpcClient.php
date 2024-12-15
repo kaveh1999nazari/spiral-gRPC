@@ -24,4 +24,15 @@ class OrderGrpcClient implements OrderGrpcInterface
 
         return $response;
     }
+
+    public function OrderUpdate(ContextInterface $ctx, OrderUpdateRequest $in): OrderUpdateResponse
+    {
+        [$response, $status] = $this->core->callAction(OrderGrpcInterface::class, '/'.self::NAME.'/OrderUpdate', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\order\OrderUpdateResponse::class,
+        ]);
+
+        return $response;
+    }
 }

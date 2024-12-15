@@ -19,4 +19,13 @@ interface OrderGrpcInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function OrderCreate(GRPC\ContextInterface $ctx, OrderCreateRequest $in): OrderCreateResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param OrderUpdateRequest $in
+    * @return OrderUpdateResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function OrderUpdate(GRPC\ContextInterface $ctx, OrderUpdateRequest $in): OrderUpdateResponse;
 }
