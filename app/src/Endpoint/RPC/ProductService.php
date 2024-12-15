@@ -41,7 +41,6 @@ class ProductService implements ProductGrpcInterface
 
         $imagePaths = $this->checkUploadImage(iterator_to_array($in->getImage()));
 
-
         $product = $this->orm->getRepository(Product::class)
             ->create($in->getName(), $in->getDescription(), $imagePaths, $category);
 
@@ -53,6 +52,8 @@ class ProductService implements ProductGrpcInterface
         $response->setPrice($in->getPrice());
         return $response;
     }
+
+    // ------ Methods -------
 
     private function cartesian($input)
     {

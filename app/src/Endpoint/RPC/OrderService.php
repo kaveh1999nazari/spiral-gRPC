@@ -49,6 +49,9 @@ class OrderService implements OrderGrpcInterface
         return $response;
     }
 
+
+    // ------ Methods -------
+
     private function calculateTotalPrice(User $user)
     {
         $totalPrice = null;

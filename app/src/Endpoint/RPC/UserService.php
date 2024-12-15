@@ -335,6 +335,8 @@ class UserService implements UserGrpcInterface
         return $response;
     }
 
+    // ------ Methods -------
+
     private function uploadMedia(string $entityName, int $entityId,
                                  string $imageName, string $imagePath)
     {

@@ -93,6 +93,8 @@ class CartService implements CartGrpcInterface
         return $response;
     }
 
+    // ------ Methods -------
+
     /**
      * @param int $productPriceId
      * @return ProductPrice
