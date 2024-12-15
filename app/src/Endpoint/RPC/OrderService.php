@@ -12,6 +12,8 @@ use Google\Rpc\Code;
 use GRPC\order\orderCreateRequest;
 use GRPC\order\orderCreateResponse;
 use GRPC\order\OrderGrpcInterface;
+use GRPC\order\orderUpdateRequest;
+use GRPC\order\orderUpdateResponse;
 use Spiral\RoadRunner\GRPC;
 use Spiral\RoadRunner\GRPC\Exception\GRPCException;
 
@@ -45,6 +47,29 @@ class OrderService implements OrderGrpcInterface
         $response->setUserId($user->getId());
         $response->setStatus('pending');
         $response->setTotalPrice($totalPrice);
+
+        return $response;
+    }
+
+    public function OrderUpdate(GRPC\ContextInterface $ctx, OrderUpdateRequest $in): OrderUpdateResponse
+    {
+        $order = $this->ORM->getRepository(Order::class)->findByPK($in->getOrderId());
+
+        if(! $order){
+            throw new GRPCException(
+                message: "Order Not Found",
+                code: Code::NOT_FOUND
+            );
+        }
+
+        $this->ORM->getRepository(Order::class)
+            ->update($order->getId(), $in->getStatus());
+
+        $this->ORM->getRepository(OrderItem::class)
+            ->update($order->getId(), $in->getStatus());
+
+        $response = new OrderUpdateResponse();
+        $response->setMessage("successfully order ID : {$order->getId()} updated");
 
         return $response;
     }
