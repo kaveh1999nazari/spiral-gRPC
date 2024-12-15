@@ -22,17 +22,21 @@ class OrderItem extends \Google\Protobuf\Internal\Message
      */
     protected $user_id = 0;
     /**
-     * Generated from protobuf field <code>string price = 3;</code>
+     * Generated from protobuf field <code>int32 product_price_id = 3;</code>
+     */
+    protected $product_price_id = 0;
+    /**
+     * Generated from protobuf field <code>string price = 4;</code>
      */
     protected $price = '';
     /**
-     * Generated from protobuf field <code>string status = 4;</code>
+     * Generated from protobuf field <code>string status = 5;</code>
      */
     protected $status = '';
     /**
-     * Generated from protobuf field <code>string created_at = 5;</code>
+     * Generated from protobuf field <code>string order_time = 6;</code>
      */
-    protected $created_at = '';
+    protected $order_time = '';
 
     /**
      * Constructor.
@@ -42,9 +46,10 @@ class OrderItem extends \Google\Protobuf\Internal\Message
      *
      *     @type int $order_id
      *     @type int $user_id
+     *     @type int $product_price_id
      *     @type string $price
      *     @type string $status
-     *     @type string $created_at
+     *     @type string $order_time
      * }
      */
     public function __construct($data = NULL) {
@@ -97,7 +102,29 @@ class OrderItem extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string price = 3;</code>
+     * Generated from protobuf field <code>int32 product_price_id = 3;</code>
+     * @return int
+     */
+    public function getProductPriceId()
+    {
+        return $this->product_price_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 product_price_id = 3;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setProductPriceId($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->product_price_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string price = 4;</code>
      * @return string
      */
     public function getPrice()
@@ -106,7 +133,7 @@ class OrderItem extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string price = 3;</code>
+     * Generated from protobuf field <code>string price = 4;</code>
      * @param string $var
      * @return $this
      */
@@ -119,7 +146,7 @@ class OrderItem extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string status = 4;</code>
+     * Generated from protobuf field <code>string status = 5;</code>
      * @return string
      */
     public function getStatus()
@@ -128,7 +155,7 @@ class OrderItem extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string status = 4;</code>
+     * Generated from protobuf field <code>string status = 5;</code>
      * @param string $var
      * @return $this
      */
@@ -141,23 +168,23 @@ class OrderItem extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string created_at = 5;</code>
+     * Generated from protobuf field <code>string order_time = 6;</code>
      * @return string
      */
-    public function getCreatedAt()
+    public function getOrderTime()
     {
-        return $this->created_at;
+        return $this->order_time;
     }
 
     /**
-     * Generated from protobuf field <code>string created_at = 5;</code>
+     * Generated from protobuf field <code>string order_time = 6;</code>
      * @param string $var
      * @return $this
      */
-    public function setCreatedAt($var)
+    public function setOrderTime($var)
     {
         GPBUtil::checkString($var, True);
-        $this->created_at = $var;
+        $this->order_time = $var;
 
         return $this;
     }

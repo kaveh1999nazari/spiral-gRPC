@@ -16,7 +16,7 @@ class Order
         }
         $pool->internalAddGeneratedFile(
             '
-ß
+Ð
 order.protoorder"%
 orderCreateRequest
 user_id ("K
@@ -30,19 +30,17 @@ class Order
 orderUpdateResponse
 message (	"#
 orderListRequest
-user_id ("c
+user_id (":
 orderListResponse%
-order_items (2.order.OrderItem
-total_price (	
-
-order_time (	"a
+order_items (2.order.OrderItem"{
 	OrderItem
 order_id (
-user_id (
-price (	
-status (	
+user_id (
+product_price_id (
+price (	
+status (	
 
-created_at (	2×
+order_time (	2×
 	OrderGrpcD
 OrderCreate.order.orderCreateRequest.order.orderCreateResponseD
 OrderUpdate.order.orderUpdateRequest.order.orderUpdateResponse>

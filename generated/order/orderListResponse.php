@@ -17,14 +17,6 @@ class orderListResponse extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated .order.OrderItem order_items = 1;</code>
      */
     private $order_items;
-    /**
-     * Generated from protobuf field <code>string total_price = 2;</code>
-     */
-    protected $total_price = '';
-    /**
-     * Generated from protobuf field <code>string order_time = 3;</code>
-     */
-    protected $order_time = '';
 
     /**
      * Constructor.
@@ -33,8 +25,6 @@ class orderListResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type array<\GRPC\order\OrderItem>|\Google\Protobuf\Internal\RepeatedField $order_items
-     *     @type string $total_price
-     *     @type string $order_time
      * }
      */
     public function __construct($data = NULL) {
@@ -60,50 +50,6 @@ class orderListResponse extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \GRPC\order\OrderItem::class);
         $this->order_items = $arr;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>string total_price = 2;</code>
-     * @return string
-     */
-    public function getTotalPrice()
-    {
-        return $this->total_price;
-    }
-
-    /**
-     * Generated from protobuf field <code>string total_price = 2;</code>
-     * @param string $var
-     * @return $this
-     */
-    public function setTotalPrice($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->total_price = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>string order_time = 3;</code>
-     * @return string
-     */
-    public function getOrderTime()
-    {
-        return $this->order_time;
-    }
-
-    /**
-     * Generated from protobuf field <code>string order_time = 3;</code>
-     * @param string $var
-     * @return $this
-     */
-    public function setOrderTime($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->order_time = $var;
 
         return $this;
     }
