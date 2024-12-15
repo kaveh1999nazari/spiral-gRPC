@@ -80,16 +80,11 @@ class OrderService implements OrderGrpcInterface
     #[AuthenticatedBy(['user'])]
     public function OrderList(GRPC\ContextInterface $ctx, OrderListRequest $in): OrderListResponse
     {
-        $orderItem = $this->ORM->getRepository(OrderItem::class)
+        $orderItems = $this->ORM->getRepository(OrderItem::class)
             ->select()
-            ->where(['user_id' => $in->getUserId()]);
+            ->where(['user_id' => $in->getUserId()])->fetchAll();
 
-//        print_r($orderItem->fetchAll());
-//        print_r( $orderItem->getPrice());
-//        print_r( $orderItem->getCreatedAt());
-
-
-        return $this->buildListResponse($orderItem->fetchAll(), $orderItem->getPrice(), $orderItem->getCreatedAt());
+       return $this->buildListResponse($orderItems);
     }
 
 
@@ -124,24 +119,28 @@ class OrderService implements OrderGrpcInterface
         return $orderItems;
     }
 
-    private function buildListResponse(array $orderItems, string $price, $createdAt): OrderListResponse
+    private function buildListResponse(array $orderItems): OrderListResponse
     {
         $response = new OrderListResponse();
-//        print_r("vjkvfnjcjkfndndvnc");
-//        print_r($orderItems);
 
+        $totalPrice = 0;
+        $orders = [];
         foreach ($orderItems as $orderItem)
         {
-            $orderItem->getId();
-            $orderItem->getUser();
-            $orderItem->getPrice();
-            $orderItem->getStatus();
-            $orderItem->getCreatedAt();
-            $response->setOrderItems($orderItem);
+            $order = new \GRPC\order\OrderItem();
+            $order->setOrderId($orderItem->getOrder()->getId());
+            $order->setUserId($orderItem->getUser()->getId());
+            $order->setProductPriceId($orderItem->getProductPriceId());
+            $order->setPrice($orderItem->getPrice());
+            $order->setStatus($orderItem->getStatus());
+            $order->setOrderTime($orderItem->getCreatedAt()->format('Y-m-d H:i:s'));
+
+            $totalPrice += (float) $orderItem->getPrice();
+
+            $orders[] = $order;
         }
 
-        $response->setTotalPrice($price);
-        $response->setOrderTime($createdAt);
+        $response->setOrderItems($orders);
 
         return $response;
     }
