@@ -12,6 +12,8 @@ use Google\Rpc\Code;
 use GRPC\order\orderCreateRequest;
 use GRPC\order\orderCreateResponse;
 use GRPC\order\OrderGrpcInterface;
+use GRPC\order\orderListRequest;
+use GRPC\order\orderListResponse;
 use GRPC\order\orderUpdateRequest;
 use GRPC\order\orderUpdateResponse;
 use Spiral\RoadRunner\GRPC;
@@ -51,6 +53,7 @@ class OrderService implements OrderGrpcInterface
         return $response;
     }
 
+    #[AuthenticatedBy(['admin'])]
     public function OrderUpdate(GRPC\ContextInterface $ctx, OrderUpdateRequest $in): OrderUpdateResponse
     {
         $order = $this->ORM->getRepository(Order::class)->findByPK($in->getOrderId());
@@ -70,6 +73,21 @@ class OrderService implements OrderGrpcInterface
 
         $response = new OrderUpdateResponse();
         $response->setMessage("successfully order ID : {$order->getId()} updated");
+
+        return $response;
+    }
+
+    #[AuthenticatedBy(['user'])]
+    public function OrderList(GRPC\ContextInterface $ctx, OrderListRequest $in): OrderListResponse
+    {
+        $orderItem = $this->ORM->getRepository(OrderItem::class)
+            ->select()
+            ->where(['user_id' => $in->getUserId()]);
+
+        $response = new OrderListResponse();
+        $response->setOrderItems($orderItem->fetchAll());
+        $response->setTotalPrice($orderItem->getPrice());
+        $response->setOrderTime($orderItem->getCreatedAt());
 
         return $response;
     }
@@ -104,5 +122,25 @@ class OrderService implements OrderGrpcInterface
             $orderItems = $orderItem;
         }
         return $orderItems;
+    }
+
+    private function buildListResponse(array $orderItems, string $price, $createdAt): OrderListResponse
+    {
+        $response = new OrderListResponse();
+
+        foreach ($orderItems as $orderItem)
+        {
+            $orderItem->getId();
+            $orderItem->getUser();
+            $orderItem->getPrice();
+            $orderItem->getStatus();
+            $orderItem->getCreatedAt();
+            $response->setOrderItems($orderItem);
+        }
+
+        $response->setTotalPrice($price);
+        $response->setOrderTime($createdAt);
+
+        return $response;
     }
 }
