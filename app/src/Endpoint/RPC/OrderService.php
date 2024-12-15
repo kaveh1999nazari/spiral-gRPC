@@ -84,12 +84,12 @@ class OrderService implements OrderGrpcInterface
             ->select()
             ->where(['user_id' => $in->getUserId()]);
 
-        $response = new OrderListResponse();
-        $response->setOrderItems($orderItem->fetchAll());
-        $response->setTotalPrice($orderItem->getPrice());
-        $response->setOrderTime($orderItem->getCreatedAt());
+//        print_r($orderItem->fetchAll());
+//        print_r( $orderItem->getPrice());
+//        print_r( $orderItem->getCreatedAt());
 
-        return $response;
+
+        return $this->buildListResponse($orderItem->fetchAll(), $orderItem->getPrice(), $orderItem->getCreatedAt());
     }
 
 
@@ -127,6 +127,8 @@ class OrderService implements OrderGrpcInterface
     private function buildListResponse(array $orderItems, string $price, $createdAt): OrderListResponse
     {
         $response = new OrderListResponse();
+//        print_r("vjkvfnjcjkfndndvnc");
+//        print_r($orderItems);
 
         foreach ($orderItems as $orderItem)
         {
