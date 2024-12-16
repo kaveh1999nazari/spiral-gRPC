@@ -52,6 +52,7 @@
                         <li>See all carts</li>
                         <li>Delete cart ids</li>
                         <li>Place an Order</li>
+                        <li>Cancel an Order</li>
                         <li>Can see order status</li>
                     </ul>
                 </li>
