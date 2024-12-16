@@ -192,6 +192,7 @@
       'createdAt' => 'created_at',
       'updatedAt' => 'updated_at',
       'user_id' => 'user_id',
+      'user_resident_id' => 'user_resident_id',
     ),
     10 => 
     array (
@@ -205,6 +206,22 @@
           30 => true,
           31 => false,
           33 => 'user_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'user_resident' => 
+      array (
+        0 => 12,
+        1 => 'userResident',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'user_resident_id',
           32 => 
           array (
             0 => 'id',
@@ -242,6 +259,7 @@
       'createdAt' => 'datetime',
       'updatedAt' => 'datetime',
       'user_id' => 'int',
+      'user_resident_id' => 'int',
     ),
     14 => 
     array (
@@ -878,6 +896,29 @@
     ),
     10 => 
     array (
+      'userResident' => 
+      array (
+        0 => 11,
+        1 => 'userResident',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          41 => 
+          array (
+          ),
+          42 => 
+          array (
+          ),
+          33 => 
+          array (
+            0 => 'id',
+          ),
+          32 => 'user_id',
+          4 => NULL,
+        ),
+      ),
       'cart' => 
       array (
         0 => 11,
