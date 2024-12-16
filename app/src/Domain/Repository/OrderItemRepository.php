@@ -14,7 +14,6 @@ class OrderItemRepository extends Repository
 {
     public function __construct(protected Select $select,
                                 private readonly EntityManager $entityManager,
-                                private readonly ORMInterface $ORM
     )
     {}
 
@@ -32,24 +31,6 @@ class OrderItemRepository extends Repository
         $orderItem->setUpdatedAt(new \DateTimeImmutable());
 
         $this->entityManager->persist($orderItem);
-        $this->entityManager->run();
-
-        return $orderItem;
-    }
-
-    public function update(int $orderId, string $status): OrderItem
-    {
-        $orderItems = $this->ORM->getRepository(OrderItem::class)
-            ->select()
-            ->where(['order_id' => $orderId])
-            ->fetchAll();
-
-        foreach ($orderItems as $orderItem) {
-            $orderItem->setStatus($status);
-            $orderItem->setUpdatedAt(new \DateTimeImmutable());
-            $this->entityManager->persist($orderItem);
-        }
-
         $this->entityManager->run();
 
         return $orderItem;

@@ -22,8 +22,6 @@ class OrderItem
     private int $number;
     #[Column(type: 'string')]
     private string $price;
-    #[Column(type: 'string')]
-    private string $status;
     #[Column(type: 'datetime')]
     private \DateTimeImmutable $createdAt;
     #[Column(type: 'datetime')]
@@ -81,16 +79,6 @@ class OrderItem
     public function setPrice(string $price): void
     {
         $this->price = $price;
-    }
-
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    public function setStatus(string $status): void
-    {
-        $this->status = $status;
     }
 
     public function getCreatedAt(): \DateTimeImmutable

@@ -18,7 +18,6 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305058 extends Migration
             ->addColumn('product_price_id', 'integer')
             ->addColumn('number', 'integer')
             ->addColumn('price', 'string')
-            ->addColumn('status', 'string')
             ->addColumn('created_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
             ->addColumn('updated_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
             ->addForeignKey(['user_id'], 'users', ['id'], [

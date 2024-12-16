@@ -70,9 +70,6 @@ class OrderService implements OrderGrpcInterface
         $this->ORM->getRepository(Order::class)
             ->update($order->getId(), $in->getStatus());
 
-        $this->ORM->getRepository(OrderItem::class)
-            ->update($order->getId(), $in->getStatus());
-
         $this->sendOrderStatusNotificationMail($order, $order->getStatus());
 
         $response = new OrderUpdateResponse();

@@ -683,7 +683,6 @@
       'productPriceId' => 'product_price_id',
       'number' => 'number',
       'price' => 'price',
-      'status' => 'status',
       'createdAt' => 'created_at',
       'updatedAt' => 'updated_at',
       'order_id' => 'order_id',
