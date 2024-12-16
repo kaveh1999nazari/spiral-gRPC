@@ -3,7 +3,8 @@
 return [
     'default' => 'sync',
     'aliases' => [
-        'welcome-email-job' => \App\Endpoint\Job\SendWelcomeEmailJob::class,
+        'user-notification-email-job' => \App\Endpoint\Job\SendOrderNotificationEmailJob::class,
+        'order-notification-email-job' => \App\Endpoint\Job\SendOrderNotificationEmailJob::class
     ],
     'connections' => [
         'sync' => [
