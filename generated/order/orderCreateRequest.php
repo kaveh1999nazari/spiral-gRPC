@@ -17,6 +17,10 @@ class orderCreateRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 user_id = 1;</code>
      */
     protected $user_id = 0;
+    /**
+     * Generated from protobuf field <code>int32 user_resident_id = 2;</code>
+     */
+    protected $user_resident_id = 0;
 
     /**
      * Constructor.
@@ -25,6 +29,7 @@ class orderCreateRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int $user_id
+     *     @type int $user_resident_id
      * }
      */
     public function __construct($data = NULL) {
@@ -50,6 +55,28 @@ class orderCreateRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->user_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 user_resident_id = 2;</code>
+     * @return int
+     */
+    public function getUserResidentId()
+    {
+        return $this->user_resident_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 user_resident_id = 2;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setUserResidentId($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->user_resident_id = $var;
 
         return $this;
     }

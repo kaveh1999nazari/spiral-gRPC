@@ -16,14 +16,16 @@ class Order
         }
         $pool->internalAddGeneratedFile(
             '
-Í
-order.protoorder"%
+þ
+order.protoorder"?
 orderCreateRequest
-user_id ("K
+user_id (
+user_resident_id ("b
 orderCreateResponse
 user_id (
 status (	
-total_price (	"6
+total_price (	
+user_resident (	"6
 orderUpdateRequest
 order_id (
 status (	"&

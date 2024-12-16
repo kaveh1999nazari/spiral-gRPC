@@ -25,6 +25,10 @@ class orderCreateResponse extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string total_price = 3;</code>
      */
     protected $total_price = '';
+    /**
+     * Generated from protobuf field <code>string user_resident = 4;</code>
+     */
+    protected $user_resident = '';
 
     /**
      * Constructor.
@@ -35,6 +39,7 @@ class orderCreateResponse extends \Google\Protobuf\Internal\Message
      *     @type int $user_id
      *     @type string $status
      *     @type string $total_price
+     *     @type string $user_resident
      * }
      */
     public function __construct($data = NULL) {
@@ -104,6 +109,28 @@ class orderCreateResponse extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->total_price = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string user_resident = 4;</code>
+     * @return string
+     */
+    public function getUserResident()
+    {
+        return $this->user_resident;
+    }
+
+    /**
+     * Generated from protobuf field <code>string user_resident = 4;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setUserResident($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->user_resident = $var;
 
         return $this;
     }

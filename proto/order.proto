@@ -15,12 +15,14 @@ service OrderGrpc {
 
 message orderCreateRequest {
     int32 user_id = 1;
+    int32 user_resident_id = 2;
 }
 
 message orderCreateResponse {
     int32 user_id = 1;
     string status = 2;
     string total_price = 3;
+    string user_resident = 4;
 }
 
 message orderUpdateRequest {
