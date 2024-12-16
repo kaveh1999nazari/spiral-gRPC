@@ -9,6 +9,8 @@ use App\Domain\Entity\OrderItem;
 use App\Domain\Entity\User;
 use Cycle\ORM\ORMInterface;
 use Google\Rpc\Code;
+use GRPC\order\orderCancelRequest;
+use GRPC\order\orderCancelResponse;
 use GRPC\order\orderCreateRequest;
 use GRPC\order\orderCreateResponse;
 use GRPC\order\OrderGrpcInterface;
@@ -80,11 +82,25 @@ class OrderService implements OrderGrpcInterface
     #[AuthenticatedBy(['user'])]
     public function OrderList(GRPC\ContextInterface $ctx, OrderListRequest $in): OrderListResponse
     {
-        $orderItems = $this->ORM->getRepository(OrderItem::class)
+        $orders = $this->ORM->getRepository(Order::class)
             ->select()
             ->where(['user_id' => $in->getUserId()])->fetchAll();
 
-       return $this->buildListResponse($orderItems);
+       return $this->buildListResponse($orders);
+    }
+
+    #[AuthenticatedBy(['user', 'admin'])]
+    public function OrderCancel(GRPC\ContextInterface $ctx, OrderCancelRequest $in): OrderCancelResponse
+    {
+        $this->authenticateUserOrder($in->getUserId(), $in->getOrderId());
+
+        $this->ORM->getRepository(Order::class)->update($in->getOrderId(), 'canceled');
+
+        $response = new orderCancelResponse();
+        $response->setMessage('your order successfully canceled!');
+
+        return $response;
+
     }
 
 
@@ -119,29 +135,45 @@ class OrderService implements OrderGrpcInterface
         return $orderItems;
     }
 
-    private function buildListResponse(array $orderItems): OrderListResponse
+    private function buildListResponse(array $orders): OrderListResponse
     {
         $response = new OrderListResponse();
 
-        $totalPrice = 0;
-        $orders = [];
-        foreach ($orderItems as $orderItem)
+        $allOrder = [];
+        foreach ($orders as $order)
         {
-            $order = new \GRPC\order\OrderItem();
-            $order->setOrderId($orderItem->getOrder()->getId());
-            $order->setUserId($orderItem->getUser()->getId());
-            $order->setProductPriceId($orderItem->getProductPriceId());
-            $order->setPrice($orderItem->getPrice());
-            $order->setStatus($orderItem->getStatus());
-            $order->setOrderTime($orderItem->getCreatedAt()->format('Y-m-d H:i:s'));
+            $orderUser = new \GRPC\order\orderUser();
+            $orderUser->setOrderId($order->getId());
+            $orderUser->setTotalPrice($order->getTotalPrice());
+            $orderUser->setStatus($order->getStatus());
+            $orderUser->setOrderTime($order->getCreatedAt()->format('Y-m-d H:i:s'));
 
-            $totalPrice += (float) $orderItem->getPrice();
-
-            $orders[] = $order;
+            $allOrder[] = $orderUser;
         }
 
-        $response->setOrderItems($orders);
+        $response->setOrders($allOrder);
 
         return $response;
+    }
+
+    private function authenticateUserOrder(int $userId, int $orderId)
+    {
+        $user = $this->ORM->getRepository(User::class)->findByPK($userId);
+
+        if (! $user){
+            throw new GRPCException(
+                message: 'User Not Found',
+                code: Code::NOT_FOUND
+            );
+        }
+
+        $order = $this->ORM->getRepository(Order::class)->findByPK($orderId);
+
+        if (! $order){
+            throw new GRPCException(
+                message: "this {$user->getMobile()} not found or has no order yet!",
+                code: Code::NOT_FOUND
+            );
+        }
     }
 }
