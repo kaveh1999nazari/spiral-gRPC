@@ -8,6 +8,7 @@ use App\Domain\Entity\Order;
 use App\Domain\Entity\OrderItem;
 use App\Domain\Entity\User;
 use App\Domain\Entity\UserResident;
+use App\Endpoint\Job\SendOrderNotificationEmailJob;
 use Cycle\ORM\ORMInterface;
 use Google\Rpc\Code;
 use GRPC\order\orderCancelRequest;
@@ -19,12 +20,14 @@ use GRPC\order\orderListRequest;
 use GRPC\order\orderListResponse;
 use GRPC\order\orderUpdateRequest;
 use GRPC\order\orderUpdateResponse;
+use Spiral\Queue\QueueInterface;
 use Spiral\RoadRunner\GRPC;
 use Spiral\RoadRunner\GRPC\Exception\GRPCException;
 
 class OrderService implements OrderGrpcInterface
 {
-    public function __construct(private readonly ORMInterface $ORM)
+    public function __construct(private readonly ORMInterface $ORM,
+                                private readonly QueueInterface $queue)
     {}
 
     #[AuthenticatedBy(['user'])]
@@ -69,6 +72,8 @@ class OrderService implements OrderGrpcInterface
 
         $this->ORM->getRepository(OrderItem::class)
             ->update($order->getId(), $in->getStatus());
+
+        $this->sendOrderStatusNotificationMail($order, $order->getStatus());
 
         $response = new OrderUpdateResponse();
         $response->setMessage("successfully order ID : {$order->getId()} updated");
@@ -207,5 +212,13 @@ class OrderService implements OrderGrpcInterface
                 code: Code::NOT_FOUND
             );
         }
+    }
+
+    private function sendOrderStatusNotificationMail(Order $order, string $status): void
+    {
+        $this->queue->push(SendOrderNotificationEmailJob::class,[
+            'order' => $order,
+            'status' => $status
+        ]);
     }
 }
