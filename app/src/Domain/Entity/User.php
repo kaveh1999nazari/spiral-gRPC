@@ -38,6 +38,8 @@ class User
     private ?string $otpCode;
     #[Column(type: 'datetime', nullable: true)]
     private ?\DateTimeImmutable $otpExpiredAt;
+    #[HasMany(target: UserResident::class)]
+    private array $userResident;
     #[HasMany(target: Cart::class)]
     private array $cart;
     #[HasMany(target: Order::class)]
@@ -179,6 +181,16 @@ class User
     public function setOtpExpiredAt(?\DateTimeImmutable $otpExpiredAt): void
     {
         $this->otpExpiredAt = $otpExpiredAt;
+    }
+
+    public function getUserResident(): array
+    {
+        return $this->userResident;
+    }
+
+    public function setUserResident(array $userResident): void
+    {
+        $this->userResident = $userResident;
     }
 
     public function getCart(): array
