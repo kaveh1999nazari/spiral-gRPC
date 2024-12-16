@@ -14,9 +14,9 @@ use Google\Protobuf\Internal\GPBUtil;
 class orderListResponse extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>repeated .order.OrderItem order_items = 1;</code>
+     * Generated from protobuf field <code>repeated .order.orderUser orders = 1;</code>
      */
-    private $order_items;
+    private $orders;
 
     /**
      * Constructor.
@@ -24,7 +24,7 @@ class orderListResponse extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\GRPC\order\OrderItem>|\Google\Protobuf\Internal\RepeatedField $order_items
+     *     @type array<\GRPC\order\orderUser>|\Google\Protobuf\Internal\RepeatedField $orders
      * }
      */
     public function __construct($data = NULL) {
@@ -33,23 +33,23 @@ class orderListResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .order.OrderItem order_items = 1;</code>
+     * Generated from protobuf field <code>repeated .order.orderUser orders = 1;</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
-    public function getOrderItems()
+    public function getOrders()
     {
-        return $this->order_items;
+        return $this->orders;
     }
 
     /**
-     * Generated from protobuf field <code>repeated .order.OrderItem order_items = 1;</code>
-     * @param array<\GRPC\order\OrderItem>|\Google\Protobuf\Internal\RepeatedField $var
+     * Generated from protobuf field <code>repeated .order.orderUser orders = 1;</code>
+     * @param array<\GRPC\order\orderUser>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
-    public function setOrderItems($var)
+    public function setOrders($var)
     {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \GRPC\order\OrderItem::class);
-        $this->order_items = $arr;
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \GRPC\order\orderUser::class);
+        $this->orders = $arr;
 
         return $this;
     }

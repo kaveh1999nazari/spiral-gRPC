@@ -46,4 +46,15 @@ class OrderGrpcClient implements OrderGrpcInterface
 
         return $response;
     }
+
+    public function OrderCancel(ContextInterface $ctx, OrderCancelRequest $in): OrderCancelResponse
+    {
+        [$response, $status] = $this->core->callAction(OrderGrpcInterface::class, '/'.self::NAME.'/OrderCancel', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\order\OrderCancelResponse::class,
+        ]);
+
+        return $response;
+    }
 }

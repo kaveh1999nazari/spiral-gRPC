@@ -16,7 +16,7 @@ class Order
         }
         $pool->internalAddGeneratedFile(
             '
-Ð
+Í
 order.protoorder"%
 orderCreateRequest
 user_id ("K
@@ -30,21 +30,25 @@ class Order
 orderUpdateResponse
 message (	"#
 orderListRequest
-user_id (":
-orderListResponse%
-order_items (2.order.OrderItem"{
-	OrderItem
-order_id (
-user_id (
-product_price_id (
-price (	
+user_id ("5
+orderListResponse 
+orders (2.order.orderUser"V
+	orderUser
+order_id (
+total_price (	
 status (	
 
-order_time (	2×
+order_time (	"7
+orderCancelRequest
+user_id (
+order_id ("&
+orderCancelResponse
+message (	2
 	OrderGrpcD
 OrderCreate.order.orderCreateRequest.order.orderCreateResponseD
 OrderUpdate.order.orderUpdateRequest.order.orderUpdateResponse>
-	OrderList.order.orderListRequest.order.orderListResponseB&Ê
+	OrderList.order.orderListRequest.order.orderListResponseD
+OrderCancel.order.orderCancelRequest.order.orderCancelResponseB&Ê
 GRPC\\orderâGRPC\\order\\GPBMetadatabproto3'
         , true);
 

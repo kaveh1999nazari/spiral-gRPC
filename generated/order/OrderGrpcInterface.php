@@ -37,4 +37,13 @@ interface OrderGrpcInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function OrderList(GRPC\ContextInterface $ctx, OrderListRequest $in): OrderListResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param OrderCancelRequest $in
+    * @return OrderCancelResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function OrderCancel(GRPC\ContextInterface $ctx, OrderCancelRequest $in): OrderCancelResponse;
 }
