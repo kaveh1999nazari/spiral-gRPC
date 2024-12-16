@@ -7,6 +7,7 @@ use App\Domain\Entity\Cart;
 use App\Domain\Entity\Order;
 use App\Domain\Entity\OrderItem;
 use App\Domain\Entity\User;
+use App\Domain\Entity\UserResident;
 use Cycle\ORM\ORMInterface;
 use Google\Rpc\Code;
 use GRPC\order\orderCancelRequest;
@@ -29,19 +30,14 @@ class OrderService implements OrderGrpcInterface
     #[AuthenticatedBy(['user'])]
     public function OrderCreate(GRPC\ContextInterface $ctx, OrderCreateRequest $in): OrderCreateResponse
     {
-        $user = $this->ORM->getRepository(User::class)->findByPK($in->getUserId());
+        $user = $this->checkUserAuthentication($in->getUserId());
 
-        if (! $user->getCart())
-        {
-            throw new GRPCException(
-                message: "You have not cart yet.",
-                code: Code::NOT_FOUND
-            );
-        }
+        $userResident = $this->checkUserResidentAuthentication($in->getUserResidentId());
 
         $totalPrice = $this->calculateTotalPrice($user);
 
-        $order = $this->ORM->getRepository(Order::class)->create($user, $totalPrice);
+        $order = $this->ORM->getRepository(Order::class)
+            ->create($user, $totalPrice, $userResident);
 
         $this->setOrderItems($user, $order);
 
@@ -51,6 +47,7 @@ class OrderService implements OrderGrpcInterface
         $response->setUserId($user->getId());
         $response->setStatus('pending');
         $response->setTotalPrice($totalPrice);
+        $response->setUserResident($userResident->getAddress());
 
         return $response;
     }
@@ -94,7 +91,8 @@ class OrderService implements OrderGrpcInterface
     {
         $this->authenticateUserOrder($in->getUserId(), $in->getOrderId());
 
-        $this->ORM->getRepository(Order::class)->update($in->getOrderId(), 'canceled');
+        $this->ORM->getRepository(Order::class)
+            ->update($in->getOrderId(), 'canceled');
 
         $response = new orderCancelResponse();
         $response->setMessage('your order successfully canceled!');
@@ -105,6 +103,38 @@ class OrderService implements OrderGrpcInterface
 
 
     // ------ Methods -------
+
+    private function checkUserAuthentication(int $userId): User
+    {
+        $user = $this->ORM->getRepository(User::class)
+            ->findByPK($userId);
+
+        if (! $user->getCart())
+        {
+            throw new GRPCException(
+                message: "You have not cart yet.",
+                code: Code::NOT_FOUND
+            );
+        }
+
+        return $user;
+    }
+
+    private function checkUserResidentAuthentication(int $userResidentId): UserResident
+    {
+        $userResident = $this->ORM->getRepository(UserResident::class)
+            ->findByPK($userResidentId);
+
+        if (! $userResident)
+        {
+            throw new GRPCException(
+                message: "You have not any address yet!",
+                code: Code::NOT_FOUND
+            );
+        }
+
+        return $userResident;
+    }
 
     private function calculateTotalPrice(User $user)
     {
@@ -119,7 +149,8 @@ class OrderService implements OrderGrpcInterface
     {
         foreach ($user->getCart() as $cart)
         {
-            $this->ORM->getRepository(Cart::class)->deleteByUser($cart->getId(), $user->getId());
+            $this->ORM->getRepository(Cart::class)
+                ->deleteByUser($cart->getId(), $user->getId());
         }
     }
 
@@ -130,6 +161,7 @@ class OrderService implements OrderGrpcInterface
             $orderItem = $this->ORM->getRepository(OrderItem::class)
                 ->create($user, $order, $cart->getProductPrice()->getId(),
                         $cart->getNumber(), $cart->getTotalPrice(), $order->getStatus());
+
             $orderItems = $orderItem;
         }
         return $orderItems;
