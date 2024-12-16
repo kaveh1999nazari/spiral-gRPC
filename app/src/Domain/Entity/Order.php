@@ -20,6 +20,8 @@ class Order
     private string $totalPrice;
     #[Column(type: 'string')]
     private string $status;
+    #[BelongsTo(target: UserResident::class)]
+    private UserResident $user_resident;
     #[Column(type: 'datetime')]
     private \DateTimeImmutable $createdAt;
     #[Column(type: 'datetime')]
@@ -60,6 +62,16 @@ class Order
     public function setStatus(string $status): void
     {
         $this->status = $status;
+    }
+
+    public function getUserResident(): UserResident
+    {
+        return $this->user_resident;
+    }
+
+    public function setUserResident(UserResident $userResident): void
+    {
+        $this->user_resident = $userResident;
     }
 
     public function getCreatedAt(): \DateTimeImmutable
