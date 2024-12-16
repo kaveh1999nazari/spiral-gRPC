@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.1">
-            <h2>Last update V2.1</h2>
+        <div class="version" id="v2.1.1">
+            <h2>Last update V2.1.1</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
@@ -54,6 +54,7 @@
                         <li>Place an Order</li>
                         <li>Cancel an Order</li>
                         <li>Can see order status</li>
+                        <li>Give email notification by changing order status</li>
                     </ul>
                 </li>
                 <li>Guest can:
