@@ -58,6 +58,8 @@
       'id' => 'id',
       'options' => 'options',
       'price' => 'price',
+      'createdAt' => 'created_at',
+      'updatedAt' => 'updated_at',
       'product_id' => 'product_id',
     ),
     10 => 
@@ -83,6 +85,8 @@
     13 => 
     array (
       'id' => 'int',
+      'createdAt' => 'datetime',
+      'updatedAt' => 'datetime',
       'product_id' => 'int',
     ),
     14 => 
@@ -1047,8 +1051,12 @@
     array (
       'id' => 'id',
       'name' => 'name',
+      'brand' => 'brand',
       'description' => 'description',
       'image' => 'image',
+      'inStock' => 'in_stock',
+      'createdAt' => 'created_at',
+      'updatedAt' => 'updated_at',
       'category_id' => 'category_id',
     ),
     10 => 
@@ -1074,6 +1082,8 @@
     13 => 
     array (
       'id' => 'int',
+      'createdAt' => 'datetime',
+      'updatedAt' => 'datetime',
       'category_id' => 'int',
     ),
     14 => 
