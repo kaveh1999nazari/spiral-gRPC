@@ -76,7 +76,7 @@
                 <li>Resolved some bugs in Cart</li>
                 <li>Resolved some bugs in User</li>
                 <li>Resolved text email of sending otp</li>
-                <li>changed values of products in migration</li>
+                <li>Changed values of products in migration</li>
             </ul>
         </div>
     </div>
