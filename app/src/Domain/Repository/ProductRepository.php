@@ -16,7 +16,7 @@ class ProductRepository extends Repository
     }
 
     public function create(string $name, ?string $brand,
-                           string $description, array $image, ?string $inStock,
+                           string $description, ?array $image, ?string $inStock,
                            Category $category): Product
     {
         $product = new Product();
