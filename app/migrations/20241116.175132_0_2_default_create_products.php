@@ -17,7 +17,7 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305045 extends Migration
             ->addColumn('brand', 'string', ['nullable' => true, 'size' => 150])
             ->addColumn('description', 'text', ['nullable' => true])
             ->addColumn('image', 'json', ['nullable' => true])
-            ->addColumn('in_stock', 'enum', ['values' => ['yes', 'no']])
+            ->addColumn('in_stock', 'enum', ['nullable' => true, 'values' => ['yes', 'no']])
             ->addColumn('category_id', 'integer', ['nullable' => false])
             ->addColumn('created_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
             ->addColumn('updated_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
