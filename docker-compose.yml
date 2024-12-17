@@ -15,7 +15,16 @@ services:
       - "10101:10101" #file_server
       - "6002:6002" #RPC
     depends_on:
+      - redis
       - db
+    networks:
+      - spiral-network
+
+  redis:
+    image: redis/redis-stack-server:latest
+    restart: unless-stopped
+    ports:
+      - "6378:6379"
     networks:
       - spiral-network
 
