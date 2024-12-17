@@ -15,13 +15,19 @@ class ProductRepository extends Repository
         parent::__construct($select);
     }
 
-    public function create(string $name, string $description, ?array $image, Category $category): Product
+    public function create(string $name, ?string $brand,
+                           string $description, array $image, ?string $inStock,
+                           Category $category): Product
     {
         $product = new Product();
         $product->setName($name);
+        $product->setBrand($brand);
         $product->setDescription($description);
         $product->setImage($image);
+        $product->setInStock($inStock);
         $product->setCategory($category);
+        $product->setCreatedAt(new \DateTimeImmutable());
+        $product->setUpdatedAt(new \DateTimeImmutable());
 
         try {
             $this->entityManager->persist($product)
