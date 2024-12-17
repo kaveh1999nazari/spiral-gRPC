@@ -42,14 +42,14 @@ class ProductService implements ProductGrpcInterface
         $imagePaths = $this->checkUploadImage(iterator_to_array($in->getImage()));
 
         $product = $this->orm->getRepository(Product::class)
-            ->create($in->getName(), $in->getDescription(), $imagePaths, $category);
+            ->create($in->getName(), $in->getBrand(), $in->getDescription(),
+                $imagePaths, $in->getInStock(), $category);
 
         $this->createProductPrice($product->getId(), $options, $in->getPrice());
 
         $response = new ProductCreateResponse();
         $response->setId($product->getId());
         $response->setName($product->getName());
-        $response->setPrice($in->getPrice());
         return $response;
     }
 
