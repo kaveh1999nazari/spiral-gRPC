@@ -21,6 +21,8 @@ class ProductPriceRepository extends Repository
         $productPrice->setProduct($product);
         $productPrice->setOptions($options);
         $productPrice->setPrice($price);
+        $productPrice->setCreatedAt(new \DateTimeImmutable());
+        $productPrice->setUpdatedAt(new \DateTimeImmutable());
 
         $this->entityManager->persist($productPrice);
         $this->entityManager->run();
