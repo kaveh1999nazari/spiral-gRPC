@@ -8,10 +8,15 @@ use App\Domain\Entity\Category;
 use App\Domain\Entity\Product;
 use App\Domain\Entity\ProductPrice;
 use App\Domain\Request\ProductStoreRequest;
+use App\Domain\Request\ProductSearchRequest as ProductSearchQueryRequest;
 use Cycle\ORM\ORMInterface;
+use Google\Rpc\Code;
+use GRPC\product\product_name;
 use GRPC\product\productCreateRequest;
 use GRPC\product\productCreateResponse;
 use GRPC\product\ProductGrpcInterface;
+use GRPC\product\productSearchRequest;
+use GRPC\product\productSearchResponse;
 use Spiral\Boot\DirectoriesInterface;
 use Spiral\RoadRunner\GRPC;
 
@@ -51,6 +56,24 @@ class ProductService implements ProductGrpcInterface
         $response->setId($product->getId());
         $response->setName($product->getName());
         return $response;
+    }
+
+    #[ValidateBy(ProductSearchQueryRequest::class)]
+    public function ProductSearch(GRPC\ContextInterface $ctx, ProductSearchRequest $in): ProductSearchResponse
+    {
+        $products = $this->orm->getRepository(Product::class)
+            ->select()
+            ->where('name', 'LIKE', "%{$in->getName()}%")
+            ->orderBy('name', 'ASC')
+            ->fetchAll();
+
+        if(empty($products)){
+            throw new GRPC\Exception\GRPCException(
+                message: "Not Found!",code: Code::NOT_FOUND
+            );
+        }
+
+        return $this->buildSearchResponse($products);
     }
 
     // ------ Methods -------
@@ -105,5 +128,23 @@ class ProductService implements ProductGrpcInterface
         }
 
         return $imagePaths;
+    }
+
+    private function buildSearchResponse(array $products): ProductSearchResponse
+    {
+        $response = new ProductSearchResponse();
+
+        $results = [];
+        foreach ($products as $product){
+            $result = new product_name();
+            $result->setName($product->getName());
+
+            $results[] = $result;
+        }
+
+        $response->setResult($results);
+
+        return $response;
+
     }
 }
