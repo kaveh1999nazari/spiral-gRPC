@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.1.1">
-            <h2>Last update V2.1.1</h2>
+        <div class="version" id="v2.1.2">
+            <h2>Last update V2.1.2</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
@@ -66,6 +66,7 @@
                 </li>
                 <li>Added Seeder for Product Options</li>
                 <li>Added Queue-Notification</li>
+                <li>Added Search Products By Query Build</li>
                 <li>Added Media for Resident, Profile Picture, Education</li>
             </ul>
             <p><strong>Fixes:</strong></p>
@@ -75,6 +76,7 @@
                 <li>Resolved some bugs in Cart</li>
                 <li>Resolved some bugs in User</li>
                 <li>Resolved text email of sending otp</li>
+                <li>changed values of products in migration</li>
             </ul>
         </div>
     </div>
