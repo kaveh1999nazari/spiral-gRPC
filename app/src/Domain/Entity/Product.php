@@ -14,12 +14,20 @@ class Product
     private int $id;
     #[Column(type:'string')]
     private string $name;
+    #[Column(type: 'string')]
+    private string $brand;
     #[Column(type:'string')]
     private string $description;
     #[Column(type:'string')]
     private string $image;
+    #[Column(type: 'string')]
+    private string $inStock;
     #[BelongsTo(target: Category::class, nullable: false)]
     private Category $category;
+    #[Column(type: 'datetime')]
+    private \DateTimeImmutable $createdAt;
+    #[Column(type: 'datetime')]
+    private \DateTimeImmutable $updatedAt;
 
     public function getId(): int
     {
@@ -36,6 +44,16 @@ class Product
         $this->name = $name;
     }
 
+    public function getBrand(): string
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(string $brand): void
+    {
+        $this->brand = $brand;
+    }
+
     public function getDescription(): string
     {
         return $this->description;
@@ -47,12 +65,22 @@ class Product
     }
     public function getImage(): array
     {
-    return json_decode($this->image);
+    return json_decode($this->image, true);
     }
 
     public function setImage(array $image): void
     {
         $this->image = json_encode($image);
+    }
+
+    public function getInStock(): string
+    {
+        return $this->inStock;
+    }
+
+    public function setInStock(string $inStock): void
+    {
+        $this->inStock = $inStock;
     }
 
     public function getCategory(): Category
@@ -63,6 +91,26 @@ class Product
     public function setCategory(Category $category)
     {
         $this->category = $category;
+    }
+
+    public function getCreatedAt(): \DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    public function getUpdatedAt(): \DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 
 }
