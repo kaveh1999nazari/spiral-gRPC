@@ -22,19 +22,27 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
      */
     protected $description = '';
     /**
-     * Generated from protobuf field <code>repeated string image = 3;</code>
+     * Generated from protobuf field <code>string brand = 3;</code>
+     */
+    protected $brand = '';
+    /**
+     * Generated from protobuf field <code>repeated string image = 4;</code>
      */
     private $image;
     /**
-     * Generated from protobuf field <code>int32 categoryId = 4;</code>
+     * Generated from protobuf field <code>string in_stock = 5;</code>
      */
-    protected $categoryId = 0;
+    protected $in_stock = '';
     /**
-     * Generated from protobuf field <code>string price = 5;</code>
+     * Generated from protobuf field <code>int32 category_id = 6;</code>
+     */
+    protected $category_id = 0;
+    /**
+     * Generated from protobuf field <code>string price = 7;</code>
      */
     protected $price = '';
     /**
-     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 6;</code>
+     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 8;</code>
      */
     private $options;
 
@@ -46,8 +54,10 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
      *
      *     @type string $name
      *     @type string $description
+     *     @type string $brand
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $image
-     *     @type int $categoryId
+     *     @type string $in_stock
+     *     @type int $category_id
      *     @type string $price
      *     @type array|\Google\Protobuf\Internal\MapField $options
      * }
@@ -102,7 +112,29 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string image = 3;</code>
+     * Generated from protobuf field <code>string brand = 3;</code>
+     * @return string
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    /**
+     * Generated from protobuf field <code>string brand = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setBrand($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->brand = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string image = 4;</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getImage()
@@ -111,7 +143,7 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated string image = 3;</code>
+     * Generated from protobuf field <code>repeated string image = 4;</code>
      * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
@@ -124,29 +156,51 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 categoryId = 4;</code>
+     * Generated from protobuf field <code>string in_stock = 5;</code>
+     * @return string
+     */
+    public function getInStock()
+    {
+        return $this->in_stock;
+    }
+
+    /**
+     * Generated from protobuf field <code>string in_stock = 5;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setInStock($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->in_stock = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 category_id = 6;</code>
      * @return int
      */
     public function getCategoryId()
     {
-        return $this->categoryId;
+        return $this->category_id;
     }
 
     /**
-     * Generated from protobuf field <code>int32 categoryId = 4;</code>
+     * Generated from protobuf field <code>int32 category_id = 6;</code>
      * @param int $var
      * @return $this
      */
     public function setCategoryId($var)
     {
         GPBUtil::checkInt32($var);
-        $this->categoryId = $var;
+        $this->category_id = $var;
 
         return $this;
     }
 
     /**
-     * Generated from protobuf field <code>string price = 5;</code>
+     * Generated from protobuf field <code>string price = 7;</code>
      * @return string
      */
     public function getPrice()
@@ -155,7 +209,7 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string price = 5;</code>
+     * Generated from protobuf field <code>string price = 7;</code>
      * @param string $var
      * @return $this
      */
@@ -168,7 +222,7 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 6;</code>
+     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 8;</code>
      * @return \Google\Protobuf\Internal\MapField
      */
     public function getOptions()
@@ -177,7 +231,7 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 6;</code>
+     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 8;</code>
      * @param array|\Google\Protobuf\Internal\MapField $var
      * @return $this
      */

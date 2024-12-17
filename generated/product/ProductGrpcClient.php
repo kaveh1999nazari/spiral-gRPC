@@ -24,4 +24,15 @@ class ProductGrpcClient implements ProductGrpcInterface
 
         return $response;
     }
+
+    public function ProductSearch(ContextInterface $ctx, ProductSearchRequest $in): ProductSearchResponse
+    {
+        [$response, $status] = $this->core->callAction(ProductGrpcInterface::class, '/'.self::NAME.'/ProductSearch', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\product\ProductSearchResponse::class,
+        ]);
+
+        return $response;
+    }
 }

@@ -16,29 +16,36 @@ class Product
         }
         $pool->internalAddGeneratedFile(
             '
-û
-product.protoproduct"í
+ã
+product.protoproduct"
 productCreateRequest
 name (	
 description (	
-image (	
-
-categoryId (
-price (	;
-options (2*.product.productCreateRequest.OptionsEntryC
+brand (	
+image (	
+in_stock (	
+category_id (
+price (	;
+options (2*.product.productCreateRequest.OptionsEntryC
 OptionsEntry
 key ("
-value (2.product.OptionList:8"@
+value (2.product.OptionList:8"1
 productCreateResponse
 
 id (
-name (	
-price (	"
+name (	"
 
 OptionList
-values (	2]
+values (	"$
+productSearchRequest
+name (	">
+productSearchResponse%
+result (2.product.product_name"
+product_name
+name (	2­
 ProductGrpcN
-ProductCreate.product.productCreateRequest.product.productCreateResponseB*ÊGRPC\\productâGRPC\\product\\GPBMetadatabproto3'
+ProductCreate.product.productCreateRequest.product.productCreateResponseN
+ProductSearch.product.productSearchRequest.product.productSearchResponseB*ÊGRPC\\productâGRPC\\product\\GPBMetadatabproto3'
         , true);
 
         static::$is_initialized = true;

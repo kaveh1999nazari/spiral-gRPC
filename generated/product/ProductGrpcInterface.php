@@ -19,4 +19,13 @@ interface ProductGrpcInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function ProductCreate(GRPC\ContextInterface $ctx, ProductCreateRequest $in): ProductCreateResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param ProductSearchRequest $in
+    * @return ProductSearchResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function ProductSearch(GRPC\ContextInterface $ctx, ProductSearchRequest $in): ProductSearchResponse;
 }
