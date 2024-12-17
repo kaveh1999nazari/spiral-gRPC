@@ -64,7 +64,6 @@ class ProductService implements ProductGrpcInterface
         $products = $this->orm->getRepository(Product::class)
             ->select()
             ->where('name', 'LIKE', "%{$in->getName()}%")
-            ->orderBy('name', 'ASC')
             ->fetchAll();
 
         if(empty($products)){
