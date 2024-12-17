@@ -16,6 +16,7 @@
         "firebase/php-jwt": "^6.10",
         "grpc/grpc": "^1.42",
         "kreait/firebase-php": "^7.15",
+        "predis/predis": "^2.3",
         "spiral-packages/cqrs": "^2.3",
         "spiral-packages/database-seeder": "^3.3",
         "spiral/cycle-bridge": "^2.10",
