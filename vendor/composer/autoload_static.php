@@ -184,6 +184,7 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
             'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
             'Psalm\\' => 6,
+            'Predis\\' => 7,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
             'PHPStan\\PhpDocParser\\' => 21,
@@ -766,6 +767,10 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         'Psalm\\' => 
         array (
             0 => __DIR__ . '/..' . '/vimeo/psalm/src/Psalm',
+        ),
+        'Predis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/predis/predis/src',
         ),
         'PhpParser\\' => 
         array (
