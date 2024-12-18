@@ -16,7 +16,7 @@ class Product
         }
         $pool->internalAddGeneratedFile(
             '
-„
+ù
 product.protoproduct"è
 productCreateRequest
 name (	
@@ -42,10 +42,20 @@ OptionList
 productSearchResponse%
 result (2.product.product_name"
 product_name
-name (	2≠
+name (	"Y
+productFilterSearchRequest
+name (	
+list (2.product.options
+price (	"5
+options
+	option_id (
+option_value_id ("D
+productFilterSearchResponse%
+result (2.product.product_name2è
 ProductGrpcN
 ProductCreate.product.productCreateRequest.product.productCreateResponseN
-ProductSearch.product.productSearchRequest.product.productSearchResponseB* GRPC\\product‚GRPC\\product\\GPBMetadatabproto3'
+ProductSearch.product.productSearchRequest.product.productSearchResponse`
+ProductFilterSearch#.product.productFilterSearchRequest$.product.productFilterSearchResponseB* GRPC\\product‚GRPC\\product\\GPBMetadatabproto3'
         , true);
 
         static::$is_initialized = true;

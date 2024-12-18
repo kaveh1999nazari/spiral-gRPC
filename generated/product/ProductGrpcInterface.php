@@ -28,4 +28,13 @@ interface ProductGrpcInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function ProductSearch(GRPC\ContextInterface $ctx, ProductSearchRequest $in): ProductSearchResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param ProductFilterSearchRequest $in
+    * @return ProductFilterSearchResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function ProductFilterSearch(GRPC\ContextInterface $ctx, ProductFilterSearchRequest $in): ProductFilterSearchResponse;
 }
