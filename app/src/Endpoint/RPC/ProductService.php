@@ -5,6 +5,7 @@ namespace App\Endpoint\RPC;
 use App\Domain\Attribute\AuthenticatedBy;
 use App\Domain\Attribute\ValidateBy;
 use App\Domain\Entity\Category;
+use App\Domain\Entity\OptionValue;
 use App\Domain\Entity\Product;
 use App\Domain\Entity\ProductPrice;
 use App\Domain\Request\ProductStoreRequest;
@@ -14,6 +15,8 @@ use Google\Rpc\Code;
 use GRPC\product\product_name;
 use GRPC\product\productCreateRequest;
 use GRPC\product\productCreateResponse;
+use GRPC\product\productFilterSearchRequest;
+use GRPC\product\productFilterSearchResponse;
 use GRPC\product\ProductGrpcInterface;
 use GRPC\product\productSearchRequest;
 use GRPC\product\productSearchResponse;
@@ -73,6 +76,72 @@ class ProductService implements ProductGrpcInterface
         }
 
         return $this->buildSearchResponse($products);
+    }
+
+    public function ProductFilterSearch(GRPC\ContextInterface $ctx, ProductFilterSearchRequest $in): ProductFilterSearchResponse
+    {
+        $products = $this->orm->getRepository(Product::class)
+            ->select()
+            ->where('name', 'LIKE', "%{$in->getName()}%")
+            ->fetchAll();
+
+        if (empty($products)) {
+            throw new GRPC\Exception\GRPCException(
+                message: "Products not found!",
+                code: Code::NOT_FOUND
+            );
+        }
+
+        $filteredProducts = [];
+
+        foreach ($products as $product) {
+            foreach ($product->getProductPrice() as $productPrice) {
+                $priceMatch = !$in->getPrice() || $productPrice->getPrice() <= $in->getPrice();
+
+                $optionMatch = true;
+
+                if (!empty($in->getList())) {
+                    $filterOptions = $in->getList();
+
+                    foreach ($filterOptions as $filterOption) {
+                        $optionId = $filterOption->getOptionId();
+                        $optionValueId = $filterOption->getOptionValueId();
+
+                        $optionValue = $this->orm->getRepository(OptionValue::class)
+                            ->select()
+                            ->where('id', $optionValueId)
+                            ->andWhere('option_id', $optionId)
+                            ->fetchOne();
+
+                        if (!$optionValue) {
+                            $optionMatch = false;
+                            break;
+                        }
+                    }
+                }
+
+                if ($priceMatch && $optionMatch) {
+                    $filteredProducts[] = $product;
+                    break;
+                }
+            }
+        }
+
+        if (empty($filteredProducts)) {
+            throw new GRPC\Exception\GRPCException(
+                message: "No products matched the filter!",
+                code: Code::NOT_FOUND
+            );
+        }
+
+        $response = new ProductFilterSearchResponse();
+        foreach ($filteredProducts as $product) {
+            $productName = new Product_Name();
+            $productName->setName($product->getName());
+            $response->getResult()[] = $productName;
+        }
+
+        return $response;
     }
 
     // ------ Methods -------
@@ -146,4 +215,20 @@ class ProductService implements ProductGrpcInterface
         return $response;
 
     }
+
+//    private function setFilterProducts(array $products, $lists)
+//    {
+//        foreach ($lists as $list){
+//            print_r($list->getoptionId()."  ");
+//        }
+//        $results = [];
+//        foreach ($products as $product){
+//            foreach($product->getProductPrice() as $items)
+//            {
+//                print_r($items);
+//            }
+//        }
+//        return $products[0];
+//
+//    }
 }
