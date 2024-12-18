@@ -12,33 +12,38 @@ use Spiral\DatabaseSeeder\Seeder\AbstractSeeder;
 class OptionValueSeeder extends AbstractSeeder
 {
     public function __construct(private ORMInterface $orm) {}
+
     public function run(): \Generator
     {
-        $option1 = $this->orm->getRepository(Option::class)->findByPK(1);
-        $option2 = $this->orm->getRepository(Option::class)->findByPK(2);
+        $options = [
+            'Color' => ['Black', 'Green', 'White', 'Blue'],
+            'Capacity' => ['32GB', '64GB', '128GB', '256GB', '512GB', '1TB', '2TB', '4TB', '8TB'],
+            'Display Size' => ['5.0 inches', '5.2 inches', '5.5 inches', '5.7 inches', '6.1 inches', '6.3 inches', '6.9 inches'],
+            'RAM' => ['2GB','4GB', '6GB', '8GB', '12GB', '14GB', '16GB', '18GB', '20GB', '24GB', '36GB', '48GB'],
+            'OS' => ['Android', 'iOS', 'HarmonyOS', 'MacOs', 'Windows 10', 'Windows 11'],
+            'Weight' => ['100g', '110g', '120g', '130g', '140g', '150g', '160g', '170g', '180g', '190g', '200g', '210g'],
+            'Number of SIM cards' => ['Single', 'Dual'],
+            'Display technology' => ['LCD', 'OLED', 'AMOLED'],
+            'Image refresh rate' => ['60Hz', '90Hz', '120Hz', '180Hz', '200Hz', '240Hz'],
+            'Chip' => ['A13 Bionic', 'A14 Bionic', 'A15 Bionic', 'A17 pro', 'A18 pro', 'Snapdragon 888', 'Exynos 2100'],
+            'Graphics processor' => ['Adreno 660', 'Mali-G78', 'Apple GPU'],
+            'Telecommunications networks' => ['2G', '3G', '4G', '5G'],
+            'Bluetooth version' => ['5.0', '5.1', '5.2', '5.3']
+        ];
 
-        if (!$option1 && !$option2) {
-            throw new \RuntimeException("Required options not found in the database. Ensure the OptionSeeder has run.");
+        foreach ($options as $optionName => $values) {
+            $option = $this->orm->getRepository(Option::class)->findOne(['name' => $optionName]);
+
+            if (!$option) {
+                throw new \RuntimeException("Option '$optionName' not found in the database. Ensure the OptionSeeder has run.");
+            }
+
+            foreach ($values as $value) {
+                $optionValue = new OptionValue();
+                $optionValue->setName($value);
+                $optionValue->setOption($option);
+                yield $optionValue;
+            }
         }
-
-        $optionValue1 = new OptionValue();
-        $optionValue1->setName('black');
-        $optionValue1->setOption($option1);
-        yield $optionValue1;
-
-        $optionValue2 = new OptionValue();
-        $optionValue2->setName('green');
-        $optionValue2->setOption($option1);
-        yield $optionValue2;
-
-        $optionValue3 = new OptionValue();
-        $optionValue3->setName('32GB');
-        $optionValue3->setOption($option2);
-        yield $optionValue3;
-
-        $optionValue4 = new OptionValue();
-        $optionValue4->setName('64GB');
-        $optionValue4->setOption($option2);
-        yield $optionValue4;
     }
 }
