@@ -6,6 +6,7 @@ use App\Domain\Repository\ProductRepository;
 use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Relation\BelongsTo;
+use Cycle\Annotated\Annotation\Relation\HasMany;
 
 #[Entity(repository: ProductRepository::class, table: "products")]
 class Product
@@ -28,6 +29,8 @@ class Product
     private \DateTimeImmutable $createdAt;
     #[Column(type: 'datetime')]
     private \DateTimeImmutable $updatedAt;
+    #[HasMany(target: ProductPrice::class)]
+    private array $productPrice;
 
     public function getId(): int
     {
@@ -111,6 +114,16 @@ class Product
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    public function getProductPrice(): array
+    {
+        return $this->productPrice;
+    }
+
+    public function setProductPrice(array $productPrice): void
+    {
+        $this->productPrice = $productPrice;
     }
 
 }
