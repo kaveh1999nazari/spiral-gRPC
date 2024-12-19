@@ -1,95 +1,4 @@
 <?php return array (
-  'productOption' => 
-  array (
-    1 => 'App\\Domain\\Entity\\ProductOption',
-    2 => 'Cycle\\ORM\\Mapper\\Mapper',
-    3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'Cycle\\ORM\\Select\\Repository',
-    5 => 'default',
-    6 => 'productoptions',
-    7 => 
-    array (
-      0 => 'id',
-    ),
-    8 => 
-    array (
-      0 => 'id',
-    ),
-    9 => 
-    array (
-      'id' => 'id',
-      'product_id' => 'product_id',
-      'option_id' => 'option_id',
-      'optionValue_id' => 'optionValue_id',
-    ),
-    10 => 
-    array (
-      'product' => 
-      array (
-        0 => 12,
-        1 => 'product',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'product_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
-      'option' => 
-      array (
-        0 => 12,
-        1 => 'option',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'option_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
-      'optionValue' => 
-      array (
-        0 => 12,
-        1 => 'optionValue',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'optionValue_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
-    ),
-    12 => NULL,
-    13 => 
-    array (
-      'id' => 'int',
-      'product_id' => 'int',
-      'option_id' => 'int',
-      'optionValue_id' => 'int',
-    ),
-    14 => 
-    array (
-    ),
-    19 => NULL,
-    20 => 
-    array (
-      'id' => 2,
-    ),
-  ),
   'userEducation' => 
   array (
     1 => 'App\\Domain\\Entity\\UserEducation',
@@ -571,6 +480,135 @@
       'id' => 2,
     ),
   ),
+  'attribute' => 
+  array (
+    1 => 'App\\Domain\\Entity\\Attribute',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'Cycle\\ORM\\Select\\Repository',
+    5 => 'default',
+    6 => 'attributes',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'name' => 'name',
+    ),
+    10 => 
+    array (
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
+  'productAttribute' => 
+  array (
+    1 => 'App\\Domain\\Entity\\ProductAttribute',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'Cycle\\ORM\\Select\\Repository',
+    5 => 'default',
+    6 => 'product_attributes',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'product_id' => 'product_id',
+      'attribute_id' => 'attribute_id',
+      'attributeValue_id' => 'attributeValue_id',
+    ),
+    10 => 
+    array (
+      'product' => 
+      array (
+        0 => 12,
+        1 => 'product',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'product_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'attribute' => 
+      array (
+        0 => 12,
+        1 => 'attribute',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'attribute_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'attributeValue' => 
+      array (
+        0 => 12,
+        1 => 'attributeValue',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'attributeValue_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'product_id' => 'int',
+      'attribute_id' => 'int',
+      'attributeValue_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
   'province' => 
   array (
     1 => 'App\\Domain\\Entity\\Province',
@@ -737,62 +775,6 @@
       'updatedAt' => 'datetime',
       'order_id' => 'int',
       'user_id' => 'int',
-    ),
-    14 => 
-    array (
-    ),
-    19 => NULL,
-    20 => 
-    array (
-      'id' => 2,
-    ),
-  ),
-  'optionValue' => 
-  array (
-    1 => 'App\\Domain\\Entity\\OptionValue',
-    2 => 'Cycle\\ORM\\Mapper\\Mapper',
-    3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'Cycle\\ORM\\Select\\Repository',
-    5 => 'default',
-    6 => 'optionvalues',
-    7 => 
-    array (
-      0 => 'id',
-    ),
-    8 => 
-    array (
-      0 => 'id',
-    ),
-    9 => 
-    array (
-      'id' => 'id',
-      'name' => 'name',
-      'option_id' => 'option_id',
-    ),
-    10 => 
-    array (
-      'option' => 
-      array (
-        0 => 12,
-        1 => 'option',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'option_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
-    ),
-    12 => NULL,
-    13 => 
-    array (
-      'id' => 'int',
-      'option_id' => 'int',
     ),
     14 => 
     array (
@@ -1218,14 +1200,14 @@
       'id' => 2,
     ),
   ),
-  'option' => 
+  'attributeValue' => 
   array (
-    1 => 'App\\Domain\\Entity\\Option',
+    1 => 'App\\Domain\\Entity\\AttributeValue',
     2 => 'Cycle\\ORM\\Mapper\\Mapper',
     3 => 'Cycle\\ORM\\Select\\Source',
     4 => 'Cycle\\ORM\\Select\\Repository',
     5 => 'default',
-    6 => 'options',
+    6 => 'attribute_values',
     7 => 
     array (
       0 => 'id',
@@ -1238,14 +1220,32 @@
     array (
       'id' => 'id',
       'name' => 'name',
+      'attribute_id' => 'attribute_id',
     ),
     10 => 
     array (
+      'attribute' => 
+      array (
+        0 => 12,
+        1 => 'attribute',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'attribute_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
     ),
     12 => NULL,
     13 => 
     array (
       'id' => 'int',
+      'attribute_id' => 'int',
     ),
     14 => 
     array (
