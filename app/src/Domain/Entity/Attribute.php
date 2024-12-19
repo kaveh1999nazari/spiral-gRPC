@@ -5,8 +5,8 @@ namespace App\Domain\Entity;
 use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 
-#[Entity(role: 'option', table: 'options')]
-class Option
+#[Entity(role: 'attribute', table: 'attributes')]
+class Attribute
 {
     #[Column(type: "primary")]
     private int $id;

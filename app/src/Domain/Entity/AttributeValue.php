@@ -6,15 +6,15 @@ use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Relation\BelongsTo;
 
-#[Entity(role: 'optionValue', table: 'optionvalues')]
-class OptionValue
+#[Entity(role: 'attributeValue', table: 'attribute_values')]
+class AttributeValue
 {
     #[Column(type: "primary")]
     private int $id;
     #[Column(type: "string")]
     private string $name;
-    #[BelongsTo(target: Option::class, nullable: false)]
-    private Option $option;
+    #[BelongsTo(target: Attribute::class, nullable: false)]
+    private Attribute $attribute;
 
     public function getId(): int
     {
@@ -31,14 +31,14 @@ class OptionValue
         $this->name = $name;
     }
 
-    public function getOption(): Option
+    public function getAttribute(): Attribute
     {
-        return $this->option;
+        return $this->attribute;
     }
 
-    public function setOption(Option $option): void
+    public function setAttribute(Attribute $attribute): void
     {
-        $this->option = $option;
+        $this->attribute = $attribute;
     }
 
 }
