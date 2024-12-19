@@ -177,7 +177,7 @@ class UserService implements UserGrpcInterface
         $user = $this->orm->getRepository(User::class)
             ->findByPK($in->getUser());
         if (!$user) {
-            return throw new GRPCException(
+            throw new GRPCException(
                 message: "User Not Found",
                 code: Code::NOT_FOUND
             );
