@@ -8,7 +8,7 @@ use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Relation\BelongsTo;
 
-#[Entity(repository: ProductPriceRepository::class, table: "productprices")]
+#[Entity(repository: ProductPriceRepository::class, table: "product_prices")]
 class ProductPrice
 {
     #[Column(type: "primary")]
@@ -17,8 +17,8 @@ class ProductPrice
     private Product $product;
     #[Column(type: "string")]
     private string $options;
-    #[Column(type: "string")]
-    private string $price;
+    #[Column(type: "float")]
+    private float $price;
     #[Column(type: 'datetime')]
     private \DateTimeImmutable $createdAt;
     #[Column(type: 'datetime')]
@@ -49,12 +49,12 @@ class ProductPrice
         $this->options = json_encode($options);
     }
 
-    public function getPrice(): string
+    public function getPrice(): float
     {
         return $this->price;
     }
 
-    public function setPrice(string $price): void
+    public function setPrice(float $price): void
     {
         $this->price = $price;
     }

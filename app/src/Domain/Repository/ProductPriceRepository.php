@@ -15,7 +15,7 @@ class ProductPriceRepository extends Repository
         parent::__construct($select);
     }
 
-    public function create(Product $product, array $options, string $price)
+    public function create(Product $product, array $options, float $price)
     {
         $productPrice = new ProductPrice();
         $productPrice->setProduct($product);
