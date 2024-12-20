@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.1.2">
-            <h2>Last update V2.1.2</h2>
+        <div class="version" id="v2.1.3">
+            <h2>Last update V2.1.3</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
@@ -40,7 +40,8 @@
                     <ul>
                         <li>Create categories</li>
                         <li>Assign access permissions</li>
-                        <li>create products with prices and their options</li>
+                        <li>create products with options for prices </li>
+                        <li>create products with attributes </li>
                         <li>Upload images base on api</li>
                         <li>Can update order status</li>
                     </ul>
@@ -67,6 +68,7 @@
                 <li>Added Seeder for Product Options</li>
                 <li>Added Queue-Notification</li>
                 <li>Added Search Products By Query Build</li>
+                <li>Added Filter Products By them Attributes</li>
                 <li>Added Media for Resident, Profile Picture, Education</li>
             </ul>
             <p><strong>Fixes:</strong></p>
