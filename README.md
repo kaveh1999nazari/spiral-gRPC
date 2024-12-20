@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.1.3">
-            <h2>Last update V2.1.3</h2>
+        <div class="version" id="v2.1.4">
+            <h2>Last update V2.1.4</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
@@ -69,6 +69,7 @@
                 <li>Added Queue-Notification</li>
                 <li>Added Search Products By Query Build</li>
                 <li>Added Filter Products By them Attributes</li>
+                <li>Added Similar Products</li>
                 <li>Added Media for Resident, Profile Picture, Education</li>
             </ul>
             <p><strong>Fixes:</strong></p>
