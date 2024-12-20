@@ -4,9 +4,11 @@ namespace App\Endpoint\RPC;
 
 use App\Domain\Attribute\AuthenticatedBy;
 use App\Domain\Attribute\ValidateBy;
+use App\Domain\Entity\Attribute;
 use App\Domain\Entity\Category;
-use App\Domain\Entity\OptionValue;
+use App\Domain\Entity\AttributeValue;
 use App\Domain\Entity\Product;
+use App\Domain\Entity\ProductAttribute;
 use App\Domain\Entity\ProductPrice;
 use App\Domain\Request\ProductStoreRequest;
 use App\Domain\Request\ProductSearchRequest as ProductSearchQueryRequest;
@@ -40,12 +42,11 @@ class ProductService implements ProductGrpcInterface
             $options[$key] = iterator_to_array($optionList->getValues());
         }
 
-        $category = $this->orm->getRepository(Category::class)
-            ->findByPK($in->getCategoryId());
-
-        if (!$category) {
-            throw new \Exception("Category not found for ID: {$in->getCategoryId()}");
+        foreach ($in->getAttributes() as $key => $attributeList){
+            $attributes[$key] = iterator_to_array($attributeList->getValues());
         }
+
+        $category = $this->checkCategoryExist($in->getCategoryId());
 
         $imagePaths = $this->checkUploadImage(iterator_to_array($in->getImage()));
 
@@ -54,6 +55,9 @@ class ProductService implements ProductGrpcInterface
                 $imagePaths, $in->getInStock(), $category);
 
         $this->createProductPrice($product->getId(), $options, $in->getPrice());
+
+        $this->createProductAttribute($product->getId(), $attributes);
+
 
         $response = new ProductCreateResponse();
         $response->setId($product->getId());
@@ -80,72 +84,26 @@ class ProductService implements ProductGrpcInterface
 
     public function ProductFilterSearch(GRPC\ContextInterface $ctx, ProductFilterSearchRequest $in): ProductFilterSearchResponse
     {
-        $products = $this->orm->getRepository(Product::class)
-            ->select()
-            ->where('name', 'LIKE', "%{$in->getName()}%")
-            ->fetchAll();
-
-        if (empty($products)) {
-            throw new GRPC\Exception\GRPCException(
-                message: "Products not found!",
-                code: Code::NOT_FOUND
-            );
-        }
-
-        $filteredProducts = [];
-
-        foreach ($products as $product) {
-            foreach ($product->getProductPrice() as $productPrice) {
-                $priceMatch = !$in->getPrice() || $productPrice->getPrice() <= $in->getPrice();
-
-                $optionMatch = true;
-
-                if (!empty($in->getList())) {
-                    $filterOptions = $in->getList();
-
-                    foreach ($filterOptions as $filterOption) {
-                        $optionId = $filterOption->getOptionId();
-                        $optionValueId = $filterOption->getOptionValueId();
-
-                        $optionValue = $this->orm->getRepository(OptionValue::class)
-                            ->select()
-                            ->where('id', $optionValueId)
-                            ->andWhere('option_id', $optionId)
-                            ->fetchOne();
-
-                        if (!$optionValue) {
-                            $optionMatch = false;
-                            break;
-                        }
-                    }
-                }
-
-                if ($priceMatch && $optionMatch) {
-                    $filteredProducts[] = $product;
-                    break;
-                }
-            }
-        }
-
-        if (empty($filteredProducts)) {
-            throw new GRPC\Exception\GRPCException(
-                message: "No products matched the filter!",
-                code: Code::NOT_FOUND
-            );
-        }
 
         $response = new ProductFilterSearchResponse();
-        foreach ($filteredProducts as $product) {
-            $productName = new Product_Name();
-            $productName->setName($product->getName());
-            $response->getResult()[] = $productName;
-        }
 
         return $response;
     }
 
+
+
     // ------ Methods -------
 
+    private function checkCategoryExist(int $id): Category
+    {
+        $category = $this->orm->getRepository(Category::class)
+            ->findByPK($id);
+
+        if (!$category) {
+            throw new \Exception("Category not found for ID: {$id}");
+        }
+        return $category;
+    }
     private function cartesian($input)
     {
         $result = [];
@@ -168,6 +126,25 @@ class ProductService implements ProductGrpcInterface
             $this->orm->getRepository(ProductPrice::class)
                 ->create($product, $combination, $price);
         }
+    }
+
+    private function createProductAttribute(int $id, array $attributes): void
+    {
+        $product = $this->orm->getRepository(Product::class)
+            ->findByPK($id);
+
+        $cartesianAttributes = $this->cartesian($attributes);
+        foreach ($cartesianAttributes as $keys => $values){
+
+            $attribute = $this->orm->getRepository(Attribute::class)
+                ->findByPK($values[0]);
+
+            $attributeValue = $this->orm->getRepository(AttributeValue::class)
+                ->findByPK($values[1]);
+
+            $this->orm->getRepository(ProductAttribute::class)
+                ->create($product, $attribute, $attributeValue);
+            }
     }
 
     private function checkUploadImage(array $images): array
