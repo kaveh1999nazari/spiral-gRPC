@@ -31,6 +31,8 @@ class Product
     private \DateTimeImmutable $updatedAt;
     #[HasMany(target: ProductPrice::class)]
     private array $productPrice;
+    #[HasMany(target: ProductAttribute::class)]
+    private array $productAttribute;
 
     public function getId(): int
     {
@@ -124,6 +126,16 @@ class Product
     public function setProductPrice(array $productPrice): void
     {
         $this->productPrice = $productPrice;
+    }
+
+    public function getProductAttribute(): array
+    {
+        return $this->productAttribute;
+    }
+
+    public function setProductAttribute(array $productAttribute): void
+    {
+        $this->productAttribute = $productAttribute;
     }
 
 }
