@@ -16,6 +16,8 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305061 extends Migration
             ->addColumn('product_id', 'integer', ['nullable' => false])
             ->addColumn('attribute_id', 'integer', ['nullable' => false])
             ->addColumn('attribute_value_id', 'integer', ['nullable' => false])
+            ->addColumn('created_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
+            ->addColumn('updated_at', 'datetime', ['nullable' => true, 'default' => 'CURRENT_TIMESTAMP'])
             ->addForeignKey(['product_id'], 'products', ['id'], [
                 'onDelete' => 'CASCADE',
                 'onUpdate' => 'CASCADE'
