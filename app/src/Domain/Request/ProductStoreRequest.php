@@ -3,11 +3,9 @@
 namespace App\Domain\Request;
 
 
-use App\Domain\Entity\Option;
-use App\Domain\Entity\OptionValue;
+use App\Domain\Entity\Attribute;
+use App\Domain\Entity\AttributeValue;
 use Cycle\ORM\ORMInterface;
-use Cycle\ORM\RepositoryInterface;
-use function Symfony\Component\Translation\t;
 
 class ProductStoreRequest implements BaseRequest
 {
@@ -22,16 +20,16 @@ class ProductStoreRequest implements BaseRequest
             "description" => ['required', ["string::longer", 5]],
             "images" => ['string'],
             "categoryId" => ['required', 'integer'],
-            "price" => ['required', 'string'],
+            "price" => ['required'],
             "options" => ['required', 'array', function ($values) {
                 foreach ($values as $key => $value) {
-                    $option = $this->orm->getRepository(Option::class)->findByPK($key);
+                    $option = $this->orm->getRepository(Attribute::class)->findByPK($key);
                     if (!$option) {
                         return false;
                     }
                     foreach ($value as $v) {
                         foreach ($v as $x) {
-                            $optionValue = $this->orm->getRepository(OptionValue::class)->findByPK($x);
+                            $optionValue = $this->orm->getRepository(AttributeValue::class)->findByPK($x);
                             if (!$optionValue) {
                                 return false;
                             }
@@ -40,6 +38,7 @@ class ProductStoreRequest implements BaseRequest
                 }
                 return true;
             }],
+            "attributes" => ['required']
         ];
     }
 }
