@@ -84,13 +84,17 @@ class ProductService implements ProductGrpcInterface
 
     public function ProductFilterSearch(GRPC\ContextInterface $ctx, ProductFilterSearchRequest $in): ProductFilterSearchResponse
     {
+        $results = $this->setFilterProducts($in->getName(), $in->getList());
 
         $response = new ProductFilterSearchResponse();
+        foreach ($results as $product) {
+            $productName = new product_name();
+            $productName->setName($product->getName());
+            $response->getResult()[] = $productName;
+        }
 
         return $response;
     }
-
-
 
     // ------ Methods -------
 
@@ -193,19 +197,36 @@ class ProductService implements ProductGrpcInterface
 
     }
 
-//    private function setFilterProducts(array $products, $lists)
-//    {
-//        foreach ($lists as $list){
-//            print_r($list->getoptionId()."  ");
-//        }
-//        $results = [];
-//        foreach ($products as $product){
-//            foreach($product->getProductPrice() as $items)
-//            {
-//                print_r($items);
-//            }
-//        }
-//        return $products[0];
-//
-//    }
+    private function setFilterProducts(string $name, $lists)
+    {
+        $products = $this->orm->getRepository(Product::class)
+            ->select()
+            ->where('name', 'LIKE', "%{$name}%")
+            ->fetchAll();
+
+        $attributes = $lists;
+
+        $results = [];
+        foreach ($products as $product) {
+            $matchCount = 0;
+
+            foreach ($attributes as $attribute) {
+                $result = $this->orm->getRepository(ProductAttribute::class)
+                    ->select()
+                    ->where('product_id', $product->getId())
+                    ->andWhere('attribute_id', $attribute->getAttributeId())
+                    ->andWhere('attribute_value_id', $attribute->getAttributeValueId())
+                    ->fetchOne();
+
+                if ($result !== null) {
+                    $matchCount++;
+                }
+            }
+
+            if ($matchCount === count($attributes)) {
+                $results[] = $product;
+            }
+        }
+        return $results;
+    }
 }
