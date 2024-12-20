@@ -16,7 +16,7 @@ class Product
         }
         $pool->internalAddGeneratedFile(
             '
-Ã	
+…	
 product.protoproduct"ù
 productCreateRequest
 name (	
@@ -49,14 +49,14 @@ OptionList
 productSearchResponse%
 result (2.product.product_name"
 product_name
-name (	"Y
+name (	"M
 productFilterSearchRequest
-name (	
-list (2.product.options
-price (	"5
-options
-	option_id (
-option_value_id ("D
+name (	!
+list (2.product.attributes">
+
+attributes
+attribute_id (
+attribute_value_id ("D
 productFilterSearchResponse%
 result (2.product.product_name2è
 ProductGrpcN

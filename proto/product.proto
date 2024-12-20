@@ -51,13 +51,12 @@ message product_name {
 
 message productFilterSearchRequest {
     string name = 1;
-    repeated options list = 2;
-    string price = 3;
+    repeated attributes list = 2;
 }
 
-message options {
-    int32 option_id = 1;
-    int32 option_value_id = 2;
+message attributes {
+    int32 attribute_id = 1;
+    int32 attribute_value_id = 2;
 }
 
 message productFilterSearchResponse {
