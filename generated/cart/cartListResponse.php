@@ -18,9 +18,9 @@ class cartListResponse extends \Google\Protobuf\Internal\Message
      */
     private $carts;
     /**
-     * Generated from protobuf field <code>int64 allTotalPrice = 2;</code>
+     * Generated from protobuf field <code>float allTotalPrice = 2;</code>
      */
-    protected $allTotalPrice = 0;
+    protected $allTotalPrice = 0.0;
     /**
      * Generated from protobuf field <code>int32 userId = 3;</code>
      */
@@ -37,7 +37,7 @@ class cartListResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type array<\GRPC\cart\CartItem>|\Google\Protobuf\Internal\RepeatedField $carts
-     *     @type int|string $allTotalPrice
+     *     @type float $allTotalPrice
      *     @type int $userId
      *     @type string $uuid
      * }
@@ -70,8 +70,8 @@ class cartListResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int64 allTotalPrice = 2;</code>
-     * @return int|string
+     * Generated from protobuf field <code>float allTotalPrice = 2;</code>
+     * @return float
      */
     public function getAllTotalPrice()
     {
@@ -79,13 +79,13 @@ class cartListResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int64 allTotalPrice = 2;</code>
-     * @param int|string $var
+     * Generated from protobuf field <code>float allTotalPrice = 2;</code>
+     * @param float $var
      * @return $this
      */
     public function setAllTotalPrice($var)
     {
-        GPBUtil::checkInt64($var);
+        GPBUtil::checkFloat($var);
         $this->allTotalPrice = $var;
 
         return $this;

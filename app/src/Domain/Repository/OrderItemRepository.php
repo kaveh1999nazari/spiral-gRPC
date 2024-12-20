@@ -26,7 +26,6 @@ class OrderItemRepository extends Repository
         $orderItem->setProductPriceId($productPriceId);
         $orderItem->setNumber($number);
         $orderItem->setPrice($price);
-        $orderItem->setStatus($status);
         $orderItem->setCreatedAt(new \DateTimeImmutable());
         $orderItem->setUpdatedAt(new \DateTimeImmutable());
 

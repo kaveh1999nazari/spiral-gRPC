@@ -26,9 +26,9 @@ class cartCreateResponse extends \Google\Protobuf\Internal\Message
      */
     protected $uuid = '';
     /**
-     * Generated from protobuf field <code>string totalPrice = 4;</code>
+     * Generated from protobuf field <code>float totalPrice = 4;</code>
      */
-    protected $totalPrice = '';
+    protected $totalPrice = 0.0;
 
     /**
      * Constructor.
@@ -39,7 +39,7 @@ class cartCreateResponse extends \Google\Protobuf\Internal\Message
      *     @type int $id
      *     @type int $userId
      *     @type string $uuid
-     *     @type string $totalPrice
+     *     @type float $totalPrice
      * }
      */
     public function __construct($data = NULL) {
@@ -114,8 +114,8 @@ class cartCreateResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string totalPrice = 4;</code>
-     * @return string
+     * Generated from protobuf field <code>float totalPrice = 4;</code>
+     * @return float
      */
     public function getTotalPrice()
     {
@@ -123,13 +123,13 @@ class cartCreateResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string totalPrice = 4;</code>
-     * @param string $var
+     * Generated from protobuf field <code>float totalPrice = 4;</code>
+     * @param float $var
      * @return $this
      */
     public function setTotalPrice($var)
     {
-        GPBUtil::checkString($var, True);
+        GPBUtil::checkFloat($var);
         $this->totalPrice = $var;
 
         return $this;

@@ -23,9 +23,11 @@ class CartRepository extends Repository
         parent::__construct($select);
     }
 
-    public function createOrUpdate(?int $cart_id, ?User $user, string $uuid, ProductPrice $productPrice, int $number, string $totalPrice): Cart
+    public function createOrUpdate(?int $cart_id, ?User $user, string $uuid,
+                                   ProductPrice $productPrice, int $number, float $totalPrice): Cart
     {
-        $cart = $cart_id ? $this->ORM->getRepository(Cart::class)->findByPK($cart_id) : new Cart();
+        $cart = $cart_id ? $this->ORM->getRepository(Cart::class)
+            ->findByPK($cart_id) : new Cart();
         $cart->setUser($user);
         $cart->setUuid($uuid);
         $cart->setProductPrice($productPrice);

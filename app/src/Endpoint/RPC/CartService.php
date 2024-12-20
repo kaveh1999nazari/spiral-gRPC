@@ -101,7 +101,9 @@ class CartService implements CartGrpcInterface
      */
     private function getProductPrice(int $productPriceId): ProductPrice
     {
-        $productPrice = $this->ORM->getRepository(ProductPrice::class)->findByPK($productPriceId);
+        $productPrice = $this->ORM->getRepository(ProductPrice::class)
+            ->findByPK($productPriceId);
+
         if (!$productPrice) {
             throw new GRPCException(
                 message: "Product Not Found!",
@@ -157,18 +159,19 @@ class CartService implements CartGrpcInterface
      * @param float $totalPrice
      * @return Cart
      */
-    private function handleCart(string $uuid, ?User $user, ProductPrice $productPrice, int $number, float $totalPrice): Cart
+    private function handleCart(string $uuid, ?User $user, ProductPrice $productPrice,
+                                int $number, float $totalPrice): Cart
     {
         $cartRepository = $this->ORM->getRepository(Cart::class);
         if ($user) {
             $existingCart = $cartRepository->select()
                 ->where('user_id', $user->getId())
-                ->where('productPrice_id', $productPrice->getId())
+                ->where('product_price_id', $productPrice->getId())
                 ->fetchOne();
         } else {
             $existingCart = $cartRepository->select()
                 ->where('uuid', $uuid)
-                ->where('productPrice_id', $productPrice->getId())
+                ->where('product_price_id', $productPrice->getId())
                 ->fetchOne();
         }
 
@@ -236,9 +239,15 @@ class CartService implements CartGrpcInterface
     {
         try {
             if ($userId) {
-                return $cartRepository->select()->where('user_id', $userId)->fetchAll();
+                return $cartRepository
+                    ->select()
+                    ->where('user_id', $userId)
+                    ->fetchAll();
             } elseif ($uuid) {
-                return $cartRepository->select()->where('uuid', $uuid)->fetchAll();
+                return $cartRepository
+                    ->select()
+                    ->where('uuid', $uuid)
+                    ->fetchAll();
             }
         } catch (\Exception $e) {
             throw new GRPCException(

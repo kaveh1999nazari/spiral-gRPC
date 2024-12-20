@@ -17,11 +17,11 @@ class Cart
     #[Column(type: 'string')]
     private string $uuid;
     #[BelongsTo(target: ProductPrice::class)]
-    private ProductPrice $productPrice;
+    private ProductPrice $product_price;
     #[Column(type: 'integer')]
     private int $number;
-    #[Column(type: "string")]
-    private string $totalPrice;
+    #[Column(type: "float")]
+    private float $totalPrice;
 
     public function getId(): int
     {
@@ -50,12 +50,12 @@ class Cart
 
     public function getProductPrice(): ProductPrice
     {
-        return $this->productPrice;
+        return $this->product_price;
     }
 
-    public function setProductPrice(ProductPrice $productPrice): void
+    public function setProductPrice(ProductPrice $product_price): void
     {
-        $this->productPrice = $productPrice;
+        $this->product_price = $product_price;
     }
 
     public function getNumber(): int
@@ -68,12 +68,12 @@ class Cart
         $this->number = $number;
     }
 
-    public function getTotalPrice(): string
+    public function getTotalPrice(): float
     {
         return $this->totalPrice;
     }
 
-    public function setTotalPrice(string $totalPrice): void
+    public function setTotalPrice(float $totalPrice): void
     {
         $this->totalPrice = $totalPrice;
     }

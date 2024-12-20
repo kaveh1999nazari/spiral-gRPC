@@ -426,7 +426,7 @@
     3 => 'Cycle\\ORM\\Select\\Source',
     4 => 'App\\Domain\\Repository\\ProductPriceRepository',
     5 => 'default',
-    6 => 'productprices',
+    6 => 'product_prices',
     7 => 
     array (
       0 => 'id',
@@ -467,6 +467,7 @@
     13 => 
     array (
       'id' => 'int',
+      'price' => 'float',
       'createdAt' => 'datetime',
       'updatedAt' => 'datetime',
       'product_id' => 'int',
@@ -523,7 +524,7 @@
     1 => 'App\\Domain\\Entity\\ProductAttribute',
     2 => 'Cycle\\ORM\\Mapper\\Mapper',
     3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'Cycle\\ORM\\Select\\Repository',
+    4 => 'App\\Domain\\Repository\\ProductAttributeRepository',
     5 => 'default',
     6 => 'product_attributes',
     7 => 
@@ -537,9 +538,11 @@
     9 => 
     array (
       'id' => 'id',
+      'createdAt' => 'created_at',
+      'updatedAt' => 'updated_at',
       'product_id' => 'product_id',
       'attribute_id' => 'attribute_id',
-      'attributeValue_id' => 'attributeValue_id',
+      'attribute_value_id' => 'attribute_value_id',
     ),
     10 => 
     array (
@@ -575,7 +578,7 @@
           ),
         ),
       ),
-      'attributeValue' => 
+      'attribute_value' => 
       array (
         0 => 12,
         1 => 'attributeValue',
@@ -584,7 +587,7 @@
         array (
           30 => true,
           31 => false,
-          33 => 'attributeValue_id',
+          33 => 'attribute_value_id',
           32 => 
           array (
             0 => 'id',
@@ -596,9 +599,11 @@
     13 => 
     array (
       'id' => 'int',
+      'createdAt' => 'datetime',
+      'updatedAt' => 'datetime',
       'product_id' => 'int',
       'attribute_id' => 'int',
-      'attributeValue_id' => 'int',
+      'attribute_value_id' => 'int',
     ),
     14 => 
     array (
@@ -1015,7 +1020,7 @@
       'number' => 'number',
       'totalPrice' => 'total_price',
       'user_id' => 'user_id',
-      'productPrice_id' => 'productPrice_id',
+      'product_price_id' => 'product_price_id',
     ),
     10 => 
     array (
@@ -1035,7 +1040,7 @@
           ),
         ),
       ),
-      'productPrice' => 
+      'product_price' => 
       array (
         0 => 12,
         1 => 'productPrice',
@@ -1044,7 +1049,7 @@
         array (
           30 => true,
           31 => false,
-          33 => 'productPrice_id',
+          33 => 'product_price_id',
           32 => 
           array (
             0 => 'id',
@@ -1057,8 +1062,9 @@
     array (
       'id' => 'int',
       'number' => 'int',
+      'totalPrice' => 'float',
       'user_id' => 'int',
-      'productPrice_id' => 'int',
+      'product_price_id' => 'int',
     ),
     14 => 
     array (

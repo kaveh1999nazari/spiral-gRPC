@@ -28,11 +28,11 @@ cart.protocart";
 userId (
 uuid (	
 
-totalPrice (	"
+totalPrice ("
 cartListRequest"f
 cartListResponse
 carts (2.cart.CartItem
-allTotalPrice (
+allTotalPrice (
 userId (
 uuid (	"V
 CartItem
@@ -40,7 +40,7 @@ totalPrice (	"
 productPriceId (
 number (
 
-totalPrice ("#
+totalPrice ("#
 cartDeleteRequest
 cartId ("%
 cartDeleteResponse

@@ -26,9 +26,9 @@ class CartItem extends \Google\Protobuf\Internal\Message
      */
     protected $number = 0;
     /**
-     * Generated from protobuf field <code>int64 totalPrice = 4;</code>
+     * Generated from protobuf field <code>float totalPrice = 4;</code>
      */
-    protected $totalPrice = 0;
+    protected $totalPrice = 0.0;
 
     /**
      * Constructor.
@@ -39,7 +39,7 @@ class CartItem extends \Google\Protobuf\Internal\Message
      *     @type int $cartId
      *     @type int $productPriceId
      *     @type int $number
-     *     @type int|string $totalPrice
+     *     @type float $totalPrice
      * }
      */
     public function __construct($data = NULL) {
@@ -114,8 +114,8 @@ class CartItem extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int64 totalPrice = 4;</code>
-     * @return int|string
+     * Generated from protobuf field <code>float totalPrice = 4;</code>
+     * @return float
      */
     public function getTotalPrice()
     {
@@ -123,13 +123,13 @@ class CartItem extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int64 totalPrice = 4;</code>
-     * @param int|string $var
+     * Generated from protobuf field <code>float totalPrice = 4;</code>
+     * @param float $var
      * @return $this
      */
     public function setTotalPrice($var)
     {
-        GPBUtil::checkInt64($var);
+        GPBUtil::checkFloat($var);
         $this->totalPrice = $var;
 
         return $this;
