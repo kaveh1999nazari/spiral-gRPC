@@ -19,8 +19,9 @@ message productCreateRequest {
     repeated string image = 4;
     string in_stock = 5;
     int32 category_id = 6;
-    string price = 7;
+    float price = 7;
     map<int32, OptionList> options = 8;
+    map<int32, AttributeList> attributes = 9;
 }
 
 message productCreateResponse {
@@ -29,6 +30,10 @@ message productCreateResponse {
 }
 
 message OptionList {
+    repeated string values = 1;
+}
+
+message AttributeList {
     repeated string values = 1;
 }
 

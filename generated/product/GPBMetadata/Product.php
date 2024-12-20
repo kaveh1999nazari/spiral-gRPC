@@ -16,8 +16,8 @@ class Product
         }
         $pool->internalAddGeneratedFile(
             '
-
-product.protoproduct"
+Ì	
+product.protoproduct"
 productCreateRequest
 name (	
 description (	
@@ -25,17 +25,24 @@ class Product
 image (	
 in_stock (	
 category_id (
-price (	;
-options (2*.product.productCreateRequest.OptionsEntryC
+price (;
+options (2*.product.productCreateRequest.OptionsEntryA
+
+attributes	 (2-.product.productCreateRequest.AttributesEntryC
 OptionsEntry
 key ("
-value (2.product.OptionList:8"1
+value (2.product.OptionList:8I
+AttributesEntry
+key (%
+value (2.product.AttributeList:8"1
 productCreateResponse
 
 id (
 name (	"
 
 OptionList
+values (	"
+AttributeList
 values (	"$
 productSearchRequest
 name (	">

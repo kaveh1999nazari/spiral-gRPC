@@ -38,13 +38,17 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
      */
     protected $category_id = 0;
     /**
-     * Generated from protobuf field <code>string price = 7;</code>
+     * Generated from protobuf field <code>float price = 7;</code>
      */
-    protected $price = '';
+    protected $price = 0.0;
     /**
      * Generated from protobuf field <code>map<int32, .product.OptionList> options = 8;</code>
      */
     private $options;
+    /**
+     * Generated from protobuf field <code>map<int32, .product.AttributeList> attributes = 9;</code>
+     */
+    private $attributes;
 
     /**
      * Constructor.
@@ -58,8 +62,9 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $image
      *     @type string $in_stock
      *     @type int $category_id
-     *     @type string $price
+     *     @type float $price
      *     @type array|\Google\Protobuf\Internal\MapField $options
+     *     @type array|\Google\Protobuf\Internal\MapField $attributes
      * }
      */
     public function __construct($data = NULL) {
@@ -200,8 +205,8 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string price = 7;</code>
-     * @return string
+     * Generated from protobuf field <code>float price = 7;</code>
+     * @return float
      */
     public function getPrice()
     {
@@ -209,13 +214,13 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string price = 7;</code>
-     * @param string $var
+     * Generated from protobuf field <code>float price = 7;</code>
+     * @param float $var
      * @return $this
      */
     public function setPrice($var)
     {
-        GPBUtil::checkString($var, True);
+        GPBUtil::checkFloat($var);
         $this->price = $var;
 
         return $this;
@@ -239,6 +244,28 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::INT32, \Google\Protobuf\Internal\GPBType::MESSAGE, \GRPC\product\OptionList::class);
         $this->options = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<int32, .product.AttributeList> attributes = 9;</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * Generated from protobuf field <code>map<int32, .product.AttributeList> attributes = 9;</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setAttributes($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::INT32, \Google\Protobuf\Internal\GPBType::MESSAGE, \GRPC\product\AttributeList::class);
+        $this->attributes = $arr;
 
         return $this;
     }
