@@ -48,4 +48,17 @@ class ProductGrpcClient implements ProductGrpcInterface
 
         return $response;
     }
+
+    public function ProductSimilarSearch(
+        ContextInterface $ctx,
+        ProductSimilarSearchRequest $in,
+    ): ProductSimilarSearchResponse {
+        [$response, $status] = $this->core->callAction(ProductGrpcInterface::class, '/'.self::NAME.'/ProductSimilarSearch', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\product\ProductSimilarSearchResponse::class,
+        ]);
+
+        return $response;
+    }
 }

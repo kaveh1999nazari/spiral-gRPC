@@ -14,11 +14,11 @@ use Google\Protobuf\Internal\GPBUtil;
 class attributes extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>int32 attribute_id = 1;</code>
+     * Generated from protobuf field <code>uint64 attribute_id = 1;</code>
      */
     protected $attribute_id = 0;
     /**
-     * Generated from protobuf field <code>int32 attribute_value_id = 2;</code>
+     * Generated from protobuf field <code>uint64 attribute_value_id = 2;</code>
      */
     protected $attribute_value_id = 0;
 
@@ -28,8 +28,8 @@ class attributes extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type int $attribute_id
-     *     @type int $attribute_value_id
+     *     @type int|string $attribute_id
+     *     @type int|string $attribute_value_id
      * }
      */
     public function __construct($data = NULL) {
@@ -38,8 +38,8 @@ class attributes extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 attribute_id = 1;</code>
-     * @return int
+     * Generated from protobuf field <code>uint64 attribute_id = 1;</code>
+     * @return int|string
      */
     public function getAttributeId()
     {
@@ -47,21 +47,21 @@ class attributes extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 attribute_id = 1;</code>
-     * @param int $var
+     * Generated from protobuf field <code>uint64 attribute_id = 1;</code>
+     * @param int|string $var
      * @return $this
      */
     public function setAttributeId($var)
     {
-        GPBUtil::checkInt32($var);
+        GPBUtil::checkUint64($var);
         $this->attribute_id = $var;
 
         return $this;
     }
 
     /**
-     * Generated from protobuf field <code>int32 attribute_value_id = 2;</code>
-     * @return int
+     * Generated from protobuf field <code>uint64 attribute_value_id = 2;</code>
+     * @return int|string
      */
     public function getAttributeValueId()
     {
@@ -69,13 +69,13 @@ class attributes extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 attribute_value_id = 2;</code>
-     * @param int $var
+     * Generated from protobuf field <code>uint64 attribute_value_id = 2;</code>
+     * @param int|string $var
      * @return $this
      */
     public function setAttributeValueId($var)
     {
-        GPBUtil::checkInt32($var);
+        GPBUtil::checkUint64($var);
         $this->attribute_value_id = $var;
 
         return $this;

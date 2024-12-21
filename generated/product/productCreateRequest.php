@@ -42,11 +42,11 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
      */
     protected $price = 0.0;
     /**
-     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 8;</code>
+     * Generated from protobuf field <code>map<uint64, .product.OptionList> options = 8;</code>
      */
     private $options;
     /**
-     * Generated from protobuf field <code>map<int32, .product.AttributeList> attributes = 9;</code>
+     * Generated from protobuf field <code>map<uint64, .product.AttributeList> attributes = 9;</code>
      */
     private $attributes;
 
@@ -227,7 +227,7 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 8;</code>
+     * Generated from protobuf field <code>map<uint64, .product.OptionList> options = 8;</code>
      * @return \Google\Protobuf\Internal\MapField
      */
     public function getOptions()
@@ -236,20 +236,20 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<int32, .product.OptionList> options = 8;</code>
+     * Generated from protobuf field <code>map<uint64, .product.OptionList> options = 8;</code>
      * @param array|\Google\Protobuf\Internal\MapField $var
      * @return $this
      */
     public function setOptions($var)
     {
-        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::INT32, \Google\Protobuf\Internal\GPBType::MESSAGE, \GRPC\product\OptionList::class);
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::UINT64, \Google\Protobuf\Internal\GPBType::MESSAGE, \GRPC\product\OptionList::class);
         $this->options = $arr;
 
         return $this;
     }
 
     /**
-     * Generated from protobuf field <code>map<int32, .product.AttributeList> attributes = 9;</code>
+     * Generated from protobuf field <code>map<uint64, .product.AttributeList> attributes = 9;</code>
      * @return \Google\Protobuf\Internal\MapField
      */
     public function getAttributes()
@@ -258,13 +258,13 @@ class productCreateRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<int32, .product.AttributeList> attributes = 9;</code>
+     * Generated from protobuf field <code>map<uint64, .product.AttributeList> attributes = 9;</code>
      * @param array|\Google\Protobuf\Internal\MapField $var
      * @return $this
      */
     public function setAttributes($var)
     {
-        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::INT32, \Google\Protobuf\Internal\GPBType::MESSAGE, \GRPC\product\AttributeList::class);
+        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::UINT64, \Google\Protobuf\Internal\GPBType::MESSAGE, \GRPC\product\AttributeList::class);
         $this->attributes = $arr;
 
         return $this;

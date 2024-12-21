@@ -10,6 +10,7 @@ service ProductGrpc {
     rpc ProductCreate (productCreateRequest) returns (productCreateResponse);
     rpc ProductSearch (productSearchRequest) returns (productSearchResponse);
     rpc ProductFilterSearch (productFilterSearchRequest) returns (productFilterSearchResponse);
+    rpc ProductSimilarSearch (productSimilarSearchRequest) returns (productSimilarSearchResponse);
 }
 
 message productCreateRequest {
@@ -20,12 +21,12 @@ message productCreateRequest {
     string in_stock = 5;
     int32 category_id = 6;
     float price = 7;
-    map<int32, OptionList> options = 8;
-    map<int32, AttributeList> attributes = 9;
+    map<uint64, OptionList> options = 8;
+    map<uint64, AttributeList> attributes = 9;
 }
 
 message productCreateResponse {
-    int32 id = 1;
+    uint64 id = 1;
     string name = 2;
 }
 
@@ -55,10 +56,18 @@ message productFilterSearchRequest {
 }
 
 message attributes {
-    int32 attribute_id = 1;
-    int32 attribute_value_id = 2;
+    uint64 attribute_id = 1;
+    uint64 attribute_value_id = 2;
 }
 
 message productFilterSearchResponse {
+    repeated product_name result = 1;
+}
+
+message productSimilarSearchRequest {
+    uint64 product_id = 1;
+}
+
+message productSimilarSearchResponse {
     repeated product_name result = 1;
 }

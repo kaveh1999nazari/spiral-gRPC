@@ -14,7 +14,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class productCreateResponse extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>int32 id = 1;</code>
+     * Generated from protobuf field <code>uint64 id = 1;</code>
      */
     protected $id = 0;
     /**
@@ -28,7 +28,7 @@ class productCreateResponse extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type int $id
+     *     @type int|string $id
      *     @type string $name
      * }
      */
@@ -38,8 +38,8 @@ class productCreateResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 id = 1;</code>
-     * @return int
+     * Generated from protobuf field <code>uint64 id = 1;</code>
+     * @return int|string
      */
     public function getId()
     {
@@ -47,13 +47,13 @@ class productCreateResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 id = 1;</code>
-     * @param int $var
+     * Generated from protobuf field <code>uint64 id = 1;</code>
+     * @param int|string $var
      * @return $this
      */
     public function setId($var)
     {
-        GPBUtil::checkInt32($var);
+        GPBUtil::checkUint64($var);
         $this->id = $var;
 
         return $this;
