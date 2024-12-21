@@ -12,7 +12,6 @@ use App\Domain\Entity\ProductAttribute;
 use App\Domain\Entity\ProductPrice;
 use App\Domain\Request\ProductStoreRequest;
 use App\Domain\Request\ProductSearchRequest as ProductSearchQueryRequest;
-use Cycle\Database\DatabaseManager;
 use Cycle\ORM\ORMInterface;
 use Google\Rpc\Code;
 use GRPC\product\product_name;
