@@ -12,6 +12,7 @@ use App\Domain\Entity\ProductAttribute;
 use App\Domain\Entity\ProductPrice;
 use App\Domain\Request\ProductStoreRequest;
 use App\Domain\Request\ProductSearchRequest as ProductSearchQueryRequest;
+use Cycle\Database\DatabaseManager;
 use Cycle\ORM\ORMInterface;
 use Google\Rpc\Code;
 use GRPC\product\product_name;
@@ -22,6 +23,8 @@ use GRPC\product\productFilterSearchResponse;
 use GRPC\product\ProductGrpcInterface;
 use GRPC\product\productSearchRequest;
 use GRPC\product\productSearchResponse;
+use GRPC\product\productSimilarSearchRequest;
+use GRPC\product\productSimilarSearchResponse;
 use Spiral\Boot\DirectoriesInterface;
 use Spiral\RoadRunner\GRPC;
 
@@ -42,7 +45,7 @@ class ProductService implements ProductGrpcInterface
             $options[$key] = iterator_to_array($optionList->getValues());
         }
 
-        foreach ($in->getAttributes() as $key => $attributeList){
+        foreach ($in->getAttributes() as $key => $attributeList) {
             $attributes[$key] = iterator_to_array($attributeList->getValues());
         }
 
@@ -69,13 +72,11 @@ class ProductService implements ProductGrpcInterface
     public function ProductSearch(GRPC\ContextInterface $ctx, ProductSearchRequest $in): ProductSearchResponse
     {
         $products = $this->orm->getRepository(Product::class)
-            ->select()
-            ->where('name', 'LIKE', "%{$in->getName()}%")
-            ->fetchAll();
+            ->search($in->getName());
 
-        if(empty($products)){
+        if (empty($products)) {
             throw new GRPC\Exception\GRPCException(
-                message: "Not Found!",code: Code::NOT_FOUND
+                message: "Not Found!", code: Code::NOT_FOUND
             );
         }
 
@@ -87,12 +88,30 @@ class ProductService implements ProductGrpcInterface
         $results = $this->setFilterProducts($in->getName(), $in->getList());
 
         $response = new ProductFilterSearchResponse();
+        $data = [];
         foreach ($results as $product) {
             $productName = new product_name();
             $productName->setName($product->getName());
-            $response->getResult()[] = $productName;
+            $data[] = $productName;
         }
+        $response->setResult($data);
 
+        return $response;
+    }
+
+    public function ProductSimilarSearch(GRPC\ContextInterface $ctx, ProductSimilarSearchRequest $in): ProductSimilarSearchResponse
+    {
+        $similarProducts = $this->orm->getRepository(Product::class)
+                ->findSimilar($in->getProductId());
+
+        $response = new ProductSimilarSearchResponse();
+        $data = [];
+        foreach ($similarProducts as $similarProduct) {
+            $productName = new product_name();
+            $productName->setName($similarProduct['product_name']);
+            $data[] = $productName;
+        }
+        $response->setResult($data);
         return $response;
     }
 
@@ -108,6 +127,7 @@ class ProductService implements ProductGrpcInterface
         }
         return $category;
     }
+
     private function cartesian($input)
     {
         $result = [];
@@ -138,7 +158,7 @@ class ProductService implements ProductGrpcInterface
             ->findByPK($id);
 
         $cartesianAttributes = $this->cartesian($attributes);
-        foreach ($cartesianAttributes as $keys => $values){
+        foreach ($cartesianAttributes as $keys => $values) {
 
             $attribute = $this->orm->getRepository(Attribute::class)
                 ->findByPK($values[0]);
@@ -148,7 +168,7 @@ class ProductService implements ProductGrpcInterface
 
             $this->orm->getRepository(ProductAttribute::class)
                 ->create($product, $attribute, $attributeValue);
-            }
+        }
     }
 
     private function checkUploadImage(array $images): array
@@ -184,7 +204,7 @@ class ProductService implements ProductGrpcInterface
         $response = new ProductSearchResponse();
 
         $results = [];
-        foreach ($products as $product){
+        foreach ($products as $product) {
             $result = new product_name();
             $result->setName($product->getName());
 
@@ -200,9 +220,7 @@ class ProductService implements ProductGrpcInterface
     private function setFilterProducts(string $name, $lists)
     {
         $products = $this->orm->getRepository(Product::class)
-            ->select()
-            ->where('name', 'LIKE', "%{$name}%")
-            ->fetchAll();
+            ->search($name);
 
         $attributes = $lists;
 
@@ -212,11 +230,7 @@ class ProductService implements ProductGrpcInterface
 
             foreach ($attributes as $attribute) {
                 $result = $this->orm->getRepository(ProductAttribute::class)
-                    ->select()
-                    ->where('product_id', $product->getId())
-                    ->andWhere('attribute_id', $attribute->getAttributeId())
-                    ->andWhere('attribute_value_id', $attribute->getAttributeValueId())
-                    ->fetchOne();
+                    ->filter($product->getId(), $attribute->getAttributeId(), $attribute->getAttributeValueId());
 
                 if ($result !== null) {
                     $matchCount++;
