@@ -943,6 +943,83 @@
       'id' => 2,
     ),
   ),
+  'productFavorite' => 
+  array (
+    1 => 'App\\Domain\\Entity\\ProductFavorite',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\ProductFavoriteRepository',
+    5 => 'default',
+    6 => 'product_favorites',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'createdAt' => 'created_at',
+      'updatedAt' => 'updated_at',
+      'user_id' => 'user_id',
+      'product_id' => 'product_id',
+    ),
+    10 => 
+    array (
+      'user' => 
+      array (
+        0 => 12,
+        1 => 'user',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'user_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'product' => 
+      array (
+        0 => 12,
+        1 => 'product',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'product_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'createdAt' => 'datetime',
+      'updatedAt' => 'datetime',
+      'user_id' => 'int',
+      'product_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
   'province' => 
   array (
     1 => 'App\\Domain\\Entity\\Province',
