@@ -9,17 +9,28 @@ use App\Domain\Entity\Category;
 use App\Domain\Entity\AttributeValue;
 use App\Domain\Entity\Product;
 use App\Domain\Entity\ProductAttribute;
+use App\Domain\Entity\ProductFavorite;
 use App\Domain\Entity\ProductPrice;
+use App\Domain\Entity\User;
 use App\Domain\Request\ProductStoreRequest;
 use App\Domain\Request\ProductSearchRequest as ProductSearchQueryRequest;
 use Cycle\ORM\ORMInterface;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use Google\Rpc\Code;
+use GRPC\product\ListFavorite;
 use GRPC\product\product_name;
+use GRPC\product\ProductCreateFavoriteRequest;
+use GRPC\product\ProductCreateFavoriteResponse;
 use GRPC\product\productCreateRequest;
 use GRPC\product\productCreateResponse;
+use GRPC\product\ProductDeleteFavoriteRequest;
+use GRPC\product\ProductDeleteFavoriteResponse;
 use GRPC\product\productFilterSearchRequest;
 use GRPC\product\productFilterSearchResponse;
 use GRPC\product\ProductGrpcInterface;
+use GRPC\product\ProductListFavoriteRequest;
+use GRPC\product\ProductListFavoriteResponse;
 use GRPC\product\productSearchRequest;
 use GRPC\product\productSearchResponse;
 use GRPC\product\productSimilarSearchRequest;
@@ -111,6 +122,57 @@ class ProductService implements ProductGrpcInterface
             $data[] = $productName;
         }
         $response->setResult($data);
+        return $response;
+    }
+
+    #[AuthenticatedBy(['user'])]
+    public function ProductCreateFavorite(GRPC\ContextInterface $ctx, ProductCreateFavoriteRequest $in): ProductCreateFavoriteResponse
+    {
+        $user = $this->getUserByToken($ctx->getValue('authorization'));
+
+        $product = $this->orm->getRepository(Product::class)
+            ->findByPK($in->getProductId());
+
+        $this->orm->getRepository(ProductFavorite::class)
+            ->create($user, $product);
+
+        $response = new ProductCreateFavoriteResponse();
+        $response->setMessage("your product id: {$product->getId()} successfully add to favorites");
+
+        return $response;
+
+    }
+
+    #[AuthenticatedBy(['user'])]
+    public function ProductListFavorite(GRPC\ContextInterface $ctx, ProductListFavoriteRequest $in): ProductListFavoriteResponse
+    {
+        $user = $this->getUserByToken($ctx->getValue('authorization'));
+
+        $productFavorites = $this->orm->getRepository(ProductFavorite::class)
+            ->list($user->getId());
+
+        $response = new ProductListFavoriteResponse();
+
+        $data = [];
+        foreach ($productFavorites as $productFavorite){
+            $list = new ListFavorite();
+            $list->setProductId($productFavorite->getProduct()->getId());
+            $data[] = $list;
+        }
+
+        $response->setResult($data);
+
+        return $response;
+    }
+
+    public function ProductDeleteFavorite(GRPC\ContextInterface $ctx, ProductDeleteFavoriteRequest $in): ProductDeleteFavoriteResponse
+    {
+        $this->orm->getRepository(ProductFavorite::class)
+            ->delete($in->getId());
+
+        $response = new ProductDeleteFavoriteResponse();
+        $response->setMessage('successfully delete');
+
         return $response;
     }
 
@@ -241,5 +303,16 @@ class ProductService implements ProductGrpcInterface
             }
         }
         return $results;
+    }
+
+    private function getUserByToken(?array $authHeader): User
+    {
+        $token = (is_array($authHeader) && isset($authHeader[0]) && !empty($authHeader[0]))
+            ? substr($authHeader[0], 7)
+            : null;
+
+        $decoded = JWT::decode($token, new Key("secret", "HS256"));
+
+        return $this->orm->getRepository(User::class)->findByPK($decoded->sub);
     }
 }

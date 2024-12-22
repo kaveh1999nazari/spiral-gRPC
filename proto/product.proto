@@ -11,6 +11,9 @@ service ProductGrpc {
     rpc ProductSearch (productSearchRequest) returns (productSearchResponse);
     rpc ProductFilterSearch (productFilterSearchRequest) returns (productFilterSearchResponse);
     rpc ProductSimilarSearch (productSimilarSearchRequest) returns (productSimilarSearchResponse);
+    rpc ProductCreateFavorite (ProductCreateFavoriteRequest) returns (ProductCreateFavoriteResponse);
+    rpc ProductListFavorite (ProductListFavoriteRequest) returns (ProductListFavoriteResponse);
+    rpc ProductDeleteFavorite (ProductDeleteFavoriteRequest) returns (ProductDeleteFavoriteResponse);
 }
 
 message productCreateRequest {
@@ -70,4 +73,32 @@ message productSimilarSearchRequest {
 
 message productSimilarSearchResponse {
     repeated product_name result = 1;
+}
+
+message ProductCreateFavoriteRequest {
+    uint64 product_id = 1;
+}
+
+message ProductCreateFavoriteResponse {
+    string message = 1;
+}
+
+message ProductListFavoriteRequest {
+
+}
+
+message ProductListFavoriteResponse {
+    repeated ListFavorite result = 1;
+}
+
+message ListFavorite {
+    uint64 product_id = 1;
+}
+
+message ProductDeleteFavoriteRequest {
+    uint64 id = 1;
+}
+
+message ProductDeleteFavoriteResponse {
+    string message = 1;
 }

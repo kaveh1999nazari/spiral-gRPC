@@ -46,4 +46,31 @@ interface ProductGrpcInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function ProductSimilarSearch(GRPC\ContextInterface $ctx, ProductSimilarSearchRequest $in): ProductSimilarSearchResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param ProductCreateFavoriteRequest $in
+    * @return ProductCreateFavoriteResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function ProductCreateFavorite(GRPC\ContextInterface $ctx, ProductCreateFavoriteRequest $in): ProductCreateFavoriteResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param ProductListFavoriteRequest $in
+    * @return ProductListFavoriteResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function ProductListFavorite(GRPC\ContextInterface $ctx, ProductListFavoriteRequest $in): ProductListFavoriteResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param ProductDeleteFavoriteRequest $in
+    * @return ProductDeleteFavoriteResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function ProductDeleteFavorite(GRPC\ContextInterface $ctx, ProductDeleteFavoriteRequest $in): ProductDeleteFavoriteResponse;
 }

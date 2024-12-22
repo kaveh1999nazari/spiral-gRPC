@@ -61,4 +61,43 @@ class ProductGrpcClient implements ProductGrpcInterface
 
         return $response;
     }
+
+    public function ProductCreateFavorite(
+        ContextInterface $ctx,
+        ProductCreateFavoriteRequest $in,
+    ): ProductCreateFavoriteResponse {
+        [$response, $status] = $this->core->callAction(ProductGrpcInterface::class, '/'.self::NAME.'/ProductCreateFavorite', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\product\ProductCreateFavoriteResponse::class,
+        ]);
+
+        return $response;
+    }
+
+    public function ProductListFavorite(
+        ContextInterface $ctx,
+        ProductListFavoriteRequest $in,
+    ): ProductListFavoriteResponse {
+        [$response, $status] = $this->core->callAction(ProductGrpcInterface::class, '/'.self::NAME.'/ProductListFavorite', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\product\ProductListFavoriteResponse::class,
+        ]);
+
+        return $response;
+    }
+
+    public function ProductDeleteFavorite(
+        ContextInterface $ctx,
+        ProductDeleteFavoriteRequest $in,
+    ): ProductDeleteFavoriteResponse {
+        [$response, $status] = $this->core->callAction(ProductGrpcInterface::class, '/'.self::NAME.'/ProductDeleteFavorite', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\product\ProductDeleteFavoriteResponse::class,
+        ]);
+
+        return $response;
+    }
 }
