@@ -20,6 +20,8 @@
       'id' => 'id',
       'options' => 'options',
       'price' => 'price',
+      'discountPercentage' => 'discount_percentage',
+      'discountEndAt' => 'discount_end_at',
       'createdAt' => 'created_at',
       'updatedAt' => 'updated_at',
       'product_id' => 'product_id',
@@ -48,6 +50,8 @@
     array (
       'id' => 'int',
       'price' => 'float',
+      'discountPercentage' => 'float',
+      'discountEndAt' => 'datetime',
       'createdAt' => 'datetime',
       'updatedAt' => 'datetime',
       'product_id' => 'int',
