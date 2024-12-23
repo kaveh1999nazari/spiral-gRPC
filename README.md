@@ -73,6 +73,7 @@
                 <li>Added Filter Products By them Attributes</li>
                 <li>Added Similar Products</li>
                 <li>Added Media for Resident, Profile Picture, Education</li>
+                <li>Added Product to see all Prices</li>
             </ul>
             <p><strong>Fixes:</strong></p>
             <ul class="fixes">
