@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package comment;
+
+option php_namespace = "GRPC\\comment";
+option php_metadata_namespace = "GRPC\\comment\\GPBMetadata";
+
+
+service CommentGrpc {
+    rpc commentProductCreate (CommentProductCreateRequest) returns (CommentProductCreateResponse);
+}
+
+message CommentProductCreateRequest {
+    uint64 product_price_id = 1;
+    string comment = 2;
+}
+
+message CommentProductCreateResponse {
+    string message = 1;
+}
