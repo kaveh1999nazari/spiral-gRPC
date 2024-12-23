@@ -31,8 +31,11 @@ use GRPC\product\ProductDiscountResponse;
 use GRPC\product\productFilterSearchRequest;
 use GRPC\product\productFilterSearchResponse;
 use GRPC\product\ProductGrpcInterface;
+use GRPC\product\ProductList;
 use GRPC\product\ProductListFavoriteRequest;
 use GRPC\product\ProductListFavoriteResponse;
+use GRPC\product\ProductPriceListRequest;
+use GRPC\product\ProductPriceListResponse;
 use GRPC\product\productSearchRequest;
 use GRPC\product\productSearchResponse;
 use GRPC\product\productSimilarSearchRequest;
@@ -78,6 +81,14 @@ class ProductService implements ProductGrpcInterface
         $response->setId($product->getId());
         $response->setName($product->getName());
         return $response;
+    }
+
+    public function ProductPriceList(GRPC\ContextInterface $ctx, ProductPriceListRequest $in): ProductPriceListResponse
+    {
+        $productPrices = $this->orm->getRepository(ProductPrice::class)
+            ->list();
+
+        return $this->buildListResponse($productPrices);
     }
 
     #[ValidateBy(ProductSearchQueryRequest::class)]
@@ -225,6 +236,36 @@ class ProductService implements ProductGrpcInterface
             $this->orm->getRepository(ProductPrice::class)
                 ->create($product, $combination, $price);
         }
+    }
+
+    private function buildListResponse(array $productPrices): ProductPriceListResponse
+    {
+        $response = new ProductPriceListResponse();
+
+        $data = [];
+        foreach ($productPrices as $productPrice){
+            $product = new ProductList();
+
+            if ($productPrice->getDiscountPercentage() &&
+                $productPrice->getDiscountEndAt()->format('Y-m-d H:i:s') > (new \DateTimeImmutable())->format('Y-m-d H:i:s'))
+            {
+                $discount = $productPrice->getPrice() -
+                    ($productPrice->getDiscountPercentage() / 100) * $productPrice->getPrice();
+                $product->setPrice(round($discount, 2));
+
+            }else {
+                $product->setPrice($productPrice->getPrice());
+            }
+
+            $product->setProductId($productPrice->getProduct()->getId());
+            $product->setProductName($productPrice->getProduct()->getName());
+
+            $data[] = $product;
+        }
+
+        $response->setResult($data);
+
+        return $response;
     }
 
     private function createProductAttribute(int $id, array $attributes): void
