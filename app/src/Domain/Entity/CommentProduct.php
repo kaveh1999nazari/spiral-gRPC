@@ -16,8 +16,8 @@ class CommentProduct
     private User $user;
     #[BelongsTo(target: ProductPrice::class)]
     private ProductPrice $product_price;
-    #[BelongsTo(target: OrderItem::class, nullable: true)]
-    private ?OrderItem $order_item;
+    #[BelongsTo(target: Order::class, nullable: true)]
+    private ?Order $order;
     #[Column(type: 'text')]
     private string $comment;
     #[Column(type: 'boolean')]
@@ -50,14 +50,14 @@ class CommentProduct
         $this->product_price = $productPrice;
     }
 
-    public function getOrderItem(): ?OrderItem
+    public function getOrder(): ?Order
     {
-        return $this->order_item;
+        return $this->order;
     }
 
-    public function setOrderItem(?OrderItem $orderItem): void
+    public function setOrder(?Order $order): void
     {
-        $this->order_item = $orderItem;
+        $this->order = $order;
     }
 
     public function getComment(): string
