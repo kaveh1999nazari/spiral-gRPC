@@ -4,6 +4,7 @@ namespace App\Endpoint\RPC;
 
 use App\Domain\Attribute\AuthenticatedBy;
 use App\Domain\Entity\CommentProduct;
+use App\Domain\Entity\Order;
 use App\Domain\Entity\ProductPrice;
 use App\Domain\Entity\User;
 use Cycle\ORM\ORMInterface;
@@ -31,13 +32,12 @@ class CommentService implements CommentGrpcInterface
             ->findByPK($in->getProductPriceId());
 
         if (!$productPrice) {
-            throw new GRPC\Exception\GRPCException(
-                message:'Product not found.',
-                code: Code::NOT_FOUND
-            );
+            throw new \DomainException('Product not found.');
         }
 
         $this->ensureUniqueComment($user->getId(), $productPrice->getId());
+
+        $this->ensureProductPurchased($user, $productPrice->getId());
 
         $order = $this->findOrderItem($user, $productPrice->getId());
 
@@ -73,19 +73,37 @@ class CommentService implements CommentGrpcInterface
 
         if ($existingComment) {
             throw new GRPC\Exception\GRPCException(
-                message: 'This comment already exists.',
+                message: 'Duplicate comment. This comment already exists.',
                 code: Code::ALREADY_EXISTS
             );
         }
     }
 
-    private function findOrderItem($user, int $productPriceId): ?OrderItem
+    private function ensureProductPurchased($user, int $productPriceId): void
+    {
+        $hasPurchased = false;
+
+        foreach ($user->getOrderItem() ?? [] as $orderItem) {
+            if ($orderItem->getProductPriceId() === $productPriceId) {
+                $hasPurchased = true;
+                break;
+            }
+        }
+
+        if (!$hasPurchased) {
+            throw new GRPC\Exception\GRPCException(
+                message: 'You cannot comment on this product because you have not purchased it.',
+                code: Code::PERMISSION_DENIED
+            );
+        }
+    }
+
+    private function findOrderItem($user, int $productPriceId): Order
     {
         foreach ($user->getOrderItem() ?? [] as $orderItem) {
             if ($orderItem->getProductPriceId() === $productPriceId) {
-                return $orderItem;
+                return $orderItem->getOrder();
             }
         }
-        return null;
     }
 }
