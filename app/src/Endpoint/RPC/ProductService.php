@@ -249,9 +249,8 @@ class ProductService implements ProductGrpcInterface
             if ($productPrice->getDiscountPercentage() &&
                 $productPrice->getDiscountEndAt()->format('Y-m-d H:i:s') > (new \DateTimeImmutable())->format('Y-m-d H:i:s'))
             {
-                $discount = $productPrice->getPrice() -
-                    ($productPrice->getDiscountPercentage() / 100) * $productPrice->getPrice();
-                $product->setPrice(round($discount, 2));
+                $product->setPrice(round($productPrice->getPrice() -
+                    ($productPrice->getDiscountPercentage() / 100) * $productPrice->getPrice(), 2));
 
             }else {
                 $product->setPrice($productPrice->getPrice());
