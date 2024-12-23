@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.2.2">
-            <h2>Last update V2.2.2</h2>
+        <div class="version" id="v2.2.3">
+            <h2>Last update V2.2.3</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
@@ -45,6 +45,7 @@
                         <li>Upload images base on api</li>
                         <li>Can update order status</li>
                         <li>Can Add Discount for every Product</li>
+                        <li>Can Update Comments product to show</li>
                     </ul>
                 </li>
                 <li>User can:
