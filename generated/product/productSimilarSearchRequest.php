@@ -9,6 +9,8 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
+ *product similar
+ *
  * Generated from protobuf message <code>product.productSimilarSearchRequest</code>
  */
 class productSimilarSearchRequest extends \Google\Protobuf\Internal\Message
