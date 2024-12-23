@@ -19,6 +19,10 @@ class ProductPrice
     private string $options;
     #[Column(type: "float")]
     private float $price;
+    #[Column(type: 'float')]
+    private ?float $discountPercentage;
+    #[Column(type: 'datetime')]
+    private ?\DateTimeImmutable $discountEndAt;
     #[Column(type: 'datetime')]
     private \DateTimeImmutable $createdAt;
     #[Column(type: 'datetime')]
@@ -57,6 +61,26 @@ class ProductPrice
     public function setPrice(float $price): void
     {
         $this->price = $price;
+    }
+
+    public function getDiscountPercentage(): float
+    {
+        return $this->discountPercentage;
+    }
+
+    public function setDiscountPercentage(float $discountPercentage): void
+    {
+        $this->discountPercentage = $discountPercentage;
+    }
+
+    public function getDiscountEndAt(): \DateTimeImmutable
+    {
+        return $this->discountEndAt;
+    }
+
+    public function setDiscountEndAt(\DateTimeImmutable $discountEndAt): void
+    {
+        $this->discountEndAt = $discountEndAt;
     }
 
     public function getCreatedAt(): \DateTimeImmutable
