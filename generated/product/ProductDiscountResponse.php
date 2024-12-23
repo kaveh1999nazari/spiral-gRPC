@@ -9,16 +9,14 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * product search
- *
- * Generated from protobuf message <code>product.productSearchRequest</code>
+ * Generated from protobuf message <code>product.ProductDiscountResponse</code>
  */
-class productSearchRequest extends \Google\Protobuf\Internal\Message
+class ProductDiscountResponse extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string name = 1;</code>
+     * Generated from protobuf field <code>string message = 1;</code>
      */
-    protected $name = '';
+    protected $message = '';
 
     /**
      * Constructor.
@@ -26,7 +24,7 @@ class productSearchRequest extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type string $name
+     *     @type string $message
      * }
      */
     public function __construct($data = NULL) {
@@ -35,23 +33,23 @@ class productSearchRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1;</code>
+     * Generated from protobuf field <code>string message = 1;</code>
      * @return string
      */
-    public function getName()
+    public function getMessage()
     {
-        return $this->name;
+        return $this->message;
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1;</code>
+     * Generated from protobuf field <code>string message = 1;</code>
      * @param string $var
      * @return $this
      */
-    public function setName($var)
+    public function setMessage($var)
     {
         GPBUtil::checkString($var, True);
-        $this->name = $var;
+        $this->message = $var;
 
         return $this;
     }

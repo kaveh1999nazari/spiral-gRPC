@@ -100,4 +100,15 @@ class ProductGrpcClient implements ProductGrpcInterface
 
         return $response;
     }
+
+    public function ProductDiscount(ContextInterface $ctx, ProductDiscountRequest $in): ProductDiscountResponse
+    {
+        [$response, $status] = $this->core->callAction(ProductGrpcInterface::class, '/'.self::NAME.'/ProductDiscount', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\product\ProductDiscountResponse::class,
+        ]);
+
+        return $response;
+    }
 }

@@ -73,4 +73,13 @@ interface ProductGrpcInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function ProductDeleteFavorite(GRPC\ContextInterface $ctx, ProductDeleteFavoriteRequest $in): ProductDeleteFavoriteResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param ProductDiscountRequest $in
+    * @return ProductDiscountResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function ProductDiscount(GRPC\ContextInterface $ctx, ProductDiscountRequest $in): ProductDiscountResponse;
 }

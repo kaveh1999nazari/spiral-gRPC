@@ -9,6 +9,8 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
+ *product favorites
+ *
  * Generated from protobuf message <code>product.ProductCreateFavoriteRequest</code>
  */
 class ProductCreateFavoriteRequest extends \Google\Protobuf\Internal\Message

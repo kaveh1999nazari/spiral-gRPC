@@ -9,6 +9,8 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
+ * product filter
+ *
  * Generated from protobuf message <code>product.productFilterSearchRequest</code>
  */
 class productFilterSearchRequest extends \Google\Protobuf\Internal\Message

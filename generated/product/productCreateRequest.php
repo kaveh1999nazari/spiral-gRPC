@@ -9,6 +9,8 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
+ * product create
+ *
  * Generated from protobuf message <code>product.productCreateRequest</code>
  */
 class productCreateRequest extends \Google\Protobuf\Internal\Message

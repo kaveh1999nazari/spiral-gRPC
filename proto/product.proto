@@ -14,8 +14,10 @@ service ProductGrpc {
     rpc ProductCreateFavorite (ProductCreateFavoriteRequest) returns (ProductCreateFavoriteResponse);
     rpc ProductListFavorite (ProductListFavoriteRequest) returns (ProductListFavoriteResponse);
     rpc ProductDeleteFavorite (ProductDeleteFavoriteRequest) returns (ProductDeleteFavoriteResponse);
+    rpc ProductDiscount (ProductDiscountRequest) returns (ProductDiscountResponse);
 }
 
+// product create
 message productCreateRequest {
     string name = 1;
     string description = 2;
@@ -41,6 +43,7 @@ message AttributeList {
     repeated string values = 1;
 }
 
+// product search
 message productSearchRequest {
     string name = 1;
 }
@@ -53,6 +56,7 @@ message product_name {
     string name = 1;
 }
 
+// product filter
 message productFilterSearchRequest {
     string name = 1;
     repeated attributes list = 2;
@@ -67,6 +71,7 @@ message productFilterSearchResponse {
     repeated product_name result = 1;
 }
 
+//product similar
 message productSimilarSearchRequest {
     uint64 product_id = 1;
 }
@@ -75,6 +80,7 @@ message productSimilarSearchResponse {
     repeated product_name result = 1;
 }
 
+//product favorites
 message ProductCreateFavoriteRequest {
     uint64 product_id = 1;
 }
@@ -100,5 +106,16 @@ message ProductDeleteFavoriteRequest {
 }
 
 message ProductDeleteFavoriteResponse {
+    string message = 1;
+}
+
+//product discount
+message ProductDiscountRequest {
+    uint64 product_price_id = 1;
+    float discount_percentage = 2;
+    string discount_time = 3;
+}
+
+message ProductDiscountResponse {
     string message = 1;
 }

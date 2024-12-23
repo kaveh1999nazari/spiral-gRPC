@@ -16,7 +16,7 @@ class Product
         }
         $pool->internalAddGeneratedFile(
             '
-¶
+ê
 product.protoproduct"ù
 productCreateRequest
 name (	
@@ -79,7 +79,13 @@ product_id ("*
 
 id ("0
 ProductDeleteFavoriteResponse
-message (	2¶
+message (	"f
+ProductDiscountRequest
+product_price_id (
+discount_percentage (
+discount_time (	"*
+ProductDiscountResponse
+message (	2¸
 ProductGrpcN
 ProductCreate.product.productCreateRequest.product.productCreateResponseN
 ProductSearch.product.productSearchRequest.product.productSearchResponse`
@@ -87,7 +93,8 @@ product_id ("*
 ProductSimilarSearch$.product.productSimilarSearchRequest%.product.productSimilarSearchResponsef
 ProductCreateFavorite%.product.ProductCreateFavoriteRequest&.product.ProductCreateFavoriteResponse`
 ProductListFavorite#.product.ProductListFavoriteRequest$.product.ProductListFavoriteResponsef
-ProductDeleteFavorite%.product.ProductDeleteFavoriteRequest&.product.ProductDeleteFavoriteResponseB* GRPC\\product‚GRPC\\product\\GPBMetadatabproto3'
+ProductDeleteFavorite%.product.ProductDeleteFavoriteRequest&.product.ProductDeleteFavoriteResponseT
+ProductDiscount.product.ProductDiscountRequest .product.ProductDiscountResponseB* GRPC\\product‚GRPC\\product\\GPBMetadatabproto3'
         , true);
 
         static::$is_initialized = true;
