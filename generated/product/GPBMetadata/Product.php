@@ -16,7 +16,7 @@ class Product
         }
         $pool->internalAddGeneratedFile(
             '
-
+Ž
 product.protoproduct"
 productCreateRequest
 name (	
@@ -43,7 +43,15 @@ attributes	 (2-.product.productCreateRequest.AttributesEntryC
 OptionList
 values (	"
 AttributeList
-values (	"$
+values (	"
+ProductPriceListRequest"@
+ProductPriceListResponse$
+result (2.product.ProductList"F
+ProductList
+
+product_id (
+product_name (	
+price ("$
 productSearchRequest
 name (	">
 productSearchResponse%
@@ -85,9 +93,10 @@ product_id ("*
 discount_percentage (
 discount_time (	"*
 ProductDiscountResponse
-message (	2ü
+message (	2Õ
 ProductGrpcN
-ProductCreate.product.productCreateRequest.product.productCreateResponseN
+ProductCreate.product.productCreateRequest.product.productCreateResponseW
+ProductPriceList .product.ProductPriceListRequest!.product.ProductPriceListResponseN
 ProductSearch.product.productSearchRequest.product.productSearchResponse`
 ProductFilterSearch#.product.productFilterSearchRequest$.product.productFilterSearchResponsec
 ProductSimilarSearch$.product.productSimilarSearchRequest%.product.productSimilarSearchResponsef

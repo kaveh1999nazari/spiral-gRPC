@@ -22,6 +22,15 @@ interface ProductGrpcInterface extends GRPC\ServiceInterface
 
     /**
     * @param GRPC\ContextInterface $ctx
+    * @param ProductPriceListRequest $in
+    * @return ProductPriceListResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function ProductPriceList(GRPC\ContextInterface $ctx, ProductPriceListRequest $in): ProductPriceListResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
     * @param ProductSearchRequest $in
     * @return ProductSearchResponse
     *

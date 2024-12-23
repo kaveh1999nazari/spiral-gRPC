@@ -8,6 +8,7 @@ option php_metadata_namespace = "GRPC\\product\\GPBMetadata";
 
 service ProductGrpc {
     rpc ProductCreate (productCreateRequest) returns (productCreateResponse);
+    rpc ProductPriceList (ProductPriceListRequest) returns (ProductPriceListResponse);
     rpc ProductSearch (productSearchRequest) returns (productSearchResponse);
     rpc ProductFilterSearch (productFilterSearchRequest) returns (productFilterSearchResponse);
     rpc ProductSimilarSearch (productSimilarSearchRequest) returns (productSimilarSearchResponse);
@@ -41,6 +42,21 @@ message OptionList {
 
 message AttributeList {
     repeated string values = 1;
+}
+
+// Product List
+message ProductPriceListRequest {
+
+}
+
+message ProductPriceListResponse {
+    repeated ProductList result = 1;
+}
+
+message ProductList {
+    uint64 product_id = 1;
+    string product_name = 2;
+    float price = 3;
 }
 
 // product search
