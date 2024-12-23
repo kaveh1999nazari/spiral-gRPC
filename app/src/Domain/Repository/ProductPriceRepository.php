@@ -32,6 +32,13 @@ class ProductPriceRepository extends Repository
         return $productPrice;
     }
 
+    public function list()
+    {
+        return $this->ORM->getRepository(ProductPrice::class)
+            ->select()
+            ->fetchAll();
+    }
+
     public function addDiscount(int $id, float $discountPercentage, string $time)
     {
         $productPrice = $this->ORM->getRepository(ProductPrice::class)
