@@ -40,12 +40,12 @@
                     <ul>
                         <li>Create categories</li>
                         <li>Assign access permissions</li>
-                        <li>create products with options for prices </li>
-                        <li>create products with attributes </li>
+                        <li>Create products with options for prices </li>
+                        <li>Create products with attributes </li>
                         <li>Upload images base on api</li>
-                        <li>Can update order status</li>
-                        <li>Can Add Discount for every Product</li>
-                        <li>Can Update Comments product to show</li>
+                        <li>Update order status</li>
+                        <li>Add Discount for every Product</li>
+                        <li>Update Comments product to show</li>
                     </ul>
                 </li>
                 <li>User can:
