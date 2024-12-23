@@ -26,6 +26,8 @@ use GRPC\product\productCreateRequest;
 use GRPC\product\productCreateResponse;
 use GRPC\product\ProductDeleteFavoriteRequest;
 use GRPC\product\ProductDeleteFavoriteResponse;
+use GRPC\product\ProductDiscountRequest;
+use GRPC\product\ProductDiscountResponse;
 use GRPC\product\productFilterSearchRequest;
 use GRPC\product\productFilterSearchResponse;
 use GRPC\product\ProductGrpcInterface;
@@ -165,6 +167,7 @@ class ProductService implements ProductGrpcInterface
         return $response;
     }
 
+    #[AuthenticatedBy(['user'])]
     public function ProductDeleteFavorite(GRPC\ContextInterface $ctx, ProductDeleteFavoriteRequest $in): ProductDeleteFavoriteResponse
     {
         $this->orm->getRepository(ProductFavorite::class)
@@ -173,6 +176,17 @@ class ProductService implements ProductGrpcInterface
         $response = new ProductDeleteFavoriteResponse();
         $response->setMessage('successfully delete');
 
+        return $response;
+    }
+
+    #[AuthenticatedBy(['admin'])]
+    public function ProductDiscount(GRPC\ContextInterface $ctx, ProductDiscountRequest $in): ProductDiscountResponse
+    {
+        $this->orm->getRepository(ProductPrice::class)
+            ->addDiscount($in->getProductPriceId(), $in->getDiscountPercentage(), $in->getDiscountTime());
+
+        $response = new ProductDiscountResponse();
+        $response->setMessage("successfully add discount");
         return $response;
     }
 
