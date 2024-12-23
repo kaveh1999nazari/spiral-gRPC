@@ -14,6 +14,7 @@ grpc:
         - proto/product.proto
         - proto/cart.proto
         - proto/order.proto
+        - proto/comment.proto
 server:
     command: 'php app.php'
     relay: pipes

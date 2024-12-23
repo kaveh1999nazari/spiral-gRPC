@@ -36,6 +36,7 @@ return [
         directory('root') . '/proto/product.proto',
         directory('root') . '/proto/cart.proto',
         directory('root') . '/proto/order.proto',
+        directory('root') . '/proto/comment.proto',
     ],
 
     /**
