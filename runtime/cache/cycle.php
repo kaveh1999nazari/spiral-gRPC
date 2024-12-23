@@ -1390,7 +1390,7 @@
       'createdAt' => 'created_at',
       'user_id' => 'user_id',
       'product_price_id' => 'product_price_id',
-      'order_item_id' => 'order_item_id',
+      'order_id' => 'order_id',
     ),
     10 => 
     array (
@@ -1426,16 +1426,16 @@
           ),
         ),
       ),
-      'order_item' => 
+      'order' => 
       array (
         0 => 12,
-        1 => 'orderItem',
+        1 => 'order',
         3 => 10,
         2 => 
         array (
           30 => true,
           31 => true,
-          33 => 'order_item_id',
+          33 => 'order_id',
           32 => 
           array (
             0 => 'id',
@@ -1451,7 +1451,7 @@
       'createdAt' => 'datetime',
       'user_id' => 'int',
       'product_price_id' => 'int',
-      'order_item_id' => 'int',
+      'order_id' => 'int',
     ),
     14 => 
     array (
