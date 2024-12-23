@@ -9,6 +9,8 @@ use GRPC\cart\CartGrpcClient;
 use GRPC\cart\CartGrpcInterface;
 use GRPC\category\CategoryGrpcClient;
 use GRPC\category\CategoryGrpcInterface;
+use GRPC\comment\CommentGrpcClient;
+use GRPC\comment\CommentGrpcInterface;
 use GRPC\order\OrderGrpcClient;
 use GRPC\order\OrderGrpcInterface;
 use GRPC\product\ProductGrpcClient;
@@ -50,29 +52,40 @@ class ServiceBootloader extends Bootloader
                 'services' => [
                     CartGrpcClient::class => ['host' => $env->get('CART_GRPC_HOST', '127.0.0.1:9000')],
                     CategoryGrpcClient::class => ['host' => $env->get('CATEGORY_GRPC_HOST', '127.0.0.1:9001')],
-                    OrderGrpcClient::class => ['host' => $env->get('ORDER_GRPC_HOST', '127.0.0.1:9002')],
-                    ProductGrpcClient::class => ['host' => $env->get('PRODUCT_GRPC_HOST', '127.0.0.1:9003')],
-                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9004')],
-                    CartGrpcClient::class => ['host' => $env->get('CART_GRPC_HOST', '127.0.0.1:9005')],
-                    CategoryGrpcClient::class => ['host' => $env->get('CATEGORY_GRPC_HOST', '127.0.0.1:9006')],
-                    OrderGrpcClient::class => ['host' => $env->get('ORDER_GRPC_HOST', '127.0.0.1:9007')],
-                    ProductGrpcClient::class => ['host' => $env->get('PRODUCT_GRPC_HOST', '127.0.0.1:9008')],
-                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9009')],
-                    CartGrpcClient::class => ['host' => $env->get('CART_GRPC_HOST', '127.0.0.1:9010')],
-                    CategoryGrpcClient::class => ['host' => $env->get('CATEGORY_GRPC_HOST', '127.0.0.1:9011')],
-                    OrderGrpcClient::class => ['host' => $env->get('ORDER_GRPC_HOST', '127.0.0.1:9012')],
-                    ProductGrpcClient::class => ['host' => $env->get('PRODUCT_GRPC_HOST', '127.0.0.1:9013')],
-                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9014')],
-                    CartGrpcClient::class => ['host' => $env->get('CART_GRPC_HOST', '127.0.0.1:9015')],
-                    CategoryGrpcClient::class => ['host' => $env->get('CATEGORY_GRPC_HOST', '127.0.0.1:9016')],
-                    OrderGrpcClient::class => ['host' => $env->get('ORDER_GRPC_HOST', '127.0.0.1:9017')],
-                    ProductGrpcClient::class => ['host' => $env->get('PRODUCT_GRPC_HOST', '127.0.0.1:9018')],
-                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9019')],
-                    CartGrpcClient::class => ['host' => $env->get('CART_GRPC_HOST', '127.0.0.1:9020')],
-                    CategoryGrpcClient::class => ['host' => $env->get('CATEGORY_GRPC_HOST', '127.0.0.1:9021')],
-                    OrderGrpcClient::class => ['host' => $env->get('ORDER_GRPC_HOST', '127.0.0.1:9022')],
-                    ProductGrpcClient::class => ['host' => $env->get('PRODUCT_GRPC_HOST', '127.0.0.1:9023')],
-                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9024')],
+                    CommentGrpcClient::class => ['host' => $env->get('COMMENT_GRPC_HOST', '127.0.0.1:9002')],
+                    OrderGrpcClient::class => ['host' => $env->get('ORDER_GRPC_HOST', '127.0.0.1:9003')],
+                    ProductGrpcClient::class => ['host' => $env->get('PRODUCT_GRPC_HOST', '127.0.0.1:9004')],
+                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9005')],
+                    CartGrpcClient::class => ['host' => $env->get('CART_GRPC_HOST', '127.0.0.1:9006')],
+                    CategoryGrpcClient::class => ['host' => $env->get('CATEGORY_GRPC_HOST', '127.0.0.1:9007')],
+                    CommentGrpcClient::class => ['host' => $env->get('COMMENT_GRPC_HOST', '127.0.0.1:9008')],
+                    OrderGrpcClient::class => ['host' => $env->get('ORDER_GRPC_HOST', '127.0.0.1:9009')],
+                    ProductGrpcClient::class => ['host' => $env->get('PRODUCT_GRPC_HOST', '127.0.0.1:9010')],
+                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9011')],
+                    CartGrpcClient::class => ['host' => $env->get('CART_GRPC_HOST', '127.0.0.1:9012')],
+                    CategoryGrpcClient::class => ['host' => $env->get('CATEGORY_GRPC_HOST', '127.0.0.1:9013')],
+                    CommentGrpcClient::class => ['host' => $env->get('COMMENT_GRPC_HOST', '127.0.0.1:9014')],
+                    OrderGrpcClient::class => ['host' => $env->get('ORDER_GRPC_HOST', '127.0.0.1:9015')],
+                    ProductGrpcClient::class => ['host' => $env->get('PRODUCT_GRPC_HOST', '127.0.0.1:9016')],
+                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9017')],
+                    CartGrpcClient::class => ['host' => $env->get('CART_GRPC_HOST', '127.0.0.1:9018')],
+                    CategoryGrpcClient::class => ['host' => $env->get('CATEGORY_GRPC_HOST', '127.0.0.1:9019')],
+                    CommentGrpcClient::class => ['host' => $env->get('COMMENT_GRPC_HOST', '127.0.0.1:9020')],
+                    OrderGrpcClient::class => ['host' => $env->get('ORDER_GRPC_HOST', '127.0.0.1:9021')],
+                    ProductGrpcClient::class => ['host' => $env->get('PRODUCT_GRPC_HOST', '127.0.0.1:9022')],
+                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9023')],
+                    CartGrpcClient::class => ['host' => $env->get('CART_GRPC_HOST', '127.0.0.1:9024')],
+                    CategoryGrpcClient::class => ['host' => $env->get('CATEGORY_GRPC_HOST', '127.0.0.1:9025')],
+                    CommentGrpcClient::class => ['host' => $env->get('COMMENT_GRPC_HOST', '127.0.0.1:9026')],
+                    OrderGrpcClient::class => ['host' => $env->get('ORDER_GRPC_HOST', '127.0.0.1:9027')],
+                    ProductGrpcClient::class => ['host' => $env->get('PRODUCT_GRPC_HOST', '127.0.0.1:9028')],
+                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9029')],
+                    CartGrpcClient::class => ['host' => $env->get('CART_GRPC_HOST', '127.0.0.1:9030')],
+                    CategoryGrpcClient::class => ['host' => $env->get('CATEGORY_GRPC_HOST', '127.0.0.1:9031')],
+                    CommentGrpcClient::class => ['host' => $env->get('COMMENT_GRPC_HOST', '127.0.0.1:9032')],
+                    OrderGrpcClient::class => ['host' => $env->get('ORDER_GRPC_HOST', '127.0.0.1:9033')],
+                    ProductGrpcClient::class => ['host' => $env->get('PRODUCT_GRPC_HOST', '127.0.0.1:9034')],
+                    UserGrpcClient::class => ['host' => $env->get('USER_GRPC_HOST', '127.0.0.1:9035')],
                 ],
             ]
         );
@@ -118,10 +131,10 @@ class ServiceBootloader extends Bootloader
             }
         );
         $container->bindSingleton(
-            OrderGrpcInterface::class,
-            static function(GRPCServicesConfig $config) use($container): OrderGrpcInterface
+            CommentGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CommentGrpcInterface
             {
-                $service = $config->getService(OrderGrpcClient::class);
+                $service = $config->getService(CommentGrpcClient::class);
                 $core = new InterceptableCore(new ServiceClientCore(
                     $service['host'],
                     ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
@@ -131,75 +144,7 @@ class ServiceBootloader extends Bootloader
                     $core->addInterceptor($container->get($interceptor));
                 }
 
-                return $container->make(OrderGrpcClient::class, ['core' => $core]);
-            }
-        );
-        $container->bindSingleton(
-            ProductGrpcInterface::class,
-            static function(GRPCServicesConfig $config) use($container): ProductGrpcInterface
-            {
-                $service = $config->getService(ProductGrpcClient::class);
-                $core = new InterceptableCore(new ServiceClientCore(
-                    $service['host'],
-                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
-                ));
-
-                foreach ($config->getInterceptors() as $interceptor) {
-                    $core->addInterceptor($container->get($interceptor));
-                }
-
-                return $container->make(ProductGrpcClient::class, ['core' => $core]);
-            }
-        );
-        $container->bindSingleton(
-            UserGrpcInterface::class,
-            static function(GRPCServicesConfig $config) use($container): UserGrpcInterface
-            {
-                $service = $config->getService(UserGrpcClient::class);
-                $core = new InterceptableCore(new ServiceClientCore(
-                    $service['host'],
-                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
-                ));
-
-                foreach ($config->getInterceptors() as $interceptor) {
-                    $core->addInterceptor($container->get($interceptor));
-                }
-
-                return $container->make(UserGrpcClient::class, ['core' => $core]);
-            }
-        );
-        $container->bindSingleton(
-            CartGrpcInterface::class,
-            static function(GRPCServicesConfig $config) use($container): CartGrpcInterface
-            {
-                $service = $config->getService(CartGrpcClient::class);
-                $core = new InterceptableCore(new ServiceClientCore(
-                    $service['host'],
-                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
-                ));
-
-                foreach ($config->getInterceptors() as $interceptor) {
-                    $core->addInterceptor($container->get($interceptor));
-                }
-
-                return $container->make(CartGrpcClient::class, ['core' => $core]);
-            }
-        );
-        $container->bindSingleton(
-            CategoryGrpcInterface::class,
-            static function(GRPCServicesConfig $config) use($container): CategoryGrpcInterface
-            {
-                $service = $config->getService(CategoryGrpcClient::class);
-                $core = new InterceptableCore(new ServiceClientCore(
-                    $service['host'],
-                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
-                ));
-
-                foreach ($config->getInterceptors() as $interceptor) {
-                    $core->addInterceptor($container->get($interceptor));
-                }
-
-                return $container->make(CategoryGrpcClient::class, ['core' => $core]);
+                return $container->make(CommentGrpcClient::class, ['core' => $core]);
             }
         );
         $container->bindSingleton(
@@ -288,10 +233,10 @@ class ServiceBootloader extends Bootloader
             }
         );
         $container->bindSingleton(
-            OrderGrpcInterface::class,
-            static function(GRPCServicesConfig $config) use($container): OrderGrpcInterface
+            CommentGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CommentGrpcInterface
             {
-                $service = $config->getService(OrderGrpcClient::class);
+                $service = $config->getService(CommentGrpcClient::class);
                 $core = new InterceptableCore(new ServiceClientCore(
                     $service['host'],
                     ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
@@ -301,75 +246,7 @@ class ServiceBootloader extends Bootloader
                     $core->addInterceptor($container->get($interceptor));
                 }
 
-                return $container->make(OrderGrpcClient::class, ['core' => $core]);
-            }
-        );
-        $container->bindSingleton(
-            ProductGrpcInterface::class,
-            static function(GRPCServicesConfig $config) use($container): ProductGrpcInterface
-            {
-                $service = $config->getService(ProductGrpcClient::class);
-                $core = new InterceptableCore(new ServiceClientCore(
-                    $service['host'],
-                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
-                ));
-
-                foreach ($config->getInterceptors() as $interceptor) {
-                    $core->addInterceptor($container->get($interceptor));
-                }
-
-                return $container->make(ProductGrpcClient::class, ['core' => $core]);
-            }
-        );
-        $container->bindSingleton(
-            UserGrpcInterface::class,
-            static function(GRPCServicesConfig $config) use($container): UserGrpcInterface
-            {
-                $service = $config->getService(UserGrpcClient::class);
-                $core = new InterceptableCore(new ServiceClientCore(
-                    $service['host'],
-                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
-                ));
-
-                foreach ($config->getInterceptors() as $interceptor) {
-                    $core->addInterceptor($container->get($interceptor));
-                }
-
-                return $container->make(UserGrpcClient::class, ['core' => $core]);
-            }
-        );
-        $container->bindSingleton(
-            CartGrpcInterface::class,
-            static function(GRPCServicesConfig $config) use($container): CartGrpcInterface
-            {
-                $service = $config->getService(CartGrpcClient::class);
-                $core = new InterceptableCore(new ServiceClientCore(
-                    $service['host'],
-                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
-                ));
-
-                foreach ($config->getInterceptors() as $interceptor) {
-                    $core->addInterceptor($container->get($interceptor));
-                }
-
-                return $container->make(CartGrpcClient::class, ['core' => $core]);
-            }
-        );
-        $container->bindSingleton(
-            CategoryGrpcInterface::class,
-            static function(GRPCServicesConfig $config) use($container): CategoryGrpcInterface
-            {
-                $service = $config->getService(CategoryGrpcClient::class);
-                $core = new InterceptableCore(new ServiceClientCore(
-                    $service['host'],
-                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
-                ));
-
-                foreach ($config->getInterceptors() as $interceptor) {
-                    $core->addInterceptor($container->get($interceptor));
-                }
-
-                return $container->make(CategoryGrpcClient::class, ['core' => $core]);
+                return $container->make(CommentGrpcClient::class, ['core' => $core]);
             }
         );
         $container->bindSingleton(
@@ -455,6 +332,329 @@ class ServiceBootloader extends Bootloader
                 }
 
                 return $container->make(CategoryGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            CommentGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CommentGrpcInterface
+            {
+                $service = $config->getService(CommentGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(CommentGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            OrderGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): OrderGrpcInterface
+            {
+                $service = $config->getService(OrderGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(OrderGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            ProductGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): ProductGrpcInterface
+            {
+                $service = $config->getService(ProductGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(ProductGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            UserGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): UserGrpcInterface
+            {
+                $service = $config->getService(UserGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(UserGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            CartGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CartGrpcInterface
+            {
+                $service = $config->getService(CartGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(CartGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            CategoryGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CategoryGrpcInterface
+            {
+                $service = $config->getService(CategoryGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(CategoryGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            CommentGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CommentGrpcInterface
+            {
+                $service = $config->getService(CommentGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(CommentGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            OrderGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): OrderGrpcInterface
+            {
+                $service = $config->getService(OrderGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(OrderGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            ProductGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): ProductGrpcInterface
+            {
+                $service = $config->getService(ProductGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(ProductGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            UserGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): UserGrpcInterface
+            {
+                $service = $config->getService(UserGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(UserGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            CartGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CartGrpcInterface
+            {
+                $service = $config->getService(CartGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(CartGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            CategoryGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CategoryGrpcInterface
+            {
+                $service = $config->getService(CategoryGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(CategoryGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            CommentGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CommentGrpcInterface
+            {
+                $service = $config->getService(CommentGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(CommentGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            OrderGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): OrderGrpcInterface
+            {
+                $service = $config->getService(OrderGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(OrderGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            ProductGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): ProductGrpcInterface
+            {
+                $service = $config->getService(ProductGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(ProductGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            UserGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): UserGrpcInterface
+            {
+                $service = $config->getService(UserGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(UserGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            CartGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CartGrpcInterface
+            {
+                $service = $config->getService(CartGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(CartGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            CategoryGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CategoryGrpcInterface
+            {
+                $service = $config->getService(CategoryGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(CategoryGrpcClient::class, ['core' => $core]);
+            }
+        );
+        $container->bindSingleton(
+            CommentGrpcInterface::class,
+            static function(GRPCServicesConfig $config) use($container): CommentGrpcInterface
+            {
+                $service = $config->getService(CommentGrpcClient::class);
+                $core = new InterceptableCore(new ServiceClientCore(
+                    $service['host'],
+                    ['credentials' => $service['credentials'] ?? $config->getDefaultCredentials()]
+                ));
+
+                foreach ($config->getInterceptors() as $interceptor) {
+                    $core->addInterceptor($container->get($interceptor));
+                }
+
+                return $container->make(CommentGrpcClient::class, ['core' => $core]);
             }
         );
         $container->bindSingleton(

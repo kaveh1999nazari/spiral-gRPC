@@ -17,5 +17,6 @@
   15 => 'App\\Domain\\Entity\\City',
   16 => 'App\\Domain\\Entity\\AttributeValue',
   17 => 'App\\Domain\\Entity\\OrderItem',
-  18 => 'Spiral\\Cycle\\Auth\\Token',
+  18 => 'App\\Domain\\Entity\\CommentProduct',
+  19 => 'Spiral\\Cycle\\Auth\\Token',
 );

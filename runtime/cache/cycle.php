@@ -1366,6 +1366,102 @@
       'id' => 2,
     ),
   ),
+  'commentProduct' => 
+  array (
+    1 => 'App\\Domain\\Entity\\CommentProduct',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\CommentProductRepository',
+    5 => 'default',
+    6 => 'product_comments',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'comment' => 'comment',
+      'isActive' => 'is_active',
+      'createdAt' => 'created_at',
+      'user_id' => 'user_id',
+      'product_price_id' => 'product_price_id',
+      'order_item_id' => 'order_item_id',
+    ),
+    10 => 
+    array (
+      'user' => 
+      array (
+        0 => 12,
+        1 => 'user',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'user_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'product_price' => 
+      array (
+        0 => 12,
+        1 => 'productPrice',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'product_price_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'order_item' => 
+      array (
+        0 => 12,
+        1 => 'orderItem',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => true,
+          33 => 'order_item_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'isActive' => 'bool',
+      'createdAt' => 'datetime',
+      'user_id' => 'int',
+      'product_price_id' => 'int',
+      'order_item_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
   'token' => 
   array (
     1 => 'Spiral\\Cycle\\Auth\\Token',
