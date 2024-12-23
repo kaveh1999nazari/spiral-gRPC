@@ -3,6 +3,7 @@
 namespace App\Domain\Repository;
 
 use App\Domain\Entity\CommentProduct;
+use App\Domain\Entity\Order;
 use App\Domain\Entity\OrderItem;
 use App\Domain\Entity\ProductPrice;
 use App\Domain\Entity\User;
@@ -17,15 +18,13 @@ class CommentProductRepository extends Repository
         parent::__construct($select);
     }
 
-    public function create(User $user, ProductPrice $productPrice, ?OrderItem $orderItem = null, string $comment): CommentProduct
+    public function create(User $user, ProductPrice $productPrice, Order $orderItem, string $comment): CommentProduct
     {
         $commentProduct = new CommentProduct();
 
         $commentProduct->setUser($user);
         $commentProduct->setProductPrice($productPrice);
-        if ($orderItem !== null){
-            $commentProduct->setOrderItem($orderItem);
-        }
+        $commentProduct->setOrder($orderItem);
         $commentProduct->setComment($comment);
         $commentProduct->setCreatedAt(new \DateTimeImmutable());
 
