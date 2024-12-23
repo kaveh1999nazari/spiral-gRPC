@@ -12,7 +12,7 @@ class OrmDefaultA42b7e366d78543ca8c5a4b60d305065 extends Migration
     public function up(): void
     {
         $this->table('product_prices')
-            ->addColumn('discount_percentage', 'float', ['nullable' => true])
+            ->addColumn('discount_percentage', 'float', ['nullable' => true, 'default' => 0])
             ->addColumn('discount_end_at', 'datetime', ['nullable' => true])
             ->update();
     }
