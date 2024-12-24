@@ -45,4 +45,12 @@ class OrderRepository extends Repository
 
         return $order;
     }
+
+    public function list(int $userId)
+    {
+        return $this->ORM->getRepository(Order::class)
+            ->select()
+            ->where(['user_id' => $userId])
+            ->fetchAll();
+    }
 }
