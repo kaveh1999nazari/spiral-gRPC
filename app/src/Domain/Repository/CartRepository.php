@@ -88,4 +88,20 @@ class CartRepository extends Repository
 
         return $cart;
     }
+
+    public function findByUser(int $userId): array
+    {
+        return $this->ORM->getRepository(Cart::class)
+            ->select()
+            ->where('user_id', $userId)
+            ->fetchAll();
+    }
+
+    public function findByUUID(string $uuid): array
+    {
+        return $this->ORM->getRepository(Cart::class)
+            ->select()
+            ->where('uuid', $uuid)
+            ->fetchAll();
+    }
 }
