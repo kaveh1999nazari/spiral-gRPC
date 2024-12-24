@@ -82,8 +82,7 @@ class OrderService implements OrderGrpcInterface
     public function OrderList(GRPC\ContextInterface $ctx, OrderListRequest $in): OrderListResponse
     {
         $orders = $this->ORM->getRepository(Order::class)
-            ->select()
-            ->where(['user_id' => $in->getUserId()])->fetchAll();
+            ->list($in->getUserId());
 
        return $this->buildListResponse($orders);
     }
