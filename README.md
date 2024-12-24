@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.2.3">
-            <h2>Last update V2.2.3</h2>
+        <div class="version" id="v2.2.4">
+            <h2>Last update V2.2.4</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
@@ -76,6 +76,7 @@
                 <li>Added Similar Products</li>
                 <li>Added Media for Resident, Profile Picture, Education</li>
                 <li>Added List Product to see all Prices</li>
+                <li>Added List Comment Product to see all Comments</li>
             </ul>
             <p><strong>Fixes:</strong></p>
             <ul class="fixes">
