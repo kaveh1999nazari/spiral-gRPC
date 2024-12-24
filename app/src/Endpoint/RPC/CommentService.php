@@ -14,6 +14,8 @@ use Google\Rpc\Code;
 use GRPC\comment\CommentGrpcInterface;
 use GRPC\comment\CommentProductCreateRequest;
 use GRPC\comment\CommentProductCreateResponse;
+use GRPC\comment\CommentProductListRequest;
+use GRPC\comment\CommentProductListResponse;
 use GRPC\comment\CommentProductUpdateRequest;
 use GRPC\comment\CommentProductUpdateResponse;
 use Spiral\RoadRunner\GRPC;
@@ -60,6 +62,25 @@ class CommentService implements CommentGrpcInterface
 
         $response = new CommentProductUpdateResponse();
         $response->setMessage('Comment is now Active');
+
+        return $response;
+    }
+
+    public function commentProductList(GRPC\ContextInterface $ctx, CommentProductListRequest $in): CommentProductListResponse
+    {
+        $commentList = $this->ORM->getRepository(CommentProduct::class)
+            ->select()
+            ->where(['product_price_id' => $in->getProductPriceId()])
+            ->fetchAll();
+
+        $response = new CommentProductListResponse();
+
+        $data = [];
+        foreach ($commentList as $list){
+            $data[] = $list->getComment();
+        }
+
+        $response->setComment($data);
 
         return $response;
     }
