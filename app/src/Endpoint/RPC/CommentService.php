@@ -14,6 +14,8 @@ use Google\Rpc\Code;
 use GRPC\comment\CommentGrpcInterface;
 use GRPC\comment\CommentProductCreateRequest;
 use GRPC\comment\CommentProductCreateResponse;
+use GRPC\comment\CommentProductUpdateRequest;
+use GRPC\comment\CommentProductUpdateResponse;
 use Spiral\RoadRunner\GRPC;
 
 
@@ -49,6 +51,19 @@ class CommentService implements CommentGrpcInterface
 
         return $response;
     }
+
+    #[AuthenticatedBy(['admin'])]
+    public function commentProductUpdate(GRPC\ContextInterface $ctx, CommentProductUpdateRequest $in): CommentProductUpdateResponse
+    {
+        $this->ORM->getRepository(CommentProduct::class)
+            ->update($in->getId(), $in->getIsActive());
+
+        $response = new CommentProductUpdateResponse();
+        $response->setMessage('Comment is now Active');
+
+        return $response;
+    }
+
 
     // ------ Methods -------
 
