@@ -8,6 +8,7 @@ option php_metadata_namespace = "GRPC\\comment\\GPBMetadata";
 
 service CommentGrpc {
     rpc commentProductCreate (CommentProductCreateRequest) returns (CommentProductCreateResponse);
+    rpc commentProductUpdate (CommentProductUpdateRequest) returns (CommentProductUpdateResponse);
 }
 
 message CommentProductCreateRequest {
@@ -16,5 +17,14 @@ message CommentProductCreateRequest {
 }
 
 message CommentProductCreateResponse {
+    string message = 1;
+}
+
+message CommentProductUpdateRequest {
+    uint64 id = 1;
+    bool is_active = 2;
+}
+
+message CommentProductUpdateResponse {
     string message = 1;
 }
