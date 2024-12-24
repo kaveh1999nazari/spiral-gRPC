@@ -39,4 +39,17 @@ class CommentGrpcClient implements CommentGrpcInterface
 
         return $response;
     }
+
+    public function commentProductList(
+        ContextInterface $ctx,
+        CommentProductListRequest $in,
+    ): CommentProductListResponse {
+        [$response, $status] = $this->core->callAction(CommentGrpcInterface::class, '/'.self::NAME.'/commentProductList', [
+            'in' => $in,
+            'ctx' => $ctx,
+            'responseClass' => \GRPC\comment\CommentProductListResponse::class,
+        ]);
+
+        return $response;
+    }
 }

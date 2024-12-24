@@ -28,4 +28,13 @@ interface CommentGrpcInterface extends GRPC\ServiceInterface
     * @throws GRPC\Exception\InvokeException
     */
     public function commentProductUpdate(GRPC\ContextInterface $ctx, CommentProductUpdateRequest $in): CommentProductUpdateResponse;
+
+    /**
+    * @param GRPC\ContextInterface $ctx
+    * @param CommentProductListRequest $in
+    * @return CommentProductListResponse
+    *
+    * @throws GRPC\Exception\InvokeException
+    */
+    public function commentProductList(GRPC\ContextInterface $ctx, CommentProductListRequest $in): CommentProductListResponse;
 }

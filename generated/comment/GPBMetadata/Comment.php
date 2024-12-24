@@ -16,7 +16,7 @@ class Comment
         }
         $pool->internalAddGeneratedFile(
             '
-ê
+’
 comment.protocomment"H
 CommentProductCreateRequest
 product_price_id (
@@ -28,10 +28,15 @@ class Comment
 id (
 	is_active ("/
 CommentProductUpdateResponse
-message (	2◊
+message (	"5
+CommentProductListRequest
+product_price_id ("-
+CommentProductListResponse
+comment (	2∂
 CommentGrpcc
 commentProductCreate$.comment.CommentProductCreateRequest%.comment.CommentProductCreateResponsec
-commentProductUpdate$.comment.CommentProductUpdateRequest%.comment.CommentProductUpdateResponseB* GRPC\\comment‚GRPC\\comment\\GPBMetadatabproto3'
+commentProductUpdate$.comment.CommentProductUpdateRequest%.comment.CommentProductUpdateResponse]
+commentProductList".comment.CommentProductListRequest#.comment.CommentProductListResponseB* GRPC\\comment‚GRPC\\comment\\GPBMetadatabproto3'
         , true);
 
         static::$is_initialized = true;
