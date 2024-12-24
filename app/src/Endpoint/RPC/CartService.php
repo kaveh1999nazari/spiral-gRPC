@@ -164,12 +164,14 @@ class CartService implements CartGrpcInterface
     {
         $cartRepository = $this->ORM->getRepository(Cart::class);
         if ($user) {
-            $existingCart = $cartRepository->select()
+            $existingCart = $cartRepository
+                ->select()
                 ->where('user_id', $user->getId())
                 ->where('product_price_id', $productPrice->getId())
                 ->fetchOne();
         } else {
-            $existingCart = $cartRepository->select()
+            $existingCart = $cartRepository
+                ->select()
                 ->where('uuid', $uuid)
                 ->where('product_price_id', $productPrice->getId())
                 ->fetchOne();
@@ -240,14 +242,10 @@ class CartService implements CartGrpcInterface
         try {
             if ($userId) {
                 return $cartRepository
-                    ->select()
-                    ->where('user_id', $userId)
-                    ->fetchAll();
+                    ->findByUser($userId);
             } elseif ($uuid) {
                 return $cartRepository
-                    ->select()
-                    ->where('uuid', $uuid)
-                    ->fetchAll();
+                    ->findByUUID($uuid);
             }
         } catch (\Exception $e) {
             throw new GRPCException(
