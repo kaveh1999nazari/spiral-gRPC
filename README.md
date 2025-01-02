@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="changelog">
-        <div class="version" id="v2.2.5">
-            <h2>Last update V2.2.5</h2>
+        <div class="version" id="v2.2.6">
+            <h2>Last update V2.2.6</h2>
             <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
             <ul class="features">
                 <li>Register user:
@@ -60,6 +60,7 @@
                         <li>Give email notification by changing order status</li>
                         <li>Add Favorite Products</li>
                         <li>Add Comments for bought products</li>
+                        <li>Manage their Notifications</li>
                     </ul>
                 </li>
                 <li>Guest can:
@@ -71,6 +72,7 @@
                 </li>
                 <li>Added Seeder for Product Options</li>
                 <li>Added Queue-Notification</li>
+                <li>Added New Notification Controller</li>
                 <li>Added Search Products By Query Build</li>
                 <li>Added Filter Products By them Attributes</li>
                 <li>Added Similar Products</li>
