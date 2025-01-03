@@ -105,6 +105,9 @@ class Kernel extends \Spiral\Framework\Kernel
 
             // Queue
             \Spiral\Queue\Bootloader\QueueBootloader::class,
+
+            // Notification
+            \Spiral\Notifications\Bootloader\NotificationsBootloader::class,
         ];
     }
 }

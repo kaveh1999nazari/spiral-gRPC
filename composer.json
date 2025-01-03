@@ -19,6 +19,7 @@
         "predis/predis": "^2.3",
         "spiral-packages/cqrs": "^2.3",
         "spiral-packages/database-seeder": "^3.3",
+        "spiral-packages/notifications": "^2.1",
         "spiral/cycle-bridge": "^2.10",
         "spiral/framework": "^3.8",
         "spiral/nyholm-bridge": "^1.3",

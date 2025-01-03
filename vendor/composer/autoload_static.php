@@ -26,12 +26,12 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         '76cd0796156622033397994f25b0d8fc' => __DIR__ . '/..' . '/amphp/amp/lib/Internal/functions.php',
         '1232758e40b1d31bb295b6907de02c63' => __DIR__ . '/..' . '/beste/clock/src/Clock.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
         '1cb541c2fdab334e9f0f4c92d5f24d67' => __DIR__ . '/..' . '/spiral/data-grid/src/helpers.php',
-        '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         '6cd5651c4fef5ed6b63e8d8b8ffbf3cc' => __DIR__ . '/..' . '/amphp/byte-stream/lib/functions.php',
         '06b8a576aaa70a8517a94b7ff6b37e5c' => __DIR__ . '/..' . '/beste/json/src/Json.php',
         '07b1ee5452fd654afe38b8b111296565' => __DIR__ . '/..' . '/buggregator/trap/src/functions.php',
@@ -89,6 +89,7 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
             'Symfony\\Component\\VarDumper\\' => 28,
             'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\String\\' => 25,
+            'Symfony\\Component\\Notifier\\' => 27,
             'Symfony\\Component\\Mime\\' => 23,
             'Symfony\\Component\\Messenger\\' => 28,
             'Symfony\\Component\\Mailer\\' => 25,
@@ -129,6 +130,7 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
             'Spiral\\Prototype\\' => 17,
             'Spiral\\Pagination\\' => 18,
             'Spiral\\Nyholm\\' => 14,
+            'Spiral\\Notifications\\' => 21,
             'Spiral\\Monolog\\' => 15,
             'Spiral\\Models\\' => 14,
             'Spiral\\Mailer\\' => 14,
@@ -404,6 +406,10 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         array (
             0 => __DIR__ . '/..' . '/symfony/string',
         ),
+        'Symfony\\Component\\Notifier\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/notifier',
+        ),
         'Symfony\\Component\\Mime\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/mime',
@@ -565,6 +571,10 @@ class ComposerStaticInit06ead3186c1b420cf55aaad1e4162577
         'Spiral\\Nyholm\\' => 
         array (
             0 => __DIR__ . '/..' . '/spiral/nyholm-bridge/src',
+        ),
+        'Spiral\\Notifications\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spiral-packages/notifications/src',
         ),
         'Spiral\\Monolog\\' => 
         array (
