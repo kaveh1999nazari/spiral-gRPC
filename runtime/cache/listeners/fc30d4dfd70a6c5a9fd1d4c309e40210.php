@@ -18,7 +18,8 @@
   16 => 'App\\Domain\\Entity\\NotificationType',
   17 => 'App\\Domain\\Entity\\Cart',
   18 => 'App\\Domain\\Entity\\Media',
-  19 => 'App\\Domain\\Entity\\Product',
-  20 => 'App\\Domain\\Entity\\AttributeValue',
-  21 => 'Spiral\\Cycle\\Auth\\Token',
+  19 => 'App\\Domain\\Entity\\NotificationPreference',
+  20 => 'App\\Domain\\Entity\\Product',
+  21 => 'App\\Domain\\Entity\\AttributeValue',
+  22 => 'Spiral\\Cycle\\Auth\\Token',
 );
