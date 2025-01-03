@@ -6,6 +6,7 @@ use App\Domain\Attribute\ValidateBy;
 use App\Domain\Entity\City;
 use App\Domain\Entity\Degree;
 use App\Domain\Entity\Media;
+use App\Domain\Entity\NotificationPreference;
 use App\Domain\Entity\Province;
 use App\Domain\Entity\User;
 use App\Domain\Entity\UserEducation;
@@ -78,10 +79,12 @@ class UserService implements UserGrpcInterface
                 $in->getPicture());
         }
 
+        $this->orm->getRepository(NotificationPreference::class)
+            ->create($user);
 
-        if ($user->getEmail()) {
-            $this->sendMailNotification(true, $user);
-        }
+//        if ($user->getEmail()) {
+//            $this->sendMailNotification(true, $user);
+//        }
 
         $response = new RegisterUserResponse();
         $response->setId($user->getId());
