@@ -14,10 +14,18 @@ class AppMessage extends BasicMessage
     public function toArray(): array
     {
         return [
-            'message' => "{$this->title} : \n{$this->message}",
+            'message' => $this->_getFilledMessage(),
             'link' => $this->link
         ];
+    }
 
+    private function _getFilledMessage(): string
+    {
+        $message = $this->message;
+        foreach ($this->data as $field => $value){
+            $message = str_replace(':' . $field . ':', $value, $message);
+        }
+        return $message;
     }
 
 }
