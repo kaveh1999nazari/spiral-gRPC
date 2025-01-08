@@ -12,6 +12,7 @@ use App\Domain\Entity\User;
 use App\Domain\Entity\UserEducation;
 use App\Domain\Entity\UserJob;
 use App\Domain\Entity\UserResident;
+use App\Domain\Notifications\User\LoginNotification;
 use App\Domain\Request\UserLoginEmailRequest;
 use App\Domain\Request\UserLoginMobileRequest;
 use App\Domain\Request\UserLoginOTPRequest;
@@ -47,6 +48,7 @@ use Spiral\Auth\TokenStorageInterface;
 use Spiral\Queue\QueueInterface;
 use Spiral\RoadRunner\GRPC;
 use Spiral\RoadRunner\GRPC\Exception\GRPCException;
+use Symfony\Component\Notifier\NotifierInterface;
 
 class UserService implements UserGrpcInterface
 {
@@ -54,6 +56,7 @@ class UserService implements UserGrpcInterface
         protected readonly ORMInterface        $orm,
         private readonly TokenStorageInterface $tokens,
         private readonly QueueInterface        $queue,
+        private readonly NotifierInterface $notifier
     )
     {
     }
@@ -81,6 +84,8 @@ class UserService implements UserGrpcInterface
 
         $this->orm->getRepository(NotificationPreference::class)
             ->create($user);
+
+        $this->notifier->send(new LoginNotification($user));
 
 //        if ($user->getEmail()) {
 //            $this->sendMailNotification(true, $user);
