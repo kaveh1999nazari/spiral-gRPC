@@ -6,9 +6,10 @@ class AppMessage extends BasicMessage
 {
     public string $link;
 
-    public function link(string $link)
+    public function link(string $link): self
     {
-        return $this->link;
+        $this->link = $link;
+        return $this;
     }
 
     public function toArray(): array
