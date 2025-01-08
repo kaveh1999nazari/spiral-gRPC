@@ -3,43 +3,49 @@
 namespace App\Domain\Notifications\User;
 
 use App\Domain\Entity\User;
+use App\Domain\Notifications\BaseNotification;
 use App\Domain\Notifications\Messages\AppMessage;
-use Spiral\Config\ConfiguratorInterface;
-use Spiral\Core\ConfigsInterface;
 use Spiral\Mailer\MailerInterface;
 use Spiral\Mailer\Message;
-use Symfony\Component\Notifier\Notification\Notification;
+use Symfony\Component\Notifier\Recipient\RecipientInterface;
 
-
-class LoginNotification extends Notification
+class LoginNotification extends BaseNotification
 {
-    public function __construct(private readonly MailerInterface $mailer,
-                                private readonly ConfiguratorInterface  $config)
+    protected string $type = 'user';
+
+    public function __construct(User $user)
     {
         parent::__construct();
     }
+    private readonly MailerInterface $mailer;
 
-    public function toApp()
+
+    public function toApp(): array
     {
         return (new AppMessage)
             ->data([
                 'date' => (new \DateTimeImmutable())->format('Y-m-d'),
                 'hour' => (new \DateTimeImmutable())->format('H:i:s')
             ])
-            ->message('you have login successfully in :date: - :hour: !')
+            ->message('You have logged in successfully on :date: at :hour:!')
             ->toArray();
     }
-    public function toEmail(User $user): void
+
+    public function toEmail(RecipientInterface $recipient): array
     {
+        if (!$recipient instanceof User) {
+            throw new \InvalidArgumentException('Recipient must be an instance of User.');
+        }
+
         $this->mailer->send(new Message(
             'emails/login.email.dark.php',
-            $user->getEmail(),
+            $recipient->getEmail(),
             [
-                'first_name' => $user->getFirstName(),
-                'last_name' => $user->getLastName(),
+                'first_name' => $recipient->getFirstName(),
+                'last_name' => $recipient->getLastName(),
                 'login_time' => date('Y-m-d H:i:s')
             ]
         ));
     }
-
 }
+
