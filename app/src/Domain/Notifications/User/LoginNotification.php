@@ -31,7 +31,7 @@ class LoginNotification extends BaseNotification
             ->toArray();
     }
 
-    public function toEmail(RecipientInterface $recipient): array
+    public function toEmail(RecipientInterface $recipient): void
     {
         if (!$recipient instanceof User) {
             throw new \InvalidArgumentException('Recipient must be an instance of User.');
