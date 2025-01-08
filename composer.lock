@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d55b845471faeb2ddbf2028f20370a9",
+    "content-hash": "08f84d0e8b5c03bc1004b4116342177d",
     "packages": [
         {
             "name": "beste/clock",
@@ -12014,7 +12014,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
@@ -12023,6 +12023,6 @@
         "ext-mbstring": "*",
         "ext-sockets": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

@@ -3,7 +3,7 @@
         'name' => 'spiral/app',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '9b049f4968efd86c21b2146e6dcb0dff6adf4f61',
+        'reference' => '99401aae928c823b194d75bb748b49b7ea84619e',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -919,8 +919,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '3.0.0',
-                1 => '1.0|2.0|3.0',
+                0 => '1.0|2.0|3.0',
+                1 => '3.0.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -1190,7 +1190,7 @@
         'spiral/app' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '9b049f4968efd86c21b2146e6dcb0dff6adf4f61',
+            'reference' => '99401aae928c823b194d75bb748b49b7ea84619e',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

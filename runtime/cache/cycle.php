@@ -1,12 +1,12 @@
 <?php return array (
-  'userEducation' => 
+  'notificationChannel' => 
   array (
-    1 => 'App\\Domain\\Entity\\UserEducation',
+    1 => 'App\\Domain\\Entity\\NotificationChannel',
     2 => 'Cycle\\ORM\\Mapper\\Mapper',
     3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Domain\\Repository\\UserEducationRepository',
+    4 => 'Cycle\\ORM\\Select\\Repository',
     5 => 'default',
-    6 => 'user_educations',
+    6 => 'notification_channels',
     7 => 
     array (
       0 => 'id',
@@ -18,46 +18,13 @@
     9 => 
     array (
       'id' => 'id',
-      'university' => 'university',
+      'slug' => 'slug',
+      'name' => 'name',
       'createdAt' => 'created_at',
       'updatedAt' => 'updated_at',
-      'user_id' => 'user_id',
-      'degree_id' => 'degree_id',
     ),
     10 => 
     array (
-      'user' => 
-      array (
-        0 => 12,
-        1 => 'user',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'user_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
-      'degree' => 
-      array (
-        0 => 12,
-        1 => 'degree',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'degree_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
     ),
     12 => NULL,
     13 => 
@@ -65,8 +32,6 @@
       'id' => 'int',
       'createdAt' => 'datetime',
       'updatedAt' => 'datetime',
-      'user_id' => 'int',
-      'degree_id' => 'int',
     ),
     14 => 
     array (
@@ -77,14 +42,14 @@
       'id' => 2,
     ),
   ),
-  'order' => 
+  'province' => 
   array (
-    1 => 'App\\Domain\\Entity\\Order',
+    1 => 'App\\Domain\\Entity\\Province',
     2 => 'Cycle\\ORM\\Mapper\\Mapper',
     3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Domain\\Repository\\OrderRepository',
+    4 => 'Cycle\\ORM\\Select\\Repository',
     5 => 'default',
-    6 => 'orders',
+    6 => 'provinces',
     7 => 
     array (
       0 => 'id',
@@ -96,79 +61,15 @@
     9 => 
     array (
       'id' => 'id',
-      'totalPrice' => 'total_price',
-      'status' => 'status',
-      'createdAt' => 'created_at',
-      'updatedAt' => 'updated_at',
-      'user_id' => 'user_id',
-      'user_resident_id' => 'user_resident_id',
+      'name' => 'name',
     ),
     10 => 
     array (
-      'user' => 
-      array (
-        0 => 12,
-        1 => 'user',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'user_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
-      'user_resident' => 
-      array (
-        0 => 12,
-        1 => 'userResident',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'user_resident_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
-      'orderItem' => 
-      array (
-        0 => 11,
-        1 => 'orderItem',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          41 => 
-          array (
-          ),
-          42 => 
-          array (
-          ),
-          33 => 
-          array (
-            0 => 'id',
-          ),
-          32 => 'order_id',
-          4 => NULL,
-        ),
-      ),
     ),
     12 => NULL,
     13 => 
     array (
       'id' => 'int',
-      'createdAt' => 'datetime',
-      'updatedAt' => 'datetime',
-      'user_id' => 'int',
-      'user_resident_id' => 'int',
     ),
     14 => 
     array (
@@ -284,14 +185,14 @@
       'id' => 2,
     ),
   ),
-  'userResident' => 
+  'order' => 
   array (
-    1 => 'App\\Domain\\Entity\\UserResident',
+    1 => 'App\\Domain\\Entity\\Order',
     2 => 'Cycle\\ORM\\Mapper\\Mapper',
     3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Domain\\Repository\\UserResidentRepository',
+    4 => 'App\\Domain\\Repository\\OrderRepository',
     5 => 'default',
-    6 => 'user_residents',
+    6 => 'orders',
     7 => 
     array (
       0 => 'id',
@@ -303,13 +204,12 @@
     9 => 
     array (
       'id' => 'id',
-      'address' => 'address',
-      'postalCode' => 'postal_code',
+      'totalPrice' => 'total_price',
+      'status' => 'status',
       'createdAt' => 'created_at',
       'updatedAt' => 'updated_at',
       'user_id' => 'user_id',
-      'province_id' => 'province_id',
-      'city_id' => 'city_id',
+      'user_resident_id' => 'user_resident_id',
     ),
     10 => 
     array (
@@ -329,36 +229,43 @@
           ),
         ),
       ),
-      'province' => 
+      'user_resident' => 
       array (
         0 => 12,
-        1 => 'province',
+        1 => 'userResident',
         3 => 10,
         2 => 
         array (
           30 => true,
           31 => false,
-          33 => 'province_id',
+          33 => 'user_resident_id',
           32 => 
           array (
             0 => 'id',
           ),
         ),
       ),
-      'city' => 
+      'orderItem' => 
       array (
-        0 => 12,
-        1 => 'city',
+        0 => 11,
+        1 => 'orderItem',
         3 => 10,
         2 => 
         array (
           30 => true,
           31 => false,
-          33 => 'city_id',
-          32 => 
+          41 => 
+          array (
+          ),
+          42 => 
+          array (
+          ),
+          33 => 
           array (
             0 => 'id',
           ),
+          32 => 'order_id',
+          4 => NULL,
         ),
       ),
     ),
@@ -369,8 +276,7 @@
       'createdAt' => 'datetime',
       'updatedAt' => 'datetime',
       'user_id' => 'int',
-      'province_id' => 'int',
-      'city_id' => 'int',
+      'user_resident_id' => 'int',
     ),
     14 => 
     array (
@@ -381,14 +287,14 @@
       'id' => 2,
     ),
   ),
-  'notificationChannel' => 
+  'product' => 
   array (
-    1 => 'App\\Domain\\Entity\\NotificationChannel',
+    1 => 'App\\Domain\\Entity\\Product',
     2 => 'Cycle\\ORM\\Mapper\\Mapper',
     3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'Cycle\\ORM\\Select\\Repository',
+    4 => 'App\\Domain\\Repository\\ProductRepository',
     5 => 'default',
-    6 => 'notification_channels',
+    6 => 'products',
     7 => 
     array (
       0 => 'id',
@@ -400,104 +306,77 @@
     9 => 
     array (
       'id' => 'id',
-      'slug' => 'slug',
       'name' => 'name',
+      'brand' => 'brand',
+      'description' => 'description',
+      'image' => 'image',
+      'inStock' => 'in_stock',
       'createdAt' => 'created_at',
       'updatedAt' => 'updated_at',
+      'category_id' => 'category_id',
     ),
     10 => 
     array (
-    ),
-    12 => NULL,
-    13 => 
-    array (
-      'id' => 'int',
-      'createdAt' => 'datetime',
-      'updatedAt' => 'datetime',
-    ),
-    14 => 
-    array (
-    ),
-    19 => NULL,
-    20 => 
-    array (
-      'id' => 2,
-    ),
-  ),
-  'commentProduct' => 
-  array (
-    1 => 'App\\Domain\\Entity\\CommentProduct',
-    2 => 'Cycle\\ORM\\Mapper\\Mapper',
-    3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Domain\\Repository\\CommentProductRepository',
-    5 => 'default',
-    6 => 'product_comments',
-    7 => 
-    array (
-      0 => 'id',
-    ),
-    8 => 
-    array (
-      0 => 'id',
-    ),
-    9 => 
-    array (
-      'id' => 'id',
-      'comment' => 'comment',
-      'isActive' => 'is_active',
-      'createdAt' => 'created_at',
-      'user_id' => 'user_id',
-      'product_price_id' => 'product_price_id',
-      'order_id' => 'order_id',
-    ),
-    10 => 
-    array (
-      'user' => 
+      'category' => 
       array (
         0 => 12,
-        1 => 'user',
+        1 => 'category',
         3 => 10,
         2 => 
         array (
           30 => true,
           31 => false,
-          33 => 'user_id',
+          33 => 'category_id',
           32 => 
           array (
             0 => 'id',
           ),
         ),
       ),
-      'product_price' => 
+      'productPrice' => 
       array (
-        0 => 12,
+        0 => 11,
         1 => 'productPrice',
         3 => 10,
         2 => 
         array (
           30 => true,
           31 => false,
-          33 => 'product_price_id',
-          32 => 
+          41 => 
+          array (
+          ),
+          42 => 
+          array (
+          ),
+          33 => 
           array (
             0 => 'id',
           ),
+          32 => 'product_id',
+          4 => NULL,
         ),
       ),
-      'order' => 
+      'productAttribute' => 
       array (
-        0 => 12,
-        1 => 'order',
+        0 => 11,
+        1 => 'productAttribute',
         3 => 10,
         2 => 
         array (
           30 => true,
-          31 => true,
-          33 => 'order_id',
-          32 => 
+          31 => false,
+          41 => 
+          array (
+          ),
+          42 => 
+          array (
+          ),
+          33 => 
           array (
             0 => 'id',
           ),
+          32 => 'product_id',
+          4 => NULL,
         ),
       ),
     ),
@@ -505,49 +384,9 @@
     13 => 
     array (
       'id' => 'int',
-      'isActive' => 'bool',
       'createdAt' => 'datetime',
-      'user_id' => 'int',
-      'product_price_id' => 'int',
-      'order_id' => 'int',
-    ),
-    14 => 
-    array (
-    ),
-    19 => NULL,
-    20 => 
-    array (
-      'id' => 2,
-    ),
-  ),
-  'degree' => 
-  array (
-    1 => 'App\\Domain\\Entity\\Degree',
-    2 => 'Cycle\\ORM\\Mapper\\Mapper',
-    3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'Cycle\\ORM\\Select\\Repository',
-    5 => 'default',
-    6 => 'degrees',
-    7 => 
-    array (
-      0 => 'id',
-    ),
-    8 => 
-    array (
-      0 => 'id',
-    ),
-    9 => 
-    array (
-      'id' => 'id',
-      'name' => 'name',
-    ),
-    10 => 
-    array (
-    ),
-    12 => NULL,
-    13 => 
-    array (
-      'id' => 'int',
+      'updatedAt' => 'datetime',
+      'category_id' => 'int',
     ),
     14 => 
     array (
@@ -624,6 +463,149 @@
       'id' => 2,
     ),
   ),
+  'media' => 
+  array (
+    1 => 'App\\Domain\\Entity\\Media',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\MediaRepository',
+    5 => 'default',
+    6 => 'medias',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'entityType' => 'entity_type',
+      'entityId' => 'entity_id',
+      'name' => 'name',
+      'pass' => 'pass',
+      'createdAt' => 'created_at',
+    ),
+    10 => 
+    array (
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'entityId' => 'int',
+      'createdAt' => 'datetime',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
+  'notificationPreference' => 
+  array (
+    1 => 'App\\Domain\\Entity\\NotificationPreference',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\NotificationPreferenceRepository',
+    5 => 'default',
+    6 => 'notification_preferences',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'isEnabled' => 'is_enabled',
+      'isUserModifiable' => 'is_user_modifiable',
+      'createdAt' => 'created_at',
+      'updatedAt' => 'updated_at',
+      'user_id' => 'user_id',
+      'notification_type_id' => 'notification_type_id',
+      'notification_channel_id' => 'notification_channel_id',
+    ),
+    10 => 
+    array (
+      'user' => 
+      array (
+        0 => 12,
+        1 => 'user',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'user_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'notification_type' => 
+      array (
+        0 => 12,
+        1 => 'notificationType',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'notification_type_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'notification_channel' => 
+      array (
+        0 => 12,
+        1 => 'notificationChannel',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'notification_channel_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'isEnabled' => 'bool',
+      'isUserModifiable' => 'bool',
+      'createdAt' => 'datetime',
+      'updatedAt' => 'datetime',
+      'user_id' => 'int',
+      'notification_type_id' => 'int',
+      'notification_channel_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
   'attribute' => 
   array (
     1 => 'App\\Domain\\Entity\\Attribute',
@@ -662,14 +644,14 @@
       'id' => 2,
     ),
   ),
-  'productAttribute' => 
+  'city' => 
   array (
-    1 => 'App\\Domain\\Entity\\ProductAttribute',
+    1 => 'App\\Domain\\Entity\\City',
     2 => 'Cycle\\ORM\\Mapper\\Mapper',
     3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Domain\\Repository\\ProductAttributeRepository',
+    4 => 'Cycle\\ORM\\Select\\Repository',
     5 => 'default',
-    6 => 'product_attributes',
+    6 => 'cities',
     7 => 
     array (
       0 => 'id',
@@ -681,56 +663,96 @@
     9 => 
     array (
       'id' => 'id',
-      'createdAt' => 'created_at',
-      'updatedAt' => 'updated_at',
-      'product_id' => 'product_id',
-      'attribute_id' => 'attribute_id',
-      'attribute_value_id' => 'attribute_value_id',
+      'name' => 'name',
+      'province_id' => 'province_id',
     ),
     10 => 
     array (
-      'product' => 
+      'province' => 
       array (
         0 => 12,
-        1 => 'product',
+        1 => 'province',
         3 => 10,
         2 => 
         array (
           30 => true,
           31 => false,
-          33 => 'product_id',
+          33 => 'province_id',
           32 => 
           array (
             0 => 'id',
           ),
         ),
       ),
-      'attribute' => 
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'province_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
+  'userEducation' => 
+  array (
+    1 => 'App\\Domain\\Entity\\UserEducation',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\UserEducationRepository',
+    5 => 'default',
+    6 => 'user_educations',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'university' => 'university',
+      'createdAt' => 'created_at',
+      'updatedAt' => 'updated_at',
+      'user_id' => 'user_id',
+      'degree_id' => 'degree_id',
+    ),
+    10 => 
+    array (
+      'user' => 
       array (
         0 => 12,
-        1 => 'attribute',
+        1 => 'user',
         3 => 10,
         2 => 
         array (
           30 => true,
           31 => false,
-          33 => 'attribute_id',
+          33 => 'user_id',
           32 => 
           array (
             0 => 'id',
           ),
         ),
       ),
-      'attribute_value' => 
+      'degree' => 
       array (
         0 => 12,
-        1 => 'attributeValue',
+        1 => 'degree',
         3 => 10,
         2 => 
         array (
           30 => true,
           31 => false,
-          33 => 'attribute_value_id',
+          33 => 'degree_id',
           32 => 
           array (
             0 => 'id',
@@ -744,47 +766,8 @@
       'id' => 'int',
       'createdAt' => 'datetime',
       'updatedAt' => 'datetime',
-      'product_id' => 'int',
-      'attribute_id' => 'int',
-      'attribute_value_id' => 'int',
-    ),
-    14 => 
-    array (
-    ),
-    19 => NULL,
-    20 => 
-    array (
-      'id' => 2,
-    ),
-  ),
-  'province' => 
-  array (
-    1 => 'App\\Domain\\Entity\\Province',
-    2 => 'Cycle\\ORM\\Mapper\\Mapper',
-    3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'Cycle\\ORM\\Select\\Repository',
-    5 => 'default',
-    6 => 'provinces',
-    7 => 
-    array (
-      0 => 'id',
-    ),
-    8 => 
-    array (
-      0 => 'id',
-    ),
-    9 => 
-    array (
-      'id' => 'id',
-      'name' => 'name',
-    ),
-    10 => 
-    array (
-    ),
-    12 => NULL,
-    13 => 
-    array (
-      'id' => 'int',
+      'user_id' => 'int',
+      'degree_id' => 'int',
     ),
     14 => 
     array (
@@ -862,205 +845,6 @@
       'updatedAt' => 'datetime',
       'user_id' => 'int',
       'product_id' => 'int',
-    ),
-    14 => 
-    array (
-    ),
-    19 => NULL,
-    20 => 
-    array (
-      'id' => 2,
-    ),
-  ),
-  'city' => 
-  array (
-    1 => 'App\\Domain\\Entity\\City',
-    2 => 'Cycle\\ORM\\Mapper\\Mapper',
-    3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'Cycle\\ORM\\Select\\Repository',
-    5 => 'default',
-    6 => 'cities',
-    7 => 
-    array (
-      0 => 'id',
-    ),
-    8 => 
-    array (
-      0 => 'id',
-    ),
-    9 => 
-    array (
-      'id' => 'id',
-      'name' => 'name',
-      'province_id' => 'province_id',
-    ),
-    10 => 
-    array (
-      'province' => 
-      array (
-        0 => 12,
-        1 => 'province',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'province_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
-    ),
-    12 => NULL,
-    13 => 
-    array (
-      'id' => 'int',
-      'province_id' => 'int',
-    ),
-    14 => 
-    array (
-    ),
-    19 => NULL,
-    20 => 
-    array (
-      'id' => 2,
-    ),
-  ),
-  'orderItem' => 
-  array (
-    1 => 'App\\Domain\\Entity\\OrderItem',
-    2 => 'Cycle\\ORM\\Mapper\\Mapper',
-    3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Domain\\Repository\\OrderItemRepository',
-    5 => 'default',
-    6 => 'order_items',
-    7 => 
-    array (
-      0 => 'id',
-    ),
-    8 => 
-    array (
-      0 => 'id',
-    ),
-    9 => 
-    array (
-      'id' => 'id',
-      'productPriceId' => 'product_price_id',
-      'number' => 'number',
-      'price' => 'price',
-      'createdAt' => 'created_at',
-      'updatedAt' => 'updated_at',
-      'order_id' => 'order_id',
-      'user_id' => 'user_id',
-    ),
-    10 => 
-    array (
-      'user' => 
-      array (
-        0 => 12,
-        1 => 'user',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'user_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
-      'order' => 
-      array (
-        0 => 12,
-        1 => 'order',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'order_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
-    ),
-    12 => NULL,
-    13 => 
-    array (
-      'id' => 'int',
-      'productPriceId' => 'int',
-      'number' => 'int',
-      'createdAt' => 'datetime',
-      'updatedAt' => 'datetime',
-      'order_id' => 'int',
-      'user_id' => 'int',
-    ),
-    14 => 
-    array (
-    ),
-    19 => NULL,
-    20 => 
-    array (
-      'id' => 2,
-    ),
-  ),
-  'category' => 
-  array (
-    1 => 'App\\Domain\\Entity\\Category',
-    2 => 'Cycle\\ORM\\Mapper\\Mapper',
-    3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Domain\\Repository\\CategoryRepository',
-    5 => 'default',
-    6 => 'categories',
-    7 => 
-    array (
-      0 => 'id',
-    ),
-    8 => 
-    array (
-      0 => 'id',
-    ),
-    9 => 
-    array (
-      'id' => 'id',
-      'name' => 'name',
-    ),
-    10 => 
-    array (
-      'products' => 
-      array (
-        0 => 11,
-        1 => 'product',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          41 => 
-          array (
-          ),
-          42 => 
-          array (
-          ),
-          33 => 
-          array (
-            0 => 'id',
-          ),
-          32 => 'category_id',
-          4 => NULL,
-        ),
-      ),
-    ),
-    12 => NULL,
-    13 => 
-    array (
-      'id' => 'int',
     ),
     14 => 
     array (
@@ -1217,6 +1001,244 @@
       'id' => 2,
     ),
   ),
+  'productAttribute' => 
+  array (
+    1 => 'App\\Domain\\Entity\\ProductAttribute',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\ProductAttributeRepository',
+    5 => 'default',
+    6 => 'product_attributes',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'createdAt' => 'created_at',
+      'updatedAt' => 'updated_at',
+      'product_id' => 'product_id',
+      'attribute_id' => 'attribute_id',
+      'attribute_value_id' => 'attribute_value_id',
+    ),
+    10 => 
+    array (
+      'product' => 
+      array (
+        0 => 12,
+        1 => 'product',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'product_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'attribute' => 
+      array (
+        0 => 12,
+        1 => 'attribute',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'attribute_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'attribute_value' => 
+      array (
+        0 => 12,
+        1 => 'attributeValue',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'attribute_value_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'createdAt' => 'datetime',
+      'updatedAt' => 'datetime',
+      'product_id' => 'int',
+      'attribute_id' => 'int',
+      'attribute_value_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
+  'category' => 
+  array (
+    1 => 'App\\Domain\\Entity\\Category',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\CategoryRepository',
+    5 => 'default',
+    6 => 'categories',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'name' => 'name',
+    ),
+    10 => 
+    array (
+      'products' => 
+      array (
+        0 => 11,
+        1 => 'product',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          41 => 
+          array (
+          ),
+          42 => 
+          array (
+          ),
+          33 => 
+          array (
+            0 => 'id',
+          ),
+          32 => 'category_id',
+          4 => NULL,
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
+  'orderItem' => 
+  array (
+    1 => 'App\\Domain\\Entity\\OrderItem',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\OrderItemRepository',
+    5 => 'default',
+    6 => 'order_items',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'productPriceId' => 'product_price_id',
+      'number' => 'number',
+      'price' => 'price',
+      'createdAt' => 'created_at',
+      'updatedAt' => 'updated_at',
+      'order_id' => 'order_id',
+      'user_id' => 'user_id',
+    ),
+    10 => 
+    array (
+      'user' => 
+      array (
+        0 => 12,
+        1 => 'user',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'user_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'order' => 
+      array (
+        0 => 12,
+        1 => 'order',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'order_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'productPriceId' => 'int',
+      'number' => 'int',
+      'createdAt' => 'datetime',
+      'updatedAt' => 'datetime',
+      'order_id' => 'int',
+      'user_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
   'notificationType' => 
   array (
     1 => 'App\\Domain\\Entity\\NotificationType',
@@ -1250,6 +1272,102 @@
       'id' => 'int',
       'createdAt' => 'datetime',
       'updatedAt' => 'datetime',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
+  'commentProduct' => 
+  array (
+    1 => 'App\\Domain\\Entity\\CommentProduct',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'App\\Domain\\Repository\\CommentProductRepository',
+    5 => 'default',
+    6 => 'product_comments',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'comment' => 'comment',
+      'isActive' => 'is_active',
+      'createdAt' => 'created_at',
+      'user_id' => 'user_id',
+      'product_price_id' => 'product_price_id',
+      'order_id' => 'order_id',
+    ),
+    10 => 
+    array (
+      'user' => 
+      array (
+        0 => 12,
+        1 => 'user',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'user_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'product_price' => 
+      array (
+        0 => 12,
+        1 => 'productPrice',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => false,
+          33 => 'product_price_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+      'order' => 
+      array (
+        0 => 12,
+        1 => 'order',
+        3 => 10,
+        2 => 
+        array (
+          30 => true,
+          31 => true,
+          33 => 'order_id',
+          32 => 
+          array (
+            0 => 'id',
+          ),
+        ),
+      ),
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
+      'isActive' => 'bool',
+      'createdAt' => 'datetime',
+      'user_id' => 'int',
+      'product_price_id' => 'int',
+      'order_id' => 'int',
     ),
     14 => 
     array (
@@ -1338,14 +1456,14 @@
       'id' => 2,
     ),
   ),
-  'media' => 
+  'userResident' => 
   array (
-    1 => 'App\\Domain\\Entity\\Media',
+    1 => 'App\\Domain\\Entity\\UserResident',
     2 => 'Cycle\\ORM\\Mapper\\Mapper',
     3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Domain\\Repository\\MediaRepository',
+    4 => 'App\\Domain\\Repository\\UserResidentRepository',
     5 => 'default',
-    6 => 'medias',
+    6 => 'user_residents',
     7 => 
     array (
       0 => 'id',
@@ -1357,57 +1475,13 @@
     9 => 
     array (
       'id' => 'id',
-      'entityType' => 'entity_type',
-      'entityId' => 'entity_id',
-      'name' => 'name',
-      'pass' => 'pass',
-      'createdAt' => 'created_at',
-    ),
-    10 => 
-    array (
-    ),
-    12 => NULL,
-    13 => 
-    array (
-      'id' => 'int',
-      'entityId' => 'int',
-      'createdAt' => 'datetime',
-    ),
-    14 => 
-    array (
-    ),
-    19 => NULL,
-    20 => 
-    array (
-      'id' => 2,
-    ),
-  ),
-  'notificationPreference' => 
-  array (
-    1 => 'App\\Domain\\Entity\\NotificationPreference',
-    2 => 'Cycle\\ORM\\Mapper\\Mapper',
-    3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Domain\\Repository\\NotificationPreferenceRepository',
-    5 => 'default',
-    6 => 'notification_preferences',
-    7 => 
-    array (
-      0 => 'id',
-    ),
-    8 => 
-    array (
-      0 => 'id',
-    ),
-    9 => 
-    array (
-      'id' => 'id',
-      'isEnabled' => 'is_enabled',
-      'isUserModifiable' => 'is_user_modifiable',
+      'address' => 'address',
+      'postalCode' => 'postal_code',
       'createdAt' => 'created_at',
       'updatedAt' => 'updated_at',
       'user_id' => 'user_id',
-      'notification_type_id' => 'notification_type_id',
-      'notification_channel_id' => 'notification_channel_id',
+      'province_id' => 'province_id',
+      'city_id' => 'city_id',
     ),
     10 => 
     array (
@@ -1427,32 +1501,32 @@
           ),
         ),
       ),
-      'notification_type' => 
+      'province' => 
       array (
         0 => 12,
-        1 => 'notificationType',
+        1 => 'province',
         3 => 10,
         2 => 
         array (
           30 => true,
           31 => false,
-          33 => 'notification_type_id',
+          33 => 'province_id',
           32 => 
           array (
             0 => 'id',
           ),
         ),
       ),
-      'notification_channel' => 
+      'city' => 
       array (
         0 => 12,
-        1 => 'notificationChannel',
+        1 => 'city',
         3 => 10,
         2 => 
         array (
           30 => true,
           31 => false,
-          33 => 'notification_channel_id',
+          33 => 'city_id',
           32 => 
           array (
             0 => 'id',
@@ -1464,123 +1538,11 @@
     13 => 
     array (
       'id' => 'int',
-      'isEnabled' => 'bool',
-      'isUserModifiable' => 'bool',
       'createdAt' => 'datetime',
       'updatedAt' => 'datetime',
       'user_id' => 'int',
-      'notification_type_id' => 'int',
-      'notification_channel_id' => 'int',
-    ),
-    14 => 
-    array (
-    ),
-    19 => NULL,
-    20 => 
-    array (
-      'id' => 2,
-    ),
-  ),
-  'product' => 
-  array (
-    1 => 'App\\Domain\\Entity\\Product',
-    2 => 'Cycle\\ORM\\Mapper\\Mapper',
-    3 => 'Cycle\\ORM\\Select\\Source',
-    4 => 'App\\Domain\\Repository\\ProductRepository',
-    5 => 'default',
-    6 => 'products',
-    7 => 
-    array (
-      0 => 'id',
-    ),
-    8 => 
-    array (
-      0 => 'id',
-    ),
-    9 => 
-    array (
-      'id' => 'id',
-      'name' => 'name',
-      'brand' => 'brand',
-      'description' => 'description',
-      'image' => 'image',
-      'inStock' => 'in_stock',
-      'createdAt' => 'created_at',
-      'updatedAt' => 'updated_at',
-      'category_id' => 'category_id',
-    ),
-    10 => 
-    array (
-      'category' => 
-      array (
-        0 => 12,
-        1 => 'category',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          33 => 'category_id',
-          32 => 
-          array (
-            0 => 'id',
-          ),
-        ),
-      ),
-      'productPrice' => 
-      array (
-        0 => 11,
-        1 => 'productPrice',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          41 => 
-          array (
-          ),
-          42 => 
-          array (
-          ),
-          33 => 
-          array (
-            0 => 'id',
-          ),
-          32 => 'product_id',
-          4 => NULL,
-        ),
-      ),
-      'productAttribute' => 
-      array (
-        0 => 11,
-        1 => 'productAttribute',
-        3 => 10,
-        2 => 
-        array (
-          30 => true,
-          31 => false,
-          41 => 
-          array (
-          ),
-          42 => 
-          array (
-          ),
-          33 => 
-          array (
-            0 => 'id',
-          ),
-          32 => 'product_id',
-          4 => NULL,
-        ),
-      ),
-    ),
-    12 => NULL,
-    13 => 
-    array (
-      'id' => 'int',
-      'createdAt' => 'datetime',
-      'updatedAt' => 'datetime',
-      'category_id' => 'int',
+      'province_id' => 'int',
+      'city_id' => 'int',
     ),
     14 => 
     array (
@@ -1637,6 +1599,44 @@
     array (
       'id' => 'int',
       'attribute_id' => 'int',
+    ),
+    14 => 
+    array (
+    ),
+    19 => NULL,
+    20 => 
+    array (
+      'id' => 2,
+    ),
+  ),
+  'degree' => 
+  array (
+    1 => 'App\\Domain\\Entity\\Degree',
+    2 => 'Cycle\\ORM\\Mapper\\Mapper',
+    3 => 'Cycle\\ORM\\Select\\Source',
+    4 => 'Cycle\\ORM\\Select\\Repository',
+    5 => 'default',
+    6 => 'degrees',
+    7 => 
+    array (
+      0 => 'id',
+    ),
+    8 => 
+    array (
+      0 => 'id',
+    ),
+    9 => 
+    array (
+      'id' => 'id',
+      'name' => 'name',
+    ),
+    10 => 
+    array (
+    ),
+    12 => NULL,
+    13 => 
+    array (
+      'id' => 'int',
     ),
     14 => 
     array (

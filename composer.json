@@ -27,7 +27,9 @@
         "spiral/roadrunner-bridge": "^3.7",
         "spiral/roadrunner-cli": "^2.5",
         "spiral/router": "*",
-        "spiral/validator": "^1.5"
+        "spiral/validator": "^1.5",
+        "symfony/mailer": "^7.1",
+        "symfony/notifier": "^6.4"
     },
     "require-dev": {
         "spiral/dumper": "^3.2.1",
