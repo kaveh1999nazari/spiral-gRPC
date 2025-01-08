@@ -4,23 +4,25 @@ namespace App\Domain\Notifications\Messages;
 
 class BasicMessage
 {
-    public array $data;
+    public array $data = [];
     public string $message;
 
-    public function data(array $data): array
+    public function data(array $data): self
    {
-        return $this->data = $data;
+        $this->data = $data;
+        return $this;
    }
 
-   public function message(string $message): string
+   public function message(string $message): self
    {
-       return $this->message = $message;
+       $this->message = $message;
+       return $this;
    }
 
    public function toArray(): array
    {
         return [
-            'title' => $this->title,
+            'title' => $this->data,
             'message' => $this->message
         ];
    }
