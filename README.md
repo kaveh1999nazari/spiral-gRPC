@@ -1,93 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <div class="header">
-        <h1>Project Changelog</h1>
-        <p>Powered by:</p>
-        <ul>
-            <li><a href="https://spiral.dev" target="_blank">Spiral Framework</a></li>
-            <li><a href="https://cycle-orm.dev" target="_blank">Cycle ORM</a></li>
-            <li><a href="https://grpc.io" target="_blank">gRPC</a></li>
-        </ul>
-    </div>
-    <div class="changelog">
-        <div class="version" id="v2.2.5">
-            <h2>Last update V2.2.5</h2>
-            <p><strong>Framework:</strong> Spiral Framework with gRPC</p>
-            <ul class="features">
-                <li>Register user:
-                    <ul>
-                        <li>with user personal information</li>
-                        <li>with user personal resident information</li>
-                        <li>with user personal education information</li>
-                        <li>with user personal job information</li>
-                        <li>Receive a welcome email if add email</li>
-                    </ul>
-                <li>Login user:
-                    <ul>
-                        <li>with Email and OTP</li>
-                        <li>with Email and password</li>
-                        <li>with mobile and password</li>
-                        <li>Receive a notification login email</li>
-                        <li>JWT-based User Authentication</li>
-                    </ul>
-                <li>Add docker and manage by docker</li>
-                <li>Admin can:
-                    <ul>
-                        <li>Create categories</li>
-                        <li>Assign access permissions</li>
-                        <li>Create products with options for prices </li>
-                        <li>Create products with attributes </li>
-                        <li>Upload images base on api</li>
-                        <li>Update order status</li>
-                        <li>Add Discount for every Product</li>
-                        <li>Update Comments product to show</li>
-                    </ul>
-                </li>
-                <li>User can:
-                    <ul>
-                        <li>update the profile by OTP</li>
-                        <li>Create carts</li>
-                        <li>See all carts</li>
-                        <li>Delete cart ids</li>
-                        <li>Place an Order</li>
-                        <li>Cancel an Order</li>
-                        <li>Can see order status</li>
-                        <li>Give email notification by changing order status</li>
-                        <li>Add Favorite Products</li>
-                        <li>Add Comments for bought products</li>
-                    </ul>
-                </li>
-                <li>Guest can:
-                    <ul>
-                        <li>Create carts with own UUID</li>
-                        <li>See all carts with own UUID</li>
-                        <li>Delete cart ids with own UUID</li>
-                    </ul>
-                </li>
-                <li>Added Seeder for Product Options</li>
-                <li>Added Queue-Notification</li>
-                <li>Added Search Products By Query Build</li>
-                <li>Added Filter Products By them Attributes</li>
-                <li>Added Similar Products</li>
-                <li>Added Media for Resident, Profile Picture, Education</li>
-                <li>Added List Product to see all Prices</li>
-                <li>Added List Comment Product to see all Comments</li>
-            </ul>
-            <p><strong>Fixes:</strong></p>
-            <ul class="fixes">
-                <li>Resolved upload storage issues</li>
-                <li>Resolved adding repetitive product-id</li>
-                <li>Resolved some bugs in Cart</li>
-                <li>Resolved some bugs in User</li>
-                <li>Resolved text email of sending otp</li>
-                <li>Changed values of products in migration</li>
-            </ul>
-        </div>
-    </div>
-</body>
-</html>
+# Project Changelog
+
+## Powered by:
+- [Spiral Framework](https://spiral.dev)
+- [Cycle ORM](https://cycle-orm.dev)
+- [gRPC](https://grpc.io)
+
+## Last update V2.2.5
+**Framework:** Spiral Framework with gRPC
+
+### Features
+
+- **Register User:**
+  - With user personal information
+  - With user personal resident information
+  - With user personal education information
+  - With user personal job information
+  - Receive a welcome email if email is added
+
+- **Login User:**
+  - With Email and OTP
+  - With Email and password
+  - With mobile and password
+  - Receive a notification login email
+  - JWT-based User Authentication
+
+- **Docker Integration:**
+  - Add Docker and manage by Docker
+
+- **Admin Capabilities:**
+  - Create categories
+  - Assign access permissions
+  - Create products with options for prices
+  - Create products with attributes
+  - Upload images via API
+  - Update order status
+  - Add discounts for every product
+  - Update product comments to display
+
+- **User Capabilities:**
+  - Update profile via OTP
+  - Create carts
+  - See all carts
+  - Delete cart IDs
+  - Place an order
+  - Cancel an order
+  - View order status
+  - Receive email notifications for order status changes
+  - Add favorite products
+  - Add comments for purchased products
+
+- **Guest Capabilities:**
+  - Create carts with their own UUID
+  - See all carts with their own UUID
+  - Delete cart IDs with their own UUID
+
+- **Additional Enhancements:**
+  - Added Seeder for Product Options
+  - Added Queue-Notification
+  - Added Search Products By Query Builder
+  - Added Filter Products By Attributes
+  - Added Similar Products
+  - Added Media for Resident, Profile Picture, and Education
+  - Added List Product to see all Prices
+  - Added List Product Comments to see all Comments
+
+### Fixes
+
+- Resolved upload storage issues
+- Resolved repetitive product-ID addition
+- Fixed bugs in the Cart
+- Fixed bugs in the User module
+- Resolved text email issues for sending OTP
+- Changed product values in migrations
